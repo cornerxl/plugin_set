@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'PingFangSC', 'helvetica neue', 'hiragino sans gb', 'arial', 'microsoft yahei ui', 'microsoft yahei', 'simsun', 'sans-serif' !important;
+}
+
+ul li {
+  list-style: none;
+}
+
+//内容宽度
+@contentWidth:1200px;
+// 字体大小
+@font10: 10px;
+@font12: 12px;
+@font14: 14px;
+@font16: 16px;
+@font18: 18px;
+@font20: 20px;
+@font22: 22px;
+@font24: 24px;
+@font26: 26px;
+
+.font10 {
+  font-size: @font10;
+}
+
+.font12 {
+  font-size: @font12;
+}
+
+.font14 {
+  font-size: @font14;
+}
+
+.font16 {
+  font-size: @font16;
+}
+
+.font18 {
+  font-size: @font18;
+}
+
+.font20 {
+  font-size: @font20;
+}
+
+.font22 {
+  font-size: @font22;
+}
+
+.font24 {
+  font-size: @font24;
+}
+
+.font26 {
+  font-size: @font26;
+}
+
+//颜色
+@foreRed: #d02200;
+@foreBlue: #409EFF;
+@foreShallowGreen: #EFF9EB;
+@foreGreen: #67c23a;
+@foreBlack: #000;
+@fore333: #333;
+@fore666: #666;
+@fore999: #999;
+@foreWhite: #FFF;
+@fore008489: #008489;
+@foreBrown: #2f2222;
+
+.fore-red {
+  color: @foreRed;
+}
+
+.fore-blue {
+  color: @foreBlue;
+}
+
+.fore-shallow-green {
+  color: @foreShallowGreen;
+}
+
+.fore-green {
+  color: @foreGreen;
+}
+
+.fore-black {
+  color: @foreBlack;
+}
+
+.fore333 {
+  color: @fore333;
+}
+
+.fore666 {
+  color: @fore666;
+}
+
+.fore999 {
+  color: @fore999;
+}
+
+.fore-white {
+  color: @foreWhite;
+}
+
+.fore008489 {
+  color: @fore008489;
+}
+
+.fore-brown {
+  color: @foreBrown;
+}
+
+//清除浮动
+.clear {
+  clear: both;
+}
+
+.header {
+  width: 100%;
+  padding: 20px;
+  height: 80px;
+  background-color: @fore666;
+  box-sizing: border-box;
+  .logo {
+    height: 40px;
+  }
+  ul {
+    float: right;
+    padding-top: 10px;
+    .fore-white;
+    .font12;
+    li {
+      float: left;
+      padding-right: 20px;
+      cursor: pointer;
+    }
+    .active {
+      color: #ff6666;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<div class="header">
+    <img class="logo" src="/plugin_set/public/img/logo_top.png" alt="">
+    <ul>
+        <li x-repeat="nav_list" x-route="{{path}}" x-class="{'active': 'active'}" active="active">{{name}}</li>
+    </ul>
+</div>
+<div x-router></div>
