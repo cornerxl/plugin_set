@@ -40,4 +40,4 @@ var CSSURL = BASEURL + '/public/css';
             ]
         },
     });
-}())
+}());
