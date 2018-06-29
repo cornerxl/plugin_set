@@ -9,7 +9,7 @@ var connect = mysql.createConnection({
     user     : 'root',
     password : 'xll',
     port: '3306',
-    database: 'plugin',
+    database: 'plugin'
 });
 /* GET home page. */
 router.get('/', function(req, res, next) {
