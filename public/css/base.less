@@ -1,16 +1,17 @@
 * {
-  margin: 0;
-  padding: 0;
-  font-family: 'PingFangSC', 'helvetica neue', 'hiragino sans gb', 'arial', 'microsoft yahei ui', 'microsoft yahei', 'simsun', 'sans-serif' !important;
+    margin: 0;
+    padding: 0;
+    font-family: 'PingFangSC', 'helvetica neue', 'hiragino sans gb', 'arial', 'microsoft yahei ui', 'microsoft yahei', 'simsun', 'sans-serif' !important;
 }
 
 ul li {
-  list-style: none;
+    list-style: none;
 }
 
 //内容宽度
-@contentWidth:1200px;
+@contentWidth: 1200px;
 // 字体大小
+@font0: 0px;
 @font10: 10px;
 @font12: 12px;
 @font14: 14px;
@@ -20,41 +21,44 @@ ul li {
 @font22: 22px;
 @font24: 24px;
 @font26: 26px;
+.font0 {
+    font-size: @font0;
+}
 
 .font10 {
-  font-size: @font10;
+    font-size: @font10;
 }
 
 .font12 {
-  font-size: @font12;
+    font-size: @font12;
 }
 
 .font14 {
-  font-size: @font14;
+    font-size: @font14;
 }
 
 .font16 {
-  font-size: @font16;
+    font-size: @font16;
 }
 
 .font18 {
-  font-size: @font18;
+    font-size: @font18;
 }
 
 .font20 {
-  font-size: @font20;
+    font-size: @font20;
 }
 
 .font22 {
-  font-size: @font22;
+    font-size: @font22;
 }
 
 .font24 {
-  font-size: @font24;
+    font-size: @font24;
 }
 
 .font26 {
-  font-size: @font26;
+    font-size: @font26;
 }
 
 //颜色
@@ -71,75 +75,75 @@ ul li {
 @foreBrown: #2f2222;
 
 .fore-red {
-  color: @foreRed;
+    color: @foreRed;
 }
 
 .fore-blue {
-  color: @foreBlue;
+    color: @foreBlue;
 }
 
 .fore-shallow-green {
-  color: @foreShallowGreen;
+    color: @foreShallowGreen;
 }
 
 .fore-green {
-  color: @foreGreen;
+    color: @foreGreen;
 }
 
 .fore-black {
-  color: @foreBlack;
+    color: @foreBlack;
 }
 
 .fore333 {
-  color: @fore333;
+    color: @fore333;
 }
 
 .fore666 {
-  color: @fore666;
+    color: @fore666;
 }
 
 .fore999 {
-  color: @fore999;
+    color: @fore999;
 }
 
 .fore-white {
-  color: @foreWhite;
+    color: @foreWhite;
 }
 
 .fore008489 {
-  color: @fore008489;
+    color: @fore008489;
 }
 
 .fore-brown {
-  color: @foreBrown;
+    color: @foreBrown;
 }
 
 //清除浮动
 .clear {
-  clear: both;
+    clear: both;
 }
 
 .header {
-  width: 100%;
-  padding: 20px;
-  height: 80px;
-  background-color: @fore666;
-  box-sizing: border-box;
-  .logo {
-    height: 40px;
-  }
-  ul {
-    float: right;
-    padding-top: 10px;
-    .fore-white;
-    .font12;
-    li {
-      float: left;
-      padding-right: 20px;
-      cursor: pointer;
+    width: 100%;
+    padding: 20px;
+    height: 80px;
+    background-color: @fore666;
+    box-sizing: border-box;
+    .logo {
+        height: 40px;
     }
-    .active {
-      color: #ff6666;
+    ul {
+        float: right;
+        padding-top: 10px;
+        .fore-white;
+        .font12;
+        li {
+            float: left;
+            padding-right: 20px;
+            cursor: pointer;
+        }
+        .active {
+            color: #ff6666;
+        }
     }
-  }
 }
