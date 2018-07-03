@@ -1,4 +1,8 @@
 var dele = {
+    /**
+     * 删除的文件目录
+     * @param path
+     */
     dele: function(path) {
         var fs = require('fs');
            var files = fs.readdirSync(path);
