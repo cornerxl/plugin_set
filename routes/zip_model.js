@@ -6,7 +6,7 @@ var zip_model = {
         var path = '../plugin_set/public/plugin/';
         var archive = require('archiver');
         //生成压缩文件的地址
-        var zipPath = path + 'plugin_down/' + random + '.zip';
+        var zipPath = path + 'plugin_down/plugin' + random + '.zip';
         var output = fs.createWriteStream(zipPath);
         var zipar = archive('zip');
         //要压缩的文件
