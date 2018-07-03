@@ -3,6 +3,11 @@
 var dele=require('./dele_file');
 var copy = {
     //由于主模块要使用 故全部采用了同步读取和写入的方式
+    /**
+     *
+     * @param from 源文件目录
+     * @param to   目标文件目录
+     */
     copyFile: function(from, to) {
         var tem=['/index.js','/index.css',"/index.js",'/nodom-full.js','/index.html'];
         var fs = require("fs");
