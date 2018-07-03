@@ -9,7 +9,7 @@ var zip_model = {
         var zipPath = path + 'plugin_down/plugin' + random + '.zip';
         var output = fs.createWriteStream(zipPath);
         var zipar = archive('zip');
-        //要压缩的文件
+        //要压缩的文件为plugin_tem里面内容
         zipar.directory(path+"/plugin_tem", '/');
         zipar.pipe(output);
         //压缩
