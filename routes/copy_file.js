@@ -9,16 +9,22 @@ var copy = {
      * @param to   目标文件目录
      */
     copyFile: function(from, to) {
-        var tem=['/index.js','/index.css',"/index.js",'/nodom-full.js','/index.html'];
         var fs = require("fs");
         var des_path=to+'plugin';
         if(fs.existsSync(des_path)){
             dele.dele(des_path);
         }
         fs.mkdirSync(des_path);
+        var tem=fs.readdirSync(from);
         tem.forEach(function(item){
+            //如果是图片就特殊处理
+            if(item.indexOf("js")===-1||item.indexOf('css')===-1||item.indexOf('html')===-1){
+                var str=fs.readFileSync(from+item,'base64');
+                fs.writeFileSync(des_path+'/'+item,str,'base64');
+            }
+            else{
             var str=fs.readFileSync(from+item,'utf-8');
-            fs.writeFileSync(des_path+item,str);
+            fs.writeFileSync(des_path+'/'+item,str);}
         });
         //由于太慢了所以返回一个值
         return true;
