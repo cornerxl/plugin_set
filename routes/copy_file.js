@@ -22,13 +22,23 @@ var copy = {
             }
         });
     },
+    /**
+     * form 原路经,to 目的路径
+     * @param from
+     * @param to
+     * @returns {{name: *, file: (string|*)}}
+     */
     init: function(from, to) {
         var me = this;
+        //随机创建一个文件夹
+        me.file_name='plugin'+new Date().getSeconds();
         me.fs = require("fs");
-        var des_path = to + 'plugin';
+        var des_path = to + me.file_name;
+        //如果文件夹已存在 先删除
         if (me.fs.existsSync(des_path)) {
             dele.dele(des_path);
         }
+        //开始创建一个文件夹
         me.fs.mkdirSync(des_path);
         me.name=des_path;
         var tem = me.fs.readdirSync(from);
@@ -40,7 +50,8 @@ var copy = {
                 me.fs.writeFileSync(des_path + '/' + i, str);
             }
         });
-        return me.name;
+        //最后返回文件名字和路径名称
+        return {name:me.name,file:me.file_name};
     }
 };
 module.exports = copy;
