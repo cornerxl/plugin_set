@@ -14,14 +14,8 @@
                     path: '/plugin_list',
                     module: 'm_plugin_list',
                     routes: [{
-                        path: '/A',
-                        module: 'm_home'
-                    }, {
-                        path: '/B',
-                        module: 'm_home'
-                    }, {
-                        path: '/C',
-                        module: 'm_home'
+                        path: '/::type',
+                        module: 'm_plugin_type'
                     }]
                 }, {
                     path: '/plugin_download',
