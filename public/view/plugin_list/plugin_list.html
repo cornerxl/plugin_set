@@ -1,1 +1,8 @@
-<div>嘻嘻嘻</div>
+<div class="plugin-list el-plugin-list">
+    <ul class="plugin-types">
+        <li x-repeat="plugin_list" x-route="{{path}}" x-class="{'checked': 'active'}" active="active"
+            class="plugin-kind">
+            {{name}}</li>
+    </ul>
+    <div class="plugin-kind-list" x-router></div>
+</div>
