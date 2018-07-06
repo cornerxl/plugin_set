@@ -5,10 +5,10 @@ var config = {
      * @param path
      * @param class_str
      */
-    init: function(obj, path, class_str) {
+    init: function(obj, path, class_str,name) {
         var me = this;
         var fs = require("fs");
-        var str_old = fs.readFileSync(path + '/css/slideImg.css', 'utf-8');
+        var str_old = fs.readFileSync(path + '/css/'+name+'.css', 'utf-8');
         var tem = Object.getOwnPropertyNames(obj);
         var config = [];
         var count = 0;
@@ -22,7 +22,7 @@ var config = {
             str_start += i;
         });
         str_start += str_end;
-        fs.writeFileSync(path + '/css/slideImg.css', str_start, 'utf-8');
+        fs.writeFileSync(path + '/css/'+name+'.css', str_start, 'utf-8');
     }
 };
 module.exports = config;
