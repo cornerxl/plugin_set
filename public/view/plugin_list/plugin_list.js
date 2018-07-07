@@ -15,7 +15,7 @@
                     path: "/route/plugin_list/pages",
                     active: true
                 }, {
-                    name: "Switcher",
+                    name: "开关",
                     path: "/route/plugin_list/switcher",
                     active: false
                 }, {
