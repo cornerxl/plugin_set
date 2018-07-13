@@ -1,0 +1,51 @@
+.el-plugin-magn-1 {
+/*    width: 200px;
+    height: 200px;
+    margin: 100px auto;*/
+}
+
+.el-plugin-magn-1 .plugin {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.el-plugin-magn-1 .plugin .small {
+    border: 1px solid #ccc;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*z-index不加会导致事件被小方块处理*/
+    z-index: 100;
+}
+
+.el-plugin-magn-1 .plugin .magn {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ccc;
+    opacity: .5;
+    visibility: hidden;
+}
+
+.el-plugin-magn-1 .plugin .small-img {
+    height: 100%;
+    width: 100%;
+}
+
+.el-plugin-magn-1 .plugin .big {
+    visibility: hidden;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 105%;
+}
+
+.el-plugin-magn-1 .plugin .big img {
+    position: absolute; 
+   /* width: 200%;
+    height: 200%;*/
+}

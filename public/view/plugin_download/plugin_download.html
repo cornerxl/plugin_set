@@ -1,15 +1,28 @@
 <div class="el-downlist">
-    <div class="down-page">
-        <div class="down-content">
-            <div class="head">
-                下载插件
-                <div class="dele-btn" e-click='close'>
-                    <div class="content"></div>
+    <div class="route" style="height:{{route_height}}px">
+        <div x-repeat="first_type" class=first-type>
+            <div class='item-name' e-click='routeItem'>{{first_name}}</div>
+            <div class='route-ct' x-show="show">
+                <div x-repeat="plugin" class='item'>
+                    <a x-route="{{route}}" active="false">{{name}}</a>
                 </div>
-            </div>
-            <div class="list">
-                <a href="{{src}}" download e-click="download">点击下载</a>
             </div>
         </div>
     </div>
+    <div class='router-content'>
+        <div x-router></div>
+    </div>
+<div class="down-page" x-show="down">
+    <div class="down-content">
+        <div class="head">
+            下载插件
+            <div class="dele-btn" e-click="close">
+                <div class="content"></div>
+            </div>
+        </div>
+        <div class="list">
+            <a href="{{src}}" download>点击下载</a>
+        </div>
+    </div>
+</div>
 </div>

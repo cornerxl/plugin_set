@@ -1,0 +1,24 @@
+<div class='common-title'>
+    {{name}}</div>
+<div class="el-plugin-magn-1">
+    <div x-plugin='magn' class='plugin'  style="width:{{width}}px;height:{{width}}px"></div>
+</div>
+<div class="common-title">配置</div>
+<div class="con-config" x-model='small_div'>
+    <div class="itemss">
+        <span class="span">比例</span>
+        <input type="number" class='input' x-field="per">
+    </div>
+    <div class="itemss">
+        <span class="span">颜色</span>
+        <input type="color" class='input' x-field="color">
+    </div>
+    <div class="itemss">
+        <span class="span">透明度</span>
+        <input type="number" class='input' x-field="opacity">
+    </div>
+</div>
+<div class="con-eusure">
+    <div class="preload" e-click='preload'>预览</div>
+    <div class="config-finish" e-click='ensure'>确认配置</div>
+</div>
