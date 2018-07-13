@@ -12,7 +12,7 @@ var copy = {
         me.fs.mkdirSync(to);
         var tem = me.fs.readdirSync(from);
         tem.forEach(function(item) {
-            //如果是图片就特殊处理
+            //如果是图片就特殊处理base64编码
             if (item.indexOf("js") === -1 || item.indexOf('css') === -1 || item.indexOf('html') === -1) {
                 var str = me.fs.readFileSync(from + '/' + item, 'base64');
                 me.fs.writeFileSync(to + '/' + item, str, 'base64');
@@ -30,7 +30,7 @@ var copy = {
      */
     init: function(from, to) {
         var me = this;
-        //随机创建一个文件夹
+        //随机创建一个文件夹默认60个 如有需求可以改
         me.file_name='plugin'+new Date().getSeconds();
         me.fs = require("fs");
         var des_path = to + me.file_name;
@@ -41,6 +41,7 @@ var copy = {
         //开始创建一个文件夹
         me.fs.mkdirSync(des_path);
         me.name=des_path;
+        //插件下面的css.js.img文件夹
         var tem = me.fs.readdirSync(from);
         tem.forEach(function(i) {
             if (i.indexOf(".") === -1) {
