@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+	<title>location</title>
+ 	<link rel="stylesheet" type="text/css" href="css/location.css">
+	<script type="text/javascript" src="js/nodom-full.js"></script>
+	<style>
+		.nd-plugin-location-prelocation {
+			width:  94%%;
+			height: 20px;
+			background-color: #FFF;
+			padding: 8px 3%;
+		}
+
+		.nd-plugin-location-prelocation .nd-plugin-location-prelocation-img {
+			display: block;
+			width: 24px;
+			height: 24px;
+			float: left;
+		}
+
+		.nd-plugin-location-prelocation .nd-plugin-location-prelocation-name {
+			display: block;
+			height: 20px;
+			line-height: 20px;
+			margin-left: 30px;
+			font-size: 16px;
+		}
+
+		.nd-plugin-location-prelocation .nd-plugin-location-prelocation-name input {
+			border: 0;
+			font-size: 16px;
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="test-location">
+		<div class='nd-plugin-location-prelocation'>
+			<img class='nd-plugin-location-prelocation-img' src='img/location.png'>
+			<span class='nd-plugin-location-prelocation-name'><input type="text" x-field='preLocation'></span>
+		</div>
+		<div class="plugin-location" >
+			<div x-plugin='location' dataName='preLocation'></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/location.js"></script>
+</html>

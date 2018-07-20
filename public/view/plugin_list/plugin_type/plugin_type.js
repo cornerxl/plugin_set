@@ -3,7 +3,7 @@
  * @date 2018/7/6
  * @Description:按分类展示插件
  */
-var PLUGINURL = BASEURL + "/public/plugins";
+var PLUGINURL = BASEURL + "/public/plugins/plugins_show";
 
 (function () {
     DD.createModule({

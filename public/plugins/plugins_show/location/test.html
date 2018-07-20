@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+	<title>location</title>
+	<script type="text/javascript" src="js/nodom-full.js"></script>
+</head>
+<body>
+	<div class="app">
+		<input type="text" x-field='aaa'>
+	</div>
+</body>
+<script>
+	DD.createModule({
+		el:'.app',
+		data: {
+			aaa: 1111
+		},
+		onRender: function() {
+			var data = this.data;
+			setTimeout(function(){
+				data.aaa += parseInt(1);
+			},1000);
+		}
+	})
+</script>
+</html>

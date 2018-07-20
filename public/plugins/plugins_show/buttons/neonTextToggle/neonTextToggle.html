@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+	<title>3dPowerButtonToggles</title>
+	<script type="text/javascript" src="../common_js/nodom-full.js"></script>
+	<style>
+	.plugin-switcher{
+		position: absolute;
+		top: 50%;
+		left:50%;
+		transform: translate(-50%,-50%);
+		width: 50px;
+		height: 50px;
+	}
+</style>
+</head>
+<body>
+	<div class="plugin-switcher">
+		<div x-plugin='textSwitcher' dataValue='switcher' yes-value="yes" no-value="no"></div>
+	</div>
+</body>
+<script type="text/javascript" src="js/neonTextToggle.js"></script>
+</html>
