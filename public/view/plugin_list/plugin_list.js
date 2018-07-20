@@ -20,7 +20,7 @@
                     active: false
                 }, {
                     name: "缓冲",
-                    path: "/route/plugin_list/calendar",
+                    path: "/route/plugin_list/buffer",
                     active: false
                 }, {
                     name: "折叠",

@@ -11,7 +11,7 @@ var PLUGINURL = BASEURL + "/public/plugins";
         el: '.el-plugin-type',
         templateUrl: HTMLURL + '/plugin_list/plugin_type/plugin_type.html',
         data: {
-            hasCreated:false,
+            hasCreated: false,
             plugin_list: [
                 {
                     name: "分页",
@@ -26,15 +26,16 @@ var PLUGINURL = BASEURL + "/public/plugins";
                             total: 0,
                             to_page: 1,
                             allpage: 0,
-                        }
-                    },{
+                        },
+                        requires: []
+                    }, {
                         plugin_name: "plugin_01002",
                         plugin_explain: "本插件是第二个分页插件",
                         data: {
                             page: {
                                 pre_page: 1,
-                                go_page:1,
-                                all_page:100,
+                                go_page: 1,
+                                all_page: 100,
                                 page_rows: []
                             }
                         }
@@ -43,17 +44,52 @@ var PLUGINURL = BASEURL + "/public/plugins";
                     name: "开关",
                     path: "/route/plugin_list/switcher",
                     active: false,
-                    plugins: []
+                    plugins: [{
+                        plugin_name: "plugin_02001",
+                        plugin_explain: "本插件是第一个开关插件",
+                        data: {
+                            switcher: true,
+                            switcherData: {
+                                switcherWidth: "50",
+                                switcherHeight: "30",
+                                closeColor: "#F9F9F9",
+                                openColor: "#4BD763",
+                                btnColor: "#FEFEFE"
+                            }
+
+                        },
+                        requires: [
+                            {
+                                type: 'js',
+                                path: PLUGINURL + '/switcher/js/switcher.js'
+                            },
+                            {
+                                type: 'css',
+                                path: PLUGINURL + '/switcher/css/switcher.css'
+                            }]
+                    }]
                 }, {
                     name: "缓冲",
-                    path: "/route/plugin_list/calendar",
+                    path: "/route/plugin_list/buffer",
                     active: false,
                     plugins: []
                 }, {
                     name: "折叠",
                     path: "/route/plugin_list/fold",
                     active: false,
-                    plugins: []
+                    plugins: [
+                        {
+                            plugin_name: "plugin_04001",
+                            plugin_explain: "本插件是第一个折叠插件",
+                            data: {
+                                collapse: {
+                                    isCollapse: true,
+                                    heading: '点击展开，再次点击折叠',
+                                    content: "NoDom提供了丰富的指令集，如x-repeat( 重复条目渲染 )、x-model(数据模型)、x-if/x-else(条件)、x-show(显示和隐藏)、x-route／x-router(路由)、 x-field(字段和双向绑定)、x-validity(字段验证)。 同时提供了自定义指令集，指令可以帮助简化模版，丰富渲染内容。"
+                                }
+                            },
+                            requires: []
+                        }]
                 }, {
                     name: "自动补全",
                     path: "/route/plugin_list/auto-complete",
@@ -92,6 +128,14 @@ var PLUGINURL = BASEURL + "/public/plugins";
             {
                 type: 'js',
                 path: PLUGINURL + '/page1/js/page1.js'
+            },
+            {
+                type: 'css',
+                path: PLUGINURL + '/foldCollapse/css/fold.css'
+            },
+            {
+                type: 'js',
+                path: PLUGINURL + '/foldCollapse/js/fold.js'
             }],
         onBeforeFirstRender: function () {
             var me = this;
@@ -103,20 +147,20 @@ var PLUGINURL = BASEURL + "/public/plugins";
         methods: {
             createModules: function () {
                 var me = this;
-                console.log(DD);
-                if(me.data.hasCreated){
-                    return ;
+                if (me.data.hasCreated) {
+                    return;
                 }
                 for (var i = 0; i < me.data.plugin_list.length; i++) {
                     for (var j = 0; j < me.data.plugin_list[i].plugins.length; j++) {
                         DD.createModule({
                             name: me.data.plugin_list[i].plugins[j].plugin_name,
                             el: ".el-" + me.data.plugin_list[i].plugins[j].plugin_name,
-                            data: me.data.plugin_list[i].plugins[j].data
+                            data: me.data.plugin_list[i].plugins[j].data,
+                            requires: me.data.plugin_list[i].plugins[j].requires
                         })
                     }
                 }
-                me.data.hasCreated=true;
+                me.data.hasCreated = true;
             }
         }
     });
