@@ -11,7 +11,7 @@
         var dataValue = DD.attr(view, 'dataValue');
         view.$dataValue = dataValue;
         view.removeAttribute('dataValue');
-        var template = "<div class='nd-plugin-switcher-box'></div>";
+        var template = `<div class="nd-plugin-switcher-box" style="width{{width_d}}px"></div>`;
         view.innerHTML = template;
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
@@ -43,6 +43,14 @@
             DD.css(switcherBox, 'width', switcherBoxWidth);
             DD.css(switcherBox, 'height', switcherBoxHeight);
             DD.css(switcherBox, 'border-radius', switcherBoxHeight);
+            var color1 = data.small_div.color_1;
+            var color2 = data.small_div.color_2;
+            var box_width = data.width_d / 10;
+            document.styleSheets[0].addRule('.nd-plugin-switcher-box::before', 'box-shadow:inset 0px 0px 0px ' + box_width/2 + 'px ' + color1 + ',inset 0px 0px 0px 1000px #fff');
+            document.styleSheets[0].addRule('.nd-plugin-switcher-box::after', 'background-color:' + color1);
+            document.styleSheets[0].addRule('.checked::before', 'box-shadow:inset 0px 0px 0px ' + box_width/2 + 'px ' + color2 + ',inset 0px 0px 0px 1000px #fff');
+            document.styleSheets[0].addRule('.checked::after', 'background-color:' + color2);
+            document.styleSheets[0].addRule('.checked::after', 'color:blue');
             if (data.switcher) {
                 DD.css(switcherBox, 'box-shadow', '0 2px 5px 0px grey, 0 15px 20px 0px transparent');
                 DD.addClass(switcherBox, 'checked');
@@ -58,14 +66,10 @@
             DD.css(switcherBox, '-webkit-transition', 'all 250ms ease-in');
             var clickEvent = function(e, d, v) {
                 if (data[view.$dataValue]) {
-                    window.check = view.querySelector(".checked");
                     data[view.$dataValue] = false;
                     DD.css(switcherBox, 'box-shadow', '0 2px 5px 0px grey, 0 15px 20px 0px transparent');
                     DD.removeClass(switcherBox, 'checked');
                 } else {
-                    var before = window.getComputedStyle(window.check, ":before");
-                    var after = window.getComputedStyle(window.check, ":after");
-                    
                     data[view.$dataValue] = true;
                     DD.addClass(switcherBox, 'checked');
                     DD.css(switcherBox, 'box-shadow', '0 5px 10px 0px #333, 0 15px 20px 0px #cccccc');
@@ -86,12 +90,38 @@
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/switcher_3/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/switcher_3/index.html",
         data: {
-            switcher:true,
-            width_d: window.innerWidth * 0.4
+            switcher: true,
+            name: "3d按钮开关",
+            width_d: window.innerWidth * 0.4,
+            small_div: {
+                color_1: '#cccccc',
+                color_2: '#ff9900'
+            }
         },
         onBeforeFirstRender: function() {
             var me = this;
-
+            me.data.small_div={
+                color_1: '#cccccc',
+                color_2: '#ff9900'
+            };
+        },
+        methods: {
+            ensure: function() {
+                var me = this;
+                var obj = {
+                    plugin_id: 303,
+                    js: JSON.stringify({
+                        color_1: me.data.small_div.color_1.replace("#", ""),
+                        color_2: me.data.small_div.color_2.replace("#", ""),
+                    }),
+                    total: 0,
+                    flag: 1
+                }
+                me.module.send('m_plugin_download', {
+                    upload: true,
+                    obj: obj
+                });
+            }
         }
     })
 }());

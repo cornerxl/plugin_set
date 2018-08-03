@@ -1,8 +1,9 @@
 .plugin-switcher-3 {
     margin:0 auto;
+    cursor:pointer;
 }
 
-.plugin-switcher-3 .nd-plugin-switcher-box:before {
+.plugin-switcher-3 .nd-plugin-switcher-box::before {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -10,21 +11,18 @@
     width: 46%;
     height: 46%;
     border-radius: 50%;
-    background-color: #FF9900;
     transition: all 150ms ease-in;
-    box-shadow: inset 0 0 0 50px #ccc, inset 0 0 0 150px #FFF;
     content: '';
     display: block;
 }
 
-.plugin-switcher-3 .nd-plugin-switcher-box:after {
+.plugin-switcher-3 .nd-plugin-switcher-box::after {
     position: absolute;
     left: 50%;
-    top: 35%;
+    top: 32%;
     transform: translate(-50%, -50%);
-    width: 8%;
-    height: 24%;
-    background-color: #ccc;
+    width: 6%;
+    height: 20%;
     box-shadow: 0 0 0 2.5px #FFF;
     transition: all 150ms ease-in;
     content: '';
@@ -32,10 +30,7 @@
 }
 .plugin-switcher-3 .checked{
 }
-.plugin-switcher-3 .checked:before {
-    box-shadow: inset 0 0 0 50px #FF9900, inset 0 0 0 150px #FFF;
+.plugin-switcher-3 .checked::before {
 }
-.plugin-switcher-3 .checked:after {
-    background-color: #FF9900;
-    box-shadow: 0 0 0 2.5px #FFF;
+.plugin-switcher-3 .checked::after {
 }

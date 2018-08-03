@@ -57,6 +57,9 @@
                 if (window.data && window.data.radio) {
                     me.radio = window.data.radio;
                 }
+                if(parseInt(data.small_div.opacity)<=0){
+                    data.small_div.opacity = 5;
+                }
                 me.move_y = 0;
                 me.move_x = 0;
                 me.bigimg = view.querySelector('.big_img');
@@ -67,6 +70,7 @@
                 var ct_width = parseInt(DD.css(me.content_div, "width"));
                 DD.css(me.magn, "width", (ct_width / me.radio) + 'px');
                 DD.css(me.magn, "height", (ct_height / me.radio) + 'px');
+                DD.css(me.magn, "opacity",data.small_div.opacity*0.1);
                 DD.css(me.bigimg, "width", (ct_width * me.radio) + 'px');
                 DD.css(me.bigimg, "height", (ct_height * me.radio) + 'px');
                 DD.css(me.magn, "background-color", data.small_div.color);
@@ -121,7 +125,7 @@
         },
         onBeforeFirstRender: function() {
             var me = this;
-            me.data.width = window.innerWidth * 0.9 / 2;
+            me.data.width = window.innerWidth * 0.6 / 2;
         },
         onRender: function() {
             var me = this;
@@ -134,11 +138,6 @@
             }
         },
         methods: {
-            preload: function(e, data, view) {
-                var me = this;
-                DD.css(document.querySelector(".magn"), "background-color", me.data.small_div.color);
-                DD.css(document.querySelector(".magn"), "opacity", 0.1 * me.data.small_div.opacity);
-            },
             ensure: function() {
                 var me = this;
                 if (me.data.small_div.per <= 1) {

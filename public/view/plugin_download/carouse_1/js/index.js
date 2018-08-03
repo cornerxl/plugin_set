@@ -11,13 +11,17 @@
         <div class='span'>
         <span x-repeat='span'  x-class="{'blight':'blight'}" class='photo-span' x-show="$index!==0" style="width:{{width}}px;height:{{height}}px"></span>
         </div>
+       <div class="left"><div class="img-content"></div></div>
+      <div class="right"><div class="img-content"></div></div>
     </div>`;
             view.innerHTML = template;
+            view.$forceRender = true;
         },
         render: function(view) {
             var me = this;
             me.data = view.$getData().data.ca_photo.imgs;
-            me.drawimage = function(flag) {
+            //me.check_color=view.$getData().data.ca_photo;
+            me.drawimage = function() {
                 var me = this;
                 DD.css(me.show, 'transform', 'translateX(' + me.translate + 'px)');
             };
@@ -62,7 +66,7 @@
                     my_time = window.data.time;
                 }
                 window.timer_1 = setInterval(function() {
-                    me.doself();
+                    me.doself(me.flag);
                 }, my_time);
             };
             me.doself = function(flag) {
@@ -82,10 +86,12 @@
                     me.is_can = true;
                 });
                 me.is_can = false;
-                me.span = document.querySelectorAll('.photo-span');
-                me.imgs = document.querySelectorAll('.imgs');
+                me.span = view.querySelectorAll('.photo-span');
+                me.imgs = view.querySelectorAll('.imgs');
                 me.imgwidth = parseInt(DD.css(document.querySelector('.content'), 'width'));
-                me.show = document.querySelector('.show');
+                me.show = view.querySelector('.show');
+                //true为左边滑动
+                me.flag = false;
                 DD.css(me.show, 'width', '' + me.imgwidth * me.data.length + 'px');
                 me.index = 1;
                 DD.css(me.show, 'left', -1 * me.index * me.imgwidth + 'px');
@@ -105,6 +111,30 @@
                         me.is_can = false;
                         clearInterval(window.timer_1);
                         me.doself();
+                        me.updata();
+                    }
+                }
+            });
+            new DD.Event({
+                eventName: 'click',
+                view: view.querySelector(".right"),
+                handler: function(e, data, view) {
+                    if (me.is_can) {
+                        me.is_can = false;
+                        clearInterval(window.timer_1);
+                        me.doself();
+                        me.updata();
+                    }
+                }
+            });
+            new DD.Event({
+                eventName: 'click',
+                view: view.querySelector(".left"),
+                handler: function(e, data, view) {
+                    if (me.is_can) {
+                        me.is_can = false;
+                        clearInterval(window.timer_1);
+                        me.doself(1);
                         me.updata();
                     }
                 }
@@ -130,8 +160,28 @@
         templateUrl: HTMLURL + "/plugin_download/carouse_1/index.html",
         onBeforeFirstRender: function() {
             var me = this;
-            me.data.ca_photo.width = window.innerWidth * 0.9;
+            me.data.ca_photo.width = window.innerWidth * 0.5;
             me.data.name = "常见轮播图";
+            me.data.small_div = {
+                check: '#ff6800',
+                no_check: '#ffffff',
+                width: '8',
+                height: '8',
+                time: 3,
+                direct: 0
+            }
+            if(window.timer_1){
+                clearInterval(window.timer_1);
+            }
+             if(window.timer_2){
+                clearInterval(window.timer_2);
+            }
+             if(window.timer_3){
+                clearInterval(window.timer_3);
+            }
+             if(window.timer_4){
+                clearInterval(window.timer_4);
+            }
         },
         onRender: function() {
             var me = this;
@@ -147,6 +197,7 @@
             name: '',
             ca_photo: {
                 width: '',
+                check_color: '#ff6800',
                 translate: false,
                 imgs: [{ url: HTMLURL + "/plugin_download/carouse_1/img/1.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/2.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/3.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/4.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/5.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/1.jpg" }],
                 span: [{ blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }],
@@ -156,17 +207,11 @@
                 no_check: '#ffffff',
                 width: '8',
                 height: '8',
-                time: 3
+                time: 3,
+                direct: 0
             }
         },
         methods: {
-            preload: function() {
-                var me = this;
-                me.data.ca_photo.span.forEach(function(i) {
-                    i.width = me.data.small_div.width;
-                    i.height = me.data.small_div.height;
-                });
-            },
             ensure: function() {
                 var me = this;
                 if (me.data.small_div.time < 2) {
@@ -175,7 +220,7 @@
                 var obj = {
                     plugin_id: 101,
                     class0: JSON.stringify({
-                        names: '.photo-span',
+                        names: '.el-photo .plugin .content .span .photo-span',
                         width: {
                             names: 'width',
                             values: me.data.small_div.width + 'px'
@@ -191,7 +236,7 @@
                         total: 3
                     }),
                     class1: JSON.stringify({
-                        names: '.is_check',
+                        names: '.el-photo .plugin .content .span .is_check',
                         background: {
                             names: 'background-color',
                             values: me.data.small_div.check.replace("#", "")
@@ -199,7 +244,7 @@
                         total: 1
                     }),
                     class2: JSON.stringify({
-                        names: '.show',
+                        names: '.el-photo .plugin .content .show',
                         transition: {
                             names: "transition",
                             values: 'transform ' + (me.data.small_div.time - 1) + 's'
@@ -207,9 +252,11 @@
                         total: 1
                     }),
                     js: JSON.stringify({
-                        time: me.data.small_div.time*1000
+                        time: me.data.small_div.time * 1000,
+                        flag: me.data.small_div.direct
                     }),
                     //total是css的数量
+                    //flag为1表明有js
                     total: 3,
                     flag: 1
                 };

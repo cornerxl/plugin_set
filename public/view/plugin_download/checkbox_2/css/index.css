@@ -1,0 +1,106 @@
+.nd-plugin-check-list .content-check>div {
+    cursor: pointer;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.nd-plugin-check-list .content-check .check-two>div {
+    font-family: Material Icons!important;
+    font-size: 30px;
+    text-align: center;
+    user-select: none;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    visibility: hidden;
+}
+
+.nd-plugin-check-list .content-check .check-two .check {
+    visibility: visible;
+    color: #03a9f4;
+}
+
+.nd-plugin-check-list .content-check .check-two .no-check {
+    visibility: visible;
+}
+
+.nd-plugin-check-list .content-check .check-three>div {
+    font-family: Material Icons!important;
+    font-size: 30px;
+    text-align: center;
+    user-select: none;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    visibility: hidden;
+}
+
+.nd-plugin-check-list .content-check .check-three .check {
+    visibility: visible;
+    color: #03a9f4;
+}
+
+.nd-plugin-check-list .content-check .check-three .no-check {
+    visibility: visible;
+}
+
+.nd-plugin-check-list .content-check .check-one .item {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    visibility: hidden;
+}
+
+.nd-plugin-check-list .content-check .check-one .item .fill {
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
+}
+
+.nd-plugin-check-list .content-check .check-one .check {
+    color: #03a9f4;
+    visibility: visible;
+}
+
+.nd-plugin-check-list .content-check .check-one .no-check {
+    color: #00000080;
+    visibility: visible;
+}
+
+.nd-plugin-check-list .content-check .check-four .item {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    visibility: hidden;
+}
+
+.nd-plugin-check-list .content-check .check-four .item .fill {
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
+}
+
+.nd-plugin-check-list .content-check .check-four .no-check {
+    color: #00000080;
+    visibility: visible;
+}
+
+.nd-plugin-check-list .content-check .check-five .item {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    visibility: hidden;
+}
+
+.nd-plugin-check-list .content-check .check-five .item .fill {
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
+}
+
+.nd-plugin-check-list .content-check .check-five .check {
+    color: #00000080;
+    visibility: visible;
+}

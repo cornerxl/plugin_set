@@ -1,0 +1,28 @@
+
+<div class='common-title'>
+    {{name}}</div>
+<div class="el-plugin-date-show">
+    <button e-click='show'>展示</button>
+    <p>你选择的日期是：<span>{{nowDate}}</span></p>
+</div>
+<div class="my-plugin-select-date-2">
+    <div x-plugin='Select'></div>
+</div>
+<div class="common-title">配置</div>
+<div class="con-config">
+    <div class="itemss">
+        <span class="span">字体大小</span>
+        <input type="number" class='input' x-field="font_size">
+    </div>
+    <div class="itemss">
+        <span class="span">字体颜色</span>
+        <input type="color" class='input' x-field="font_color">
+    </div>
+    <div class="itemss">
+        <span class="span">选择框颜色</span>
+        <input type="color" class='input' x-field="select_color">
+    </div>
+</div>
+<div class="con-eusure">
+    <div class="config-finish" e-click='ensure'>确认配置</div>
+</div>

@@ -1,0 +1,32 @@
+
+    <div class='common-title'>
+        {{name}}</div>
+    <div class="el-plugin-date-1">
+        <div x-plugin='xDate' Year='year' Month='month' Day='day'></div>
+    </div>
+    <div class="common-title">配置</div>
+    <div class="con-config" x-model='xDate'>
+        <div class="itemss">
+            <span class="span">背景颜色</span>
+            <input type="color" class='input' x-field="xDate_color.bg_color">
+        </div>
+        <div class="itemss">
+            <span class="span">表头颜色</span>
+            <input type="color" class='input' x-field="xDate_color.header_color">
+        </div>
+        <div class="itemss">
+            <span class="span">本月颜色</span>
+            <input type="color" class='input' x-field="xDate_color.month_color">
+        </div>
+        <div class="itemss">
+            <span class="span">今日颜色</span>
+            <input type="color" class='input' x-field="xDate_color.today_color">
+        </div>
+         <div class="itemss">
+            <span class="span">他月颜色</span>
+            <input type="color" class='input' x-field="xDate_color.day_color">
+        </div>
+    </div>
+    <div class="con-eusure">
+        <div class="config-finish" e-click='ensure'>确认配置</div>
+    </div>

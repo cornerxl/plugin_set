@@ -13,6 +13,8 @@
         <span x-repeat='imgs' class='item-span'></span>
      </div>
   </div>
+ <div class="left"><div class="img-content"></div></div>
+  <div class="right"><div class="img-content"></div></div>
     </div>`
             view.innerHTML = tem;
         },
@@ -108,8 +110,45 @@
                 }
             });
             new DD.Event({
+                eventName: 'click',
+                view: view.querySelector(".left"),
+                handler: function(e, data, view) {
+                    if (me.is_can) {
+                        me.is_can = false;
+                        clearInterval(window.timer_3);
+                        me.removespan();
+                        me.count--;
+                        me.addspan();
+                        me.tem.forEach(function(item, index) {
+                            item.style.transform = 'rotateX(' + parseInt(360 / me.img_arr.length) * -1 * me.count + 'deg)';
+                            item.style.transitionDelay = index * 0.3 + 's';
+                        });
+                        me.updata();
+                    }
+                }
+            });
+            new DD.Event({
                 eventName: 'swipeleft',
                 view: view,
+                handler: function(e, data, view) {
+                    if (me.is_can) {
+                        me.is_can = false;
+                        me.removespan();
+                        clearInterval(window.timer_3);
+                        me.count++;
+                        me.removespan();
+                        me.addspan();
+                        me.tem.forEach(function(item, index) {
+                            item.style.transform = 'rotateX(' + parseInt(360 / me.img_arr.length) * -1 * me.count + 'deg)';
+                            item.style.transitionDelay = index * 0.3 + 's';
+                        });
+                        me.updata();
+                    }
+                }
+            });
+             new DD.Event({
+                eventName: 'click',
+                view: view.querySelector(".right"),
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
@@ -166,11 +205,30 @@
         onBeforeFirstRender: function() {
             var me = this;
             me.data.name = "垂直轮播图";
+            if(window.timer_1){
+                clearInterval(window.timer_1);
+            }
+             if(window.timer_2){
+                clearInterval(window.timer_2);
+            }
+             if(window.timer_4){
+                clearInterval(window.timer_4);
+            }
+             if(window.timer_3){
+                clearInterval(window.timer_3);
+            }
+            me.data.small_div= {
+                check: '#ff6800',
+                no_check: '#ffffff',
+                width: '8',
+                height: '8',
+                time:3
+            };
         },
         onRender: function() {
             var me = this;
             var tem = parseInt(DD.css(document.querySelector('.router-content'), 'height'));
-            me.data.width_data = window.innerWidth * 0.9;
+            me.data.width_data = window.innerWidth * 0.5;
             if (tem > (window.innerHeight - 80)) {
                 me.module.send('m_plugin_download', {
                     upload: false,
@@ -194,7 +252,7 @@
                 var obj = {
                     plugin_id:103,
                     class0: JSON.stringify({
-                        names: '.item-span',
+                        names: '.el-plugin .plugin .content .span .span-cont span .item-span',
                         width: {
                             names: 'width',
                             values: me.data.small_div.width + 'px'
@@ -210,7 +268,7 @@
                         total: 3
                     }),
                     class1: JSON.stringify({
-                        names: '.is_check',
+                        names: '.el-plugin .plugin .content .span .span-cont .is_check',
                         background: {
                             names: 'background-color',
                             values: me.data.small_div.check.replace("#", "")
@@ -218,7 +276,7 @@
                         total: 1
                     }),
                      class2:JSON.stringify({
-                        names:'.img-photo',
+                        names:'.el-plugin .plugin .content .img-photo',
                         transition:{
                             names:'transition',
                             values:'all '+(me.data.small_div.time-1)+"s"

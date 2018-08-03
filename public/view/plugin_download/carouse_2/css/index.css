@@ -1,6 +1,7 @@
 .el-carouse_2 .carous_ct {
     width: 100%;
     /*height: 7.78rem;*/
+    margin:0 auto;
     overflow: hidden;
     position: relative;
 }
@@ -40,7 +41,39 @@
     width: 100px;
     margin: 0 auto;
 }
+.el-carouse_2 .carous_ct .left{
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    left: 0;
+    background-image: url(../img/left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.el-carouse_2 .carous_ct .right{
+      z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    right: 0;
+    background-image: url(../img/right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 
+}
+.el-carouse_2 .carous_ct .img-content{
+    width: 100%;
+    height: 100%;
+    background-color: #eeeeee63;
+
+}
 .el-carouse_2 .carous_ct .spancont .span span {
     display: inline-block;
     height: 13px;

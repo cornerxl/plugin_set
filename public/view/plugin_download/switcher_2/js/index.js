@@ -10,7 +10,7 @@
     Switcher_2.prototype.init = function(view) {
         var me = this;
         var template =
-            `<div class='nd-plugin-switcher-box' style="width:{{width_d}}px"><div class='nd-plugin-switcher' id='on'>ON</div><div class='nd-plugin-switcher' id='off'>OFF</div></div>`;
+            `<div class='nd-plugin-switcher-box' style="width:{{width_d}}px;margin:0 auto"><div class='nd-plugin-switcher' id='on'>ON</div><div class='nd-plugin-switcher' id='off'>OFF</div></div>`;
         var dataValue = DD.attr(view, 'dataValue');
         view.$dataValue = dataValue;
         view.removeAttribute('dataValue');
@@ -109,6 +109,12 @@
         onBeforeFirstRender: function() {
             var me = this;
             me.data.width_d = window.innerWidth * 0.45;
+            me.data.small_div={
+                color_1: "#292827",
+                color_2: "#FF9900",
+                color_3: "#FF9900",
+                color_4: "#FFFFFF"
+            }
         },
         methods:{
         	 ensure: function() {

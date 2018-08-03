@@ -113,7 +113,12 @@
             switcher: true
         },
         onBeforeFirstRender: function() {
-
+        var me=this;
+        me.data.small_div={
+                color_1: "#4BD763",
+                color_2: "#F9F9F9",
+                color_3: "#ffffff"
+            };
         },
         onRender: function() {
             var me = this;

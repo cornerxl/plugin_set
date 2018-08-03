@@ -1,12 +1,13 @@
 .el-photo {
     /*margin-top:100px;*/
 }
+
 .el-photo .plugin .content {
-  /*  width: 600px;
+    /*  width: 600px;
     height:300px;*/
     overflow: hidden;
     position: relative;
-    margin:0 auto;
+    margin: 0 auto;
 }
 
 .el-photo .plugin .content .show {
@@ -35,6 +36,40 @@
     height: 8px;
     display: inline-block;
     background-color: #f8f8f8;
+}
+
+.el-photo .plugin .content .left {
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    left: 0;
+    background-image: url(../img/left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.el-photo .plugin .content .right {
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    right: 0;
+    background-image: url(../img/right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.el-photo .plugin .content .img-content {
+    width: 100%;
+    height: 100%;
+    background-color: #eeeeee63;
 }
 
 .el-photo .plugin .content .span .is_check {

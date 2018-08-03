@@ -10,7 +10,8 @@
     <div class="span" x-model='img_ct'>
             <span class='inline-span' x-repeat='spans'></span>
         </div>
-    </div>`;
+    </div><div class="left"><div class="img-content"></div></div>
+  <div class="right"><div class="img-content"></div></div>`;
             view.innerHTML = tem;
         },
         render: function(view) {
@@ -21,7 +22,7 @@
                 });
             };
             me.addspan = function() {
-                var index = me.count % me.imgs.length;
+                var index = (me.imgs.length-me.count)% me.imgs.length;
                 if (index < 0)
                     index += me.imgs.length
                 DD.addClass(me.span[index], 'active');
@@ -31,7 +32,7 @@
                 me.is_can = false;
                 window.timer_2 = setInterval(function() {
                     me.is_can = false;
-                    me.count++;
+                    me.count+=me.direct;
                     me.removespan();
                     me.addspan();
                     me.content.style.transform = 'rotateY(' + 2 * me.count * Math.PI / me.imgs.length + 'rad)'
@@ -40,6 +41,7 @@
             //获取旋转的y轴距离
             me.getheight = function() {
                 var r = Math.PI * 2;
+                //rad求出一条边所占的角度
                 var rad = r / me.imgs.length;
                 me.rotateZ = me.imgw / (2 * Math.tan(rad / 2));
             }
@@ -51,15 +53,19 @@
                 me.count = 0;
                 me.spans = view.querySelector('.span');
                 me.content = view.querySelector('.carous');
-                me.imgs = document.querySelectorAll('.img-trans');
+                me.imgs = view.querySelectorAll('.img-trans');
                 me.imgw = parseInt(DD.css(me.imgs[0], 'width'));
-                me.span = document.querySelectorAll('.inline-span');
+                me.span = view.querySelectorAll('.inline-span');
+                //1为left -1为right
+                me.direct=-1;
                 var temp = (me.imgs.length) * 25;
                 DD.css(me.spans, 'width', temp + 'px');
+                //求出旋转中心点的z坐标
                 me.getheight();
                 me.content.style.transformOrigin = '50% 50% ' + -1 * me.rotateZ + 'px';
                 //transform-origin属性规定了旋转的点
                 me.imgs.forEach(function(item, index) {
+                    //第一张是0不需要设置
                     if (index) {
                         item.style.transformOrigin = '50% 50% ' + -1 * me.rotateZ + 'px';
                     }
@@ -85,8 +91,38 @@
                 }
             });
             new DD.Event({
+                eventName: 'click',
+                view: view.querySelector(".right"),
+                handler: function() {
+                    if (me.is_can) {
+                        clearInterval(window.timer_2);
+                        me.is_can = false;
+                        me.count--;
+                        me.removespan();
+                        me.addspan();
+                        me.content.style.transform = 'rotateY(' + 2 * me.count * Math.PI / me.imgs.length + 'rad)';
+                        me.updata();
+                    }
+                }
+            });
+            new DD.Event({
                 eventName: 'swiperight',
                 view: view,
+                handler: function() {
+                    if (me.is_can) {
+                        clearInterval(window.timer_2);
+                        me.is_can = false;
+                        me.count++;
+                        me.removespan();
+                        me.addspan();
+                        me.content.style.transform = 'rotateY(' + 2 * me.count * Math.PI / me.imgs.length + 'rad)';
+                        me.updata();
+                    }
+                }
+            });
+             new DD.Event({
+                eventName: 'click',
+                view: view.querySelector(".left"),
                 handler: function() {
                     if (me.is_can) {
                         clearInterval(window.timer_2);
@@ -120,7 +156,8 @@
                 no_check: '#ffffff',
                 width: '8',
                 height: '8',
-                time:5
+                time: 5,
+                direct:-1,
             }
         },
         onBeforeFirstRender: function() {
@@ -131,11 +168,23 @@
                 i.height = me.data.small_div.height;
             });
             me.data.img_ct.$set("spans", me.data.img_ct.spans);
+             if(window.timer_1){
+                clearInterval(window.timer_1);
+            }
+             if(window.timer_2){
+                clearInterval(window.timer_2);
+            }
+             if(window.timer_3){
+                clearInterval(window.timer_3);
+            }
+             if(window.timer_4){
+                clearInterval(window.timer_4);
+            }
         },
         onRender: function() {
             var me = this;
             var tem = parseInt(DD.css(document.querySelector('.router-content'), 'height'));
-            me.data.width_data = window.innerWidth * 0.9;
+            me.data.width_data = window.innerWidth * 0.5;
             if (tem > (window.innerHeight - 80)) {
                 me.module.send('m_plugin_download', {
                     upload: false,
@@ -153,12 +202,12 @@
             },
             ensure: function() {
                 var me = this;
-                if(me.data.small_div.time<3)
-                    me.data.small_div.time=3;
+                if (me.data.small_div.time < 3)
+                    me.data.small_div.time = 3;
                 var obj = {
                     plugin_id: 102,
                     class0: JSON.stringify({
-                        names: '.inline-span',
+                        names: '.carous_ct .spancont .span .inline-span',
                         width: {
                             names: 'width',
                             values: me.data.small_div.width + 'px'
@@ -174,23 +223,24 @@
                         total: 3
                     }),
                     class1: JSON.stringify({
-                        names: '.is_check',
+                        names: '.carous_ct .spancont .span .active',
                         background: {
                             names: 'background-color',
                             values: me.data.small_div.check.replace("#", "")
                         },
                         total: 1
                     }),
-                    class2:JSON.stringify({
-                        names:".carous",
-                        transition:{
-                            names:'transition',
-                            values:'all '+(me.data.small_div.time-2)+'s'
+                    class2: JSON.stringify({
+                        names: ".carous",
+                        transition: {
+                            names: 'transition',
+                            values: 'all ' + (me.data.small_div.time - 2) + 's'
                         },
-                        total:1
+                        total: 1
                     }),
-                    js:JSON.stringify({
-                        time:me.data.small_div.time*1000
+                    js: JSON.stringify({
+                        time: me.data.small_div.time * 1000,
+                        flag:me.data.small_div.direct
                     }),
                     total: 3,
                     flag: 1
