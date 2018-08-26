@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title>进度条</title>
+    <link rel="stylesheet" href="css/dragProBar.css">
+    <script type="text/javascript" src="js/nodom-full.js"></script>
+    <style>
+        .plugin-dragprobar {
+            width: 200px;
+            height: 30px;
+            background: rgba(96,96,96,0.5);
+        }
+    </style>
+</head>
+<body>
+    <!--可拖动-->
+    <div class="plugin-dragprobar">
+        <div x-plugin="dragProBar" dataItem="dragProBar" maxValue="maxValue" minValue="minValue" runnableColor="runnableColor" runnableBeforeColor="runnableBeforeColor" runnableBtnColor="runnableBtnColor" showNum="showNum" showNumcolor="showNumcolor"></div>
+    </div>
+</body>
+<!--dragProBar用户可拖动-->
+<script type="text/javascript" src="js/dragProBar.js"></script>
+<script>
+    DD.createModule({
+        el: ".plugin-dragprobar",
+        data: {
+            dragProBar: 80,
+            maxValue: 100,
+            minValue: 0,
+            runnableColor: '#000',
+            runnableBeforeColor: '#98A2CD',
+            runnableBtnColor: '#e184c0',
+            showNum: true,
+            showNumcolor: '#746CF9'
+        }
+    });
+</script>
+</html>

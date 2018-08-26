@@ -1,0 +1,36 @@
+.nd-plugin-dragprobar-box {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nd-plugin-dragprobar-box .nd-plugin-dragprobar-runnable {
+    position: relative;
+    height: 2px;
+    border-radius: 1px;
+    float: left;
+}
+
+.nd-plugin-dragprobar-box .nd-plugin-dragprobar-runnable .nd-plugin-dragprobar-runnable-before {
+    position: absolute;
+    height: 2px;
+    display: block;
+}
+
+.nd-plugin-dragprobar-box .nd-plugin-dragprobar-runnable .nd-plugin-dragprobar-btn {
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: -4px;
+    margin-left: -4px;
+    cursor: pointer;
+}
+
+.nd-plugin-dragprobar-runnable-num {
+    text-align: center;
+}

@@ -1,9 +1,10 @@
 <div class="plugin-type el-plugin-type">
     <ul x-repeat="plugin_list">
         <div x-if="active">
-            <li>{{name}}</li>
+            <div class="plugin-name">{{name}}插件</div>
             <div class="plugin-item" x-repeat="plugins">
-                <div x-plugin="{{plugin_name}}"></div>
+                <div class="plugin-content {{'el-'+plugin_name}}" x-plugin="{{plugin_name}}"></div>
+                <div class="plugin-explain"><p>插件说明:</p><p class="explain">{{plugin_explain}}</p></div>
             </div>
         </div>
     </ul>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title>进度条</title>
+    <link rel="stylesheet" href="css/proBar.css">
+    <script type="text/javascript" src="js/nodom-full.js"></script>
+    <style>
+        .plugin-probar {
+            width: 200px;
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!--不能拖动-->
+    <div class="plugin-probar">
+        <div x-plugin="proBar" dataItem="proBar" showItem="percent" ></div>
+    </div>
+</body>
+<!--proBar根据用户传的数据进行渲染，根据用户选择显示百分比-->
+<script type="text/javascript" src="js/proBar.js"></script>
+</html>

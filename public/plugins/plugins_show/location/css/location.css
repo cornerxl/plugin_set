@@ -1,0 +1,103 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.clear{
+	clear: both;
+}
+
+.nd-plugin-location-box {
+	width: 100%;
+	background-color: #F3F8FB;
+}
+
+.nd-plugin-location-box .nd-plugin-location-tipCity .nd-plugin-location-tipCity-title .nd-plugin-location-tipCity-title-name {
+	display: block;
+	height: 20px;
+	line-height: 20px;
+	margin-left: 30px;
+	font-size: 16px;
+}
+
+.nd-plugin-location-box .nd-plugin-location-tipCity,
+.nd-plugin-location-box .nd-plugin-location-citylist {
+	width: 100%;
+}
+
+.nd-plugin-location-box .nd-plugin-location-tipCity .nd-plugin-location-tipCity-title {
+	width: 94%;
+	height: 20px;
+	padding: 8px 3%;
+}
+
+.nd-plugin-location-box .nd-plugin-location-tipCity .nd-plugin-location-tipCity-title .nd-plugin-location-tipCity-title-img {
+	display: block;
+	width: 20px;
+	height: 20px;
+	float: left;
+}
+
+.nd-plugin-location-box .nd-plugin-location-tipCity .nd-plugin-location-tipCity-title .nd-plugin-location-tipCity-title-name {
+	color: #666;
+}
+
+.nd-plugin-location-box .nd-plugin-location-tipCity .nd-plugin-location-tipCity-list {
+	width: 80%;
+	background-color: #FFF;
+	padding: 10px 10%;
+}
+
+.nd-plugin-location-box .nd-plugin-location-tipCity .nd-plugin-location-tipCity-list  .nd-plugin-location-tipCity-list-cityname {
+	box-sizing: border-box;
+	display: block;
+	width: 30%;
+	height: 24px;
+	border: 1px solid #286EA8;
+	border-radius: 12px;
+	float: left;
+	text-align: center;
+	font-size: 16px;
+}
+
+.nd-plugin-location-box .nd-plugin-location-tipCity .nd-plugin-location-tipCity-list .nd-plugin-location-tipCity-list-marleft {
+	margin-left: 5%;
+}
+
+.nd-plugin-location-box .nd-plugin-location-tipCity .nd-plugin-location-tipCity-list .nd-plugin-location-tipCity-list-martop {
+	margin-top: 10px;
+}
+
+.nd-plugin-location-box .nd-plugin-location-citylist .nd-plugin-location-citylist-group {
+	width: 100%;
+}
+
+.nd-plugin-location-box .nd-plugin-location-citylist .nd-plugin-location-citylist-group .nd-plugin-location-citylist-group-tip {
+	display: block;
+	width: 94%;
+	height: 30px;
+	margin: 0 auto;
+	color: #004991;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+.nd-plugin-location-box .nd-plugin-location-citylist .nd-plugin-location-citylist-group .nd-plugin-location-citylist-group-city {
+	width: 100%;
+	background-color: #FFF;
+}
+
+.nd-plugin-location-box .nd-plugin-location-citylist .nd-plugin-location-citylist-group .nd-plugin-location-citylist-group-city .nd-plugin-location-citylist-group-city-item {
+	box-sizing: border-box;
+	width: 94%;
+	display: block;
+	height: 50px;
+	margin: 0 auto;
+	border-bottom: 1px solid #eee;
+	line-height: 50px;
+}
+
+
+
+
