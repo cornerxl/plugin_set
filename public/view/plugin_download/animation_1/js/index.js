@@ -67,7 +67,7 @@
 
     DD.createModule({
         name: 'm_plugin_download_Animation_1',
-        requires: [{ type: 'css', path: HTMLURL + "/plugin_download/animation_1/css/index_1.css" }],
+        requires: [{ type: 'css', path: HTMLURL + "/plugin_download/animation_1/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/animation_1/index.html",
         data: {
             name: '泡泡动画',

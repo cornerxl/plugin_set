@@ -27,6 +27,7 @@
 }
 
 .el-plugin-table-1 .plugin .reverse {
+    color:#333;
     background-color: rgba(225, 225, 225, .4);
     position: absolute;
     width: 100%;
@@ -146,9 +147,11 @@
 }
 
 .el-plugin-table-1 .plugin .common .left .item {
+    color:#fff!important;
     cursor: pointer;
     float: left;
     padding: 8px;
+    background-color: #1b7adc;
 }
 
 .el-plugin-table-1 .plugin .common .left .border-right {
@@ -163,7 +166,7 @@
 
 .el-plugin-table-1 .plugin .common .right .item {
     cursor: pointer;
-    background-color: #337AB7;
+    background-color: #1b7adc;
     color: #fff;
     padding: 6px 8px;
     float: right;

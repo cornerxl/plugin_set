@@ -1,0 +1,30 @@
+<div class='common-title'>
+    {{name}}</div>
+<div class="el-svg-1">
+   <div class="content">
+   	<div class="ct">
+        <div x-plugin="svg-1" class="svg">
+        </div>
+        <div class="input">
+            <div class="plus" e-click="add">+</div>
+            <div class="dele" e-click="dele">-</div>
+        </div>
+        <div class="num">{{100*per/10}}%
+        </div>
+    </div>
+    </div>
+</div>
+<div class="common-title">配置</div>
+<div class="con-config">
+    <div class="itemss">
+        <span class="span">百分比颜色</span>
+        <input type="color" class='input' x-field="color_2">
+    </div>
+     <div class="itemss">
+        <span class="span">剩余百分比颜色</span>
+        <input type="color" class='input' x-field="color_1">
+    </div>
+</div>
+<div class="con-eusure">
+    <div class="config-finish" e-click='ensure'>确认配置</div>
+</div>

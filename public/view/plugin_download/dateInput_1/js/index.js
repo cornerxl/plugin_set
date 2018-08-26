@@ -21,7 +21,7 @@
  		<div class="xDate-input">
  		<input type="text" name="" id='xDate-input'>
  		</div>
- 		<div class="xDate-calendar" x-if='show'>
+ 		<div class="xDate-calendar" x-show='show'>
  		<div class="xDate-date">
  		<div class="xDate-header">
  		<div class="xDate-btn fr" id='nextMonthBtn'>&gt;</div>
@@ -208,7 +208,6 @@
                 // }
             };
             var chooseDay = function(e, d, v) {
-                console.log(d);
                 data.xDate.show = false;
                 data.xDate.day = d.day;
                 input.value = data.xDate.year + '/' + data.xDate.month + '/' + data.xDate.day;

@@ -1,10 +1,10 @@
 <div class="el-downlist">
     <div class="route" style="min-height:{{route_height}}px">
-        <div x-repeat="first_type" class=first-type>
+        <div x-repeat="first_type" class="first-type">
             <div class='item-name' e-click='routeItem'>{{first_name}}</div>
             <div class='route-ct' x-show="show">
-                <div x-repeat="plugin" class='item'>
-                    <a x-route="{{route}}" active="false">{{name}}</a>
+                <div x-repeat="plugin" class='item' e-click="active">
+                    <div x-route="{{route}}"  x-class="{'active':'active'}" >{{name}}</div>
                 </div>
             </div>
         </div>

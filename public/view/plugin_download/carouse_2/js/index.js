@@ -57,6 +57,9 @@
                 me.imgw = parseInt(DD.css(me.imgs[0], 'width'));
                 me.span = view.querySelectorAll('.inline-span');
                 //1为left -1为right
+                if(view.$getData().data.small_div.right){
+                    me.direct=1;
+                }
                 me.direct=-1;
                 var temp = (me.imgs.length) * 25;
                 DD.css(me.spans, 'width', temp + 'px');
@@ -157,7 +160,8 @@
                 width: '8',
                 height: '8',
                 time: 5,
-                direct:-1,
+                left:true,
+                right:false
             }
         },
         onBeforeFirstRender: function() {
@@ -180,6 +184,8 @@
              if(window.timer_4){
                 clearInterval(window.timer_4);
             }
+            me.data.small_div.left=true;
+            me.data.small_div.right=false;
         },
         onRender: function() {
             var me = this;
@@ -240,7 +246,8 @@
                     }),
                     js: JSON.stringify({
                         time: me.data.small_div.time * 1000,
-                        flag:me.data.small_div.direct
+                        left:me.data.small_div.left,
+                        right:me.data.small_div.right
                     }),
                     total: 3,
                     flag: 1

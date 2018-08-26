@@ -30,6 +30,7 @@
     margin-left: 5px;
 }
 .com-page .com-page-box .com-page-item {
+    border-radius: 8px;
     width: 18px;
     height: 18px;
     margin-top: 5px;
@@ -43,7 +44,6 @@
 }
 .com-page .com-page-box .com-pre-page {
     background-color: #5eaee3;
-    border-radius: 8px;
     color: #FFF;
 }
 .com-page .com-page-box .mar-left {

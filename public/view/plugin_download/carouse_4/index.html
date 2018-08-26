@@ -1,6 +1,6 @@
 <div class='common-title'>
     {{name}}</div>
-<div class="el-plugin-carouse-4">
+<div class="el-plugin-carouse-4" >
     <div x-plugin="my_plugin_4" class='plugin' style="width:{{width_data}}px;height:{{width_data/2}}px;margin:0 auto"></div>
 </div>
 <div class="common-title">配置</div>
@@ -24,6 +24,14 @@
      <div class="itemss">
         <span class="span">轮播时间</span>
         <input type="number" class='input' x-field="time">
+    </div>
+     <div class="check">
+        <span class="span">方向下</span>
+        <input type="checkbox" class='input' x-field="up" yes-value='true' no-value='false'>
+    </div>
+    <div class="check">
+        <span class="span">方向上</span>
+         <input type="checkbox" class='input' x-field="down" yes-value='true' no-value='false'>
     </div>
 </div>
 <div class="con-eusure">

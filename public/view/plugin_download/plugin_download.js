@@ -18,6 +18,7 @@
             HTMLURL + '/plugin_download/table_1/js/index.js',
             HTMLURL + '/plugin_download/progress_1/js/index.js',
             HTMLURL + '/plugin_download/progress_2/js/index.js',
+            HTMLURL + '/plugin_download/progress_3/js/index.js',
             HTMLURL + '/plugin_download/inputAuto_1/js/index.js',
             HTMLURL + '/plugin_download/animation_1/js/index.js',
             HTMLURL + '/plugin_download/animation_2/js/index.js',
@@ -34,6 +35,8 @@
             HTMLURL + '/plugin_download/checkbox_2/js/index.js',
             HTMLURL + '/plugin_download/button_1/js/index.js',
             HTMLURL + '/plugin_download/icon_1/js/index.js',
+            HTMLURL + '/plugin_download/colorPicker_1/js/index.js',
+            HTMLURL + '/plugin_download/tree_1/js/index.js',
 
         ],
         data: {
@@ -53,7 +56,7 @@
                 }, {
                     first_name: '开关',
                     show: false,
-                    plugin: [{ name: '3D按钮开关', route: "/route/plugin_download/Switch_3" }, { name: '3D开关', route: "/route/plugin_download/Switch_2" }, { name: "普通开关", route: "/route/plugin_download/Switch_1" }]
+                    plugin: [{ name: '3D按钮开关', route: "/route/plugin_download/Switch_3",active: false }, { name: '3D开关', route: "/route/plugin_download/Switch_2",active: false }, { name: "普通开关", route: "/route/plugin_download/Switch_1",active: false }]
                 }, {
                     first_name: '表格',
                     show: false,
@@ -61,47 +64,56 @@
                 }, {
                     first_name: '进度条',
                     show: false,
-                    plugin: [{ name: '普通', route: "/route/plugin_download/Progress_2", activ: false }, { name: "多功能", route: "/route/plugin_download/Progress_1" }]
+                    plugin: [{ name: '普通', route: "/route/plugin_download/Progress_2", active: false }, { name: "多功能", route: "/route/plugin_download/Progress_1",active: false },{ name: "圆环", route: "/route/plugin_download/Progress_3",active: false }]
                 }, {
                     first_name: '地址',
                     show: false,
-                    plugin: [{ name: '多用地址', route: "/route/plugin_download/Location_1" }]
+                    plugin: [{ name: '多用地址', route: "/route/plugin_download/Location_1",active: false}]
                 }, {
                     first_name: "自动补全",
                     show: false,
-                    plugin: [{ name: '多用补全', route: "/route/plugin_download/Complete_1" }]
+                    plugin: [{ name: '多用补全', route: "/route/plugin_download/Complete_1",active: false }]
                 }, {
                     first_name: '折叠',
                     show: false,
-                    plugin: [{ name: '普通折叠', route: "/route/plugin_download/foldCollapse_1" }]
+                    plugin: [{ name: '普通折叠', route: "/route/plugin_download/foldCollapse_1",active: false }]
                 }, {
                     first_name: '过渡动画',
                     show: false,
-                    plugin: [{ name: '泡泡动画', route: "/route/plugin_download/Animation_1" }, { name: '方块动画', route: "/route/plugin_download/Animation_2" }, { name: '圆环动画', route: "/route/plugin_download/Animation_3" }, { name: '闪烁动画', route: "/route/plugin_download/Animation_4" },{ name: '水滴动画', route: "/route/plugin_download/Animation_5"}]
+                    plugin: [{ name: '泡泡动画', route: "/route/plugin_download/Animation_1",active: false }, { name: '方块动画', route: "/route/plugin_download/Animation_2",active: false }, { name: '圆环动画', route: "/route/plugin_download/Animation_3",active: false }, { name: '闪烁动画', route: "/route/plugin_download/Animation_4",active: false },{ name: '水滴动画', route: "/route/plugin_download/Animation_5",active: false}]
                 }, {
                     first_name: '日期',
                     show: false,
-                    plugin: [{ name: "星期", route: "/route/plugin_download/Date_1" }, { name: "年月日", route: "/route/plugin_download/Date_2" }]
+                    plugin: [{ name: "星期", route: "/route/plugin_download/Date_1" ,active: false}, { name: "年月日", route: "/route/plugin_download/Date_2" ,active: false}]
                 },
                 {
                     first_name: '分页',
                     show: false,
-                    plugin: [{ name: "常见", route: "/route/plugin_download/Page_1" }, { name: "酷炫", route: "/route/plugin_download/Page_2" }]
+                    plugin: [{ name: "常见", route: "/route/plugin_download/Page_1",active: false }, { name: "酷炫", route: "/route/plugin_download/Page_2",active: false }]
                 },
                 {
                     first_name: '选择框',
                     show: false,
-                    plugin: [{ name: "常见", route: "/route/plugin_download/Checkbox_1" },{ name: "酷炫", route: "/route/plugin_download/Checkbox_2" }]
+                    plugin: [{ name: "常见", route: "/route/plugin_download/Checkbox_1",active: false },{ name: "酷炫", route: "/route/plugin_download/Checkbox_2",active: false }]
                 },
                 {
                     first_name: '按钮',
                     show: false,
-                    plugin: [{ name: "按钮列表", route: "/route/plugin_download/Button_1" }]
+                    plugin: [{ name: "按钮列表", route: "/route/plugin_download/Button_1",active: false }]
+                },
+                {
+                    first_name: '颜色选择器',
+                    show: false,
+                    plugin: [{ name: "选择器", route: "/route/plugin_download/ColorPicker_1",active: false }]
+                },{
+                    first_name: '树形结构',
+                    show: false,
+                    plugin: [{ name: "数组件", route: "/route/plugin_download/Tree_1",active: false }]
                 },
                 {
                     first_name: '图标库',
                     show: false,
-                    plugin: [{ name: "图标列表", route: "/route/plugin_download/Icon_1" }]
+                    plugin: [{ name: "图标列表", route: "/route/plugin_download/Icon_1",active: false }]
                 }
             ]
         },
@@ -167,6 +179,12 @@
                 }
             }
              if (m === 'm_plugin_download_Progress_2') {
+                if (data.upload) {
+                    var params = data.obj;
+                    me.module.methodFactory.methods.upload.call(me, params);
+                }
+            }
+            if (m === 'm_plugin_download_Progress_3') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
@@ -268,6 +286,18 @@
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
             }
+             if (m ==='m_plugin_download_ColorPicker_1') {
+                if (data.upload) {
+                    var params = data.obj;
+                    me.module.methodFactory.methods.upload.call(me, params);
+                }
+            }
+            if (m ==='m_plugin_download_Tree_1') {
+                if (data.upload) {
+                    var params = data.obj;
+                    me.module.methodFactory.methods.upload.call(me, params);
+                }
+            }
 
         },
         methods: {
@@ -278,6 +308,15 @@
                     i.show = false;
                 });
                 data.show = tem;
+            },
+            active:function(e,data,view){
+                var me=this;
+                me.data.first_type.forEach(function(i){
+                    i.plugin.forEach(function(item){
+                        item.active=false;
+                    });
+                });
+                data.active=true;
             },
             getName: function(e, data, view) {
                 var me = this;

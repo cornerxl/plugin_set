@@ -38,7 +38,12 @@
             view.$forceRender = true;
         },
         render: function(view) {
-            var data = view.$getData().data;
+             var data = view.$getData().data;
+            var me=this;
+            if(!data.one){
+                return ;
+            }
+            data.one=0;
             if (!data) {
                 return;
             }
@@ -55,8 +60,8 @@
                 // 动态修改页码数组
                 if (data.page.all_page > 7) {
                     data.page.page_rows = [];
-                    for (var i = 1; i < 7; i++) {
-                        if (i === 6) {
+                    for (var i = 1; i < 8; i++) {
+                        if (i === 7) {
                             data.page.page_rows.push({
                                 page: '...',
                                 pre_page: data.page.pre_page
@@ -75,17 +80,15 @@
                 } else {
                     // 清空数据
                     data.page.page_rows = [];
-                    for (var i = data.all_page; i > 0; i--) {
+                    for (var i = data.page.all_page; i > 0; i--) {
                         data.page.page_rows.push({
-                            page: data.all_page - i + 1,
+                            page: data.page.all_page - i + 1,
                             pre_page: data.page.pre_page
                         });
                     }
                 }
             }
             setTimeout(function() {
-                var check = view.querySelector(".com-pre-page");
-                DD.css(check, "background-color", data.small_div.color_2);
                 var box = [];
                 box = view.querySelectorAll(".com-page-item");
                 box.forEach(function(i) {
@@ -186,6 +189,7 @@
                             pre_page: pre_page
                         }];
                     }
+                    data.page.$set("page_rows",data.page.page_rows);
                 }
                 new DD.Event({
                     eventName: 'click',
@@ -195,7 +199,7 @@
                         if (data.page.pre_page === 1) {
                             return;
                         }
-                        data.pre_page--;
+                        data.page.pre_page--;
                         changePageRows(data.page.pre_page, data.page.all_page);
                         // 请求数据
                         // this.module.methodFactory.methods.updatePage.call(this);
@@ -210,8 +214,9 @@
                         if (data.page.pre_page === data.page.all_page) {
                             return;
                         }
-                        data.pre_page++;
+                          data.page.pre_page++;
                         changePageRows(data.page.pre_page, data.page.all_page);
+                        // console.log(data);
                         // 请求数据
                         // this.module.methodFactory.methods.updatePage.call(this);
                         view.$forceRender = true;
@@ -222,6 +227,7 @@
                     view: view.querySelector('.com-go-btn'),
                     handler: function(e, d, v) {
                         var me = this;
+
                         if (parseInt(data.page.go_page) > data.page.all_page) {
                             return;
                         }
@@ -270,7 +276,8 @@
                 go_page: 1,
                 all_page: 16,
                 page_rows: []
-            }
+            },
+            one:1
         },
         methods: {
             ensure: function() {

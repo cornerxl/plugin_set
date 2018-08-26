@@ -1,4 +1,5 @@
-;(function() {
+;
+(function() {
     var mytable = function() {};
     mytable.prototype = {
         init: function(view) {
@@ -15,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="header">
+        <div class="header" >
             <div class="head-cont">
                 <div class='thead'>
                     <input class='input' type="checkbox" x-field='check_all' yes-value='true' no-value='false' />
@@ -66,6 +67,7 @@
         },
         render: function(view) {
             var me = this;
+            me.datas = view.$getData().data;
             me.setwidth = function() {
                 var me = this;
                 me.dom1.forEach(function(item, index) {
@@ -97,6 +99,12 @@
                 DD.css(me.header, "top", me.view.offsetTop + 'px');
             }
             setTimeout(function() {
+                DD.css(view, "color", me.datas.color_1);
+                var arr = Array.from(view.querySelector(".left").children);
+                arr.forEach(function(i) {
+                    console.log(i);
+                    DD.css(i, "background-color", me.datas.color_2);
+                })
                 me.reverse = view.querySelector('.reverse');
                 me.header = view.querySelector('.header');
                 me.data = view.$getData().data;
@@ -123,21 +131,27 @@
                     view: view.querySelector('.search-btn'),
                     handler: function(e, data, v) {
                         console.log(v.nextElementSibling.firstElementChild);
-                        var tem=v.nextElementSibling.firstElementChild.value.replace(/ /ig,'');
-                        var url='';
-                        var params={
-                            page:1,
-                            row:15,
+                        var tem = v.nextElementSibling.firstElementChild.value.replace(/ /ig, '');
+                        var url = '';
+                        var params = {
+                            page: 1,
+                            row: 15,
                         };
-                        LoadDataCommon.getList(me, url+'.action',params, function (r) {
-                            me.data.table.th=[];
-                            r.rows.forEach(function(it,index,arr){
-                                me.data.table.th.push({
-                                    td:it,
-                                    check:false,
-                                });
-                            });
-                            me.data.table.$set('th',me.data.table.th);
+                        DD.request({
+                            params: {
+                                key: tem
+                            },
+                            url: "http://localhost:3000/api/search.action",
+                            // successFunc: function(r) {
+                            //     me.data.table.th = [];
+                            //     r.rows.forEach(function(it, index, arr) {
+                            //         me.data.table.th.push({
+                            //             td: it,
+                            //             check: false,
+                            //         });
+                            //     });
+                            //     me.data.table.$set('th', me.data.table.th);
+                            // }
                         });
                     }
                 });
@@ -270,14 +284,15 @@
     };
     DD.Plugin.create('table', mytable);
     DD.createModule({
-        name:'m_plugin_download_Table_1',
+        name: 'm_plugin_download_Table_1',
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/table_1/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/table_1/index.html",
-        onBeforeFirstRender:function(){
-        },
+        onBeforeFirstRender: function() {},
         data: {
-            name:"多用表格",
+            name: "多用表格",
             table: {
+                color_1: "#000",
+                color_2: '#1b7adc',
                 show_reverse: false,
                 check_all: false,
                 thead: [{ name: '姓名' }, { name: '年龄' }, { name: '身高' }, { name: '体重' }, { name: '学历' }, { name: '工作经历' }],
@@ -326,30 +341,61 @@
         },
         onBeforeFirstRender: function() {
             var me = this;
+            me.data.color_2 = "#1b7adc";
+            me.data.color_1 = "fff"
             //清楚数据的方法
             // me.module.methodFactory.methods.clear.call(me, me.data);
-            console.log(me.data);
+            // console.log(me.data);
         },
         methods: {
+            ensure: function() {
+                var me = this;
+                var obj = {
+                    plugin_id: 401,
+                    class0: JSON.stringify({
+                        total:1,
+                        names: '.el-plugin-table-1 .plugin .common .left .item',
+                        color: {
+                                names: 'background-color',
+                                values: me.data.table.color_2.replace("#", "")
+                        }
+                    }),
+                    class1: JSON.stringify({
+                        names: '.el-plugin-table-1 .plugin',
+                        color: {
+                           
+                                names: 'color',
+                                values: me.data.table.color_1.replace("#", "")
+                            
+                        }
+                    }),
+                    total: 2,
+                    flag: 0
+                }
+                me.module.send('m_plugin_download', {
+                    upload: true,
+                    obj: obj
+                });
+            },
             clear: function(obj) {
                 var me = this;
                 for (var i in obj) {
                     if (obj.hasOwnProperty(i) && i.indexOf('$') === -1) {
                         if (typeof obj[i] === 'object') {
                             if (obj[i] instanceof Array) {
-                                obj[i].forEach(function(it,index,arr) {
-                                    if(typeof it==='object'){
-                                    me.module.methodFactory.methods.clear.call(me, it);}
-                                    else{
-                                        arr[index]='';
+                                obj[i].forEach(function(it, index, arr) {
+                                    if (typeof it === 'object') {
+                                        me.module.methodFactory.methods.clear.call(me, it);
+                                    } else {
+                                        arr[index] = '';
                                     }
-                                    return ;
+                                    return;
                                 });
                             } else {
                                 me.module.methodFactory.methods.clear.call(me, obj[i]);
                             }
                         } else {
-                            obj[i] ='';
+                            obj[i] = '';
                         }
                     }
                 }

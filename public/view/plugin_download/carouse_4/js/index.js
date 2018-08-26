@@ -3,6 +3,7 @@
     my_plugin_4 = function() {};
     my_plugin_4.prototype = {
         init: function(view) {
+            var me=this;
             var tem = ` <div class='content' x-model='ca_photo'>
   <div class="img-photo" x-repeat="imgs">
     <div src="{{url}}" alt='图片库' x-repeat='img_item' style="background-image: url('{{url}}');background-size:100% 100%" class='img'></div>
@@ -17,9 +18,12 @@
   <div class="right"><div class="img-content"></div></div>
     </div>`;
             view.innerHTML = tem;
+            me.flag=1;
         },
         render: function(view) {
+            console.log(11111);
             var me = this;
+            me.one = view.$getData().data;
             me.count = 0;
             //标记能够事件
             me.is_can = false;
@@ -31,7 +35,7 @@
                 me.is_can = false;
                 window.timer_4 = setInterval(function() {
                     me.is_can = false;
-                    me.count++;
+                    me.count += me.dx;
                     me.removespan();
                     me.addspan();
                     me.tem.forEach(function(item, index) {
@@ -56,11 +60,16 @@
                     DD.removeClass(item, 'is_check');
                 })
             }
-            //在渲染完毕开始执行
+            //在渲染完毕开始执行dx为1是下滑 
+            me.dx = 1;
+            if (view.$getData().data.small_div.up) {
+                me.dx = -1;
+            }
+
             setTimeout(function() {
                 window.addEventListener('transitionend', function() {
                     me.time_count++;
-                    if (me.time_count === me.tem.length) {
+                    if (me.time_count === me.tem.length*2) {
                         me.is_can = true;
                         me.time_count = 0;
                     }
@@ -167,10 +176,12 @@
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/carouse_4/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/carouse_4/index.html",
         data: {
+            one:1,
             base_url: '/plugin_set/public/view/plugin_download/carouse_4/img/',
             width_data: '',
             name: '',
             ca_photo: {
+                one: true,
                 width: '',
                 translate: false,
                 imgs: [{
@@ -189,7 +200,9 @@
                 no_check: '#ffffff',
                 width: '8',
                 height: '8',
-                time: 3
+                time: 3,
+                up: true,
+                down: false,
             }
         },
         onBeforeFirstRender: function() {
@@ -205,23 +218,25 @@
                 i.width = 8;
                 i.height = 8;
             });
-            me.data.small_div={
+            me.data.small_div = {
                 check: '#ff6800',
                 no_check: '#ffffff',
                 width: '8',
                 height: '8',
-                time: 3
+                time: 3,
+                up: true,
+                down: false,
             };
-             if(window.timer_1){
+            if (window.timer_1) {
                 clearInterval(window.timer_1);
             }
-             if(window.timer_2){
+            if (window.timer_2) {
                 clearInterval(window.timer_2);
             }
-             if(window.timer_3){
+            if (window.timer_3) {
                 clearInterval(window.timer_3);
             }
-             if(window.timer_4){
+            if (window.timer_4) {
                 clearInterval(window.timer_4);
             }
         },
@@ -276,7 +291,11 @@
                         },
                         total: 1
                     }),
-                    js: JSON.stringify({ time: me.data.small_div.time * 1000 }),
+                    js: JSON.stringify({
+                        time: me.data.small_div.time * 1000,
+                        up: me.data.small_div.up,
+                        down: me.data.small_div.down,
+                    }),
                     total: 2,
                     flag: 1
                 }

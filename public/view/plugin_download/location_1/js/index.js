@@ -145,10 +145,6 @@
             	var pop=view.querySelector(".nd-plugin-location-popularlist");
             	var fixed = view.querySelector(".nd-plugin-location-letterlist");
                 var route = document.querySelector(".router-content");
-                if (window.innerWidth * 0.9 > 320) {
-                    DD.css(fixed, "right", 5 + window.innerWidth * 0.9 / 2 - 160 + "px");
-                }
-                DD.css(fixed, "top", 60 + route.offsetTop + 'px');
                 var color1 = data.small_div.color_1;
                 var color2 = data.small_div.color_2;
                 var color3 = data.small_div.color_3;

@@ -88,10 +88,13 @@
                 me.is_can = false;
                 me.span = view.querySelectorAll('.photo-span');
                 me.imgs = view.querySelectorAll('.imgs');
-                me.imgwidth = parseInt(DD.css(document.querySelector('.content'), 'width'));
+                me.imgwidth = parseInt(DD.css(view.querySelector('.content'), 'width'));
                 me.show = view.querySelector('.show');
                 //true为左边滑动
-                me.flag = false;
+                me.flag = true;
+                if(view.$getData().data.small_div.right){
+                    me.flag=false
+                }
                 DD.css(me.show, 'width', '' + me.imgwidth * me.data.length + 'px');
                 me.index = 1;
                 DD.css(me.show, 'left', -1 * me.index * me.imgwidth + 'px');
@@ -168,8 +171,9 @@
                 width: '8',
                 height: '8',
                 time: 3,
-                direct: 0
-            }
+                left:false,
+                right:true,
+            };
             if(window.timer_1){
                 clearInterval(window.timer_1);
             }
@@ -208,7 +212,8 @@
                 width: '8',
                 height: '8',
                 time: 3,
-                direct: 0
+                left:false,
+                right:true,
             }
         },
         methods: {
@@ -253,7 +258,8 @@
                     }),
                     js: JSON.stringify({
                         time: me.data.small_div.time * 1000,
-                        flag: me.data.small_div.direct
+                        left: me.data.small_div.right,
+                        right:me.data.small_div.left
                     }),
                     //total是css的数量
                     //flag为1表明有js

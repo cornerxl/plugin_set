@@ -1,9 +1,8 @@
 .location{
+	position: relative;
 	width: 100%;
-	top: 100px;
 }
 .nd-plugin-location-box{
-	position: relative;
 	left: 0px;
 	right: 0px;
 	width: 100%;
@@ -131,9 +130,9 @@
 	transform:rotate(90deg);
 }
 .nd-plugin-location-letterlist{
-	position: fixed;
-	top: 110px;
-	right: 0px;
+	position: absolute;
+	top: 120px;
+	right: 10px;
 	padding:0;
 	width: 50px;
 	list-style: none;

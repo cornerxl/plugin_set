@@ -26,12 +26,16 @@
             //由于有数组个translationend事件 用来标记
             me.time_count = 0;
             //更新页面
+            me.direct=1;
+            if(view.$getData().data.small_div.left){
+                me.direct=-1;
+            }
             me.updata = function() {
                 clearInterval(window.timer_3);
                 me.is_can = false;
                 window.timer_3 = setInterval(function() {
                     me.is_can = false;
-                    me.count++;
+                    me.count+=me.direct;
                     me.removespan()
                     me.addspan();
                     me.tem.forEach(function(item, index) {
@@ -64,7 +68,7 @@
             //在渲染完毕开始执行
             setTimeout(function() {
                 window.addEventListener('transitionend', function() {
-                    me.time_count++;
+                    me.time_count+=me.direct;
                     if (me.time_count === me.tem.length) {
                         me.is_can = true;
                         me.time_count = 0;
@@ -165,20 +169,20 @@
                     }
                 }
             });
-            new DD.Event({
-                eventName: 'mouseenter',
-                view: view,
-                handler: function() {
-                    clearInterval(window.timer_3);
-                }
-            });
-            new DD.Event({
-                eventName: 'mouseleave',
-                view: view,
-                handler: function() {
-                    me.updata();
-                }
-            });
+            // new DD.Event({
+            //     eventName: 'mouseenter',
+            //     view: view,
+            //     handler: function() {
+            //         clearInterval(window.timer_3);
+            //     }
+            // });
+            // new DD.Event({
+            //     eventName: 'mouseleave',
+            //     view: view,
+            //     handler: function() {
+            //         me.updata();
+            //     }
+            // });
         }
     };
     DD.Plugin.create('my_plugin_3', my_plugin_3);
@@ -199,7 +203,9 @@
                 no_check: '#ffffff',
                 width: '8',
                 height: '8',
-                time:3
+                time:3,
+                left:false,
+                right:true
             }
         },
         onBeforeFirstRender: function() {
@@ -222,7 +228,9 @@
                 no_check: '#ffffff',
                 width: '8',
                 height: '8',
-                time:3
+                time:3,
+                left:false,
+                right:true
             };
         },
         onRender: function() {
@@ -283,7 +291,11 @@
                         },
                         total:1
                      }),
-                    js:JSON.stringify({time:me.data.small_div.time*1000}),
+                    js:JSON.stringify({
+                        time:me.data.small_div.time*1000,
+                        left:me.data.small_div.left,
+                        right:me.data.small_div.right
+                    }),
                     total: 3,
                     flag: 1
                 }
