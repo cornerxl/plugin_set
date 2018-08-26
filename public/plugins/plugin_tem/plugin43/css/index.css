@@ -1,0 +1,73 @@
+.el-tree .content .ct .check
+{
+  background-color:#ffffff!important;
+}
+.el-tree .content .ct txt
+{
+  color:#333333!important;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.el-tree .content .item {
+    cursor: pointer;
+    padding: 2px 0px;
+    padding-left: 20px;
+}
+
+.el-tree .content .ct {
+    overflow: hidden;
+    width: 200px;
+    padding: 2px 0px;
+    position: relative;
+}
+
+.el-tree .content .ct .input {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    float: left;
+}
+
+.el-tree .content .ct .check {
+    background-color: #1890ff;
+}
+
+.el-tree .content .ct .check:after {
+    display: block;
+    position: absolute;
+    content: "";
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    left: 10px;
+    bottom: 20px;
+    width: 20px;
+    height: 10px;
+    transform: rotate(-45deg);
+}
+
+.el-tree .content .ct span {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+    width: 160px;
+    float: left;
+}
+
+.el-tree {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.el-tree .content {
+    width: 200px;
+    margin-top: 100px;
+}
