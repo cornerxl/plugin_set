@@ -1,1 +1,18 @@
-<div>哈哈哈</div>
+<div class="el-my-home">
+	<!-- canvas由于延迟了渲染因此要提前设置高度撑起 -->
+    <div class="canvasct" style="height:{{canvas_height}}px">
+        <canvas class='canvas'></canvas>
+    </div>
+    <div class="footer">
+        <div class="foot-img" x-model='img_code'>
+            <div class="imgct-left"><img src="{{url_o}}"></div>
+            <div class="imgct-right"><img src="{{url_t}}"></div>
+        </div>
+        <div class="link-href">
+            <div class="link-item" x-repeat='link_href' x-class="{'border-none':'$index===0'}" x-route="{{route}}">{{content}}</div>
+        </div>
+        <p>{{from}}</p>
+        <p>{{link_us}}</p>
+        <p>{{cooperate}}</p>
+    </div>
+</div>
