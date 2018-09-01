@@ -1,0 +1,36 @@
+.plugin-dragprobarHV {
+    width: 200px;
+    height: 10px;
+    background: rgba(96,96,96,0.5);
+}
+
+.nd-plugin-dragprobar-box {
+    box-sizing: border-box;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.nd-plugin-dragprobar-box .nd-plugin-dragprobar-total {
+    position: relative;
+    background-color: #000;
+    border-radius: 1px;
+}
+
+.nd-plugin-dragprobar-box .nd-plugin-dragprobar-total .nd-plugin-dragprobar-percent {
+    position: absolute;
+    /*height: 2px;*/
+    display: block;
+    background-color: #FFF;
+}
+
+.nd-plugin-dragprobar-box .nd-plugin-dragprobar-total .nd-plugin-dragprobar-btn {
+    position: relative;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #FFF;
+    margin-top: -4px;
+    margin-left: -4px;
+}
