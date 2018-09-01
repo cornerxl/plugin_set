@@ -2,14 +2,14 @@
  * Created by xll on 2017/11/27.
  */
 (function () {
-    var SlideImg = function () {
+    var plugin_12001 = function () {
 
     }
-    
-    SlideImg.prototype.init = function (view) {
+
+    plugin_12001.prototype.init = function (view) {
         var me = this;
         DD.addClass(view, 'nd-plugin-slideimg');
-        var data = DD.attr(view, 'dataName');
+        var data = view.$getData().data.slideImg;
         view.$dataName = data;
         var template = `<div class="nd-plugin-slideimg-box" x-model="slideImg">
                             <div class="nd-plugin-slideimg-img" style="left: 0;">
@@ -23,15 +23,18 @@
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
     }
-    
-    SlideImg.prototype.render = function (view) {
+
+    plugin_12001.prototype.render = function (view) {
         var me = this;
         var data = view.$getData().data;
-        var clone = DD.extend({}, data[view.$dataName]);
+        if(data.data){
+            data=data.data;
+        }
+        var clone = DD.extend({}, data.slideImg);
         data.$set("cloneSlideImg", clone);
-        var len = data[view.$dataName].rows.length;
-        var firstImg = DD.extend({}, data[view.$dataName].rows[0]);
-        var lastImg = DD.extend({}, data[view.$dataName].rows[len - 1]);
+        var len = data.slideImg.rows.length;
+        var firstImg = DD.extend({}, data.slideImg.rows[0]);
+        var lastImg = DD.extend({}, data.slideImg.rows[len - 1]);
         data.cloneSlideImg.rows.push(firstImg);
         // data.cloneSlideImg.rows.unshift(lastImg);
         if(!data){
@@ -48,15 +51,14 @@
         }
         setTimeout(delayRender, 0);
         function delayRender(){
-            var slideImgBox = document.querySelector(".nd-plugin-slideimg-box");
-            var slideImg = document.querySelector(".nd-plugin-slideimg-img");
-            var slideCircle = document.querySelector(".nd-plugin-slideimg-circle");
-            var imgArr = document.querySelectorAll("img");
+            var slideImgBox = view.querySelector(".nd-plugin-slideimg-box");
+            var slideImg = view.querySelector(".nd-plugin-slideimg-img");
+            var slideCircle = view.querySelector(".nd-plugin-slideimg-circle");
+            var imgArr = view.querySelectorAll("img");
             var slideImgParents = slideImgBox.parentNode.parentNode;
             var slideImgBoxWidth = document.defaultView.getComputedStyle(slideImgParents, null).width;
             var slideIMgBoxHeight = document.defaultView.getComputedStyle(slideImgParents, null).height;
             var slideCircleArr = slideCircle.children;
-
             //设置img盒子的宽度
             DD.css(slideImg, 'width', parseInt(slideImgBoxWidth) * (len + 1) + 'px');
             DD.css(slideImg, 'height', slideIMgBoxHeight);
@@ -68,7 +70,7 @@
             });
 
             //设置circle盒子的宽度及位置
-            var slideCircleWidth = (data[view.$dataName].rows.length-1) * 10 + (data[view.$dataName].rows.length-2) * 5;
+            var slideCircleWidth = (data.slideImg.rows.length-1) * 10 + (data.slideImg.rows.length-2) * 5;
             DD.css(slideCircle, 'width', slideCircleWidth + 'px');
             DD.css(slideCircle, 'margin-left', -slideCircleWidth / 2 + 'px');
             //自动播放
@@ -139,7 +141,6 @@
                 eventName:'swipedown',
                 view:view,
                 handler:function(e,d,v){
-                    console.log(222);
                     timer = setInterval(next, 2000);
                 }
             });
@@ -148,12 +149,11 @@
                 eventName:'swipeup',
                 view:view,
                 handler:function(e,d,v){
-                    console.log(111);
                     clearInterval(timer);
                 }
             });
         }
     }
 
-    DD.Plugin.create("slideimg", SlideImg);
+    DD.Plugin.create("plugin_12001", plugin_12001);
 }());

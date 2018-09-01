@@ -25,9 +25,10 @@
         <div class='plugin-explain'><p>插件说明:</p>
             <p class='explain'>{{explain}}</p></div>
     </div>
-    `;
+    </div>`;
                 });
-                props.template = tem + `</div>`;
+                console.log(tem);
+                props.template = tem;
             },
             modules: [],
             data: {
@@ -39,7 +40,6 @@
                         explain: "",
                         template: `<div class="position">
 		<div class="location" x-plugin="plugin_01001"></div>
-	</div>
 	</div>`,
                         data: {
                             location_country: '重庆',
