@@ -268,7 +268,7 @@
                         explain: "",
                         template: `<div class="el-photo">
         <div x-plugin='plugin_03001' class='plugin'></div>
-    </div>`,
+    </div> `,
                         data: {
                             ca_photo: {
                                 translate: false,
