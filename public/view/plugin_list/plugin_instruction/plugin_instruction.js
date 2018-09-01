@@ -13,16 +13,14 @@
             {type:'css',path:PLUGINURL + '/plugins_show/example/page_1/css/index.css'}
             // {type:'css',path:CSSURL + '/plugin_instruction.css'}
         ],
-        data: {},
         modules:[{
             name:"m_instruction_example",
             el:'.el-instruction-example',
             data: {
                 page: 1,
                 row: 10,
-                total:0,
-                to_page:1,
-                allpage:0,
+                total:100,
+                to_page:1
             }
         }]
     });
