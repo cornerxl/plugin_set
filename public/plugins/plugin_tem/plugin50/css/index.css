@@ -1,0 +1,19 @@
+.Icon-content .arr .Icon{
+	 font-family: Material Icons!important;
+	 font-size:24px;
+}
+.Icon-content {
+	margin:0 auto;
+	display: flex;
+	width: 800px;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.Icon-content .arr{
+	width: 180px;
+}
+.Icon-content .arr>p{
+	text-overflow: ellipsis;
+	word-spacing: nowrap;
+	overflow: hidden;
+}

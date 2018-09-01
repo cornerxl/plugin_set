@@ -115,6 +115,10 @@
             allpage:0,
 		},
 		methods:{
+			//更新函数
+			updatePage:function(){
+				var me=this;
+			},
 			ensure:function(){
 				var me=this;
 				 var obj = {

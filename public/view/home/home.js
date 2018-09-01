@@ -58,7 +58,7 @@ window.data = {
             });
             setTimeout(function() {
                 window.partical.init();
-            }, 200, false);
+            }, 200);
         },
         onFirstRender:function(){
             var me=this;
@@ -123,7 +123,7 @@ window.data = {
             me.size = window.data.size || 4;
             me.speed = window.data.speed || 0.02;
             if (window.data && window.data.item_speed) {
-                window.data.item_speed.sort(function(a, b) { return a - b });
+                window.data.item_speed.sort((a,b)=>a-b);
             }
             me.item_speed = window.data.item_speed || [2, 6];
         },
@@ -186,6 +186,7 @@ window.data = {
                 endy: me.offset_h + i,
                 speed: speed,
                 //y和x方向的比值系数正负代表方向
+                //dx为相对于原位置的x的偏移量
                 dx: y / ((me.offset_w + j) - x),
                 //速度变化的值
                 dspe: Math.random() * 1,
@@ -212,7 +213,7 @@ window.data = {
                     return;
                 }
                 if (!item.down) {
-                    item.x -= item.speed / item.dx;
+                    item.x += item.speed / item.dx;
                     item.y -= item.speed;
                     me.drawrect.call(me, item);
                     if (item.y <= item.top) {

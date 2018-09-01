@@ -31,6 +31,7 @@
             };
             var str = me.create(me.datas.arr);
             view.innerHTML = str;
+            view.$forceRender=true;
             //重新编译
             DD.Compiler.compile(view, view.$module);
         }

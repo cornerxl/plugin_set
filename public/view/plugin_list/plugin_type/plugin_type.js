@@ -27,7 +27,6 @@
     </div>
     </div>`;
                 });
-                console.log(tem);
                 props.template = tem;
             },
             modules: [],
