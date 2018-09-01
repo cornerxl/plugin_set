@@ -1,0 +1,160 @@
+.el-color-picker-1 .plugin-color .color-content {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.el-color-picker-1 .plugin-color .color-content .content {
+  width: 300px;
+  top: 200px;
+  background-color: #eee;
+  padding: 10px;
+}
+.el-color-picker-1 .plugin-color .color-content .content .top {
+  margin: 0 auto;
+  width: 300px;
+  height: 250px;
+  position: relative;
+}
+.el-color-picker-1 .plugin-color .color-content .content .top .color-jbe {
+  background: #ff0000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  color: 1px solid transparent;
+}
+.el-color-picker-1 .plugin-color .color-content .content .top .color-b {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  opacity: .6;
+  background: linear-gradient(to top, #000000, rgba(0, 0, 0, 0));
+}
+.el-color-picker-1 .plugin-color .color-content .content .top .color-w {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+}
+.el-color-picker-1 .plugin-color .color-content .content .top .color-w .small-item {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #fcfcfc;
+  position: absolute;
+  border-radius: 50%;
+  right: 20px;
+  top: 10px;
+}
+.el-color-picker-1 .plugin-color .color-content .content .top .color-w .moveE {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.el-color-picker-1 .plugin-color .color-content .content .bottom {
+  margin-top: 10px;
+  height: 15px;
+  position: relative;
+}
+.el-color-picker-1 .plugin-color .color-content .content .bottom .color-band {
+  position: relative;
+  margin: 0 auto;
+  width: 180px;
+  height: 8px;
+  background: linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+}
+.el-color-picker-1 .plugin-color .color-content .content .bottom .color-band .point {
+  z-index: 10;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #999;
+  top: -2px;
+}
+.el-color-picker-1 .plugin-color .color-content .content .bottom .eventName {
+  position: absolute;
+  top: -5px;
+  width: 180px;
+  height: 20px;
+  left: 60px;
+}
+.el-color-picker-1 .plugin-color .color-content .content .rgb {
+  overflow-x: hidden;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.el-color-picker-1 .plugin-color .color-content .content .rgb .name {
+  font-size: 14px;
+  text-transform: uppercase;
+  float: left;
+  vertical-align: middle;
+  display: block;
+  width: 40px;
+  padding: 5px;
+  text-align: center;
+}
+.el-color-picker-1 .plugin-color .color-content .content .rgb .item {
+  border: 1px solid #ccc;
+  float: left;
+  vertical-align: middle;
+  outline: none;
+  display: block;
+  width: 50px;
+  padding: 5px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.el-color-picker-1 .plugin-color .color-content .content .rgb .ensure {
+  width: 40px;
+  height: 25px;
+  line-height: 25px;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #d02200;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+}
+.el-color-picker-1 .input {
+  width: 220px;
+  height: 260px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 2px #ccc;
+}
+.el-color-picker-1 .input input {
+  width: 200px;
+  height: 30px;
+  margin-left: 10px;
+  margin-top: 20px;
+  border: 1px solid #9e9e9e9e;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.el-color-picker-1 .input .select {
+  width: 40px;
+  margin: 0 auto;
+  margin-top: 10px;
+  color: white;
+  height: 25px;
+  line-height: 25px;
+  cursor: pointer;
+  font-size: 12px;
+  background-color: red;
+  text-align: center;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,54 @@
+<div class="plugin-instruction el-plugin-instruction">
+    <div class="instruction-title-first">介绍</div>
+    <br>
+    <div class="instruction-title-sec">NoDom插件库</div>
+    <br>
+    <p class="instruction">
+        本插件库是在<a href="//www.nodom.org" target="_Blank">NoDom</a>框架上开发的，包含各种类型的插件。
+    </p>
+    <br>
+    <div class="instruction-title-first">开始</div>
+    <br>
+    <div class="instruction-title-sec">准备工作</div>
+    <br>
+    <p class="instruction-tip">
+        要使用本插件库中的任意插件，您需要引用<a href="//www.nodom.org" target="_Blank">NoDom框架</a>，然后才能正常使用相关插件。
+    </p>
+    <br>
+    <div class="instruction-title-first">插件使用示例</div>
+    <br>
+    <div class="instruction-title-sec">引入NoDom.js</div>
+    <br>
+    <pre class="instruction-code">
+        <span class="comment">&lt;!--从官网引入NoDom--&gt;</span><br>
+        &lt;<span class="element">script</span> <span class="attr">type</span>="text/javascript"
+        <span class="attr">src</span>="http://www.NoDom.org/download/latest/NoDom.min.js"&gt;&lt;/<span
+            class="element">script</span>&gt;<br>
+        <span class="comment">&lt;!--从你的应用引入NoDom,注意修改yourpath为你自己应用的路径--&gt;</span><br>
+        &lt;<span class="element">script</span> <span class="attr">type</span>="text/javascript"
+        <span class="attr">src</span>="yourpath/NoDom.min.js"&gt;&lt;/<span
+            class="element">script</span>&gt;<br>
+    </pre>
+    <br>
+    <div class="instruction-title-sec">HTML代码示例</div>
+    <br>
+    <pre class="instruction-code">
+        <span class="comment">&lt;!--x-plugin内写入你要使用的插件名--&gt;</span>
+        <br>
+        &lt;<span class="element">div</span> <span class="attr">x-plugin</span>="paging"&gt;&lt;/<span
+            class="element">div</span>&gt;
+        <br>
+    </pre>
+    <br>
+    <div class="instruction-title-sec">实例展示</div>
+    <div class="instruction-example el-instruction-example">
+        <div x-plugin="paging"></div>
+    </div>
+    <br>
+    <div class="instruction-title-first">注意</div>
+    <br>
+    <p class="instruction-tip">
+        有的插件需要您为其添加模块，而另外一些插件则将信息存放在标签中的自定义项中，请您详细查看各个插件的使用说明。
+    </p>
+    <br>
+</div>

@@ -3636,7 +3636,9 @@ DD.config = {
      */
     var Module = function(config){
         var me = this;
-        
+        if(config.onStart){
+            config.onStart(config);
+        }
         me.name = config.name || 'DDModule_' + DD.genId();  // 模块名
         me.methodFactory = new DD.MethodFactory();          // 方法集合    
         me.modules = [];                                    // 子模块集合

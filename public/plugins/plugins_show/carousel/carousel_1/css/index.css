@@ -1,0 +1,84 @@
+.el-photo {
+    margin-top: 10px;
+    margin: 0 auto;
+}
+
+.el-photo .plugin .content {
+    width: 20rem;
+    height: 7.78rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.el-photo .plugin .content .show {
+    height: 100%;
+    transition: transform 2s;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.el-photo .plugin .content .show img {
+    height: 100%;
+}
+
+.el-photo .plugin .content .span {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    height: 20px;
+}
+.el-photo .plugin .content .left {
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    left: 0;
+    background-image: url(../img/left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.el-photo .plugin .content .right {
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    right: 0;
+    background-image: url(../img/right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.el-photo .plugin .content .img-content {
+    width: 100%;
+    height: 100%;
+    background-color: #eeeeee63;
+}
+
+.el-photo .plugin .content .span .photo-span {
+    margin: 0 8px;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    background-color: #f8f8f8;
+}
+
+.el-photo .plugin .content .span .is_check {
+    background-color: #ff6800;
+}
+
+.el-photo .plugin {
+    width: 100%;
+}
+
+.transition {
+    transition: transform 0s!important;
+}
