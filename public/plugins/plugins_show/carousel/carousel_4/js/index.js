@@ -10,10 +10,12 @@
   <div style="clear:both"></div>
   <div class='span'>
      <div class='span-cont'>
-        <span x-repeat='imgs' class='item-span'></span>
+        <span x-repeat='span' class='item-span' style="width:{{width}}px;height:{{height}}px"></span>
      </div>
   </div>
-    </div>`
+  <div class="left"><div class="img-content"></div></div>
+  <div class="right"><div class="img-content"></div></div>
+    </div>`;
             view.innerHTML = tem;
         },
         render: function(view) {
@@ -25,12 +27,12 @@
             me.time_count = 0;
             //更新页面
             me.updata = function() {
-                clearInterval(window.timer);
+                clearInterval(window.timer_4);
                 me.is_can = false;
-                window.timer = setInterval(function() {
+                window.timer_4 = setInterval(function() {
                     me.is_can = false;
                     me.count+=me.dx;
-                    me.removespan()
+                    me.removespan();
                     me.addspan();
                     me.tem.forEach(function(item, index) {
                         item.style.transform = 'rotateX(' + parseInt(360 / me.tem.length) * -1 * me.count + 'deg)';
@@ -54,7 +56,12 @@
                     DD.removeClass(item, 'is_check');
                 })
             }
-            //在渲染完毕开始执行
+            //在渲染完毕开始执行dx为1是下滑
+            me.dx=1;
+            if(view.$getData().data.small_div.up){
+                me.dx=-1;
+            }
+
             setTimeout(function() {
                 window.addEventListener('transitionend', function() {
                     me.time_count++;
@@ -63,16 +70,12 @@
                         me.time_count = 0;
                     }
                 });
-                me.dx=1;
-                if(view.$getData().data.up){
-                    me.dx=-1;
-                }
                 //span数组
-                me.span = document.querySelector('.span-cont').querySelectorAll('.item-span');
+                me.span = view.querySelector('.span-cont').querySelectorAll('.item-span');
                 //获取容器高度用来呈现3d效果
-                me.imgh = parseInt(DD.css(document.querySelector('.content'), 'height'));
+                me.imgh = parseInt(DD.css(view.querySelector('.content'), 'height'));
                 //imgs下面的小数组
-                me.tem = document.querySelectorAll(".img-photo");
+                me.tem = view.querySelectorAll(".img-photo");
                 //操作小数组下面的元素
                 me.tem.forEach(function(i) {
                     i.style.transitionDelay = i * 0.3 + 's';
@@ -93,7 +96,7 @@
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
-                        clearInterval(window.timer);
+                        clearInterval(window.timer_4);
                         me.removespan();
                         me.count--;
                         me.addspan();
@@ -112,9 +115,46 @@
                     if (me.is_can) {
                         me.is_can = false;
                         me.removespan();
-                        clearInterval(window.timer);
+                        clearInterval(window.timer_4);
                         me.count++;
                         me.removespan();
+                        me.addspan();
+                        me.tem.forEach(function(item, index) {
+                            item.style.transform = 'rotateX(' + parseInt(360 / me.tem.length) * -1 * me.count + 'deg)';
+                            item.style.transitionDelay = index * 0.3 + 's';
+                        });
+                        me.updata();
+                    }
+                }
+            });
+            new DD.Event({
+                eventName: 'click',
+                view: view.querySelector(".right"),
+                handler: function(e, data, view) {
+                    if (me.is_can) {
+                        me.is_can = false;
+                        me.removespan();
+                        clearInterval(window.timer_4);
+                        me.count++;
+                        me.removespan();
+                        me.addspan();
+                        me.tem.forEach(function(item, index) {
+                            item.style.transform = 'rotateX(' + parseInt(360 / me.tem.length) * -1 * me.count + 'deg)';
+                            item.style.transitionDelay = index * 0.3 + 's';
+                        });
+                        me.updata();
+                    }
+                }
+            });
+            new DD.Event({
+                eventName: 'click',
+                view: view.querySelector(".left"),
+                handler: function(e, data, view) {
+                    if (me.is_can) {
+                        me.is_can = false;
+                        clearInterval(window.timer_4);
+                        me.removespan();
+                        me.count--;
                         me.addspan();
                         me.tem.forEach(function(item, index) {
                             item.style.transform = 'rotateX(' + parseInt(360 / me.tem.length) * -1 * me.count + 'deg)';

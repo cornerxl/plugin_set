@@ -1,3 +1,6 @@
 .plugin-switcher-2{
 	margin:0 auto;
 }
+.plugin-switcher-2 .nd-plugin-switcher-box{
+	margin-left: 400px;
+}

@@ -1,7 +1,8 @@
 ﻿/**
  * Created by xll on 2017/11/30.
  */
-;(function() {
+;
+(function() {
 
     /**
      * 数据项配置说明
@@ -35,7 +36,7 @@
 
     plugin_11001.prototype.render = function(view) {
         var me = this;
-        var data = view.$getData().data.data;
+        var data = view.$getData().data;
         if (!data) {
             return;
         }
@@ -53,7 +54,7 @@
 
         function delayRender() {
             var box = document.querySelector(".nd-plugin-dragprobar-box");
-            DD.css(box,"background-color","rgba(96,96,96,0.5)");
+            DD.css(box, "background-color", "rgba(96,96,96,0.5)");
             var boxParents = box.parentNode.parentNode;
             var boxParentsStyle = window.getComputedStyle(boxParents, null);
             var percent = document.querySelector(".nd-plugin-dragprobar-percent");
@@ -61,6 +62,12 @@
             var total = document.querySelector(".nd-plugin-dragprobar-total");
             var totalWidth;
             var totalHeight;
+            var color_1 = data.small_div.color_1;
+            var color_2 = data.small_div.color_2;
+            var color_3 = data.small_div.color_3;
+            DD.css(box, "background-color", color_1);
+            DD.css(total, "background-color", color_3);
+            DD.css(percent, "background-color", color_2);
             if (data[view.$showStyle] === "vertical") {
                 //设置总滑动条长宽
                 DD.css(total, 'width', '10px');
@@ -173,7 +180,7 @@
                 eventName: 'click',
                 view: box,
                 delg: true,
-                capture:true,
+                capture: true,
                 handler: function(e, data, view) {
                     var me = this;
                     if (e.target.className === 'nd-plugin-dragprobar-btn') {

@@ -59,10 +59,6 @@
                     path: "/route/plugin_list/progress",
                     active: false
                 }, {
-                    name: "滑动菜单",
-                    path: "/route/plugin_list/slideImg",
-                    active: false
-                }, {
                     name: "开关",
                     path: "/route/plugin_list/switcher",
                     active: false

@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
-    <title>进度条</title>
-    <link rel="stylesheet" href="css/index.css">
-    <script type="text/javascript" src="js/nodom-full.js"></script>
-    <style>
-        /*水平显示*/
-        .plugin-dragprobarHV {
-            width: 200px;
-            height: 30px;
-            background: rgba(96,96,96,0.5);
-        }
-        /*垂直显示*/
-        /*.plugin-dragprobarHV {*/
-            /*width: 30px;*/
-            /*height: 200px;*/
-            /*background: rgba(96,96,96,0.5);*/
-        /*}*/
-    </style>
-</head>
-<body>
-    <!--用户选择水平显示还是垂直显示-->
-    <div class="plugin-dragprobarHV">
-        <div x-plugin="dragProBarHV" dataItem="dragProBarHV" showStyle="showStyle"></div>
+<!--用户选择水平显示还是垂直显示-->
+<div class='common-title'>
+    {{name}}</div>
+<div class="plugin-dragprobarHV" style="width:{{width_d}}px;height:50px;margin:0 auto">
+    <div x-plugin="dragProBarHV" dataItem="dragProBarHV" showStyle="showStyle"></div>
+</div>
+<div class="common-title">配置</div>
+<div class="con-config" x-model='small_div'>
+    <div class="itemss">
+        <span class="span">背景颜色</span>
+        <input type="color" class='input' x-field="color_1">
     </div>
-</body>
-<script type="text/javascript" src="js/index.js"></script>
-</html>
+    <div class="itemss">
+        <span class="span">百分比颜色</span>
+        <input type="color" class='input' x-field="color_2">
+    </div>
+     <div class="itemss">
+        <span class="span">剩余百分比颜色</span>
+        <input type="color" class='input' x-field="color_3">
+    </div>
+</div>
+<div class="con-eusure">
+    <div class="config-finish" e-click='ensure'>确认配置</div>
+</div>

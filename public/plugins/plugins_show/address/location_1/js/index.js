@@ -187,7 +187,7 @@
                                 DD.css(span, 'display', 'none');
                             }
                             if (me.province[p][i].name.substring(0, 2) === data.location_country) {
-                                location_country.querySelector('span').innerHTML = '当前城市:' + me.province[p][i].name;
+                                location_country.querySelector('span').innerHTML = '当前省份:' + me.province[p][i].name;
                                 DD.css(span, 'display', 'block');
                             }
                         }

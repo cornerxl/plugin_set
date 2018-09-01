@@ -50,9 +50,6 @@
                         path:'/progress',
                         module:'m_plugin_progress'
                     },{
-                        path:'/slideImg',
-                        module:'m_plugin_slideImg'
-                    },{
                         path:'/switcher',
                         module:'m_plugin_switcher'
                     },{
