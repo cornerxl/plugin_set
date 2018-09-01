@@ -2,6 +2,8 @@ var BASEURL = "/plugin_set";
 var HTMLURL = BASEURL + "/public/view";
 var JSURL = BASEURL + '/public/js';
 var CSSURL = BASEURL + '/public/css';
+var PLUGINURL = BASEURL + '/public/plugins';
+
 (function() {
     //最开始动画效果
     DD.createModule({
