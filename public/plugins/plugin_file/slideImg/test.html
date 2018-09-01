@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/nodom-full.js"></script>
+</head>
+<body>
+    <div class="app">
+        <span x-repeat="names" x-if="$index!==0"></span>
+    </div>
+</body>
+<script>
+    DD.createModule({
+        el: '.app',
+        data: {
+            names:[
+                {
+                    name1: '1212'
+                },{
+                    name1: '232432'
+                }
+            ]
+        }
+    })
+</script>
+</html>

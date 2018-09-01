@@ -1,0 +1,31 @@
+.el-icon-content{
+	height: 500px;
+	overflow-y: auto;
+	width: 400px;
+	margin:0 auto;
+	overflow-x: hidden;
+}
+.el-icon-content .Icon-content .arr .Icon{
+	text-align: center;
+	 font-family: Material Icons!important;
+	 font-size:24px;
+}
+.el-icon-content .Icon-content {
+	margin:0 auto;
+	display: flex;
+	width: 400px;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.el-icon-content .Icon-content .arr{
+	width: 100px;
+}
+.el-icon-content .Icon-content .arr>p{
+	/*-webkit-text-size-adjust:none;*/
+	transform:scale(.5);
+	font-size:16px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: center;
+}

@@ -7,6 +7,7 @@ var express = require('express');
 var router = express.Router();
 //加载拷贝文件模块
 var copy = require('./copy_file');
+//加载配置样式和js模块
 var config = require('./config_file');
 //基础路径指向plugin
 const tem_path = '../plugin_set/public/plugins/';
@@ -21,7 +22,7 @@ router.get('/', function(req, res, next) {
             console.log(err);
         }
     });
-    //前台传给后台的参数例子
+    //前段传给后台的参数
     var plugin_id = req.query.plugin_id;
     //查询
     var sql = 'select js_path from js where js_id=?';
@@ -29,7 +30,6 @@ router.get('/', function(req, res, next) {
     var params = [js_id];
     connection.query(sql, params, function(err, result) {
         var plugin_name = JSON.parse(JSON.stringify(result))[0].js_path;
-        console.log(plugin_name);
         //name是复制的文件的路径
         var copy_info = copy.init(tem_path + 'plugin_file/' + plugin_name, tem_path + 'plugin_tem/');
         //配置文件

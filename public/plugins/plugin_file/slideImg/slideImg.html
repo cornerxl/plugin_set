@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"  name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="css/slideImg.css">
+    <script type="text/javascript" src="js/nodom-full.js"></script>
+    <style>
+        .plugin-slideimg {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="plugin-slideimg">
+        <div x-plugin="slideimg" dataName="slideImg"></div>
+    </div>
+</body>
+<script type="text/javascript" src="js/slideImg.js"></script>
+<script>
+    DD.createModule({
+        el: ".plugin-slideimg",
+        data: {
+            slideImg: {
+                rows: [
+                    {
+                        url: 'img/1.jpg'
+                    },{
+                        url: 'img/2.jpg'
+                    },{
+                        url: 'img/3.jpg'
+                    },{
+                        url: 'img/4.jpg'
+                    },{
+                        url: 'img/5.jpg'
+                    }
+                ]
+            }
+        }
+    });
+</script>
+</html>

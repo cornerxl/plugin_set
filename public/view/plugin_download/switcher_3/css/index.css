@@ -1,0 +1,36 @@
+.plugin-switcher-3 {
+    margin:0 auto;
+    cursor:pointer;
+}
+
+.plugin-switcher-3 .nd-plugin-switcher-box::before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 46%;
+    height: 46%;
+    border-radius: 50%;
+    transition: all 150ms ease-in;
+    content: '';
+    display: block;
+}
+
+.plugin-switcher-3 .nd-plugin-switcher-box::after {
+    position: absolute;
+    left: 50%;
+    top: 32%;
+    transform: translate(-50%, -50%);
+    width: 6%;
+    height: 20%;
+    box-shadow: 0 0 0 2.5px #FFF;
+    transition: all 150ms ease-in;
+    content: '';
+    display: block;
+}
+.plugin-switcher-3 .checked{
+}
+.plugin-switcher-3 .checked::before {
+}
+.plugin-switcher-3 .checked::after {
+}

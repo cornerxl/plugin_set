@@ -1,0 +1,81 @@
+.el-plugin-carouse-4 {}
+
+.el-plugin-carouse-4 .plugin .content {
+    margin:0 auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.el-plugin-carouse-4 .plugin .content .img-photo {
+    float: left;
+    transition: all 1.5s;
+    transform-style: preserve-3d;
+    width: 25%;
+    height: 100%;
+}
+
+.el-plugin-carouse-4 .plugin .content .span {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+}
+.el-plugin-carouse-4 .plugin .content .left {
+    z-index: 9999;
+    cursor:pointer;
+    position: absolute;
+    top:45%;
+    width: 50px;
+    height:25px;
+    left:0;
+    background-image: url(../img/left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.el-plugin-carouse-4 .plugin .content .right {
+    z-index: 9999;
+    cursor:pointer;
+    position: absolute;
+    top:45%;
+    width: 50px;
+    height: 25px;
+    right:0;
+    background-position: center;
+    background-image: url(../img/right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.el-plugin-carouse-4 .plugin .content .span .span-cont {
+    width:100%;
+    text-align:center;
+    overflow: hidden;
+}
+.el-plugin-carouse-4 .plugin .content .img-content{
+    width: 100%;
+    height: 100%;
+    background-color:#eeeeee63;
+}
+.el-plugin-carouse-4 .plugin .content .span .span-cont span {
+    display: inline-block;
+    background-color: #f8f8f8;
+    height: 13px;
+    margin: 0 5px;
+    width: 13px;
+    border-radius: 50%;
+}
+
+.el-plugin-carouse-4 .plugin .content .span .span-cont .is_check {
+    background-color: #ff6800;
+}
+
+.el-plugin-carouse-4 .plugin .content .img-photo .img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.el-plugin-carouse-4 .plugin .content .img-photo .index {
+    z-index: 1000;
+}

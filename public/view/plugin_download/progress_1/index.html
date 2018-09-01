@@ -1,0 +1,24 @@
+<!--用户选择水平显示还是垂直显示-->
+<div class='common-title'>
+    {{name}}</div>
+<div class="plugin-dragprobarHV" style="width:{{width_d}}px;height:50px;margin:0 auto">
+    <div x-plugin="dragProBarHV" dataItem="dragProBarHV" showStyle="showStyle"></div>
+</div>
+<div class="common-title">配置</div>
+<div class="con-config" x-model='small_div'>
+    <div class="itemss">
+        <span class="span">背景颜色</span>
+        <input type="color" class='input' x-field="color_1">
+    </div>
+    <div class="itemss">
+        <span class="span">百分比颜色</span>
+        <input type="color" class='input' x-field="color_2">
+    </div>
+     <div class="itemss">
+        <span class="span">剩余百分比颜色</span>
+        <input type="color" class='input' x-field="color_3">
+    </div>
+</div>
+<div class="con-eusure">
+    <div class="config-finish" e-click='ensure'>确认配置</div>
+</div>

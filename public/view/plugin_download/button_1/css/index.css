@@ -1,0 +1,56 @@
+.nd-plugin-button-1 {
+    padding: 20px 0;
+    font-size: 12px;
+    user-select: none;
+}
+
+.nd-plugin-button-1 .btn-list>div {
+    margin-bottom: 10px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.nd-plugin-button-1 .nd-plugin-list-1>div {
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+}
+.nd-plugin-button-1 .nd-plugin-list-2>div{
+    cursor: pointer;
+    text-align:center;
+    width:80px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+}
+.nd-plugin-button-1 .nd-plugin-list-2 .list_i {
+    vertical-align: middle;
+    font-family: Material Icons!important;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+}
+.nd-plugin-button-1 .nd-plugin-list-3>div{
+    cursor: pointer;
+    text-align:center;
+    border-radius:50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+}
+.nd-plugin-button-1 .nd-plugin-list-3 .list_i {
+    vertical-align: middle;
+    font-family: Material Icons!important;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+}

@@ -1,0 +1,104 @@
+@import (reference)"base.less";
+.el-downlist {
+    overflow-x: hidden;
+    .down-page {
+        z-index: 1000;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background-color: #f0f0f061;
+        .down-content {
+            padding: 10px;
+            border-radius: 10px;
+            color: snow;
+            background-color: lightskyblue;
+            width: 30%;
+            margin: 200px auto 0;
+            .head {
+                height: 30px;
+                line-height: 30px;
+                text-indent: 40px;
+                color: snow;
+                .font14;
+                position: relative;
+                .dele-btn {
+                    position: absolute;
+                    right: 20px;
+                    width: 20px;
+                    height: 20px;
+                    top: 5px;
+                    .content {
+                        cursor: pointer;
+                        width: 100%;
+                        height: 100%;
+                        background-image: url("../img/dele.png");
+                        background-size: cover;
+                    }
+                }
+            }
+            .list {
+                text-align: center;
+                padding: 20px 0 10px 0;
+                .font12;
+                a {
+                    display: inline-block;
+                    background-color: #fb320bcf;
+                    text-decoration: none;
+                    width: 100px;
+                    height: 30px;
+                    line-height: 30px;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .route {
+        box-sizing: border-box;
+        float: left;
+        width: 10%; // max-width: 200px;
+        color: @foreWhite;
+        background-color: rgba(0, 173, 212, 1);
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        text-align: center;
+        .first-type {
+            cursor: pointer;
+            .item-name {
+                .font14;
+                height: 30px;
+                line-height: 30px;
+            }
+            .route-ct {
+                .active{
+                    color:#FF9966;
+                }
+                .item {
+                    color: #03a9f4;
+                    .font12;
+                    height: 40px;
+                    line-height: 40px;
+                    background-color: rgba(212, 10, 0, 0.45);
+                    .item-route {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    .router-content {
+        box-sizing: border-box;
+        float: right;
+        width: 90%;
+    }
+    .common-title {
+        height: 40px;
+        line-height: 40px;
+        font-weight: 600;
+        font-size: 16px;
+        text-align: center;
+        color: #03a9f4;
+        text-shadow: rgb(0, 255, 255) 0px 0px 20px;
+    }
+}

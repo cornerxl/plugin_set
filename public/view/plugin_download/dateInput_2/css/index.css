@@ -1,0 +1,102 @@
+.el-plugin-date-show{
+    width: 30%;
+    margin:0 auto;
+    min-width: 200px;
+}
+.my-plugin-select-date-2 {}
+
+.nd-plugin-select-box {
+    position: relative;
+    width: 30%;
+    margin:0 auto;
+    height: 400px;
+    min-width: 200px;
+    box-shadow: 0px 0px 5px #ccc;
+}
+.nd-plugin-select-box .quit-area {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.nd-plugin-select-box .select-area {
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    height: 0;
+    width: 100%;
+    transition: all ease-in-out 0.4s;
+    background: #FFF;
+}
+
+.nd-plugin-select-box .select-area .select-header {
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.nd-plugin-select-box .select-area .select-header .header-left {
+    float: left;
+    width: 20%;
+    height: 100%;
+    color: #1e83d3;
+    cursor: pointer;
+}
+
+.nd-plugin-select-box .select-area .select-header .header-right {
+    float: left;
+    width: 20%;
+    height: 100%;
+    color: #1e83d3;
+    cursor: pointer;
+}
+
+.nd-plugin-select-box .select-area .select-header .header-middle {
+    float: left;
+    width: 60%;
+    height: 100%;
+}
+
+.nd-plugin-select-box .select-area .select-content {
+    width: 100%;
+    height: 260px;
+    position: relative;
+    overflow: hidden;
+}
+
+.nd-plugin-select-box .select-area .select-content .options {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translate(0, -15px);
+    padding: 0;
+    margin: 0;
+    z-index: 999;
+    transition: all ease 0.4s;
+}
+
+.nd-plugin-select-box .select-area .select-content .options li {
+    width: 100%;
+    text-align: center;
+    list-style-type: none;
+    height: 30px;
+    line-height: 30px;
+}
+
+.nd-plugin-select-box .select-area .select-content .nowOption {
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-bottom: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6;
+}
+
+.clear {
+    clear: both;
+}

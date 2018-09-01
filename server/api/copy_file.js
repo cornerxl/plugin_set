@@ -9,7 +9,9 @@ var copy = {
      */
     copyFile: function(from, to) {
         var me = this;
+        //创建文件夹
         me.fs.mkdirSync(to);
+        //tem是读取文件夹下面的文件组成的一个数组
         var tem = me.fs.readdirSync(from);
         tem.forEach(function(item) {
             //如果是图片就特殊处理base64编码
@@ -31,7 +33,7 @@ var copy = {
     init: function(from, to) {
         var me = this;
         //随机创建一个文件夹默认60个 如有需求可以改
-        me.file_name='plugin'+new Date().getSeconds();
+        me.file_name = 'plugin' + new Date().getSeconds();
         me.fs = require("fs");
         var des_path = to + me.file_name;
         //如果文件夹已存在 先删除
@@ -40,10 +42,11 @@ var copy = {
         }
         //开始创建一个文件夹
         me.fs.mkdirSync(des_path);
-        me.name=des_path;
+        me.name = des_path;
         //插件下面的css.js.img文件夹
         var tem = me.fs.readdirSync(from);
         tem.forEach(function(i) {
+            //如果发现是文件夹调用copyfile函数
             if (i.indexOf(".") === -1) {
                 me.copyFile(from + '/' + i, des_path + '/' + i);
             } else {
@@ -52,7 +55,7 @@ var copy = {
             }
         });
         //最后返回文件名字和路径名称
-        return {name:me.name,file:me.file_name};
+        return { name: me.name, file: me.file_name };
     }
 };
 module.exports = copy;
