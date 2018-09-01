@@ -2,8 +2,8 @@
 //普通轮播图
 ;
 (function() {
-    var photo = function() {};
-    photo.prototype = {
+    var plugin_03001 = function() {};
+    plugin_03001.prototype = {
         init: function(view) {
             var template = `<div class='content' x-model='ca_photo'>
         <div class='show' x-class="{'translate':'translate'}">
@@ -152,5 +152,5 @@
             });
         }
     };
-    DD.Plugin.create('photo', photo);
+    DD.Plugin.create('plugin_03001', plugin_03001);
 })();

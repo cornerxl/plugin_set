@@ -267,7 +267,7 @@
                         name: '03001',
                         explain: "",
                         template: `<div class="el-photo">
-        <div x-plugin='photo' class='plugin'></div>
+        <div x-plugin='plugin_03001' class='plugin'></div>
     </div>`,
                         data: {
                             ca_photo: {
