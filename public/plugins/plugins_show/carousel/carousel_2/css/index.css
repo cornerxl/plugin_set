@@ -1,5 +1,5 @@
 .carous_ct {
-    margin-top: 10rem;
+    margin:0 auto;
     width: 20rem;
     height: 7.78rem;
     overflow: hidden;
@@ -53,4 +53,33 @@
 
 .carous_ct .spancont .span .active {
     background-color: #f80000;
+}
+.carous_ct .plugin  .left {
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    left: 0;
+    background-image: url(../img/left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: #eeeeee63;
+}
+
+.carous_ct .plugin  .right {
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    right: 0;
+    background-image: url(../img/right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: #eeeeee63;
 }

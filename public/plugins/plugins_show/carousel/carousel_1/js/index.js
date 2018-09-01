@@ -4,7 +4,7 @@
     var plugin_03001 = function() {};
     plugin_03001.prototype = {
         init: function(view) {
-            var template = `<div class='content' x-model='ca_photo' style="width:{{width}}px;height:{{width/2}}px">
+            var template = `<div class='content' x-model='ca_photo'">
         <div class='show' x-class="{'translate':'translate'}">
             <img class='imgs' x-repeat='imgs' src="{{url}}">
         </div>
@@ -60,12 +60,12 @@
                 }
             }
             me.updata = function() {
-                clearInterval(window.timer_1);
+                clearInterval(window.timer_11);
                 var my_time = 3000;
                 if (window.data && window.data.time) {
                     my_time = window.data.time;
                 }
-                window.timer_1 = setInterval(function() {
+                window.timer_11 = setInterval(function() {
                     me.doself(me.flag);
                 }, my_time);
             };
@@ -112,7 +112,7 @@
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
-                        clearInterval(window.timer_1);
+                        clearInterval(window.timer_11);
                         me.doself();
                         me.updata();
                     }
@@ -124,7 +124,7 @@
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
-                        clearInterval(window.timer_1);
+                        clearInterval(window.timer_11);
                         me.doself();
                         me.updata();
                     }
@@ -136,7 +136,7 @@
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
-                        clearInterval(window.timer_1);
+                        clearInterval(window.timer_11);
                         me.doself(1);
                         me.updata();
                     }
@@ -148,7 +148,7 @@
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
-                        clearInterval(window.timer_1);
+                        clearInterval(window.timer_11);
                         me.doself(1);
                         me.updata();
                     }

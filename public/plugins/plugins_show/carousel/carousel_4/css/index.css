@@ -1,8 +1,8 @@
 .el-plugin {
-    margin-top: 200px;
 }
 
 .el-plugin .plugin .content {
+     margin:0 auto;
     width: 20rem;
     height: 7.78rem;
     overflow: hidden;
@@ -17,21 +17,21 @@
     height: 100%;
 }
 
-.el-plugin .plugin .content .span {
+.el-plugin .plugin .content .spans {
     position: absolute;
     width: 100%;
     height: 21px;
     bottom: 20px;
 }
 
-.el-plugin .plugin .content .span .span-cont {
+.el-plugin .plugin .content .spans .span-cont {
     height: 100%;
     width: 100px;
     margin: 0 auto;
     overflow: hidden;
 }
 
-.el-plugin .plugin .content .span .span-cont span {
+.el-plugin .plugin .content .spans .span-cont span {
     display: inline-block;
     background-color: #f8f8f8;
     height: 13px;
@@ -40,7 +40,7 @@
     border-radius: 50%;
 }
 
-.el-plugin .plugin .content .span .span-cont .is_check {
+.el-plugin .plugin .content .spans .span-cont .is_check {
     background-color: #ff6800;
 }
 
@@ -52,4 +52,33 @@
 
 .el-plugin .plugin .content .img-photo .index {
     z-index: 1000;
+}
+.el-photo .plugin .content .left {
+     background-color: #eeeeee63;
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    left: 0;
+    background-image: url(../img/left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.el-photo .plugin .content .right {
+     background-color: #eeeeee63;
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    right: 0;
+    background-image: url(../img/right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }

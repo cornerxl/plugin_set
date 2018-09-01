@@ -4,7 +4,7 @@
     plugin_03003.prototype = {
         init: function(view) {
             var tem = ` <div class='content' x-model='ca_photo'>
-  <div class="img-photo">
+  <div class="img-photo3">
        <div  style="background-image: url('{{url}}');background-size:100% 100%" class='img' x-repeat='imgs'></div>
   </div>
   <div style="clear:both"></div>
@@ -31,9 +31,9 @@
                 me.direct=-1;
             }
             me.updata = function() {
-                clearInterval(window.timer_3);
+                clearInterval(window.timer_13);
                 me.is_can = false;
-                window.timer_3 = setInterval(function() {
+                window.timer_13 = setInterval(function() {
                     me.is_can = false;
                     me.count+=me.direct;
                     me.removespan()
@@ -81,7 +81,7 @@
                 //获取容器高度用来呈现3d效果
                 me.imgh = parseInt(DD.css(view.querySelector('.content'), 'height'));
                 //imgs下面的小数组
-                me.tem = view.querySelectorAll(".img-photo");
+                me.tem = view.querySelectorAll(".img-photo3");
                 //操作小数组下面的元素
                 me.tem.forEach(function(item, index) {
                     me.img_arr = Array.from(item.getElementsByTagName('DIV'));
@@ -101,7 +101,7 @@
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
-                        clearInterval(window.timer_3);
+                        clearInterval(window.timer_13);
                         me.removespan();
                         me.count--;
                         me.addspan();
@@ -119,7 +119,7 @@
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
-                        clearInterval(window.timer_3);
+                        clearInterval(window.timer_13);
                         me.removespan();
                         me.count--;
                         me.addspan();
@@ -138,7 +138,7 @@
                     if (me.is_can) {
                         me.is_can = false;
                         me.removespan();
-                        clearInterval(window.timer_3);
+                        clearInterval(window.timer_13);
                         me.count++;
                         me.removespan();
                         me.addspan();
@@ -157,7 +157,7 @@
                     if (me.is_can) {
                         me.is_can = false;
                         me.removespan();
-                        clearInterval(window.timer_3);
+                        clearInterval(window.timer_13);
                         me.count++;
                         me.removespan();
                         me.addspan();

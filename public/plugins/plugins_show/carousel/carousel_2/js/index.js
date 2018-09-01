@@ -28,9 +28,9 @@
                 DD.addClass(me.span[index], 'active');
             };
             me.updata = function() {
-                clearInterval(window.timer_2);
+                clearInterval(window.timer_12);
                 me.is_can = false;
-                window.timer_2 = setInterval(function() {
+                window.timer_12 = setInterval(function() {
                     me.is_can = false;
                     me.count+=me.direct;
                     me.removespan();
@@ -83,7 +83,7 @@
                 view: view,
                 handler: function() {
                     if (me.is_can) {
-                        clearInterval(window.timer_2);
+                        clearInterval(window.timer_12);
                         me.is_can = false;
                         me.count--;
                         me.removespan();
@@ -98,7 +98,7 @@
                 view: view.querySelector(".right"),
                 handler: function() {
                     if (me.is_can) {
-                        clearInterval(window.timer_2);
+                        clearInterval(window.timer_12);
                         me.is_can = false;
                         me.count--;
                         me.removespan();
@@ -113,7 +113,7 @@
                 view: view,
                 handler: function() {
                     if (me.is_can) {
-                        clearInterval(window.timer_2);
+                        clearInterval(window.timer_12);
                         me.is_can = false;
                         me.count++;
                         me.removespan();
@@ -128,7 +128,7 @@
                 view: view.querySelector(".left"),
                 handler: function() {
                     if (me.is_can) {
-                        clearInterval(window.timer_2);
+                        clearInterval(window.timer_12);
                         me.is_can = false;
                         me.count++;
                         me.removespan();

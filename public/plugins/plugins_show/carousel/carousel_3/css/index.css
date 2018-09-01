@@ -1,15 +1,16 @@
 .el-plugin {
-    margin-top: 200px;
+
 }
 
 .el-plugin .plugin .content {
+    margin:0 auto;
     width: 20rem;
     height: 7.78rem;
     overflow: hidden;
     position: relative;
 }
 
-.el-plugin .plugin .content .img-photo {
+.el-plugin .plugin .content .img-photo3 {
     float: left;
     transition: all 1.5s;
     transform-style: preserve-3d;
@@ -26,7 +27,7 @@
 
 .el-plugin .plugin .content .span .span-cont {
     height: 100%;
-    width: 100px;
+    width: 50%!important;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -44,12 +45,41 @@
     background-color: #ff6800;
 }
 
-.el-plugin .plugin .content .img-photo .img {
+.el-plugin .plugin .content .img-photo3 .img {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
-.el-plugin .plugin .content .img-photo .index {
+.el-plugin .plugin .content .img-photo3 .index {
     z-index: 1000;
+}
+.el-plugin .plugin .content .left {
+     background-color: #eeeeee63;
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    left: 0;
+    background-image: url(../img/left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.el-plugin .plugin .content .right {
+     background-color: #eeeeee63; 
+    z-index: 9999;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 25px;
+    right: 0;
+    background-image: url(../img/right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }

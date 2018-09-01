@@ -8,7 +8,7 @@
     <div src="{{url}}" alt='图片库' x-repeat='img_item' style="background-image: url('{{url}}');background-size:100% 100%" class='img'></div>
   </div>
   <div style="clear:both"></div>
-  <div class='span'>
+  <div class='spans'>
      <div class='span-cont'>
         <span x-repeat='span' class='item-span' style="width:{{width}}px;height:{{height}}px"></span>
      </div>
@@ -27,9 +27,9 @@
             me.time_count = 0;
             //更新页面
             me.updata = function() {
-                clearInterval(window.timer_4);
+                clearInterval(window.timer_14);
                 me.is_can = false;
-                window.timer_4 = setInterval(function() {
+                window.timer_14 = setInterval(function() {
                     me.is_can = false;
                     me.count+=me.dx;
                     me.removespan();
@@ -96,7 +96,7 @@
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
-                        clearInterval(window.timer_4);
+                        clearInterval(window.timer_14);
                         me.removespan();
                         me.count--;
                         me.addspan();
@@ -115,7 +115,7 @@
                     if (me.is_can) {
                         me.is_can = false;
                         me.removespan();
-                        clearInterval(window.timer_4);
+                        clearInterval(window.timer_14);
                         me.count++;
                         me.removespan();
                         me.addspan();
@@ -134,7 +134,7 @@
                     if (me.is_can) {
                         me.is_can = false;
                         me.removespan();
-                        clearInterval(window.timer_4);
+                        clearInterval(window.timer_14);
                         me.count++;
                         me.removespan();
                         me.addspan();
@@ -152,7 +152,7 @@
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
-                        clearInterval(window.timer_4);
+                        clearInterval(window.timer_14);
                         me.removespan();
                         me.count--;
                         me.addspan();
