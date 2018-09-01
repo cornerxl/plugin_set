@@ -10,7 +10,8 @@
         templateUrl: HTMLURL + '/plugin_list/plugin_instruction/plugin_instruction.html',
         requires: [
             {type:'js',path:PLUGINURL + '/plugins_show/example/page_1/js/index.js'},
-            {type:'css',path:PLUGINURL + '/plugins_show/example/page_1/css/index.css'}
+            {type:'css',path:PLUGINURL + '/plugins_show/example/page_1/css/index.css'},
+            {type:'css',path:CSSURL + '/plugin_instruction.css'}
         ],
         data: {},
         modules:[{
