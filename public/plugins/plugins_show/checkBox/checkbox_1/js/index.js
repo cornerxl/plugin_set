@@ -5,7 +5,7 @@
         init: function(view) {
             var template = `<div class="check-content">
 		<div class="empty"></div>
-		<div class="check" x-class="{'no-check':'!yes','check':'yes'}"></div>
+		<div class="check"></div>
 	</div>`;
             view.innerHTML = template;
         },
@@ -15,24 +15,21 @@
             setTimeout(function() {
                 me.check = view.querySelector(".check");
                 me.empty = view.querySelector(".empty");
+                DD.css(me.empty,"background-color",data.empty_color);
+                if (data.yes) {
+                    DD.css(me.check, "background-color", data.check_color);
+                } else {
+                    DD.css(me.check, "background-color", data.no_check_color);
+                }
                 new DD.Event({
-                	view:me.check,
-                	eventName:"click",
-                	handler:function(){
-                		data.yes=!data.yes;
-                	}
+                    view:me.check,
+                    eventName:"click",
+                    handler:function(){
+                        data.yes=!data.yes;
+                    }
                 });
             }, 0);
         }
     }
     DD.Plugin.create("plugin_04001", plugin_04001);
-    DD.createModule({
-        el: '.nd-plugin-check-1',
-        data: {
-            check_color: '#26a2ff',
-            no_check_color: '#ffffff',
-            empty_color: '#cccccc',
-            yes: true,
-        },
-    });
 })()

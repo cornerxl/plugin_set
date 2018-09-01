@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
 }
+.el-tree .content{
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 250px;
+}
 
 .el-tree .content .item {
     cursor: pointer;

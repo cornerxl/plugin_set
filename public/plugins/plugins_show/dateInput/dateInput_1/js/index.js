@@ -3,11 +3,11 @@
  */
 
 (function() {
-    var xDate = function() {
+    var plugin_06001 = function() {
 
     };
 
-    xDate.prototype.init = function(view) {
+    plugin_06001.prototype.init = function(view) {
         var dataYear = DD.attr(view, 'Year');
         var dataMonth = DD.attr(view, 'Month');
         var dataDay = DD.attr(view, 'Day');
@@ -21,7 +21,7 @@
  		<div class="xDate-input">
  		<input type="text" name="" id='xDate-input'>
  		</div>
- 		<div class="xDate-calendar" x-if='show'>
+ 		<div class="xDate-calendar" x-show='show'>
  		<div class="xDate-date">
  		<div class="xDate-header">
  		<div class="xDate-btn fr" id='nextMonthBtn'>&gt;</div>
@@ -40,26 +40,6 @@
  		</div>
  		</div>
  		</div>
- 		<div class="xDate-config" x-model='xDate_color'>
- 		<div class="xDate-config-item">
- 		<span>表头颜色</span><input class="xDate-color" type="color" x-field='header_color' value="{{header_color}}">
- 		</div>
- 		<div class="xDate-config-item">
- 		<span>背景颜色</span><input class="xDate-color" type="color" x-field='bg_color' value="{{bg_color}}">
- 		</div>
- 		<div class="xDate-config-item">
- 		<span>别月颜色</span><input class="xDate-color" type="color" x-field='day_color' value="{{day_color}}">
- 		</div>
- 		<div class="xDate-config-item">
- 		<span>今日背景</span><input class="xDate-color" type="color" x-field='today_color' value="{{today_color}}">
- 		</div>
- 		<div class="xDate-config-item">
- 		<span>本月颜色</span><input class="xDate-color" type="color" x-field='month_color' value="{{month_color}}">
- 		</div>
- 		<div class="xDate-config-item">
- 		<button class='xDate-apply'>应用</button>
- 		</div>
- 		</div>
  		</div>
  		</div>`;
         view.innerHTML = template;
@@ -67,7 +47,7 @@
         view.$forceRender = true;
     }
 
-    xDate.prototype.render = function(view) {
+    plugin_06001.prototype.render = function(view) {
         var me = this;
         var data = view.$getData().data;
         if (!data) {
@@ -212,13 +192,12 @@
                 data.xDate.day = d.day;
                 input.value = data.xDate.year + '/' + data.xDate.month + '/' + data.xDate.day;
             }
-
             if (data.xDate.show) {
                 me.preBtn = view.querySelector('#preMonthBtn');
                 me.nextBtn = view.querySelector('#nextMonthBtn');
-                me.doBtn = view.querySelector('.xDate-apply');
-                // var days=view.getElementsByClassName('xDate-day');
+                var days=view.getElementsByClassName('xDate-day');
                 me.todayBtn = view.querySelector('#goToToday');
+
                 new DD.Event({
                     eventName: 'click',
                     view: me.preBtn,
@@ -233,16 +212,9 @@
 
                 new DD.Event({
                     eventName: 'click',
-                    view: me.doBtn,
-                    handler: updateCSS
-                })
-
-                new DD.Event({
-                    eventName: 'click',
                     view: me.todayBtn,
                     handler: backToday
                 })
-
                 for (var i = 0; i < me.days.length; i++) {
                     new DD.Event({
                         eventName: 'click',
@@ -259,61 +231,5 @@
             })
         }
     }
-    DD.Plugin.create("xDate", xDate);
-    DD.createModule({
-        name: 'm_plugin_download_Date_1',
-        el:".plugin-date",
-        data: {
-            xDate: {
-                year: "", //当前 年/月/日
-                month: "",
-                day: "",
-                show: true,
-                xDate_color: { //日历自定义颜色
-                    header_color: '#e6e6e6',
-                    bg_color: '#fff',
-                    day_color: '#555555',
-                    today_color: '#112233',
-                    month_color: '#333333',
-                },
-                xDate_day: [{ //日历头部
-                    day: "日"
-                }, {
-                    day: "一"
-                }, {
-                    day: "二"
-                }, {
-                    day: "三"
-                }, {
-                    day: "四"
-                }, {
-                    day: "五"
-                }, {
-                    day: "六"
-                }],
-                xDate_week: [] //日历日期内容
-            }
-        },
-        onBeforeFirstRender:function(){
-            var me=this;
-            my_data=me.data.xDate.xDate_color;
-             if(window.data){
-                if(window.data.bg_color){
-                    my_data.bg_color=window.data.bg_color;
-                }
-                if(window.data.header_color){
-                    my_data.header_color=window.data.header_color;
-                }
-                if(window.data.day_color){
-                    my_data.day_color=window.data.day_color;
-                }
-                if(window.data.today_color){
-                    my_data.today_color=window.data.tody_color;
-                }
-                if(window.data.month_color){
-                    my_data.month_color=window.data.month_color;
-                }
-            }
-        }
-    });
+    DD.Plugin.create("plugin_06001", plugin_06001);
 }());

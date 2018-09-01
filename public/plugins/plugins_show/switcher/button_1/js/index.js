@@ -1,6 +1,6 @@
 ;(function(){
-	var button_list=function(){};
-	button_list.prototype={
+	var plugin_12004=function(){};
+    plugin_12004.prototype={
 		init:function(view){
 			var template=`<div class="nd-plugin-list-1">
 	<div x-repeat="list_one" class="list_one">{{value}}</div>
@@ -99,51 +99,5 @@
 			},0);
 		}
 	};
-	DD.Plugin.create("button-list",button_list);
-	DD.createModule({
-		el:'.nd-plugin-button-1',
-		data:{
-			list_one:[{
-				value:"危险"
-			},{
-				value:"警告"
-			},{
-				value:"成功"
-			}],
-			list_two:[{
-				name:"删除",
-				value:"delete"
-			},{
-				name:"编辑",
-				value:"edit"
-			},{
-				name:"分享",
-				value:"share"
-			}],
-			list_three:[{
-				value:"keyboard_arrow_down"
-			},{
-				value:"keyboard_arrow_up"
-			},{
-				value:"keyboard_arrow_left"
-			}],
-			color_1:"#e53935",
-			color_2:"#e53935",
-			color_3:"#4caf50"
-		},
-		onBeforeFirstRender:function(){
-			var me=this;
-			if(window.data){
-				if(window.data.color_1){
-					me.data.color_1=window.data.color_1;
-				}
-				if(window.data.color_2){
-					me.data.color_2=window.data.color_2;
-				}
-				if(window.data.color_3){
-					me.data.color_3=window.data.color_3;
-				}
-			}
-		}
-	});
+	DD.Plugin.create("plugin_12004",plugin_12004);
 })()

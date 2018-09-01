@@ -43,6 +43,7 @@
             var me = this;
             me.datas = view.$getData().data;
             me.one = me.datas.first;
+            //每次渲染都会执行那么第一次执行完毕就可以不用执行了
             if (!me.one) {
                 return;
             }
@@ -155,7 +156,7 @@
                         break;
                 }
                 me.datas.H = me.rotate;
-                me.datas.s = s*255;
+                me.datas.s = s*255|0;
                 me.datas.v = v;
             };
             setTimeout(function() {
@@ -262,10 +263,9 @@
                         flag_2 = 0;
                     }
                 });
-
                 new DD.Event({
                     view: view.querySelector(".ensure"),
-                    eventName: "mouseup",
+                    eventName: "click",
                     nopopo: true,
                     handler: function(e, data, view) {
                         //颜色特殊处理一下
@@ -297,7 +297,7 @@
                             }
                             var x = swicth(parseInt(num / 16));
                             var y = swicth(num % 16);
-                            return x + y;
+                            return x+y;
                         }
                         data.show = false;
                         data.str = "#" + change(data.r) + "" + change(data.g) + "" + change(data.b) + "";

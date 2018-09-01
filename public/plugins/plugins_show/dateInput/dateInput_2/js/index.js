@@ -3,8 +3,8 @@
  */
 
 (function() {
-    var Select = function() {};
-    Select.prototype.init = function(view) {
+    var plugin_06002 = function() {};
+    plugin_06002.prototype.init = function(view) {
         var me = this;
         var template = "<div class='nd-plugin-select-box'><div class='quit-area'></div><div class='select-area'><div class='select-header'><div class='header-left' e-click='confirm'>取消</div><div class='header-middle'>选择日期</div><div class='header-right' e-click='confirm'>确定</div><div class='clear'></div></div><div class='select-content'><ul class='options'><li class='option' x-repeat='options'>{{date}}</li></ul><div class='nowOption'></div></div></div></div>"
         view.innerHTML = template;
@@ -12,7 +12,7 @@
         view.$forceRender = true;
     };
 
-    Select.prototype.render = function(view) {
+    plugin_06002.prototype.render = function(view) {
         var me = this;
         var data = view.$getData().data;
         var canMove = false;
@@ -127,81 +127,15 @@
 
         }
     }
-
-    DD.Plugin.create('Select', Select);
     DD.createModule({
-        name: 'm_plugin',
-        el: '.plugin-select',
-        onReceive: function(m, data) {
-            var me = this;
-            if (m === 'm_show') {
-                me.data.show = data.show;
-            }
-        },
-        data: {
-            nowDate: '周一',
-            show: false,
-            options: [{
-                date: '周一'
-            }, {
-                date: '周二'
-            }, {
-                date: '周三'
-            }, {
-                date: '周四'
-            }, {
-                date: '周五'
-            }, {
-                date: '周六'
-            }, {
-                date: '周日'
-            }, ],
-            select_color: '#ffffff',
-            font_color: '#000000',
-            font_size: 20
-        },
-        onBeforeFirstRender: function() {
-            var me = this;
-            if (window.data) {
-                if (window.data.select_color) {
-                    me.data.select_color = window.data.select_color;
-                }
-                if (window.data.font_color) {
-                    me.data.font_color = window.data.font_color;
-                }
-                if (window.data.font_size) {
-                    me.data.font_size = window.data.font_size;
-                }
-            }
-        },
-        methods: {
-            confirm: function(e, d, v) {
-                var me = this;
-                me.module.send('m_show', { nowDate: me.data.nowDate });
-                me.data.show = false;
-            },
-            cancel: function(e, d, v) {
-                var me = this;
-                me.data.show = false;
-            }
-        }
-    });
-
-    DD.createModule({
-        name: 'm_show',
+        name: 'm_plugin_show',
         el: '.show',
         onReceive: function(m, d) {
             var me = this;
-            if (m === 'm_plugin') {
+            if (m === 'm_plugin_06002') {
                 me.data.$set('nowDate', d.nowDate);
             }
         },
-        methods: {
-            show: function() {
-                var me = this;
-                me.module.send('m_plugin', { show: true });
-            }
-        }
-    })
-
+    });
+    DD.Plugin.create('plugin_06002', plugin_06002);
 }());

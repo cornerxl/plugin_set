@@ -1,6 +1,6 @@
 ;(function() {
-    var mytable = function() {};
-    mytable.prototype = {
+    var plugin_13001 = function() {};
+    plugin_13001.prototype = {
         init: function(view) {
             var tem = `<div class="common">
             <div class="left">
@@ -95,7 +95,6 @@
                 DD.css(me.first_thead, "border", "1px solid #ddd");
                 DD.css(me.header, "width", me.second_thead.offsetWidth + 'px');
                 DD.css(me.header, "top", me.view.offsetTop + 'px');
-                console.log(me.view.offsetTop);
             }
             setTimeout(function() {
                 me.reverse = view.querySelector('.reverse');
@@ -123,7 +122,6 @@
                     eventName: 'click',
                     view: view.querySelector('.search-btn'),
                     handler: function(e, data, v) {
-                        console.log(v.nextElementSibling.firstElementChild);
                         var tem=v.nextElementSibling.firstElementChild.value.replace(/ /ig,'');
                         var url='';
                         var params={
@@ -269,89 +267,5 @@
             }, 0);
         }
     };
-    DD.Plugin.create('table', mytable);
-    DD.createModule({
-        el: '.el-plugin-table-1',
-        data: {
-            aa: 1,
-            d: [1, 2, 3],
-            table: {
-                show_reverse: false,
-                check_all: false,
-                thead: [{ name: '姓名' }, { name: '年龄' }, { name: '身高' }, { name: '体重' }, { name: '学历' }, { name: '工作经历' }],
-                reverse: [{ name: '姓名', field: '' }, { name: '年龄', field: '' }, { name: '身高', field: '' }, { name: '体重', field: '' }, { name: '学历', field: '' }, { name: '工作经历', field: '' }],
-                th: [{
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 100 }, { ct: '171' }, { ct: '53' }, { ct: '本科' }, { ct: '2年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 101 }, { ct: '173' }, { ct: '53' }, { ct: '本科' }, { ct: '1年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 107 }, { ct: '172' }, { ct: '53' }, { ct: '本科' }, { ct: '5年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 102 }, { ct: '173' }, { ct: '53' }, { ct: '本科' }, { ct: '3年' }]
-                }, {
-                    check: true,
-                    td: [{ ct: '张三' }, { ct: 101 }, { ct: '173' }, { ct: '53' }, { ct: '本科' }, { ct: '3年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 128 }, { ct: '177' }, { ct: '53' }, { ct: '本科' }, { ct: '3年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 128 }, { ct: '175' }, { ct: '53' }, { ct: '本科' }, { ct: '3年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 128 }, { ct: '178' }, { ct: '53' }, { ct: '本科' }, { ct: '3年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 128 }, { ct: '173' }, { ct: '53' }, { ct: '本科' }, { ct: '3年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 128 }, { ct: '179' }, { ct: '53' }, { ct: '本科' }, { ct: '3年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 128 }, { ct: '173' }, { ct: '53' }, { ct: '本科' }, { ct: '3年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 128 }, { ct: '173' }, { ct: '53' }, { ct: '本科' }, { ct: '3年' }]
-                }, {
-                    check: false,
-                    td: [{ ct: '张三' }, { ct: 128 }, { ct: '173' }, { ct: '53' }, { ct: '本科' }, { ct: '3年' }]
-                }],
-            }
-        },
-        onBeforeFirstRender: function() {
-            var me = this;
-            //清楚数据的方法
-            // me.module.methodFactory.methods.clear.call(me, me.data);
-            console.log(me.data);
-        },
-        methods: {
-            clear: function(obj) {
-                var me = this;
-                for (var i in obj) {
-                    if (obj.hasOwnProperty(i) && i.indexOf('$') === -1) {
-                        if (typeof obj[i] === 'object') {
-                            if (obj[i] instanceof Array) {
-                                obj[i].forEach(function(it,index,arr) {
-                                    if(typeof it==='object'){
-                                    me.module.methodFactory.methods.clear.call(me, it);}
-                                    else{
-                                        arr[index]='';
-                                    }
-                                    return ;
-                                });
-                            } else {
-                                me.module.methodFactory.methods.clear.call(me, obj[i]);
-                            }
-                        } else {
-                            obj[i] ='';
-                        }
-                    }
-                }
-            }
-        }
-    });
+    DD.Plugin.create('plugin_13001', plugin_13001);
 })();

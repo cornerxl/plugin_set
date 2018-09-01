@@ -1,12 +1,8 @@
-.plugin-dragprobarHV {
-    width: 200px;
-    height: 10px;
-    background: rgba(96,96,96,0.5);
-}
-
 .nd-plugin-dragprobar-box {
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
-
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -25,7 +21,7 @@
 }
 
 .nd-plugin-dragprobar-box .nd-plugin-dragprobar-total .nd-plugin-dragprobar-btn {
-    position: relative;
+    position: absolute;
     display: block;
     width: 10px;
     height: 10px;

@@ -1,6 +1,6 @@
 ;
 (function() {
-    var plugin_03003 = function() {};
+    plugin_03003 = function() {};
     plugin_03003.prototype = {
         init: function(view) {
             var tem = ` <div class='content' x-model='ca_photo'>
@@ -13,6 +13,8 @@
         <span x-repeat='imgs' class='item-span'></span>
      </div>
   </div>
+ <div class="left"><div class="img-content"></div></div>
+  <div class="right"><div class="img-content"></div></div>
     </div>`
             view.innerHTML = tem;
         },
@@ -24,13 +26,16 @@
             //由于有数组个translationend事件 用来标记
             me.time_count = 0;
             //更新页面
-            me.dx=view.$getData().data.dx;
+            me.direct=1;
+            if(view.$getData().data.small_div.left){
+                me.direct=-1;
+            }
             me.updata = function() {
-                clearInterval(window.timer);
+                clearInterval(window.timer_3);
                 me.is_can = false;
-                window.timer = setInterval(function() {
-                     me.is_can = false;
-                    me.count+=me.dx;
+                window.timer_3 = setInterval(function() {
+                    me.is_can = false;
+                    me.count+=me.direct;
                     me.removespan()
                     me.addspan();
                     me.tem.forEach(function(item, index) {
@@ -55,15 +60,15 @@
                     DD.removeClass(item, 'is_check');
                 })
             }
-            me.getheight=function(){
-                var r=Math.PI*2;
-                var rad=r/me.img_arr.length;
-                me.rotateZ=me.imgh/(2*Math.tan(rad/2));
+            me.getheight = function() {
+                var r = Math.PI * 2;
+                var rad = r / me.img_arr.length;
+                me.rotateZ = me.imgh / (2 * Math.tan(rad / 2));
             }
             //在渲染完毕开始执行
             setTimeout(function() {
                 window.addEventListener('transitionend', function() {
-                    me.time_count+=me.dx;
+                    me.time_count+=me.direct;
                     if (me.time_count === me.tem.length) {
                         me.is_can = true;
                         me.time_count = 0;
@@ -71,20 +76,19 @@
                 });
                 //span数组
                 me.span = view.querySelectorAll('.item-span');
-                 me.spans=view.querySelector('.span-cont');
-                var temp=me.span.length*25;
-                DD.css(me.spans,'width',temp+'px');
+                me.spans = view.querySelector('.span-cont');
+                var temp = me.span.length * 25;
                 //获取容器高度用来呈现3d效果
-                me.imgh = parseInt(DD.css(document.querySelector('.content'), 'height'));
+                me.imgh = parseInt(DD.css(view.querySelector('.content'), 'height'));
                 //imgs下面的小数组
-                me.tem = document.querySelectorAll(".img-photo");
+                me.tem = view.querySelectorAll(".img-photo");
                 //操作小数组下面的元素
-                me.tem.forEach(function(item,index) {
-                   me.img_arr = Array.from(item.getElementsByTagName('DIV'));
-                   me.getheight();
-                   me.img_arr.forEach(function(i,d,a){
-                    i.style.transform = 'rotateX(' + d * parseInt(360 / a.length) + 'deg) translateZ(' + me.rotateZ+ 'px)';
-                   });
+                me.tem.forEach(function(item, index) {
+                    me.img_arr = Array.from(item.getElementsByTagName('DIV'));
+                    me.getheight();
+                    me.img_arr.forEach(function(i, d, a) {
+                        i.style.transform = 'rotateX(' + d * parseInt(360 / a.length) + 'deg) translateZ(' + me.rotateZ + 'px)';
+                    });
                 });
                 //初始化第一个span
                 me.addspan();
@@ -97,7 +101,25 @@
                 handler: function(e, data, view) {
                     if (me.is_can) {
                         me.is_can = false;
-                        clearInterval(window.timer);
+                        clearInterval(window.timer_3);
+                        me.removespan();
+                        me.count--;
+                        me.addspan();
+                        me.tem.forEach(function(item, index) {
+                            item.style.transform = 'rotateX(' + parseInt(360 / me.img_arr.length) * -1 * me.count + 'deg)';
+                            item.style.transitionDelay = index * 0.3 + 's';
+                        });
+                        me.updata();
+                    }
+                }
+            });
+            new DD.Event({
+                eventName: 'click',
+                view: view.querySelector(".left"),
+                handler: function(e, data, view) {
+                    if (me.is_can) {
+                        me.is_can = false;
+                        clearInterval(window.timer_3);
                         me.removespan();
                         me.count--;
                         me.addspan();
@@ -116,7 +138,7 @@
                     if (me.is_can) {
                         me.is_can = false;
                         me.removespan();
-                        clearInterval(window.timer);
+                        clearInterval(window.timer_3);
                         me.count++;
                         me.removespan();
                         me.addspan();
@@ -129,19 +151,38 @@
                 }
             });
             new DD.Event({
-                eventName:'mouseenter',
-                view:view,
-                handler:function(){
-                    clearInterval(window.timer);
+                eventName: 'click',
+                view: view.querySelector(".right"),
+                handler: function(e, data, view) {
+                    if (me.is_can) {
+                        me.is_can = false;
+                        me.removespan();
+                        clearInterval(window.timer_3);
+                        me.count++;
+                        me.removespan();
+                        me.addspan();
+                        me.tem.forEach(function(item, index) {
+                            item.style.transform = 'rotateX(' + parseInt(360 / me.img_arr.length) * -1 * me.count + 'deg)';
+                            item.style.transitionDelay = index * 0.3 + 's';
+                        });
+                        me.updata();
+                    }
                 }
             });
-            new DD.Event({
-                eventName:'mouseleave',
-                view:view,
-                handler:function(){
-                    me.updata();
-                }
-            });
+            // new DD.Event({
+            //     eventName: 'mouseenter',
+            //     view: view,
+            //     handler: function() {
+            //         clearInterval(window.timer_3);
+            //     }
+            // });
+            // new DD.Event({
+            //     eventName: 'mouseleave',
+            //     view: view,
+            //     handler: function() {
+            //         me.updata();
+            //     }
+            // });
         }
     };
     DD.Plugin.create('plugin_03003', plugin_03003);

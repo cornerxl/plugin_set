@@ -2,12 +2,12 @@
  * switcher
  */
 
-(function() {
-    var Switcher = function() {
+(function () {
+    var plugin_12001 = function () {
 
     };
 
-    Switcher.prototype.init = function(view) {
+    plugin_12001.prototype.init = function (view) {
         var me = this;
         var template = `<div class="nd-plugin-switcher-box">
             <div class="nd-plugin-switcher-btn" style="width:{{width_d/4}}px;height:{{width_d/4}}px"></div></div>`;
@@ -23,7 +23,7 @@
         view.$forceRender = true;
     }
 
-    Switcher.prototype.render = function(view) {
+    plugin_12001.prototype.render = function (view) {
         var me = this;
         var data = view.$getData().data;
         if (!data) {
@@ -61,7 +61,7 @@
 
 
             //点击事件
-            var clickEvent = function(e, d, v) {
+            var clickEvent = function (e, d, v) {
                 if (data[view.$dataItem]) {
                     data[view.$dataItem] = false;
                     DD.css(switcherBox, 'background-color', '#4BD763');
@@ -104,29 +104,5 @@
         }
     }
 
-    DD.Plugin.create("switcher", Switcher);
-    DD.createModule([{
-        el: '.plugin-switcher',
-        data: {
-            switcher: true,
-            width_d: window.innerWidth * 0.5,
-            color_1: "#4BD763",
-            color_2: "#F9F9F9",
-            color_3: "#ffffff"
-        },
-        onBeforeFirstRender: function() {
-            var me = this;
-            if (window.data) {
-                if (window.data.color_1) {
-                    me.data.color_1 = window.data.color_1;
-                }
-                if (window.data.color_2) {
-                    me.data.color_2 = window.data.color_2;
-                }
-                if (window.data.color_3) {
-                    me.data.color_3 = window.data.color_3;
-                }
-            }
-        }
-    }]);
+    DD.Plugin.create("plugin_12001", plugin_12001);
 }());

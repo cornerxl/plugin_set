@@ -2,16 +2,16 @@
  * Created by xll on 2017/11/28.
  */
 
-(function () {
+(function() {
     /**
      * 数据项配置说明
      * 参数proBar的取值为0~1或者是百分比,若是百分比，值为字符串
      */
-    var plugin_11002 = function () {
+    var plugin_11002 = function() {
 
     }
 
-    plugin_11002.prototype.init = function (view) {
+    plugin_11002.prototype.init = function(view) {
         var me = this;
         var template = `<div class="nd-plugin-probar-box">
                             <div class="nd-plugin-probar-total">
@@ -29,72 +29,75 @@
         view.$forceRender = true;
     }
 
-    plugin_11002.prototype.render = function (view) {
+    plugin_11002.prototype.render = function(view) {
         var me = this;
-        var data = view.$getData().data.data;
-        if(!data){
+        var data = view.$getData().data;
+        if (!data) {
             return;
         }
         var module;
-        if(!data.module){
+        if (!data.module) {
             module = view.$module;
-        }else {
+        } else {
             module = data.module;
         }
-        if(!module){
+        if (!module) {
             return;
         }
         setTimeout(delayRender, 0);
 
-        function delayRender(){
-            var total = document.querySelector(".nd-plugin-probar-total");
-            var pro = document.querySelector(".nd-plugin-probar-pro");
-            var percent = document.querySelector(".nd-plugin-probar-percent");
+        function delayRender() {
+            var total = view.querySelector(".nd-plugin-probar-total");
+            var pro = view.querySelector(".nd-plugin-probar-pro");
+            var percent = view.querySelector(".nd-plugin-probar-percent");
+            DD.css(percent, "color", data.color_1);
+            DD.css(pro, "background-color", data.color_2);
+            DD.css(total, "background-color", data.color_3);
             var totalHeight = window.getComputedStyle(total, null).height;
-            if(data[view.$showItem]){
+            if (data[view.$showItem]) {
                 //判断data[view.$dataName]是百分比还是小数
-                if(typeof data[view.$dataName] === 'string'){
+                if (typeof data[view.$dataName] === 'string') {
                     var percentNum = parseInt(data[view.$dataName].replace("%", ""));
-                    if(percentNum >= 0 && percentNum <= 100){
+                    if (percentNum >= 0 && percentNum <= 100) {
                         DD.css(pro, 'width', data[view.$dataName]);
                         percent.innerText = data[view.$dataName];
                         DD.css(percent, 'left', data[view.$dataName]);
-                    }else {
+                    } else {
                         alert("百分比取值为1%~100%");
                     }
-                }else {
+                } else {
                     //判断小数是否在0~1范围
-                    if(data[view.$dataName] >= 0 && data[view.$dataName] <= 1){
+                    if (data[view.$dataName] >= 0 && data[view.$dataName] <= 1) {
                         DD.css(pro, 'width', data[view.$dataName] * 100 + '%');
                         percent.innerText = data[view.$dataName] * 100 + '%';
                         var percentRight = parseFloat(data[view.$dataName]) * 100 + '%';
                         DD.css(percent, 'left', percentRight);
-                    }else if(data[view.$dataName] < 0 || data[view.$dataName] > 1){
+                    } else if (data[view.$dataName] < 0 || data[view.$dataName] > 1) {
                         alert("请输入正确的proBar值！");
                     }
                 }
 
-            }else {
-                if(typeof data[view.$dataName] === 'string'){
+            } else {
+                if (typeof data[view.$dataName] === 'string') {
                     var percentNum = parseInt(data[view.$dataName].replace("%", ""));
-                    if(percentNum >= 0 && percentNum <= 100){
+                    if (percentNum >= 0 && percentNum <= 100) {
                         DD.css(pro, 'width', data[view.$dataName]);
-                    }else {
+                    } else {
                         alert("百分比取值为1%~100%");
                     }
-                }else {
-                    if(data[view.$dataName] >= 0 && data[view.$dataName] <= 1){
+                } else {
+                    if (data[view.$dataName] >= 0 && data[view.$dataName] <= 1) {
                         DD.css(pro, 'width', data[view.$dataName] * 100 + '%');
-                    }else if(data[view.$dataName] < 0 || data[view.$dataName] > 1){
+                    } else if (data[view.$dataName] < 0 || data[view.$dataName] > 1) {
                         alert("请输入正确的proBar值！");
                     }
                 }
             }
 
             DD.css(pro, 'height', totalHeight);
-            DD.css(pro, 'border-radius', parseInt(totalHeight) / 2 + 'px');
+            DD.css(pro, 'border-radius', parseInt(totalHeight) / 1.5 + 'px');
         }
-    }
+    };
 
     DD.Plugin.create("plugin_11002", plugin_11002);
-}())
+}());

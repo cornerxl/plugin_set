@@ -1,22 +1,23 @@
 .el-svg-1{
+	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: relative;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+	width: 100%;
 }
 .el-svg-1 .content{
 	width: 350px;
+	display: flex;
+	justify-content: center;
+}
+.el-svg-1 .content .ct{
 	position: relative;
 }
-.el-svg-1 .content .svg{
+.el-svg-1 .content .ct .svg{
 	vertical-align: middle;
 	display: inline-block;
 	font-size:0;
 }
-.el-svg-1 .content .num{
+.el-svg-1 .content .ct .num{
 	position: absolute;
 	top:0;
 	left:0;
@@ -25,9 +26,8 @@
 	line-height: 200px;
 	text-align: center;
 	font-size:40px;
-	/*color:#ccc;*/
 }
-.el-svg-1 .content .input{
+.el-svg-1 .content .ct .input{
 	font-size:0;
 	display: inline-block;
 	vertical-align: middle;
@@ -37,12 +37,12 @@
 	border-radius: 3px;
 	cursor: pointer;
 }
-.el-svg-1 .content .input div{
+.el-svg-1 .content .ct .input div{
 	height: 40px;
 	line-height: 40px;
 	font-size: 20px;
 	text-align: center;
 }
-.el-svg-1 .content .input .plus{
+.el-svg-1 .content .ct .input .plus{
 	border-bottom: 1px solid #ccc;
 }
