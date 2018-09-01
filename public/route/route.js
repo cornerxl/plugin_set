@@ -14,8 +14,53 @@
                     path: '/plugin_list',
                     module: 'm_plugin_list',
                     routes: [{
-                        path: '/::type',
-                        module: 'm_plugin_type'
+                        path: '/instruction',
+                        module: 'm_plugin_instruction'
+                    },{
+                        path: '/address',
+                        module: 'm_plugin_address'
+                    },{
+                        path: '/buffering',
+                        module: 'm_plugin_buffering'
+                    },{
+                        path: '/carousel',
+                        module: 'm_plugin_carousel'
+                    },{
+                        path: '/checkBox',
+                        module: 'm_plugin_checkBox'
+                    },{
+                        path: '/colorPicker',
+                        module: 'm_plugin_colorPicker'
+                    },{
+                        path: '/dateInput',
+                        module: 'm_plugin_dateInput'
+                    },{
+                        path: '/foldCollapse',
+                        module: 'm_plugin_foldCollapse'
+                    },{
+                        path: '/imgShow',
+                        module: 'm_plugin_imgShow'
+                    },{
+                        path:'/inputAuto',
+                        module:'m_plugin_inputAuto'
+                    },{
+                        path:'/paging',
+                        module:'m_plugin_paging'
+                    },{
+                        path:'/progress',
+                        module:'m_plugin_progress'
+                    },{
+                        path:'/slideImg',
+                        module:'m_plugin_slideImg'
+                    },{
+                        path:'/switcher',
+                        module:'m_plugin_switcher'
+                    },{
+                        path:'/table',
+                        module:'m_plugin_table'
+                    },{
+                        path:'/tree',
+                        module:'m_plugin_tree'
                     }]
                 }, {
                     path: '/plugin_download',
