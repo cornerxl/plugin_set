@@ -11,6 +11,7 @@
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
+    height: 100px;
 }
 
 .mask {
@@ -53,9 +54,6 @@
 
 
 .nd-plugin-buffering-loader > div {
-	background-color: #999;
-    width: 10px;
-    height: 10px;
     border-radius: 100%;
     margin: 2px;
     -webkit-animation-fill-mode: both;
