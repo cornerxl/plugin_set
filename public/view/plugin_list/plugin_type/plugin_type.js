@@ -16,18 +16,27 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    </div>`;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                + i.template + `</div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>
+                                <div class="instruction-code">` + i.htmlcode +  `</div>
+                                <br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>
+                                <div class="instruction-code">` + i.jscode + `</div>
+                                <br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            </div>`;
                 });
                 props.template = tem;
             },
@@ -38,11 +47,26 @@
                 plugins: [
                     {
                         name: '01001',
-                        explain: "这是一款选择与获取当前省份的智能Location插件。插件分为''当前省份''、''热门省份''（现在写的是“热门城市”，改一下）以及按照拼音首字母排列的各个省份三个部分。通过点击省份名称，来改变''当前省份''。\n" +
-                            "本插件可自定义配置项包括：热门颜色、定位颜色、标题颜色。",
+                        explain: `这是一款选择与获取当前省份的智能Location插件。插件分为"当前省份"、"热门省份"以及按照拼音首字母排列的各个省份三个部分。通过点击省份名称，来改变"当前省份"。" `,
                         template: `<div class="position">
-		<div class="location" x-plugin="plugin_01001"></div>
-	</div>`,
+		                                <div class="location" x-plugin="plugin_01001"></div>
+	                                </div>`,
+                        htmlcode: `<pre>
+                                        <<span class="element">div</span> <span class="attr">class</span>="position">
+                                            <<span class="element">div</span> <span class="attr">class</span>="location" <span class="attr">x-plugin</span>="address"><<span class="element">/div</span>>
+	                                    <<span class="element">/div</span>>
+                                    </pre>`,
+                        jscode: `<pre>
+                                    <span>{</span>
+                                    <span>      name: 'address',</span>      <span class="comment">/*插件模块的模块名称*/</span>
+                                    <span>      el: '.location',</span>      <span class="comment">/*插件渲染容器*/</span>
+                                    <span>      data: {</span>
+                                    <span>            location_country:  '*****'</span>      <span class="comment">/*当前位置城市名*/</span>
+                                    <span>            popular_country: [{name: '北京'}]</span>      <span class="comment">/*热门城市数组*/</span>
+                                    <span>            small_div: {</span>      <span class="comment">/*颜色对象*/</span>
+                                    <span>      }</span>
+                                    <span>}</span>
+                                </pre>`,
                         data: {
                             location_country: '重庆',
                             popular_country: [
