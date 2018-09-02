@@ -12,22 +12,28 @@
             requires: [
                 {type: 'css', path: PLUGINURL + '/plugins_show/address/location_1/css/index.css'},
                 {type: 'js', path: PLUGINURL + '/plugins_show/address/location_1/js/index.js'}
+
             ],
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    </div>`;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                + i.template + `</div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            </div>`;
                 });
                 props.template = tem;
             },
@@ -38,11 +44,26 @@
                 plugins: [
                     {
                         name: '01001',
-                        explain: "这是一款选择与获取当前省份的智能Location插件。插件分为''当前省份''、''热门省份''以及按照拼音首字母排列的各个省份三个部分。通过点击省份名称，来改变''当前省份''。\n" +
-                            "本插件可自定义配置项包括：热门颜色、定位颜色、标题颜色。",
+                        explain: `这是一款选择与获取当前省份的智能Location插件。插件分为"当前省份"、"热门省份"以及按照拼音首字母排列的各个省份三个部分。通过点击省份名称，来改变"当前省份"。" `,
                         template: `<div class="position">
-		<div class="location" x-plugin="plugin_01001"></div>
-	</div>`,
+		                                <div class="location" x-plugin="plugin_01001"></div>
+	                                </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="position"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="location" <span class="attr">x-plugin</span>="address"><<span class="element">/div</span>></pre>
+	                                    <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre  class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'address',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.location',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span></pre>
+                                    <pre><span>            location_country:  '*****'</span>      <span class="comment">/*当前位置城市名*/</span></pre>
+                                    <pre><span>            popular_country: [{name: '北京'}]</span>      <span class="comment">/*热门城市数组*/</span></pre>
+                                    <pre><span>            small_div: {</span>      <span class="comment">/*颜色对象*/</span></pre>
+                                    <pre><span>      }</span></pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             location_country: '重庆',
                             popular_country: [
@@ -122,20 +143,27 @@
                 {type: 'js', path: PLUGINURL + '/plugins_show/buffering/animation_4/js/index.js'},
                 {type: 'css', path: PLUGINURL + '/plugins_show/buffering/animation_5/css/index.css'},
                 {type: 'js', path: PLUGINURL + '/plugins_show/buffering/animation_5/js/index.js'}
-            ], onStart: function (props) {
+            ],
+            onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div></div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                    + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>`;
                 });
                 props.template = tem + `</div>`;
             },
@@ -145,74 +173,155 @@
                 name: "缓冲",
                 plugins: [{
                     name: "02001",
-                    explain: "这是本系统第一个缓冲插件，即加载动画，由动感动画组成。\n" +
-                        "本插件可自定义配置项包括：泡泡颜色、动画时间。",
+                    explain: "这是本系统第一个缓冲插件，即加载动画，由动感动画组成。本插件可自定义配置项包括：泡泡颜色、动画时间、单个元素半径。",
                     template: `<div class="plugin-buffering" >
-		<div x-plugin='plugin_02001' dataName='preLocation'></div>
-	</div>`,
+		                            <div x-plugin='plugin_02001' dataName='buffering_data'></div>
+	                            </div>`,
+                    htmlcode: `<pre class="instruction-code">
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-1" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
+                                </pre>`,
+                    jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'buffering_1',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-buffering-1',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            buffering_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  show: true</span>      <span class="comment">/*在接收到消息时，显示动画*/</span></pre>
+                                    <pre><span>                  color: "#FF0000",</span>      <span class="comment">/*缓冲动画颜色*/</span></pre>
+                                    <pre><span>                  animation_time: 1</span>      <span class="comment">/*缓冲动画时间*/</span></pre>
+                                    <pre><span>                  radius: 5</span>      <span class="comment">/*缓冲动画单个圆半径*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                     data: {
-                        small_div: {
+                        buffering_data: {
+                            show: true,
                             animation_time: 1,
-                            color_1: "#999999999"
+                            color: "#FF0000",
+                            radius: 5,
                         }
                     }
                 }, {
                     name: "02002",
-                    explain: "这是本系统第二个缓冲插件，即加载动画，由动感动画组成。\n" +
-                        "本插件可自定义配置项包括：方块颜色、动画时间。",
-                    template: `<div x-plugin="plugin_02002">
-        </div>`,
+                    explain: "这是本系统第二个缓冲插件，即加载动画，由动感动画组成。本插件可自定义配置项包括：方块颜色、动画时间、动画外层盒子宽度、高度。",
+                    template: `<div x-plugin="plugin_02002" dataName='buffering_data'>
+                               </div>`,
+                    htmlcode: `<pre class="instruction-code">
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-2" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
+                                </pre>`,
+                    jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'buffering_2',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-buffering-2',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            buffering_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  show: true</span>      <span class="comment">/*在接收到消息时，显示动画*/</span></pre>
+                                    <pre><span>                  color: "#FF0000",</span>      <span class="comment">/*缓冲动画颜色*/</span></pre>
+                                    <pre><span>                  animation_time: 1</span>      <span class="comment">/*缓冲动画时间*/</span></pre>
+                                    <pre><span>                  width: 50,</span>      <span class="comment">/*缓冲动画长方形盒子宽度*/</span></pre>
+                                    <pre><span>                  height: 50</span>      <span class="comment">/*缓冲动画长方形盒子高度*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                     data: {
-                        show: true,
-                        width: 80,
-                        height: 100,
-                        color_1: '#FDB702',
-                        animation_time: 1.2
+                        buffering_data: {
+                            show: true,
+                            width: 40,
+                            height: 60,
+                            color: '#FDB702',
+                            animation_time: 1.2
+                        }
                     }
                 }, {
                     name: "02003",
-                    explain: "这是本系统第三个缓冲插件，即加载动画，由动感动画组成。\n" +
-                        "本插件可自定义配置项包括：圆环颜色、动画时间。",
-                    template: `<div class="com-loading-animation-3" x-if="datas.show">
-    <div class="imgbox">
-        <div class="leftbox">
-            <div class="left"></div>
-        </div>
-        <div class="rightbox">
-            <div class="right"></div>
-        </div>
-    </div>
-</div>`,
+                    explain: "这是本系统第三个缓冲插件，即加载动画，由动感动画组成。",
+                    template: `<div x-plugin="plugin_02003" dataName='buffering_data'>
+                               </div>`,
+                    htmlcode: `<pre class="instruction-code">
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-3" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
+                                </pre>`,
+                    jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'buffering_3',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-buffering-3',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            buffering_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  show: true</span>      <span class="comment">/*在接收到消息时，显示动画*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                     data: {
-                        datas: {
+                        buffering_data: {
                             show: true, // 是否显示
                         }
                     }
                 }, {
                     name: "02004",
-                    explain: "这是本系统第四个缓冲插件，即加载动画，由动感动画组成。\n" +
-                        "本插件可自定义配置项包括：颜色、动画时间。",
+                    explain: "这是本系统第四个缓冲插件，即加载动画，由动感动画组成。本插件可自定义配置项包括：颜色、动画时间、动画外层盒子宽度、高度。",
                     template: `<div class="el-animation-4">
-		<div x-plugin="plugin_02004" style="height:60px"></div>
-	</div>`,
+		                            <div x-plugin="plugin_02004" style="height:60px" dataName='buffering_data'></div>
+	                            </div>`,
+                    htmlcode: `<pre class="instruction-code">
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-4" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
+                                </pre>`,
+                    jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'buffering_4',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-buffering-4',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            buffering_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  show: true</span>      <span class="comment">/*在接收到消息时，显示动画*/</span></pre>
+                                    <pre><span>                  color: "#00bfff",</span>      <span class="comment">/*缓冲动画颜色*/</span></pre>
+                                    <pre><span>                  time: 0.8</span>      <span class="comment">/*缓冲动画时间*/</span></pre>
+                                    <pre><span>                  width: 150,</span>      <span class="comment">/*缓冲动画长方形盒子宽度*/</span></pre>
+                                    <pre><span>                  height: 70</span>      <span class="comment">/*缓冲动画长方形盒子高度*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                     data: {
-                        color: '#00bfff',
-                        time: 0.8
+                        buffering_data: {
+                            show: true,
+                            color: '#00bfff',
+                            time: 0.8,
+                            width: 150,
+                            height: 70
+                        }
                     }
                 }, {
                     name: "02005",
-                    explain: "这是本系统第五个缓冲插件，即加载动画，由水滴动画组成。\n" +
-                        "本插件可自定义配置项包括：颜色、动画时间。",
+                    explain: "这是本系统第五个缓冲插件，即加载动画，由水滴动画组成。本插件可自定义配置项包括：颜色、动画时间、单个元素半径。",
                     template: `<div class="el-animation-5">
-        <div x-plugin="plugin_02005"></div>
-    </div>`,
+                                <div x-plugin="plugin_02005" dataName='buffering_data'></div>
+                            </div>`,
+                    htmlcode: `<pre class="instruction-code">
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-5" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
+                                </pre>`,
+                    jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'buffering_5',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-buffering-5',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            buffering_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  show: true</span>      <span class="comment">/*在接收到消息时，显示动画*/</span></pre>
+                                    <pre><span>                  color: "#363636",</span>      <span class="comment">/*缓冲动画颜色*/</span></pre>
+                                    <pre><span>                  time: 2</span>      <span class="comment">/*缓冲动画时间*/</span></pre>
+                                    <pre><span>                  radius: 5</span>      <span class="comment">/*缓冲动画单个圆半径*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                     data: {
                         name: '水滴动画',
-                        color: " #363636",
-                        datas: {
-                            show: true
+                        buffering_data: {
+                            color: "#363636",
+                            show: true,
+                            time: 2,
+                            radius: 5
                         },
-                        time: 2
                     }
                 }]
             },

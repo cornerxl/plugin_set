@@ -1,19 +1,33 @@
-(function() {
-    DD.createModule({
-        name: "m_loading",
-        el: '.com-loading-animation-3',
-        // templateUrl: BASEHTML + '/common/loading/loading.html',
-        data: {
-            datas: {
-                show: true, // 是否显示
-            }
-        },
-        onReceive: function(module, data) {
-            var me = this;
-            me.data.$set('datas', data);
-            AlertState.model = me;
-            // 延迟隐藏
-            AlertState.show = data.show;
-        }
-    });
-})()
+/**
+ * create by xll on 2018/5/11.
+ * 加载动画
+ */
+var plugin_02003 = function() {};
+plugin_02003.prototype = {
+    init: function(view) {
+        var me = this;
+        var template = `<div class="com-loading-animation-3" x-if="buffering_data.show">
+                            <div class="imgbox">
+                                <div class="leftbox">
+                                    <div class="left"></div>
+                                </div>
+                                <div class="rightbox">
+                                    <div class="right"></div>
+                                </div>
+                            </div>
+                        </div>`;
+        view.innerHTML = template;
+        var data = DD.attr(view, 'dataName') || 'data';
+        //数据项名字
+        view.$dataItem = data;
+        //移除showItem
+        view.removeAttribute('dataItem');
+        //设置innerHTML
+        DD.Compiler.compile(view, view.$module);
+        view.$forceRender = true;
+    },
+    render: function(view) {
+        var me = this;
+    }
+};
+DD.Plugin.create("plugin_02003", plugin_02003);

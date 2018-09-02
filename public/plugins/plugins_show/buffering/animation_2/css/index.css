@@ -10,22 +10,20 @@
     display: flex;
     align-items: center;
     z-index: 1000;
-    justify-content: center
+    justify-content: center;
+    height: 100px;
 }
 
 .nd-plugin-loading-2 .spinner {
-    margin: 100px auto;
-    width: 50px;
-    height: 60px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
     text-align: center;
-    font-size: 10px
+    font-size: 10px;
 }
 
 .nd-plugin-loading-2 .spinner>div {
     background-color: #FDB702;
-    height: 100%;
-    width: 6px;
-    display: inline-block;
     -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
     animation: stretchdelay 1.2s infinite ease-in-out
 }

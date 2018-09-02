@@ -19,13 +19,61 @@
       margin: 0 auto;
       min-height: 50px;
     }
-    .plugin-explain{
-      margin: 20px auto;
-      min-height: 50px;
-      width: 80%;
-      .explain{
-        text-indent: 30px;
+    .instruction-title-sec {
+      .font18;
+      font-weight: bold;
+    }
+    .instruction-code {
+      text-align: left;
+      tab-size: 4;
+      line-height: 30px;
+      overflow: auto;
+      background: #f0f0f0;
+      border: 1px solid #e0e0e0;
+      white-space: nowrap;
+      .font12;
+      padding: 10px;
+      .comment {
+        color: #ff6666;
+      }
+      .element {
+        color: #900;
+      }
+      .attr {
+        color: #39c;
       }
     }
+    .plugin-explain{
+      margin: 0 auto 20px;
+      min-height: 50px;
+      .explain{
+        text-indent: 30px;
+        background: #ff9933;
+        border-radius: 5px;
+        padding: 5px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  .position {
+    width: 320px;
+    height: 568px;
+    margin: 20px auto;
+    .location {
+      height: 568px;
+      margin: 0;
+    }
+    .nd-plugin-location-letterlist {
+      display: none;
+      top: 350px;
+      right: 400px;
+    }
+    .nd-plugin-location-box {
+      height: 568px;
+    }
+    //.nd-plugin-location-box::-webkit-scrollbar {
+    //  display: none;
+    //}
   }
 }
