@@ -3,7 +3,7 @@
     var plugin_02005 = function() {}
     plugin_02005.prototype = {
         init: function(view) {
-            var template = `<div class="com-loading" x-if="datas.show">
+            var template = `<div class="com-loading" x-if="buffering_data.show">
         <div class="spinner">
             <div class="bounce1 small"></div>
             <div class="bounce2 small"></div>
@@ -17,8 +17,10 @@
         	setTimeout(function(){
         		var dom=view.querySelectorAll(".small");
         		dom.forEach(function(i,index){
-        			DD.css(i,"background-color",data.color);
-        			DD.css(i,"animation-delay",(data.time/5)*index+'s');
+        			DD.css(i,"background-color",data.buffering_data.color);
+                    DD.css(i,"width", 2 * data.buffering_data.radius + 'px');
+                    DD.css(i,"height", 2 * data.buffering_data.radius + 'px');
+        			DD.css(i,"animation-delay",(data.buffering_data.time/5)*index+'s');
         		});
         	},0)
         }

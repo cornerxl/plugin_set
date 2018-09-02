@@ -24,7 +24,7 @@
 
     plugin_02001.prototype.render = function(view) {
         var me = this;
-        var data = view.$getData().data.data;
+        var data = view.$getData().data;
         if (!data) {
             return;
         }
@@ -41,15 +41,18 @@
 
         function delayRender() {
             var data = view.$getData().data;
+
             var bufferingBox = document.querySelector(".nd-plugin-buffering-box");
             var par = view.querySelector(".nd-plugin-buffering-loader");
-            var dom = []
+            var dom = [];
             var dom = Array.from(par.getElementsByTagName("div"));
-            var small_time = data.small_div.animation_time / dom.length;
+            var small_time = data.buffering_data.animation_time / dom.length;
             dom.forEach(function(item, index) {
-                DD.css(item, "animation-duration", data.small_div.animation_time + 's');
+                DD.css(item, "animation-duration", data.buffering_data.animation_time + 's');
                 DD.css(item, "animation-delay", small_time * index + 's');
-                DD.css(item, "background-color", data.small_div.color_1);
+                DD.css(item, "background-color", data.buffering_data.color);
+                DD.css(item, "width", 2 * data.buffering_data.radius + 'px');
+                DD.css(item, "height", 2 * data.buffering_data.radius + 'px');
             });
             var bufferingBoxParents = bufferingBox.parentNode.parentNode;
             var bufferingBoxWidth = document.defaultView.getComputedStyle(bufferingBoxParents, null).width;
