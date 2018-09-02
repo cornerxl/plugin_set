@@ -178,7 +178,7 @@
 		                            <div x-plugin='plugin_02001' dataName='buffering_data'></div>
 	                            </div>`,
                     htmlcode: `<pre class="instruction-code">
-                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-1" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div</span></pre>
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-1" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
                                 </pre>`,
                     jscode: `<pre class="instruction-code">
                                     <pre><span>{</span></pre>
@@ -208,7 +208,7 @@
                     template: `<div x-plugin="plugin_02002">
                                </div>`,
                     htmlcode: `<pre class="instruction-code">
-                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-2" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div</span></pre>
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-2" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
                                 </pre>`,
                     jscode: `<pre class="instruction-code">
                                     <pre><span>{</span></pre>
@@ -248,7 +248,7 @@
                                 </div>
                             </div>`,
                     htmlcode: `<pre class="instruction-code">
-                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-3" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div</span></pre>
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-3" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
                                 </pre>`,
                     jscode: `<pre class="instruction-code">
                                     <pre><span>{</span></pre>
@@ -273,7 +273,7 @@
 		                            <div x-plugin="plugin_02004" style="height:60px"></div>
 	                            </div>`,
                     htmlcode: `<pre class="instruction-code">
-                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-4" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div</span></pre>
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-4" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
                                 </pre>`,
                     jscode: `<pre class="instruction-code">
                                     <pre><span>{</span></pre>
@@ -306,7 +306,7 @@
                                 <div x-plugin="plugin_02005"></div>
                             </div>`,
                     htmlcode: `<pre class="instruction-code">
-                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-5" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div</span></pre>
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-5" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
                                 </pre>`,
                     jscode: `<pre class="instruction-code">
                                     <pre><span>{</span></pre>
