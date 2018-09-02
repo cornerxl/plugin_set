@@ -12,6 +12,7 @@
             requires: [
                 {type: 'css', path: PLUGINURL + '/plugins_show/address/location_1/css/index.css'},
                 {type: 'js', path: PLUGINURL + '/plugins_show/address/location_1/js/index.js'}
+
             ],
             onStart: function (props) {
                 //props指的是config
