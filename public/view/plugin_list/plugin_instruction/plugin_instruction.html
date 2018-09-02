@@ -1,10 +1,10 @@
-<div class="plugin-instruction el-plugin-instruction">
+<div class="plugin-instruction el-plugin-instruction" xmlns="http://www.w3.org/1999/html">
     <div class="instruction-title-first">介绍</div>
     <br>
     <div class="instruction-title-sec">NoDom插件库</div>
     <br>
     <p class="instruction">
-        本插件库是在<a href="//www.nodom.org" target="_Blank">NoDom</a>框架上开发的，包含各种类型的插件。
+        本插件库是在<a href="//www.nodom.org" target="_Blank">NoDom</a>框架上开发的，包含缓冲动画、分页、轮播图、日期、进度条等不同类型的插件。
     </p>
     <br>
     <div class="instruction-title-first">开始</div>
@@ -12,7 +12,7 @@
     <div class="instruction-title-sec">准备工作</div>
     <br>
     <p class="instruction-tip">
-        要使用本插件库中的任意插件，您需要引用<a href="//www.nodom.org" target="_Blank">NoDom框架</a>，然后才能正常使用相关插件。
+        要使用本插件库中的任意插件，您需要引用<a href="//www.nodom.org" target="_Blank">NoDom框架</a>，框架介绍、教程、api等可在NoDom官网进行查看，本文档旨在介绍插件库的使用方法。
     </p>
     <br>
     <div class="instruction-title-first">插件使用示例</div>
@@ -40,6 +40,32 @@
         <br>
     </pre>
     <br>
+    <div class="instruction-title-sec">JS代码示例</div>
+    <br/>
+    <pre class="instruction-code">
+        <span class="comment">/*插件运行用需依赖父模块，子模块详细教程可查看<a href="//www.nodom.org" target="_Blank">NoDom框架</a>*/</span>
+        <br>
+        <span>DD.createModule({</span>
+        <br>
+        <pre><span>      name:  'm_plugin_parent',      <span class="comment">/*插件父模块名称*/</span></span></pre>
+        <pre><span>      templateUrl:  '*******',      <span class="comment">/*插件父模块模板路径*/</span></span></pre>
+        <pre><span>      requires:  [</span></pre>
+        <pre><span>            {type:'js',path:'*****'},      <span class="comment">/*使用插件时，需引入插件所对应的js文件,type为引入文件类型，path为引入文件路径*/</span></span></pre>
+        <pre><span>            {type:'css',path:'*****'}      <span class="comment">/*插件所对应的css文件*/</span></span></pre>
+        <pre><span>      ],</span></pre>
+        <pre><span>      modules:  [{</span></pre>
+        <pre><span>            name:  "m_example",      <span class="comment">/*插件所对应的模块名称*/</span></span></pre>
+        <pre><span>            el:  '.el-example',      <span class="comment">/*插件的渲染容器*/</span></span></pre>
+        <pre><span>            data: {      <span class="comment">/*使用插件需传入的参数，以插件库提供的分页插件为例*/</span></span></pre>
+        <pre><span>                  page:  1,      <span class="comment">/*当前页*/</span></span></pre>
+        <pre><span>                  row:  10,      <span class="comment">/*每页显示的条数*/</span></span></pre>
+        <pre><span>                  total:  100,      <span class="comment">/*总共有多少条数据*/</span></span></pre>
+        <pre><span>                  to_page:  1      <span class="comment">/*跳转到某页*/</span></span></pre>
+        <pre><span>            }</span></pre>
+        <pre><span>      }]</span></pre>
+        <span>});</span>
+        <br>
+    </pre>
     <div class="instruction-title-sec">实例展示</div>
     <div class="instruction-example el-instruction-example">
         <div x-plugin="paging"></div>

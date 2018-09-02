@@ -29,6 +29,10 @@
 			view.$forceRender = true;
 		},
 		render:function(view){
+            var data=view.$getData().data;
+			if(data.total && data.row) {
+				data.allpage = Math.ceil(data.total /data.row);
+			}
 			new DD.Event({
 				eventName:'click',
 				view:view.querySelector('.to-first'),

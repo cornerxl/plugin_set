@@ -32,6 +32,7 @@ app.use('/api/imgs',imgs);
 app.use('/api/json',json);
 //post获取数据
 app.use("/api/post",post);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
