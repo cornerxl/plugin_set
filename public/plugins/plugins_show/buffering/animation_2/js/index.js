@@ -16,13 +16,21 @@ plugin_02002.prototype = {
                             </div>
                         </div>`;
         view.innerHTML = template;
+        var data = DD.attr(view, 'dataName') || 'data';
+        //数据项名字
+        view.$dataItem = data;
+        //移除showItem
+        view.removeAttribute('dataItem');
+        //设置innerHTML
+        DD.Compiler.compile(view, view.$module);
+        view.$forceRender = true;
     },
     render: function(view) {
         var me = this;
         var data = view.$getData().data;
-        var height = parseInt(data.buffering_data.height);
-        var width = parseInt(data.buffering_data.width);
-        var color=data.buffering_data.color;
+        var height = parseInt(data[view.$dataItem].height);
+        var width = parseInt(data[view.$dataItem].width);
+        var color=data[view.$dataItem].color;
         setTimeout(function() {
             me.content = view.querySelector(".spinner");
             me.dom = Array.from(me.content.getElementsByTagName("div"));

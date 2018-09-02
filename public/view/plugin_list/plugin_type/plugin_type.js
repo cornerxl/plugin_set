@@ -205,7 +205,7 @@
                 }, {
                     name: "02002",
                     explain: "这是本系统第二个缓冲插件，即加载动画，由动感动画组成。本插件可自定义配置项包括：方块颜色、动画时间、动画外层盒子宽度、高度。",
-                    template: `<div x-plugin="plugin_02002">
+                    template: `<div x-plugin="plugin_02002" dataName='buffering_data'>
                                </div>`,
                     htmlcode: `<pre class="instruction-code">
                                     <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-2" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
@@ -237,16 +237,8 @@
                 }, {
                     name: "02003",
                     explain: "这是本系统第三个缓冲插件，即加载动画，由动感动画组成。",
-                    template: `<div class="com-loading-animation-3" x-if="datas.show">
-                                <div class="imgbox">
-                                    <div class="leftbox">
-                                        <div class="left"></div>
-                                    </div>
-                                    <div class="rightbox">
-                                        <div class="right"></div>
-                                    </div>
-                                </div>
-                            </div>`,
+                    template: `<div x-plugin="plugin_02003" dataName='buffering_data'>
+                               </div>`,
                     htmlcode: `<pre class="instruction-code">
                                     <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-3" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
                                 </pre>`,
@@ -262,7 +254,7 @@
                                     <pre><span>}</span></pre>
                                 </pre>`,
                     data: {
-                        datas: {
+                        buffering_data: {
                             show: true, // 是否显示
                         }
                     }
@@ -270,7 +262,7 @@
                     name: "02004",
                     explain: "这是本系统第四个缓冲插件，即加载动画，由动感动画组成。本插件可自定义配置项包括：颜色、动画时间、动画外层盒子宽度、高度。",
                     template: `<div class="el-animation-4">
-		                            <div x-plugin="plugin_02004" style="height:60px"></div>
+		                            <div x-plugin="plugin_02004" style="height:60px" dataName='buffering_data'></div>
 	                            </div>`,
                     htmlcode: `<pre class="instruction-code">
                                     <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-4" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
@@ -303,7 +295,7 @@
                     name: "02005",
                     explain: "这是本系统第五个缓冲插件，即加载动画，由水滴动画组成。本插件可自定义配置项包括：颜色、动画时间、单个元素半径。",
                     template: `<div class="el-animation-5">
-                                <div x-plugin="plugin_02005"></div>
+                                <div x-plugin="plugin_02005" dataName='buffering_data'></div>
                             </div>`,
                     htmlcode: `<pre class="instruction-code">
                                     <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-5" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
