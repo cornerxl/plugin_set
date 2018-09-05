@@ -1011,18 +1011,23 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                    + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>`;
                 });
                 props.template = tem + `</div>`;
             },
@@ -1037,14 +1042,39 @@
                             "通过点击弹出的日历上的日期，来选取相应的时间。\n" +
                             "本插件可自定义配置项包括：背景颜色、表头颜色、本月颜色、今日颜色、他月颜色。",
                         template: `<div class="plugin-date">
-		<div x-plugin='plugin_06001' Year='year' Month='month' Day='day'></div>
-	</div>`,
+                                       <div x-plugin='plugin_06001' dataName="date_data"></div>
+                                   </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-date" <span class="attr">x-plugin</span>="plugin_date" <span class="attr">dataName</span>="date_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'date_date',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-date',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            date_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  year: '',</span>      <span class="comment">/*日期插件初始化年份*/</span></pre>
+                                    <pre><span>                  month: '',</span>      <span class="comment">/*日期插件初始化月份*/</span></pre>
+                                    <pre><span>                  day: '',</span>      <span class="comment">/*日期插件初始化天*/</span></pre>
+                                    <pre><span>                  xDate_color: {</span>      <span class="comment">/*日期插件可配置颜色对象*/</span></pre>
+                                    <pre><span>                        header_color: '#e6e6e6',</span>      <span class="comment">/*日期插件头部可配置颜色*/</span></pre>
+                                    <pre><span>                        bg_color: '#fff',</span>      <span class="comment">/*日期插件背景可配置颜色*/</span></pre>
+                                    <pre><span>                        day_color: '#555555',</span>      <span class="comment">/*日期插件其他月份颜色*/</span></pre>
+                                    <pre><span>                        today_color: '#112233',</span>      <span class="comment">/*日期插件当天选中的颜色*/</span></pre>
+                                    <pre><span>                        month_color: '#333333',</span>      <span class="comment">/*日期插件当月每天可配置颜色*/</span></pre>
+                                    <pre><span>                  },</span></pre>
+                                    <pre><span>                  xDate_day: [{day:'日'},{day:'一'}{day:'二'}{day:'三'}{day:'四'}{day:'五'}{day:'六'}],</span>      <span class="comment">/*日期插件星期几*/</span></pre>
+                                    <pre><span>                  xDate_week: []</span>      <span class="comment">/*日历日期内容*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
-                            xDate: {
+                            date_data: {
                                 year: "", //当前 年/月/日
                                 month: "",
                                 day: "",
-                                show: true,
+                                show: false,
                                 xDate_color: { //日历自定义颜色
                                     header_color: '#e6e6e6',
                                     bg_color: '#fff',
@@ -1075,12 +1105,14 @@
                         explain: "这是一款IOS滚动日期选择插件。\n" +
                             "本插件可自定义配置项包括：字体大小、字体颜色、选择框颜色。",
                         template: `	<div class="show">
-		<button e-click='show'>展示</button>
-		<p>你选择的日期是：<span>{{nowDate}}</span></p>
-	</div>
-	<div class="plugin-select">
-		<div x-plugin='Select'></div>
-	</div>`,
+                                        <button e-click='show'>选择时间</button>
+                                        <p>你选择的日期是：<span>{{nowDate}}</span></p>
+                                    </div>
+                                    <div class="plugin-select">
+                                        <div x-plugin='Select' dataName="date_date"></div>
+                                    </div>`,
+                        htmlcode:  ``,
+                        jscode: ``,
                         data: {
                             nowDate: '周一',
                             show: false,

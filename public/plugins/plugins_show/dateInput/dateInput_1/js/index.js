@@ -4,20 +4,11 @@
 
 (function() {
     var plugin_06001 = function() {
-
     };
 
     plugin_06001.prototype.init = function(view) {
-        var dataYear = DD.attr(view, 'Year');
-        var dataMonth = DD.attr(view, 'Month');
-        var dataDay = DD.attr(view, 'Day');
-        view.$dataYear = dataYear;
-        view.$dataMonth = dataMonth;
-        view.$dataDay = dataDay;
-        view.removeAttribute('Year');
-        view.removeAttribute('Month');
-        view.removeAttribute('Day');
-        var template = `<div class="xDate" x-model='xDate'>
+        var me = this;
+        var template = `<div class="xDate" x-model='date_data'>
  		<div class="xDate-input">
  		<input type="text" name="" id='xDate-input'>
  		</div>
@@ -43,13 +34,19 @@
  		</div>
  		</div>`;
         view.innerHTML = template;
+        var data = DD.attr(view, 'dataName') || 'data';
+        //数据项名字
+        view.$dataItem = data;
+        //移除showItem
+        view.removeAttribute('dataItem');
+        //设置innerHTML
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
     }
 
     plugin_06001.prototype.render = function(view) {
         var me = this;
-        var data = view.$getData().data;
+        var data = view.$getData().data[view.$dataItem];
         if (!data) {
             return;
         }
@@ -114,19 +111,19 @@
             for (var day = 1; day <= nextMonthDays; day++) {
                 weeks[weeks.length - 1].push({ day: day, month: 2, today: false });
             }
-            data.xDate.year = year;
-            data.xDate.month = month;
-            data.xDate.day = today;
-            data.xDate.xDate_week = [];
+            data.year = year;
+            data.month = month;
+            data.day = today;
+            data.xDate_week = [];
             for (var k = 0; k < weeks.length; k++) {
-                data.xDate.xDate_week.push({ xDate_days: weeks[k] });
+                data.xDate_week.push({ xDate_days: weeks[k] });
             }
-            if (data.xDate.day > allDays) {
-                data.xDate.day = allDays;
+            if (data.day > allDays) {
+                data.day = allDays;
             }
         };
 
-        if (data.xDate.year === "" || data.xDate.month === "") {
+        if (data.year === "" || data.month === "") {
             setDateInfo();
         }
 
@@ -135,64 +132,64 @@
                 me.days = view.getElementsByClassName('xDate-day');
                 me.header = view.querySelector('.xDate-header');
                 me.bg = view.querySelector('.xDate-body');
-                DD.css(me.header, 'background', data.xDate.xDate_color.header_color);
-                DD.css(me.bg, 'background', data.xDate.xDate_color.bg_color);
+                DD.css(me.header, 'background', data.xDate_color.header_color);
+                DD.css(me.bg, 'background', data.xDate_color.bg_color);
                 for (var i = 0; i < me.days.length; i++) {
                     if (me.days[i].className.indexOf('xDate-no-this-month') === -1) {
-                        DD.css(me.days[i], 'color', data.xDate.xDate_color.month_color);
+                        DD.css(me.days[i], 'color', data.xDate_color.month_color);
                     } else {
-                        DD.css(me.days[i], 'color', data.xDate.xDate_color.day_color);
+                        DD.css(me.days[i], 'color', data.xDate_color.day_color);
                     }
                     if (me.days[i].className.indexOf('xDate-today') !== -1) {
-                        DD.css(me.days[i], 'border-color', data.xDate.xDate_color.today_color);
+                        DD.css(me.days[i], 'border-color', data.xDate_color.today_color);
                     }
                 }
             };
             //变量提升写在这
             updateCSS();
             var preMonth = function() {
-                if (data.xDate.month === 1) {
-                    data.xDate.year--;
-                    data.xDate.month = 12;
+                if (data.month === 1) {
+                    data.year--;
+                    data.month = 12;
                 } else {
-                    data.xDate.month--;
+                    data.month--;
                 }
-                setDateInfo(data.xDate.year, data.xDate.month);
+                setDateInfo(data.year, data.month);
                 updateCSS();
             };
 
             var nextMonth = function() {
-                if (data.xDate.month === 12) {
-                    data.xDate.year++;
-                    data.xDate.month = 1;
+                if (data.month === 12) {
+                    data.year++;
+                    data.month = 1;
                 } else {
-                    data.xDate.month++;
+                    data.month++;
                 }
-                setDateInfo(data.xDate.year, data.xDate.month);
+                setDateInfo(data.year, data.month);
                 updateCSS();
             };
 
             var backToday = function() {
                 var date = new Date();
-                data.xDate.month = date.getMonth() + 1;
-                data.xDate.year = date.getFullYear();
-                data.xDate.day = date.getDate();
-                setDateInfo(data.xDate.year, data.xDate.month, data.xDate.day);
+                data.month = date.getMonth() + 1;
+                data.year = date.getFullYear();
+                data.day = date.getDate();
+                setDateInfo(data.year, data.month, data.day);
                 updateCSS();
             };
 
             var changeShowState = function() { //view 渲染速度过慢会导致updateCss报错
-                data.xDate.show = !data.xDate.show;
-                // if(data.xDate.show){
+                data.show = !data.show;
+                // if(data.show){
                 // 	setTimeout(updateCSS,100);
                 // }
             };
             var chooseDay = function(e, d, v) {
-                data.xDate.show = false;
-                data.xDate.day = d.day;
-                input.value = data.xDate.year + '/' + data.xDate.month + '/' + data.xDate.day;
+                data.show = false;
+                data.day = d.day;
+                input.value = data.year + '/' + data.month + '/' + data.day;
             }
-            if (data.xDate.show) {
+            if (data.show) {
                 me.preBtn = view.querySelector('#preMonthBtn');
                 me.nextBtn = view.querySelector('#nextMonthBtn');
                 var days=view.getElementsByClassName('xDate-day');

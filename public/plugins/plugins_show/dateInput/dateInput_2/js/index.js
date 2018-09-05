@@ -8,13 +8,19 @@
         var me = this;
         var template = "<div class='nd-plugin-select-box'><div class='quit-area'></div><div class='select-area'><div class='select-header'><div class='header-left' e-click='confirm'>取消</div><div class='header-middle'>选择日期</div><div class='header-right' e-click='confirm'>确定</div><div class='clear'></div></div><div class='select-content'><ul class='options'><li class='option' x-repeat='options'>{{date}}</li></ul><div class='nowOption'></div></div></div></div>"
         view.innerHTML = template;
+        var data = DD.attr(view, 'dataName') || 'data';
+        //数据项名字
+        view.$dataItem = data;
+        //移除showItem
+        view.removeAttribute('dataItem');
+        //设置innerHTML
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
     };
 
     plugin_06002.prototype.render = function(view) {
         var me = this;
-        var data = view.$getData().data;
+        var data = view.$getData().data[view.$dataItem];
         var canMove = false;
         var startX = 0,
             StartY = 0;
