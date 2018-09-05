@@ -36,7 +36,7 @@
             //更新页面
             me.direct=1;
             me.check_color = view.$getData().data[view.$dataItem].check_color;
-            if(view.$getData().data[view.$dataItem].left){
+            if(view.$getData().data[view.$dataItem].up){
                 me.direct=-1;
             }
             me.updata = function() {

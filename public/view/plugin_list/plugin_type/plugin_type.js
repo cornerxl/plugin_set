@@ -17,7 +17,8 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-                                <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class="explain">本章节主要介绍插件库选择地址插件，主要用于定位，选择所属省份等。</p>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
                                 <div class="plugin-content el-plugin-` + i.name + `">`
@@ -147,7 +148,8 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-                                <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class="explain">本章节主要介绍缓冲动画插件，用户可根据需求选择不同类型，主要用途为：当请求数据时，会有一段时间的空白，使用缓冲动画插件，可提高用户体验。</p>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
                                 <div class="plugin-content el-plugin-` + i.name + `">`
@@ -362,7 +364,8 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-                                <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class="explain">本章节主要介绍插件库轮播图插件，用于展示或者推广广告。主要有以下几种类型。</p>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
                                 <div class="plugin-content el-plugin-` + i.name + `">`
@@ -406,11 +409,11 @@
                                     <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
                                     <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
                                     <pre><span>                  check_color: "#ff0000",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
-                                    <pre><span>                  translate: false</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  translate: false,</span>      <span class="comment">/*是否可点击*/</span></pre>
                                     <pre><span>                  imgs: [</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
                                     <pre><span>                        {url: '*****'}</span>      <span class="comment">/*轮播图有几张图片就有几个{url,'*****'}*/</span></pre>
                                     <pre><span>                  ],</span></pre>
-                                    <pre><span>                  right: true</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
+                                    <pre><span>                  right: true,</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
                                     <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
                                     <pre><span>            }</span></pre>
                                     <pre><span>     }</pre>
@@ -454,11 +457,11 @@
                                     <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
                                     <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
                                     <pre><span>                  check_color: "#00FF00",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
-                                    <pre><span>                  translate: false</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  translate: false,</span>      <span class="comment">/*是否可点击*/</span></pre>
                                     <pre><span>                  imgs: [</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
                                     <pre><span>                        {url: '*****'}</span>      <span class="comment">/*轮播图有几张图片就有几个{url,'*****'}*/</span></pre>
                                     <pre><span>                  ],</span></pre>
-                                    <pre><span>                  right: true</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
+                                    <pre><span>                  right: true,</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
                                     <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
                                     <pre><span>            }</span></pre>
                                     <pre><span>     }</pre>
@@ -523,11 +526,11 @@
                                     <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
                                     <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
                                     <pre><span>                  check_color: "#ff6800",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
-                                    <pre><span>                  translate: false</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  translate: false,</span>      <span class="comment">/*是否可点击*/</span></pre>
                                     <pre><span>                  imgs: [</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
                                     <pre><span>                        {url: '*****'}</span>      <span class="comment">/*轮播图有几张图片就有几个{url,'*****'}*/</span></pre>
                                     <pre><span>                  ],</span></pre>
-                                    <pre><span>                  right: true</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
+                                    <pre><span>                  up: false,</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
                                     <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
                                     <pre><span>            }</span></pre>
                                     <pre><span>     }</pre>
@@ -548,7 +551,7 @@
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/2.jpg'}
                                 ],
                                 is_circle: true,
-                                left: false,
+                                up: false,
                                 check_color: '#ff6800',
                             },
                             dx: 1,
@@ -590,13 +593,13 @@
                                     <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
                                     <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
                                     <pre><span>                  check_color: "#ffff00",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
-                                    <pre><span>                  translate: false</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  translate: false,</span>      <span class="comment">/*是否可点击*/</span></pre>
                                     <pre><span>                  imgs: [{</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
                                     <pre><span>                        img_item:[{</span>      <span class="comment">/*轮播图有几张图片就有几个img_item*/</span></pre>
                                     <pre><span>                              url: '*****'</span>      <span class="comment">/*一张图片分为及部分，就有几个{url,'*****'}*/</span></pre>
                                     <pre><span>                        }]</span></pre>
                                     <pre><span>                  }],</span></pre>
-                                    <pre><span>                  up: true</span>      <span class="comment">/*轮播图向上滑动还是向下滑动*/</span></pre>
+                                    <pre><span>                  up: true,</span>      <span class="comment">/*轮播图向上滑动还是向下滑动*/</span></pre>
                                     <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
                                     <pre><span>            }</span></pre>
                                     <pre><span>     }</pre>
@@ -684,25 +687,37 @@
             // templateUrl: HTMLURL + '/plugin_list/plugin_type/plugin_type.html',
             delayInit: true,
             requires: [
-                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkBox_1/css/index.css'},
-                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkBox_1/js/index.js'},
-                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkBox_2/css/index.css'},
-                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkBox_2/js/index.js'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_1/css/index.css'},
+                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_1/js/index.js'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_2/css/index.css'},
+                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_2/js/index.js'},
+
+                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_3/css/index.css'},
+                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_3/js/index.js'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_4/css/index.css'},
+                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_4/js/index.js'}
             ], onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class="explain">本章节主要介绍checkBox插件，通过点击实现选中与未选中，主要有以下四种类型。</p>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                    + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            `;
                 });
                 props.template = tem + `</div>`;
             },
@@ -713,36 +728,147 @@
                 plugins: [
                     {
                         name: '04001',
-                        explain: "这是本系统的第一个checkBox插件，通过点击来实现选中与未选中。\n" +
-                            "本插件可自定义配置项包括：选中颜色、不选颜色、禁选颜色。",
+                        explain: "可自定义配置项包括：选中颜色、未选中颜色、空白区域颜色、是圆圈还是正方形、checkBox大小。",
                         template: `<div class="nd-plugin-check-1">
-		<div x-plugin="plugin_04001"></div>
-	</div>`,
+                                        <div x-plugin="plugin_04001" dataName="check_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-1" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'check_1',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-check-4',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
+                                    <pre><span>                  no_check_color: '#ffffff',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
+                                    <pre><span>                  empty_color: '#cccccc',</span>      <span class="comment">/*空白区域颜色*/</span></pre>
+                                    <pre><span>                  is_circle: true,</span>      <span class="comment">/*是否为圆圈*/</span></pre>
+                                    <pre><span>                  size: 10,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
+                                    <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             name: '普通选择框',
-                            check_color: '#26a2ff',
-                            no_check_color: '#ffffff',
-                            empty_color: '#cccccc',
-                            yes: true,
+                            check_data : {
+                                check_color: '#26a2ff',
+                                no_check_color: '#ffffff',
+                                empty_color: '#cccccc',
+                                is_check: true,
+                                is_circle: true,
+                                size: 20
+                            }
                         },
                         onBeforeFirseRender: function () {
                             var me = this;
-                            me.data.check_color = '#26a2ff';
-                            me.data.no_check_color = '#ffffff';
-                            me.data.empty_color = '#cccccc';
-                            me.data.yes = true;
                         },
                     }, {
                         name: '04002',
-                        explain: "这是本系统的第二个checkBox插件，通过点击来实现选中与未选中。提供的样式多样。\n" +
-                            "本插件可自定义配置项包括：选中颜色、不选颜色。",
-                        template: `<div class="nd-plugin-check-list">
-        <div x-plugin="plugin_04002" class="content-check"></div>
-    </div>`,
+                        explain: "可自定义配置项包括：选中颜色、未选中颜色、checkBox大小。",
+                        template: `<div class="nd-plugin-check">
+                                        <div class="content-check" x-plugin="plugin_04002" dataName="check_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-2" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'check_2',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-check-2',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
+                                    <pre><span>                  no_check_color: '#aaaaaa',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
+                                    <pre><span>                  size: 30,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
+                                    <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
-                            yes: true,
-                            yes_1: true,
-                            yes_2: true,
+                            name: 'check02',
+                            check_data : {
+                                check_color: '#26a2ff',
+                                no_check_color: '#aaaaaa',
+                                is_check: true,
+                                size: 30
+                            }
+                        },
+                        onBeforeFirseRender: function () {
+                            var me = this;
+                        },
+                    },{
+                        name: '04003',
+                        explain: "可自定义配置项包括：选中颜色、不选颜色、checkBox大小。",
+                        template: `<div class="nd-plugin-check">
+                                        <div class="content-check" x-plugin="plugin_04003" dataName="check_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-3" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'check_3',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-check-3',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
+                                    <pre><span>                  no_check_color: '#000000',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
+                                    <pre><span>                  size: 30,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
+                                    <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
+                        data: {
+                            name: 'check03',
+                            check_data : {
+                                check_color: '#26a2ff',
+                                no_check_color: '#000000',
+                                is_check: true,
+                                size: 30
+                            }
+                        },
+                        onBeforeFirseRender: function () {
+                            var me = this;
+                        },
+                    },{
+                        name: '04004',
+                        explain: "可自定义配置项包括：选中颜色、不选颜色、checkBox大小。",
+                        template: `<div class="nd-plugin-check">
+                                        <div class="content-check" x-plugin="plugin_04004" dataName="check_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-4" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'check_4',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-check-4',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
+                                    <pre><span>                  no_check_color: '#aaaaaa',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
+                                    <pre><span>                  size: 30,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
+                                    <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
+                        data: {
+                            name: 'check04',
+                            check_data : {
+                                check_color: '#26a2ff',
+                                no_check_color: '#aaaaaa',
+                                is_check: true,
+                                size: 30
+                            }
+                        },
+                        onBeforeFirseRender: function () {
+                            var me = this;
                         },
                     }
                 ]
@@ -779,17 +905,23 @@
             ], onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>`;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                    + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>`;
                 });
                 props.template = tem + `</div>`;
             },
@@ -802,13 +934,14 @@
                     explain: "这是本系统的一款颜色选择器插件。拥有多个参数可供调节，所选颜色区域也更多。\n" +
                         "本插件可自定义配置项包括：颜色选择。",
                     template: `<div class="el-color-picker-1">
-        <div x-plugin="plugin_05001" class="plugin-color">
-        </div>
-        <div class="input">
-        	 <div style="background-color:{{str}}" class="input"></div>
-        	<div class="select" e-click="select">选择</div>
-        </div>
-    </div>`,
+                                    <div x-plugin="plugin_05001" class="plugin-color"></div>
+                                    <div class="input">
+                                         <div style="background-color:{{str}}" class="input"></div>
+                                        <div class="select" e-click="select">选择</div>
+                                    </div>
+                                </div>`,
+                    htmlcode: ``,
+                    jscode: ``,
                     data: {
                         left: 0,
                         first: 1,
