@@ -9,15 +9,15 @@
 
     plugin_07001.prototype.init = function (view) {
         var me = this;
-        var template = `<div class="nd-plugin-collapse-box nd-plugin-slideimg-panel" x-model="collapse">
+        var template = `<div class="nd-plugin-collapse-box nd-plugin-slideimg-panel">
                             <div class="nd-plugin-collapse-heading">
-                                <span>{{heading}}</span>
+                                
                             </div>
                             <div class="nd-plugin-collapse-content" >
-                                <span class="nd-plugin-collapse-coninfo">{{content}}</span>
+                                <span class="nd-plugin-collapse-coninfo"></span>
                             </div>
                         </div>`;
-        var data = view.$getData().data;
+        var data = DD.attr(view, 'dataName') || 'data';
         view.$dataName = data;
         view.innerHTML = template;
         DD.Compiler.compile(view, view.$module);
@@ -26,7 +26,7 @@
 
     plugin_07001.prototype.render = function (view) {
         var me = this;
-        var data = view.$getData().data;
+        var data = view.$getData().data[view.$dataName];
         if(!data){
             return;
         }
@@ -44,31 +44,36 @@
             var collapseHead = document.querySelector(".nd-plugin-collapse-heading");
             var collapseCon = document.querySelector(".nd-plugin-collapse-content");
             var collapseConInfo = document.querySelector(".nd-plugin-collapse-coninfo");
+            collapseHead.innerText = data.heading;
+            collapseConInfo.innerText = data.content;
             var collapseConInfoHeight = parseInt(window.getComputedStyle(collapseConInfo, null).height) + parseInt(20) + 'px';
-            if(data.collapse.isCollapse){
+            if(data.isCollapse){
                 DD.css(collapseCon, 'height', collapseConInfoHeight);
                 DD.css(collapseHead, 'border-bottom', '1px solid #ddd');
             }else {
                 DD.css(collapseCon, 'height', 0);
                 DD.css(collapseHead, 'border-bottom', 'none');
             }
-
+            DD.css(collapseHead, 'background-color', data.head_color);
+            DD.css(collapseCon, 'background-color', data.content_color);
+            DD.css(collapseHead, 'font-size', data.head_font_size + 'px');
+            DD.css(collapseCon, 'font-size', data.content_font_size + 'px');
             var clickEvent = function (e,d,v) {
-                if(data.collapse.isCollapse){
+                if(data.isCollapse){
                     DD.css(collapseCon, 'height', 0);
                     setTimeout(function () {
                         DD.css(collapseHead, 'border-bottom', 'none');
                     }, 500);
-                    data.collapse.isCollapse = false;
+                    data.isCollapse = false;
                 }else {
-                    data.collapse.isCollapse = true;
+                    data.isCollapse = true;
                     DD.css(collapseCon, 'height', collapseConInfoHeight);
                     DD.css(collapseHead, 'border-bottom', '1px solid #ddd');
                 }
                 DD.css(collapseCon, 'transition-property', 'height');
-                DD.css(collapseCon, 'transition-duration', data.collapse.time+'s');
+                DD.css(collapseCon, 'transition-duration', data.time+'s');
                 DD.css(collapseCon, '-webkit-transition-property', 'height');
-                DD.css(collapseCon, '-webkit-transition-duration', data.collapse.time+'s');
+                DD.css(collapseCon, '-webkit-transition-duration', data.time+'s');
             }
             //点击事件
             new DD.Event({
