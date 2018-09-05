@@ -441,42 +441,53 @@
                         explain: "这是一个由四张图片组成的左右轮播图插件，通过每张图片的左右旋转，实现图片的动态轮播。轮播是定时自动左右旋转轮播，还可通过点击左右键来控制轮播方向。\n" +
                             "本插件可自定义配置项包括：轮播颜色、初始颜色、方块长度、方块高度、轮播时间、轮播方向（方向左、方向右）。",
                         template: `<div class="carous_ct">
-		                                <div x-plugin="plugin_03002" class='plugin'></div>
+		                                <div x-plugin="plugin_03002" class='plugin' dataName="carousel_data"></div>
 	                                </div>`,
-                        htmlcode: ``,
-                        jscode: ``,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-carousel-2" <span class="attr">x-plugin</span>="carousel" <span class="attr">dataName</span>="carousel_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'carousel_2',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-carousel-2',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
+                                    <pre><span>                  check_color: "#00FF00",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
+                                    <pre><span>                  translate: false</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  imgs: [</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
+                                    <pre><span>                        {url: '*****'}</span>      <span class="comment">/*轮播图有几张图片就有几个{url,'*****'}*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  right: true</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
+                                    <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             width_data: '',
                             name: '',
-                            img_ct: {
-                                width: '',
+                            carousel_data: {
+                                width: 10,
                                 translate: false,
-                                spans: [{}, {}, {}, {}, {}, {}],
                                 imgs: [
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/1.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/2.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/3.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/4.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/1.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/2.jpg'}
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/4.jpg'}
                                 ],
-                            }, small_div: {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 5,
-                                left: true,
-                                right: false
+                                is_circle: false,
+                                right: false,
+                                check_color: '#00FF00',
                             }
                         }, onBeforeFirstRender: function () {
                             var me = this;
                             me.data.name = "水平旋转";
-                            me.data.img_ct.spans.forEach(function (i) {
-                                i.width = me.data.small_div.width;
-                                i.height = me.data.small_div.height;
-                            });
-                            me.data.img_ct.$set("spans", me.data.img_ct.spans);
+                            // me.data.img_ct.spans.forEach(function (i) {
+                            //     i.width = me.data.small_div.width;
+                            //     i.height = me.data.small_div.height;
+                            // });
+                            // me.data.img_ct.$set("spans", me.data.img_ct.spans);
                             if (window.timer_1) {
                                 clearInterval(window.timer_1);
                             }
@@ -489,8 +500,6 @@
                             if (window.timer_4) {
                                 clearInterval(window.timer_4);
                             }
-                            me.data.small_div.left = true;
-                            me.data.small_div.right = false;
                         }, onRender: function () {
                             var me = this;
                             var tem = parseInt(DD.css(document.querySelector('.router-content'), 'height'));
@@ -501,31 +510,46 @@
                         explain: '这是一个由四张图片组成的竖直轮播图插件，通过每张图片的竖直旋转，实现图片的动态轮播。轮播是定时自动竖直旋转轮播。\n' +
                             '本插件可自定义配置项包括：轮播颜色、初始颜色、方块长度、方块高度、轮播时间、轮播方向（方向上、方向下）。',
                         template: `<div class="el-plugin">
-        <div x-plugin="plugin_03003" class='plugin'></div>
-    </div>`,
+                                        <div x-plugin="plugin_03003" class='plugin' dataName="carousel_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-carousel-3" <span class="attr">x-plugin</span>="carousel" <span class="attr">dataName</span>="carousel_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'carousel_3',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-carousel-3',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
+                                    <pre><span>                  check_color: "#ff6800",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
+                                    <pre><span>                  translate: false</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  imgs: [</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
+                                    <pre><span>                        {url: '*****'}</span>      <span class="comment">/*轮播图有几张图片就有几个{url,'*****'}*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  right: true</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
+                                    <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             width_data: '',
                             name: '',
-                            ca_photo: {
-                                width: '',
+                            carousel_data: {
+                                width: 10,
                                 translate: false,
                                 imgs: [
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/1.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/2.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/3.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/4.jpg'},
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/1.jpg'},
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/2.jpg'},
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/3.jpg'},
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/4.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/1.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/2.jpg'}
-                                ]
-                            },
-                            small_div: {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
+                                ],
+                                is_circle: true,
                                 left: false,
-                                right: true
+                                check_color: '#ff6800',
                             },
                             dx: 1,
                         }, onBeforeFirstRender: function () {
@@ -543,15 +567,6 @@
                             if (window.timer_3) {
                                 clearInterval(window.timer_3);
                             }
-                            me.data.small_div = {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                left: false,
-                                right: true
-                            };
                         }, onRender: function () {
                             var me = this;
                             var tem = parseInt(DD.css(document.querySelector('.router-content'), 'height'));
@@ -562,17 +577,39 @@
                         explain: "这是一个由十六张小图片组成的竖直轮播图插件，通过每四张图片的竖直旋转拼合，实现图片的动态轮播。轮播是定时自动竖直旋转轮播。\n" +
                             "本插件可自定义配置项包括：轮播颜色、初始颜色、方块长度、方块高度、轮播时间、轮播方向（方向上、方向下）。",
                         template: ` <div class="el-plugin">
-        <div x-plugin="plugin_03004" class='plugin'></div>
-    </div>`,
+                                        <div x-plugin="plugin_03004" class='plugin' dataName="carousel_data"></div>
+                                     </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-carousel-4" <span class="attr">x-plugin</span>="carousel" <span class="attr">dataName</span>="carousel_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'carousel_4',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-carousel-4',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
+                                    <pre><span>                  check_color: "#ffff00",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
+                                    <pre><span>                  translate: false</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  imgs: [{</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
+                                    <pre><span>                        img_item:[{</span>      <span class="comment">/*轮播图有几张图片就有几个img_item*/</span></pre>
+                                    <pre><span>                              url: '*****'</span>      <span class="comment">/*一张图片分为及部分，就有几个{url,'*****'}*/</span></pre>
+                                    <pre><span>                        }]</span></pre>
+                                    <pre><span>                  }],</span></pre>
+                                    <pre><span>                  up: true</span>      <span class="comment">/*轮播图向上滑动还是向下滑动*/</span></pre>
+                                    <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             base_url: '/plugin_set/public/view/plugin_download/carouse_4/img/',
                             width_data: '',
                             name: '',
-                            ca_photo: {
+                            carousel_data: {
                                 one: true,
-                                width: '',
+                                width: 10,
                                 translate: false,
-                                span: [{}, {}, {}, {}],
                                 imgs: [{
                                     img_item: [{url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/4.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/8.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/12.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/16.jpg'}]
                                 }, {
@@ -581,41 +618,23 @@
                                     img_item: [{url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/2.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/6.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/10.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/14.jpg'}]
                                 }, {
                                     img_item: [{url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/1.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/5.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/9.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/13.jpg'}]
-                                }]
-                            },
-                            small_div: {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                up: true,
-                                down: false,
+                                }],
+                                is_circle: true,
+                                check_color: '#ffff00',
+                                up: true
                             },
                             up: false,
                             down: true,
                         }, onBeforeFirstRender: function () {
                             var me = this;
                             me.data.name = "3d轮播图";
-                            me.data.ca_photo.imgs.forEach(function (i, inde) {
+                            me.data.carousel_data.imgs.forEach(function (i, inde) {
                                 i.img_item.forEach(function (item, index) {
                                     //图片url地址赋值
                                     item.url = me.data.base_url + ((index + 1) * 4 - inde) + '.jpg';
                                 });
                             });
-                            me.data.ca_photo.span.forEach(function (i) {
-                                i.width = 8;
-                                i.height = 8;
-                            });
-                            me.data.small_div = {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                up: true,
-                                down: false,
-                            };
+
                             if (window.timer_1) {
                                 clearInterval(window.timer_1);
                             }

@@ -33,13 +33,14 @@
 .carous_ct .spancont {
     width: 100%;
     position: absolute;
-    bottom: 15px;
+    bottom: 5px;
     height: 25px;
 }
 
 .carous_ct .spancont .span {
     width: 100px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .carous_ct .spancont .span span {
@@ -48,7 +49,6 @@
     width: 13px;
     background-color: #f8f8f8;
     margin: 0 5px;
-    border-radius: 50%;
 }
 
 .carous_ct .spancont .span .active {

@@ -28,7 +28,6 @@
             var me = this;
             me.data = view.$getData().data[view.$dataItem].imgs;
             me.data.push(DD.clone(me.data[0]));
-            console.log(me.data);
             me.color = view.$getData().data[view.$dataItem].check_color;
             //me.check_color=view.$getData().data.ca_photo;
             me.drawimage = function() {
@@ -101,7 +100,6 @@
                 me.imgwidth = parseInt(DD.css(view.querySelector('.content'), 'width'));
                 me.show = view.querySelector('.show');
                 me.span_width = view.$getData().data[view.$dataItem].width;
-                console.log( me.span_width);
                 //true为左边滑动
                 me.flag = true;
                 if(view.$getData().data[view.$dataItem].right){

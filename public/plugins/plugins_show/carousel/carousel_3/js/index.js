@@ -3,20 +3,28 @@
     plugin_03003 = function() {};
     plugin_03003.prototype = {
         init: function(view) {
-            var tem = ` <div class='content' x-model='ca_photo'>
-  <div class="img-photo3">
-       <div  style="background-image: url('{{url}}');background-size:100% 100%" class='img' x-repeat='imgs'></div>
-  </div>
-  <div style="clear:both"></div>
-  <div class='span'>
-     <div class='span-cont'>
-        <span x-repeat='imgs' class='item-span'></span>
-     </div>
-  </div>
- <div class="left"><div class="img-content"></div></div>
-  <div class="right"><div class="img-content"></div></div>
-    </div>`
+            var tem = ` <div class='content' x-model='carousel_data'>
+                          <div class="img-photo3">
+                               <div  style="background-image: url('{{url}}');background-size:100% 100%" class='img' x-repeat='imgs'></div>
+                          </div>
+                          <div style="clear:both"></div>
+                          <div class='span'>
+                             <div class='span-cont'>
+                                <span x-repeat='imgs' class='item-span' x-show="$index>1"></span>
+                             </div>
+                          </div>
+                          <div class="left"><div class="img-content"></div></div>
+                          <div class="right"><div class="img-content"></div></div>
+                        </div>`
             view.innerHTML = tem;
+            var data = DD.attr(view, 'dataName') || 'data';
+            //数据项名字
+            view.$dataItem = data;
+            //移除showItem
+            view.removeAttribute('dataItem');
+            //设置innerHTML
+            DD.Compiler.compile(view, view.$module);
+            view.$forceRender = true;
         },
         render: function(view) {
             var me = this;
@@ -27,7 +35,8 @@
             me.time_count = 0;
             //更新页面
             me.direct=1;
-            if(view.$getData().data.small_div.left){
+            me.check_color = view.$getData().data[view.$dataItem].check_color;
+            if(view.$getData().data[view.$dataItem].left){
                 me.direct=-1;
             }
             me.updata = function() {
@@ -51,13 +60,13 @@
                 if (index < 0) {
                     index += me.img_arr.length;
                 }
-                me.span[index].classList.add('is_check');
+                DD.css(me.span[index], 'background-color', me.check_color);
             }
             //去掉span颜色
             me.removespan = function() {
                 var me = this;
                 me.span.forEach(function(item) {
-                    DD.removeClass(item, 'is_check');
+                    DD.css(item, 'background-color', '#FFFFFF');
                 })
             }
             me.getheight = function() {
@@ -78,6 +87,20 @@
                 me.span = view.querySelectorAll('.item-span');
                 me.spans = view.querySelector('.span-cont');
                 var temp = me.span.length * 25;
+                me.span_width = view.$getData().data[view.$dataItem].width;
+                me.span_is_circle = view.$getData().data[view.$dataItem].is_circle;
+                if(me.span_is_circle) {
+                    me.span.forEach(function (i) {
+                        DD.css(i, 'width', me.span_width + 'px');
+                        DD.css(i, 'height', me.span_width + 'px');
+                        DD.css(i, 'border-radius', '100%');
+                    });
+                }else {
+                    me.span.forEach(function (i) {
+                        DD.css(i, 'width', me.span_width + 'px');
+                        DD.css(i, 'height', me.span_width + 'px');
+                    });
+                }
                 //获取容器高度用来呈现3d效果
                 me.imgh = parseInt(DD.css(view.querySelector('.content'), 'height'));
                 //imgs下面的小数组
