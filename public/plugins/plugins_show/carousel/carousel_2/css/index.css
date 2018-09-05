@@ -67,6 +67,7 @@
     background-size: contain;
     background-position: center;
     background-color: #eeeeee63;
+    display: none;
 }
 
 .carous_ct .plugin  .right {
@@ -82,4 +83,5 @@
     background-size: contain;
     background-position: center;
     background-color: #eeeeee63;
+    display: none;
 }

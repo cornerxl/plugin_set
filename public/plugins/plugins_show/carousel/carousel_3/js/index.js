@@ -96,6 +96,22 @@
                 me.updata();
             }, 0);
             new DD.Event({
+                eventName: 'mouseover',
+                view: view.querySelector('.content'),
+                handler: function (e, data, view) {
+                    DD.css(document.querySelector('.left'),'display', 'block');
+                    DD.css(document.querySelector('.right'),'display', 'block');
+                }
+            });
+            new DD.Event({
+                eventName: 'mouseout',
+                view: view.querySelector('.content'),
+                handler: function (e, data, view) {
+                    DD.css(document.querySelector('.left'),'display', 'none');
+                    DD.css(document.querySelector('.right'),'display', 'none');
+                }
+            });
+            new DD.Event({
                 eventName: 'swiperight',
                 view: view,
                 handler: function(e, data, view) {

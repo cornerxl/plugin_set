@@ -66,6 +66,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    display: none;
 }
 
 .el-photo .plugin .content .right {
@@ -81,4 +82,5 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    display: none;
 }

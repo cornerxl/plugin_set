@@ -362,18 +362,24 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            `;
                 });
                 props.template = tem + `</div>`;
             },
@@ -387,53 +393,58 @@
                         explain: "这是一个由四张图片组成的左右轮播图插件，通过每张图片的左右滚动，实现图片的动态轮播。轮播是定时自动左右旋转轮播，还可通过点击左右键来控制轮播方向。\n" +
                             "本插件可自定义配置项包括：轮播颜色、初始颜色、方块长度、方块高度、轮播时间、轮播方向（方向左、方向右）。",
                         template: `<div class="el-photo">
-        <div x-plugin='plugin_03001' class='plugin'></div>
-    </div> `,
+                                        <div x-plugin='plugin_03001' class='plugin' dataName="carousel_data"></div>
+                                    </div> `,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-carousel-1" <span class="attr">x-plugin</span>="carousel" <span class="attr">dataName</span>="carousel_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'carousel_1',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-carousel-1',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
+                                    <pre><span>                  check_color: "#ff0000",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
+                                    <pre><span>                  translate: false</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  imgs: [</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
+                                    <pre><span>                        {url: '*****'}</span>      <span class="comment">/*轮播图有几张图片就有几个{url,'*****'}*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  right: true</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
+                                    <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             name: '',
-                            ca_photo: {
-                                width: '',
-                                check_color: '#ff6800',
+                            carousel_data: {
+                                width: 10,
+                                check_color: '#ff0000',   //可修改选中颜色
                                 translate: false,
                                 imgs: [
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/1.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/2.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/3.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/4.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/5.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/1.jpg'}],
-                                span: [{blight: false}, {blight: false}, {blight: false}, {blight: false}, {blight: false}, {blight: false}]
-                            }, small_div: {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                left: false,
-                                right: true,
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/5.jpg'}],
+                                right: true,   // 向右滑动还是向左滑动
+                                is_circle: true  // 是否为圆圈
                             }
                         },
                         onBeforeFirstRender: function () {
                             var me = this;
-                            me.data.ca_photo.width = window.innerWidth * 0.5;
                             me.data.name = "常见轮播图";
-                            me.data.small_div = {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                left: false,
-                                right: true,
-                            };
                         }
                     }, {
                         name: "03002",
                         explain: "这是一个由四张图片组成的左右轮播图插件，通过每张图片的左右旋转，实现图片的动态轮播。轮播是定时自动左右旋转轮播，还可通过点击左右键来控制轮播方向。\n" +
                             "本插件可自定义配置项包括：轮播颜色、初始颜色、方块长度、方块高度、轮播时间、轮播方向（方向左、方向右）。",
                         template: `<div class="carous_ct">
-		<div x-plugin="plugin_03002" class='plugin'></div>
-	</div>`,
+		                                <div x-plugin="plugin_03002" class='plugin'></div>
+	                                </div>`,
+                        htmlcode: ``,
+                        jscode: ``,
                         data: {
                             width_data: '',
                             name: '',
