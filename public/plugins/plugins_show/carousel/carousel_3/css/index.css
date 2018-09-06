@@ -22,7 +22,7 @@
     position: absolute;
     width: 100%;
     height: 21px;
-    bottom: 20px;
+    bottom: 5px;
 }
 
 .el-plugin .plugin .content .span .span-cont {
@@ -30,6 +30,7 @@
     width: 50%!important;
     margin: 0 auto;
     overflow: hidden;
+    text-align: center;
 }
 
 .el-plugin .plugin .content .span .span-cont span {
@@ -67,6 +68,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    display: none;
 }
 
 .el-plugin .plugin .content .right {
@@ -82,4 +84,5 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    display: none;
 }

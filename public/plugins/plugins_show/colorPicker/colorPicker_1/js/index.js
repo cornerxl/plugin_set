@@ -5,36 +5,36 @@
     plugin_05001.prototype = {
         init: function(view) {
             var template = `<div class="color-content" x-show="show">
-    <div class="content">
-        <div class="top">
-            <div class="color-jbe" ></div>
-            <div class="color-w">
-            <div class="color-b"></div>
-            <div class="moveE" ondragstart="return false;"></div>
-            <div class="small-item" ondragstart="return false;"></div>
-            </div>
-         </div>
-                <div class="bottom">
-                    <div class="color-band">
-                        <div class="point" style="left:{{left}}px" ondragstart="return false;"></div>
-                    </div>
-                    <div class="eventName"></div>
-                </div>
-                <div class="rgb">
-                        <span class="name">r</span><input class="item" x-field="r" type="number">
-                        <span class="name">g</span><input class="item"  x-field="g" type="number">
-                        <span class="name">b</span><input class="item" x-field="b" type="number">
-                </div>
-                 <div class="rgb">
-                        <span class="name">H</span><input class="item" x-field="H" type="number">
-                        <span class="name">s</span><input class="item"  x-field="s" type="number">
-                        <span class="name">v</span><input class="item" x-field="v" type="number">
-                </div>
-                 <div class="rgb">
-                                 <div e-click='sure' class="ensure">确定</div>
-                  </div>
-            </div>
-        </div>`;
+                                <div class="content">
+                                    <div class="top">
+                                        <div class="color-jbe" ></div>
+                                        <div class="color-w">
+                                        <div class="color-b"></div>
+                                        <div class="moveE" ondragstart="return false;"></div>
+                                        <div class="small-item" ondragstart="return false;"></div>
+                                        </div>
+                                     </div>
+                                            <div class="bottom">
+                                                <div class="color-band">
+                                                    <div class="point" style="left:{{left}}px" ondragstart="return false;"></div>
+                                                </div>
+                                                <div class="eventName"></div>
+                                            </div>
+                                            <div class="rgb">
+                                                    <span class="name">r</span><input class="item" x-field="r" type="number">
+                                                    <span class="name">g</span><input class="item"  x-field="g" type="number">
+                                                    <span class="name">b</span><input class="item" x-field="b" type="number">
+                                            </div>
+                                             <div class="rgb">
+                                                    <span class="name">H</span><input class="item" x-field="H" type="number">
+                                                    <span class="name">s</span><input class="item"  x-field="s" type="number">
+                                                    <span class="name">v</span><input class="item" x-field="v" type="number">
+                                            </div>
+                                             <div class="rgb">
+                                                             <div e-click='sure' class="ensure">确定</div>
+                                              </div>
+                                        </div>
+                                    </div>`;
             view.innerHTML = template;
             DD.Compiler.compile(view, view.$module);
             view.$forceRender = true;

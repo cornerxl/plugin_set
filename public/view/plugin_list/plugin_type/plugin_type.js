@@ -17,7 +17,8 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-                                <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class="explain">本章节主要介绍插件库选择地址插件，主要用于定位，选择所属省份等。</p>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
                                 <div class="plugin-content el-plugin-` + i.name + `">`
@@ -147,7 +148,8 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-                                <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class="explain">本章节主要介绍缓冲动画插件，用户可根据需求选择不同类型，主要用途为：当请求数据时，会有一段时间的空白，使用缓冲动画插件，可提高用户体验。</p>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
                                 <div class="plugin-content el-plugin-` + i.name + `">`
@@ -362,18 +364,25 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class="explain">本章节主要介绍插件库轮播图插件，用于展示或者推广广告。主要有以下几种类型。</p>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            `;
                 });
                 props.template = tem + `</div>`;
             },
@@ -385,87 +394,103 @@
                     {
                         name: '03001',
                         explain: "这是一个由四张图片组成的左右轮播图插件，通过每张图片的左右滚动，实现图片的动态轮播。轮播是定时自动左右旋转轮播，还可通过点击左右键来控制轮播方向。\n" +
-                            "本插件可自定义配置项包括：轮播颜色、初始颜色、方块长度、方块高度、轮播时间、轮播方向（方向左、方向右）。",
+                            "本插件可自定义配置项包括：轮播颜色、初始颜色、圆圈显示还是方块显示、提示长度、提示高度、提示颜色、轮播时间、轮播方向（方向左、方向右）。",
                         template: `<div class="el-photo">
-        <div x-plugin='plugin_03001' class='plugin'></div>
-    </div> `,
+                                        <div x-plugin='plugin_03001' class='plugin' dataName="carousel_data"></div>
+                                    </div> `,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-carousel-1" <span class="attr">x-plugin</span>="carousel" <span class="attr">dataName</span>="carousel_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'carousel_1',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-carousel-1',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
+                                    <pre><span>                  check_color: "#ff0000",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
+                                    <pre><span>                  translate: false,</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  imgs: [</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
+                                    <pre><span>                        {url: '*****'}</span>      <span class="comment">/*轮播图有几张图片就有几个{url,'*****'}*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  right: true,</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
+                                    <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             name: '',
-                            ca_photo: {
-                                width: '',
-                                check_color: '#ff6800',
+                            carousel_data: {
+                                width: 10,
+                                check_color: '#ff0000',   //可修改选中颜色
                                 translate: false,
                                 imgs: [
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/1.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/2.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/3.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/4.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/5.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/1.jpg'}],
-                                span: [{blight: false}, {blight: false}, {blight: false}, {blight: false}, {blight: false}, {blight: false}]
-                            }, small_div: {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                left: false,
-                                right: true,
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_1/img/5.jpg'}],
+                                right: true,   // 向右滑动还是向左滑动
+                                is_circle: true  // 是否为圆圈
                             }
                         },
                         onBeforeFirstRender: function () {
                             var me = this;
-                            me.data.ca_photo.width = window.innerWidth * 0.5;
                             me.data.name = "常见轮播图";
-                            me.data.small_div = {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                left: false,
-                                right: true,
-                            };
                         }
                     }, {
                         name: "03002",
                         explain: "这是一个由四张图片组成的左右轮播图插件，通过每张图片的左右旋转，实现图片的动态轮播。轮播是定时自动左右旋转轮播，还可通过点击左右键来控制轮播方向。\n" +
-                            "本插件可自定义配置项包括：轮播颜色、初始颜色、方块长度、方块高度、轮播时间、轮播方向（方向左、方向右）。",
+                            "本插件可自定义配置项包括：轮播颜色、初始颜色、圆圈显示还是方块显示、提示长度、提示高度、提示颜色、轮播时间、轮播方向（方向左、方向右）。",
                         template: `<div class="carous_ct">
-		<div x-plugin="plugin_03002" class='plugin'></div>
-	</div>`,
+		                                <div x-plugin="plugin_03002" class='plugin' dataName="carousel_data"></div>
+	                                </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-carousel-2" <span class="attr">x-plugin</span>="carousel" <span class="attr">dataName</span>="carousel_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'carousel_2',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-carousel-2',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
+                                    <pre><span>                  check_color: "#00FF00",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
+                                    <pre><span>                  translate: false,</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  imgs: [</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
+                                    <pre><span>                        {url: '*****'}</span>      <span class="comment">/*轮播图有几张图片就有几个{url,'*****'}*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  right: true,</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
+                                    <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             width_data: '',
                             name: '',
-                            img_ct: {
-                                width: '',
+                            carousel_data: {
+                                width: 10,
                                 translate: false,
-                                spans: [{}, {}, {}, {}, {}, {}],
                                 imgs: [
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/1.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/2.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/3.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/4.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/1.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/2.jpg'}
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/4.jpg'}
                                 ],
-                            }, small_div: {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 5,
-                                left: true,
-                                right: false
+                                is_circle: false,
+                                right: false,
+                                check_color: '#00FF00',
                             }
                         }, onBeforeFirstRender: function () {
                             var me = this;
                             me.data.name = "水平旋转";
-                            me.data.img_ct.spans.forEach(function (i) {
-                                i.width = me.data.small_div.width;
-                                i.height = me.data.small_div.height;
-                            });
-                            me.data.img_ct.$set("spans", me.data.img_ct.spans);
+                            // me.data.img_ct.spans.forEach(function (i) {
+                            //     i.width = me.data.small_div.width;
+                            //     i.height = me.data.small_div.height;
+                            // });
+                            // me.data.img_ct.$set("spans", me.data.img_ct.spans);
                             if (window.timer_1) {
                                 clearInterval(window.timer_1);
                             }
@@ -478,8 +503,6 @@
                             if (window.timer_4) {
                                 clearInterval(window.timer_4);
                             }
-                            me.data.small_div.left = true;
-                            me.data.small_div.right = false;
                         }, onRender: function () {
                             var me = this;
                             var tem = parseInt(DD.css(document.querySelector('.router-content'), 'height'));
@@ -488,33 +511,48 @@
                     }, {
                         name: "03003",
                         explain: '这是一个由四张图片组成的竖直轮播图插件，通过每张图片的竖直旋转，实现图片的动态轮播。轮播是定时自动竖直旋转轮播。\n' +
-                            '本插件可自定义配置项包括：轮播颜色、初始颜色、方块长度、方块高度、轮播时间、轮播方向（方向上、方向下）。',
+                            '本插件可自定义配置项包括：轮播颜色、初始颜色、圆圈显示还是方块显示、提示长度、提示高度、提示颜色、轮播时间、轮播方向（方向上、方向下）。',
                         template: `<div class="el-plugin">
-        <div x-plugin="plugin_03003" class='plugin'></div>
-    </div>`,
+                                        <div x-plugin="plugin_03003" class='plugin' dataName="carousel_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-carousel-3" <span class="attr">x-plugin</span>="carousel" <span class="attr">dataName</span>="carousel_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'carousel_3',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-carousel-3',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
+                                    <pre><span>                  check_color: "#ff6800",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
+                                    <pre><span>                  translate: false,</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  imgs: [</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
+                                    <pre><span>                        {url: '*****'}</span>      <span class="comment">/*轮播图有几张图片就有几个{url,'*****'}*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  up: false,</span>      <span class="comment">/*轮播图向右滑动还是向左滑动*/</span></pre>
+                                    <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             width_data: '',
                             name: '',
-                            ca_photo: {
-                                width: '',
+                            carousel_data: {
+                                width: 10,
                                 translate: false,
                                 imgs: [
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/1.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/2.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/3.jpg'},
-                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/4.jpg'},
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/1.jpg'},
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/2.jpg'},
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/3.jpg'},
+                                    {url: PLUGINURL + '/plugins_show/carousel/carousel_2/img/4.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/1.jpg'},
                                     {url: PLUGINURL + '/plugins_show/carousel/carousel_3/img/2.jpg'}
-                                ]
-                            },
-                            small_div: {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                left: false,
-                                right: true
+                                ],
+                                is_circle: true,
+                                up: false,
+                                check_color: '#ff6800',
                             },
                             dx: 1,
                         }, onBeforeFirstRender: function () {
@@ -532,15 +570,6 @@
                             if (window.timer_3) {
                                 clearInterval(window.timer_3);
                             }
-                            me.data.small_div = {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                left: false,
-                                right: true
-                            };
                         }, onRender: function () {
                             var me = this;
                             var tem = parseInt(DD.css(document.querySelector('.router-content'), 'height'));
@@ -548,20 +577,42 @@
                         },
                     }, {
                         name: "03004",
-                        explain: "这是一个由十六张小图片组成的竖直轮播图插件，通过每四张图片的竖直旋转拼合，实现图片的动态轮播。轮播是定时自动竖直旋转轮播。\n" +
-                            "本插件可自定义配置项包括：轮播颜色、初始颜色、方块长度、方块高度、轮播时间、轮播方向（方向上、方向下）。",
+                        explain: "这是一个由四张大图，16张小图组成的竖直轮播图插件，通过每四张图片的竖直旋转拼合，实现图片的动态轮播。轮播是定时自动竖直旋转轮播。\n" +
+                            "本插件可自定义配置项包括：轮播颜色、初始颜色、圆圈显示还是方块显示、提示宽度、提示高度、提示颜色、轮播时间、轮播方向（方向上、方向下）。",
                         template: ` <div class="el-plugin">
-        <div x-plugin="plugin_03004" class='plugin'></div>
-    </div>`,
+                                        <div x-plugin="plugin_03004" class='plugin' dataName="carousel_data"></div>
+                                     </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-carousel-4" <span class="attr">x-plugin</span>="carousel" <span class="attr">dataName</span>="carousel_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'carousel_4',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-carousel-4',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            carousel_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  width: 10,</span>      <span class="comment">/*轮播图提示位置大小*/</span></pre>
+                                    <pre><span>                  check_color: "#ffff00",</span>      <span class="comment">/*轮播图提示当前位置显示颜色*/</span></pre>
+                                    <pre><span>                  translate: false,</span>      <span class="comment">/*是否可点击*/</span></pre>
+                                    <pre><span>                  imgs: [{</span>      <span class="comment">/*轮播图图片数组*/</span></pre>
+                                    <pre><span>                        img_item:[{</span>      <span class="comment">/*轮播图有几张图片就有几个img_item*/</span></pre>
+                                    <pre><span>                              url: '*****'</span>      <span class="comment">/*一张图片分为及部分，就有几个{url,'*****'}*/</span></pre>
+                                    <pre><span>                        }]</span></pre>
+                                    <pre><span>                  }],</span></pre>
+                                    <pre><span>                  up: true,</span>      <span class="comment">/*轮播图向上滑动还是向下滑动*/</span></pre>
+                                    <pre><span>                  is_circle: true</span>      <span class="comment">/*轮播图提示当前位置是否为圆圈*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             base_url: '/plugin_set/public/view/plugin_download/carouse_4/img/',
                             width_data: '',
                             name: '',
-                            ca_photo: {
+                            carousel_data: {
                                 one: true,
-                                width: '',
+                                width: 10,
                                 translate: false,
-                                span: [{}, {}, {}, {}],
                                 imgs: [{
                                     img_item: [{url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/4.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/8.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/12.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/16.jpg'}]
                                 }, {
@@ -570,41 +621,23 @@
                                     img_item: [{url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/2.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/6.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/10.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/14.jpg'}]
                                 }, {
                                     img_item: [{url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/1.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/5.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/9.jpg'}, {url: PLUGINURL + '/plugins_show/carousel/carousel_4/img/13.jpg'}]
-                                }]
-                            },
-                            small_div: {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                up: true,
-                                down: false,
+                                }],
+                                is_circle: true,
+                                check_color: '#ffff00',
+                                up: true
                             },
                             up: false,
                             down: true,
                         }, onBeforeFirstRender: function () {
                             var me = this;
                             me.data.name = "3d轮播图";
-                            me.data.ca_photo.imgs.forEach(function (i, inde) {
+                            me.data.carousel_data.imgs.forEach(function (i, inde) {
                                 i.img_item.forEach(function (item, index) {
                                     //图片url地址赋值
                                     item.url = me.data.base_url + ((index + 1) * 4 - inde) + '.jpg';
                                 });
                             });
-                            me.data.ca_photo.span.forEach(function (i) {
-                                i.width = 8;
-                                i.height = 8;
-                            });
-                            me.data.small_div = {
-                                check: '#ff6800',
-                                no_check: '#ffffff',
-                                width: '8',
-                                height: '8',
-                                time: 3,
-                                up: true,
-                                down: false,
-                            };
+
                             if (window.timer_1) {
                                 clearInterval(window.timer_1);
                             }
@@ -654,25 +687,37 @@
             // templateUrl: HTMLURL + '/plugin_list/plugin_type/plugin_type.html',
             delayInit: true,
             requires: [
-                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkBox_1/css/index.css'},
-                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkBox_1/js/index.js'},
-                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkBox_2/css/index.css'},
-                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkBox_2/js/index.js'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_1/css/index.css'},
+                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_1/js/index.js'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_2/css/index.css'},
+                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_2/js/index.js'},
+
+                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_3/css/index.css'},
+                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_3/js/index.js'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_4/css/index.css'},
+                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_4/js/index.js'}
             ], onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class="explain">本章节主要介绍checkBox插件，通过点击实现选中与未选中，主要有以下四种类型。</p>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                    + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            `;
                 });
                 props.template = tem + `</div>`;
             },
@@ -683,36 +728,147 @@
                 plugins: [
                     {
                         name: '04001',
-                        explain: "这是本系统的第一个checkBox插件，通过点击来实现选中与未选中。\n" +
-                            "本插件可自定义配置项包括：选中颜色、不选颜色、禁选颜色。",
+                        explain: "可自定义配置项包括：选中颜色、未选中颜色、空白区域颜色、是圆圈还是正方形、checkBox大小。",
                         template: `<div class="nd-plugin-check-1">
-		<div x-plugin="plugin_04001"></div>
-	</div>`,
+                                        <div x-plugin="plugin_04001" dataName="check_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-1" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'check_1',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-check-4',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
+                                    <pre><span>                  no_check_color: '#ffffff',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
+                                    <pre><span>                  empty_color: '#cccccc',</span>      <span class="comment">/*空白区域颜色*/</span></pre>
+                                    <pre><span>                  is_circle: true,</span>      <span class="comment">/*是否为圆圈*/</span></pre>
+                                    <pre><span>                  size: 10,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
+                                    <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             name: '普通选择框',
-                            check_color: '#26a2ff',
-                            no_check_color: '#ffffff',
-                            empty_color: '#cccccc',
-                            yes: true,
+                            check_data : {
+                                check_color: '#26a2ff',
+                                no_check_color: '#ffffff',
+                                empty_color: '#cccccc',
+                                is_check: true,
+                                is_circle: true,
+                                size: 20
+                            }
                         },
                         onBeforeFirseRender: function () {
                             var me = this;
-                            me.data.check_color = '#26a2ff';
-                            me.data.no_check_color = '#ffffff';
-                            me.data.empty_color = '#cccccc';
-                            me.data.yes = true;
                         },
                     }, {
                         name: '04002',
-                        explain: "这是本系统的第二个checkBox插件，通过点击来实现选中与未选中。提供的样式多样。\n" +
-                            "本插件可自定义配置项包括：选中颜色、不选颜色。",
-                        template: `<div class="nd-plugin-check-list">
-        <div x-plugin="plugin_04002" class="content-check"></div>
-    </div>`,
+                        explain: "可自定义配置项包括：选中颜色、未选中颜色、checkBox大小。",
+                        template: `<div class="nd-plugin-check">
+                                        <div class="content-check" x-plugin="plugin_04002" dataName="check_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-2" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'check_2',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-check-2',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
+                                    <pre><span>                  no_check_color: '#aaaaaa',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
+                                    <pre><span>                  size: 30,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
+                                    <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
-                            yes: true,
-                            yes_1: true,
-                            yes_2: true,
+                            name: 'check02',
+                            check_data : {
+                                check_color: '#26a2ff',
+                                no_check_color: '#aaaaaa',
+                                is_check: true,
+                                size: 30
+                            }
+                        },
+                        onBeforeFirseRender: function () {
+                            var me = this;
+                        },
+                    },{
+                        name: '04003',
+                        explain: "可自定义配置项包括：选中颜色、不选颜色、checkBox大小。",
+                        template: `<div class="nd-plugin-check">
+                                        <div class="content-check" x-plugin="plugin_04003" dataName="check_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-3" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'check_3',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-check-3',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
+                                    <pre><span>                  no_check_color: '#000000',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
+                                    <pre><span>                  size: 30,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
+                                    <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
+                        data: {
+                            name: 'check03',
+                            check_data : {
+                                check_color: '#26a2ff',
+                                no_check_color: '#000000',
+                                is_check: true,
+                                size: 30
+                            }
+                        },
+                        onBeforeFirseRender: function () {
+                            var me = this;
+                        },
+                    },{
+                        name: '04004',
+                        explain: "可自定义配置项包括：选中颜色、不选颜色、checkBox大小。",
+                        template: `<div class="nd-plugin-check">
+                                        <div class="content-check" x-plugin="plugin_04004" dataName="check_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-4" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'check_4',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-check-4',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
+                                    <pre><span>                  no_check_color: '#aaaaaa',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
+                                    <pre><span>                  size: 30,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
+                                    <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
+                        data: {
+                            name: 'check04',
+                            check_data : {
+                                check_color: '#26a2ff',
+                                no_check_color: '#aaaaaa',
+                                is_check: true,
+                                size: 30
+                            }
+                        },
+                        onBeforeFirseRender: function () {
+                            var me = this;
                         },
                     }
                 ]
@@ -749,17 +905,23 @@
             ], onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>`;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                    + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>`;
                 });
                 props.template = tem + `</div>`;
             },
@@ -772,13 +934,14 @@
                     explain: "这是本系统的一款颜色选择器插件。拥有多个参数可供调节，所选颜色区域也更多。\n" +
                         "本插件可自定义配置项包括：颜色选择。",
                     template: `<div class="el-color-picker-1">
-        <div x-plugin="plugin_05001" class="plugin-color">
-        </div>
-        <div class="input">
-        	 <div style="background-color:{{str}}" class="input"></div>
-        	<div class="select" e-click="select">选择</div>
-        </div>
-    </div>`,
+                                    <div x-plugin="plugin_05001" class="plugin-color"></div>
+                                    <div class="input">
+                                         <div style="background-color:{{str}}" class="input"></div>
+                                        <div class="select" e-click="select">选择</div>
+                                    </div>
+                                </div>`,
+                    htmlcode: ``,
+                    jscode: ``,
                     data: {
                         left: 0,
                         first: 1,
@@ -848,18 +1011,23 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                    + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>`;
                 });
                 props.template = tem + `</div>`;
             },
@@ -874,14 +1042,39 @@
                             "通过点击弹出的日历上的日期，来选取相应的时间。\n" +
                             "本插件可自定义配置项包括：背景颜色、表头颜色、本月颜色、今日颜色、他月颜色。",
                         template: `<div class="plugin-date">
-		<div x-plugin='plugin_06001' Year='year' Month='month' Day='day'></div>
-	</div>`,
+                                       <div x-plugin='plugin_06001' dataName="date_data"></div>
+                                   </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-date" <span class="attr">x-plugin</span>="plugin_date" <span class="attr">dataName</span>="date_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'date_date',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-date',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            date_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  year: '',</span>      <span class="comment">/*日期插件初始化年份*/</span></pre>
+                                    <pre><span>                  month: '',</span>      <span class="comment">/*日期插件初始化月份*/</span></pre>
+                                    <pre><span>                  day: '',</span>      <span class="comment">/*日期插件初始化天*/</span></pre>
+                                    <pre><span>                  xDate_color: {</span>      <span class="comment">/*日期插件可配置颜色对象*/</span></pre>
+                                    <pre><span>                        header_color: '#e6e6e6',</span>      <span class="comment">/*日期插件头部可配置颜色*/</span></pre>
+                                    <pre><span>                        bg_color: '#fff',</span>      <span class="comment">/*日期插件背景可配置颜色*/</span></pre>
+                                    <pre><span>                        day_color: '#555555',</span>      <span class="comment">/*日期插件其他月份颜色*/</span></pre>
+                                    <pre><span>                        today_color: '#112233',</span>      <span class="comment">/*日期插件当天选中的颜色*/</span></pre>
+                                    <pre><span>                        month_color: '#333333',</span>      <span class="comment">/*日期插件当月每天可配置颜色*/</span></pre>
+                                    <pre><span>                  },</span></pre>
+                                    <pre><span>                  xDate_day: [{day:'日'},{day:'一'}{day:'二'}{day:'三'}{day:'四'}{day:'五'}{day:'六'}],</span>      <span class="comment">/*日期插件星期几*/</span></pre>
+                                    <pre><span>                  xDate_week: []</span>      <span class="comment">/*日历日期内容*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
-                            xDate: {
+                            date_data: {
                                 year: "", //当前 年/月/日
                                 month: "",
                                 day: "",
-                                show: true,
+                                show: false,
                                 xDate_color: { //日历自定义颜色
                                     header_color: '#e6e6e6',
                                     bg_color: '#fff',
@@ -912,12 +1105,14 @@
                         explain: "这是一款IOS滚动日期选择插件。\n" +
                             "本插件可自定义配置项包括：字体大小、字体颜色、选择框颜色。",
                         template: `	<div class="show">
-		<button e-click='show'>展示</button>
-		<p>你选择的日期是：<span>{{nowDate}}</span></p>
-	</div>
-	<div class="plugin-select">
-		<div x-plugin='Select'></div>
-	</div>`,
+                                        <button e-click='show'>选择时间</button>
+                                        <p>你选择的日期是：<span>{{nowDate}}</span></p>
+                                    </div>
+                                    <div class="plugin-select">
+                                        <div x-plugin='Select' dataName="date_date"></div>
+                                    </div>`,
+                        htmlcode:  ``,
+                        jscode: ``,
                         data: {
                             nowDate: '周一',
                             show: false,
@@ -997,18 +1192,24 @@
             ], onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                                + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            `;
                 });
                 props.template = tem + `</div>`;
             },
@@ -1020,16 +1221,41 @@
                     {
                         name: "07001",
                         explain: "这是一个折叠插件，通过点击来实现内容的折叠隐藏与显示。使页面展示效果更佳。\n" +
-                            "本插件可自定义配置项包括：头部颜色、字体大小、字体颜色、折叠时间。",
+                            "本插件可自定义配置项包括：头部内容、头部背景颜色、头部字体大小、头部字体颜色，具体内容、具体内容背景颜色、具体内容字体大小、具体内容字体颜色、折叠时间。",
                         template: `<div class="plugin-collapse">
-        <div x-plugin="plugin_07001"></div>
-    </div>`,
+                                        <div x-plugin="plugin_07001" dataName="collapse_data"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="collapse" <span class="attr">x-plugin</span>="collapse" <span class="attr">dataName</span>="collapse_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'collapse',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-collapse',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            collapse_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  time: 0.5,</span>      <span class="comment">/*折叠动画时间*/</span></pre>
+                                    <pre><span>                  isCollapse: true,</span>      <span class="comment">/*折叠插件是打开状态还是折叠状态*/</span></pre>
+                                    <pre><span>                  heading: '点击展开，再次点击折叠',</span>      <span class="comment">/*插件头部文字信息*/</span></pre>
+                                    <pre><span>                  content: 'NoDom提供了丰富的指令集，如x-repeat( 重复条目渲染 )、x-model(数据模型)、x-if/x-else(条件)、x-show(显示和隐藏)、x-route／x-router(路由)、 x-field(字段和双向绑定)、x-validity(字段验证)。 同时提供了自定义指令集，指令可以帮助简化模版，丰富渲染内容。',</span>      <span class="comment">/*插件具体内容信息*/</span></pre>
+                                    <pre><span>                  head_color: '#f5f5f5',</span>      <span class="comment">/*折叠插件头部背景颜色*/</span></pre>
+                                    <pre><span>                  content_color: '#FFFFFF',</span>      <span class="comment">/*插件具体内容背景颜色*/</span></pre>
+                                    <pre><span>                  head_font_size: 16,</span>      <span class="comment">/*折叠插件头部字体大小*/</span></pre>
+                                    <pre><span>                  content_font_size: 14,</span>      <span class="comment">/*插件具体内容字体大小*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
-                            collapse: {
+                            collapse_data: {
                                 time: 0.5,
                                 isCollapse: true,
                                 heading: '点击展开，再次点击折叠',
-                                content: "NoDom提供了丰富的指令集，如x-repeat( 重复条目渲染 )、x-model(数据模型)、x-if/x-else(条件)、x-show(显示和隐藏)、x-route／x-router(路由)、 x-field(字段和双向绑定)、x-validity(字段验证)。 同时提供了自定义指令集，指令可以帮助简化模版，丰富渲染内容。"
+                                content: "NoDom提供了丰富的指令集，如x-repeat( 重复条目渲染 )、x-model(数据模型)、x-if/x-else(条件)、x-show(显示和隐藏)、x-route／x-router(路由)、 x-field(字段和双向绑定)、x-validity(字段验证)。 同时提供了自定义指令集，指令可以帮助简化模版，丰富渲染内容。",
+                                head_color: '#f5f5f5',
+                                content_color: '#FFFFFF',
+                                head_font_size: 16,
+                                content_font_size: 14
                             }
                         }
                     }
