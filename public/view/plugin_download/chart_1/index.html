@@ -1,0 +1,36 @@
+<div class="line-container clearfix" x-model="line">
+    <div style="height: 400px; width: 800px; margin:0 auto" class='chart' x-plugin='Chart' dataName='data' type='line' title='{{title}}' legend='{{legend}}' yTitle='' xTitle='' symbolSize='{{symbolSize}}' radarName='radar' category='string,number' gridLine='{{gridLine}}' marker='{{marker}}' titleColor='{{titleColor}}' gridLineColor='{{gridLineColor}}'>
+    </div>
+    <div class="con-config">
+        <div class="itemss">
+            <label for="" class="span">标题颜色</label>
+            <input type="color" e-change="changeTitleColor" value="{{titleColor}}" class="input">
+        </div>
+        <div class="itemss">
+            <label for="" class="span">图例</label>
+            <select name="" id="" e-change="changeLegend" class="input">
+                <option value="{{value}}" x-repeat="legends">{{text}}</option>
+            </select>
+        </div>
+        <div class="check">
+            <label for="" class="span">marker显示</label>
+            <input type="checkbox" e-change="changeMarker" class="input">
+        </div>
+        <div class="itemss">
+            <label for="" class="span">网格线</label>
+            <select name="" id="" e-change="changeLine" class="input">
+                <option value="{{value}}" x-repeat="lines" class="input">{{text}}</option>
+            </select>
+        </div>
+        <div class="itemss">
+            <label for="" class="span">网格线颜色</label>
+            <input type="color" e-change="changeLineColor" value="{{gridLineColor}}" class="input">
+        </div>
+        <!-- <div class="itemss">
+            <label for="" class="span">添加数据</label>
+            <input type="text" x-field="addTitle" class="input">
+            <input type="text" x-field="addData" class="input">
+            <button e-click="addLineData">添加</button>
+        </div> -->
+    </div>
+</div>

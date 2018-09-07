@@ -1,0 +1,29 @@
+ .clearfix::after {
+     display: table;
+     content: '';
+     clear: both;
+ }
+ /*.chart,*/
+ .option {
+     float: left;
+ }
+
+ .option {
+     /*padding: 30px;*/
+ }
+
+ .option-group {
+     margin-bottom: 20px;
+ }
+
+ .option-group label {
+     display: inline-block;
+     text-align: right;
+     margin-right: 20px;
+     width: 120px;
+ }
+
+ .chart {
+     width: 800px;
+     height: 400px;
+ }
