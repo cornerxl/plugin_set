@@ -1383,18 +1383,18 @@
             modules: [], onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                                + i.template + `
+                                </div>
+                                <div class='plugin-explain'>
+                                    <p>插件说明:</p>
+                                    <p class='explain'>` + i.explain + `</p>
+                                 </div>
+                            </div>
+                            `;
                 });
                 props.template = tem + `</div>`;
             },
@@ -1407,9 +1407,9 @@
                         explain: "这是一个输入框自动补全插件，具有较高的自定义性 ，可以改进搜索功能，搜索框输入时，可以智能补全搜索内容。\n" +
                             "本插件可自定义配置项包括：选中颜色、字体颜色。",
                         template: `<div class="wrap">
-    <input type="text" id="auto_input" class="auto-inp">
-    <div class="auto on" id="auto"></div>
-</div>`,
+                                        <input type="text" id="auto_input" class="auto-inp">
+                                        <div class="auto on" id="auto"></div>
+                                    </div>`,
                         requires: [
                             {type: "css", path: PLUGINURL + '/plugins_show/inputAuto/inputAuto_1/css/index.css'},
                             {type: "js", path: PLUGINURL + '/plugins_show/inputAuto/inputAuto_1/js/index.js'}
@@ -1452,18 +1452,25 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class='explain'>因分页插件应用场景的不同，当当前页发生变化时，需要请求数据，因此需要在插件模块中定义updatePage函数，具体用法详见<a href="http://www.nodom.org">NoDom官网</a>模块中方法的使用</p>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                                + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            `;
                 });
                 props.template = tem + `</div>`;
             },
@@ -1477,26 +1484,58 @@
                 plugins: [
                     {
                         name: "10001",
-                        explain: "本分页插件不仅有普通插件的翻页功能，点击即跳转至目的页码，并可以直接跳转到首页或末页。更额外添加了中间页码的智能展示、记录总数展示以及总页数展示。\n" +
-                            "本插件可自定义配置项包括：字体颜色、记录颜色。",
+                        explain: "本分页插件不仅有普通插件的翻页功能，点击即跳转至目的页码，并可以直接跳转到首页或末页。更额外添加了中间页码的智能展示、记录总数展示以及总页数展示。本插件可自定义配置项包括：页数颜色（总页数、总条数、当前页）、当前页、每页条数、跳转页数、总条数。",
                         template: `<div class="plugin-page">
-        <div x-plugin="plugin_10001"></div>
-    </div>`,
+                                        <div x-plugin="plugin_10001"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-paging" <span class="attr">x-plugin</span>="paging_big"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'paging',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-paging',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            page: 1,</span>      <span class="comment">/*分页插件当前页*/</span></pre>
+                                    <pre><span>            row: 10,</span>      <span class="comment">/*分页插件每页条数*/</span></pre>
+                                    <pre><span>            total: 30,</span>      <span class="comment">/*分页插件总条数*/</span></pre>
+                                    <pre><span>            to_page: 1</span>      <span class="comment">/*分页插件需跳转页数*/</span></pre>
+                                    <pre><span>            page_color: '#FF0000'</span>      <span class="comment">/*分页插件页数颜色*/</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             page: 1,
                             row: 10,
-                            total: 0,
+                            total: 50,
                             to_page: 1,
-                            allpage: 0,
+                            allpage: 3,
+                            page_color: '#FF0000'
                         }
+
                     }, {
                         name: "10002",
-                        explain: "本分页插件不仅有普通插件的翻页功能，更额外添加了中间页码的智能展示，点击即跳转至目的页码。\n" +
-                            "本插件需要为其添加对应模块，并且插件数据如下：\n" +
-                            "本插件可自定义配置项包括：字体颜色、记录颜色。",
+                        explain: "分页插件不仅有普通插件的翻页功能，更额外添加了中间页码的智能展示，点击即跳转至目的页码。分页插件需配置当前页、跳转页、总页数。",
                         template: `<div class="plugin-page">
-        <div x-plugin="plugin_10002" dataItem='page'></div>
-    </div>`,
+                                        <div x-plugin="plugin_10002" dataItem='page'></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-paging" <span class="attr">x-plugin</span>="paging_big" <span class="attr">dataName</span>="paging_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'paging',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-paging',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            paging_data: {</span>      <span class="comment">/*分页插件当前页*/</span></pre>
+                                    <pre><span>                  pre_page: 1,</span>      <span class="comment">/*分页插件当前页*/</span></pre>
+                                    <pre><span>                  go_page: 1,</span>      <span class="comment">/*分页插件需跳转页数*/</span></pre>
+                                    <pre><span>                  all_page: 16,</span>      <span class="comment">/*分页插件总页数*/</span></pre>
+                                    <pre><span>                  page_rows: []</span>      <span class="comment">/*插件渲染需要，只需传入空数组*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             page: {
                                 pre_page: 1,
@@ -1543,18 +1582,24 @@
             ], onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                                + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            `;
                 });
                 props.template = tem + `</div>`;
             },
@@ -1565,58 +1610,106 @@
                 plugins: [
                     {
                         name: "11001",
-                        explain: "这是本系统第一个进度条插件，此插件以图形的方式来显示进度。可以通过鼠标点击来改变进度。根据用户传的数据进行渲染。\n" +
-                            "本插件可自定义配置项包括：背景颜色、百分比颜色、剩余百分比颜色。",
-                        template: `<div class="plugin-dragprobarHV">
-        <div x-plugin="plugin_11001" dataItem="dragProBarHV" showStyle="showStyle"></div>
-    </div>`,
+                        explain: "使用此进度条需设置绑定x-plugin标签父元素的宽度及高度，这样进度条的宽度及高度根据父元素进行适配。可以通过鼠标点击来改变进度。用户可选择是横向进度条还是纵向进度条，然后传入不同参数。本插件可自定义配置项包括：背景颜色、百分比颜色、剩余百分比颜色、提示圆圈颜色，是否显示百分比数字等参数。",
+                        template: `<div class="plugin-dragprobar-HV" style="width: 300px;height: 50px;margin: 0 auto;">
+                                        <div x-plugin="plugin_11001" process="drag_pro_bar_process" showStyle="show_style" processBoxBg="process_box_bg" 
+                                        percentColor="percent_color" processBg="process_bg" dragBtnWidth="drag_btn_width" dragBtnColor="drag_btn_color"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>='plugin-dragprobarHV' <span class="attr">style</span>="width: 300px;height: 50px;"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-process" <span class="attr">x-plugin</span>="process" <span class="attr">process</span>="drag_pro_bar_process" <span class="attr">showStyle</span>="show_style" <span class="attr">processBoxBg </span>="process_box_bg" <span class="attr">percentColor </span>="percent_color" <span class="attr">processBg</span>="process_bg" <span class="attr">dragBtnWidth</span>="drag_btn_width" <span class="attr">dragBtnColor</span>="drag_btn_color"><<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'process',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-process',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            drag_pro_bar_process: 0.4,</span>      <span class="comment">/*当前进度条比例*/</span></pre>
+                                    <pre><span>            show_style: 'horizontal',</span>      <span class="comment">/*是横向显示还是纵向显示，横向：horizontal，纵向：vertical*/</span></pre>
+                                    <pre><span>            process_box_bg: 'rgba(96,96,96,0.5)',</span>      <span class="comment">/*进度条盒子背景*/</span></pre>
+                                    <pre><span>            percent_color: '#ffffff',</span>      <span class="comment">/*进度条已占比例颜色*/</span></pre>
+                                    <pre><span>            drag_btn_width: 10,</span>      <span class="comment">/*进度条圆点大小*/</span></pre>
+                                    <pre><span>            process_bg: '#000000',</span>      <span class="comment">/*整个进度条颜色*/</span></pre>
+                                    <pre><span>            drag_btn_color: '#00ff00'</span>      <span class="comment">/*进度条圆点颜色*/</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
-                            dragProBarHV: 0.4,
-                            showStyle: "horizontal",
-                            width_d: window.innerWidth * 0.45,
-                            small_div: {
-                                color_1: "rgba(96,96,96,0.5)",
-                                color_2: "#ffffff",
-                                width: 10,
-                                color_3: '#000000'
-                            }
-                        }, onBeforeFirstRender: function () {
-                            var me = this;
-                            me.data.small_div.color_1 = "rgba(96,96,96,0.5)";
-                            me.data.small_div.color_2 = "#ffffff";
-                            me.data.small_div.color_3 = "#000000";
-
+                            drag_pro_bar_process: 0.4,
+                            show_style: "horizontal",
+                            process_box_bg: "rgba(96,96,96,0.5)",
+                            percent_color: "#ffffff",
+                            drag_btn_width: 10,
+                            process_bg: '#000',
+                            drag_btn_color: '#00ff00'
                         }
                     }, {
                         name: "11002",
-                        explain: "这是本系统第二个进度条插件，此插件显示了进度数值，以及进度的图形显示。根据用户传的数据进行渲染，根据用户选择显示百分比。\n" +
-                            "本插件可自定义配置项包括：字体颜色、百分比颜色、剩余百分比颜色。",
-                        template: `<div class="plugin-probar">
-        <div x-plugin="plugin_11002" dataItem="proBar" showItem="percent" ></div>
-    </div>`,
+                        explain: "这是本系统第二个进度条插件，此插件显示了进度数值，以及进度的图形显示。本插件可自定义配置项包括：显示小数还是百分数、所占比例、字体颜色、百分比颜色、剩余百分比颜色。",
+                        template: `<div class="plugin-probar" style="width: 300px;height: 20px;margin: 0 auto;">
+                                        <div x-plugin="plugin_11002" dataItem="proBar" showItem="percent" processBgColor="process_bg_color" processPercentColor="process_percent_color" processPercentNum="process_percent_num_color"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>='plugin-dragprobarHV' <span class="attr">style</span>="width: 300px;height: 20px;"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-process" <span class="attr">x-plugin</span>="proBar" <span class="attr">dataItem</span>="proBar" <span class="attr">showItem</span>="percent" <span class="attr">processBgColor</span>="process_bg_color" <span class="attr">processPercentColor</span>="process_percent_color" <span class="attr">processPercentNumColor</span>="process_percent_num_color"><<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'process',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-process',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            proBar: 0.9,</span>      <span class="comment">/*当前进度条比例*/</span></pre>
+                                    <pre><span>            percent: true,</span>      <span class="comment">/*显示小数还是百分比，true显示百分比，false显示小数*/</span></pre>
+                                    <pre><span>            process_percent_num_color: '#ffffff',</span>      <span class="comment">/*进度条比例数字颜色*/</span></pre>
+                                    <pre><span>            process_percent_color: '#4A98FF',</span>      <span class="comment">/*进度条已占比例颜色*/</span></pre>
+                                    <pre><span>            process_bg_color: '#DDDDDD'</span>      <span class="comment">/*进度条未占比例颜色*/</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             proBar: 0.9,
                             percent: true,
-                            color_1: "#ffffff",
-                            color_2: '#4A98FF',
-                            color_3: '#DDDDDD'
+                            process_percent_num_color: "#ffffff",
+                            process_percent_color: '#4A98FF',
+                            process_bg_color: '#DDDDDD'
                         }
                     }, {
                         name: "11003",
                         explain: "这是本系统第三个进度条插件，此插件为svs圆环进度插件。显示了进度数值，以及进度的图形显示，可以通过鼠标点击来改变进度。根据用户传的数据进行渲染，根据用户选择显示百分比。\n" +
                             "本插件可自定义配置项包括：百分比颜色、剩余百分比颜色。",
                         template: `<div class="el-svg-1">
-    <div class="content">
-        <div x-plugin="plugin_11003" class="svg">
-        </div>
-        <div class="input">
-            <div class="plus" e-click="add">+</div>
-            <div class="dele" e-click="dele">-</div>
-        </div>
-        <div class="num">{{100*per/10}}%
-        </div>
-    </div>
-</div>`,
+                                        <div class="content">
+                                            <div x-plugin="plugin_11003" class="svg">
+                                            </div>
+                                            <div class="input">
+                                                <div class="plus" e-click="add">+</div>
+                                                <div class="dele" e-click="dele">-</div>
+                                            </div>
+                                            <div class="num">{{100*per/10}}%
+                                            </div>
+                                        </div>
+                                        <div style="color: red">修改</div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>='plugin-dragprobarHV' <span class="attr">style</span>="width: 300px;height: 20px;"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-process" <span class="attr">x-plugin</span>="proBar" <span class="attr">dataItem</span>="proBar" <span class="attr">showItem</span>="percent" <span class="attr">processBgColor</span>="process_bg_color" <span class="attr">processPercentColor</span>="process_percent_color" <span class="attr">processPercentNumColor</span>="process_percent_num_color"><<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'process',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-process',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            proBar: 0.9,</span>      <span class="comment">/*当前进度条比例*/</span></pre>
+                                    <pre><span>            percent: true,</span>      <span class="comment">/*显示小数还是百分比，true显示百分比，false显示小数*/</span></pre>
+                                    <pre><span>            process_percent_num_color: '#ffffff',</span>      <span class="comment">/*进度条比例数字颜色*/</span></pre>
+                                    <pre><span>            process_percent_color: '#4A98FF',</span>      <span class="comment">/*进度条已占比例颜色*/</span></pre>
+                                    <pre><span>            process_bg_color: '#DDDDDD'</span>      <span class="comment">/*进度条未占比例颜色*/</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
                             name: "圆环进度条",
                             r: 90,
@@ -1683,18 +1776,24 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                                + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            `;
                 });
                 props.template = tem + `</div>`;
             },
@@ -1705,42 +1804,80 @@
                 plugins: [
                     {
                         name: "12001",
-                        explain: "这是一款模仿苹果开关的switcher插件，通过点击进行开关变换。\n" +
-                            "本插件可自定义配置项包括：打开颜色、关闭颜色、按钮颜色。",
-                        template: `<div class="plugin-switcher-1">
-	 <div x-plugin='plugin_12001' dataItem='switcher' yes-value='yes' no-value='no' style='width:{{width_d}}px;height:{{width_d/4}}px'></div>
-	</div>`,
+                        explain: "这是一款模仿苹果开关的switcher插件，通过点击进行开关变换。使用插件时需设置插件渲染容器父元素的宽度、高度，switcher插件根据父元素宽度、高度自适应设置自己的高度、宽度，本插件可自定义配置项包括：打开颜色、关闭颜色、按钮颜色。",
+                        template: `<div class="plugin-switcher-1" style="width: 50px;height: 30px;">
+                                        <div x-plugin='plugin_12001' dataItem='switcher' openColor="open_color" closeColor="close_color" btnColor="btn_color"></div>
+                                   </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>='plugin-switcher-1' <span class="attr">style</span>="width: 50px;height: 30px;"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-switcher" <span class="attr">x-plugin</span>="switcher" <span class="attr">dataItem</span>="switcher" <span class="attr">openColor</span>="open_color" <span class="attr">closeColor</span>="close_color" <span class="attr">btnColor</span>="btn_color"><<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'switcher',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-switcher',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            switcher: true,</span>      <span class="comment">/*开关状态*/</span></pre>
+                                    <pre><span>            open_color: '#4BD763',</span>      <span class="comment">/*开关打开时颜色*/</span></pre>
+                                    <pre><span>            close_color: "#F9F9F9",</span>      <span class="comment">/*开关关闭时颜色*/</span></pre>
+                                    <pre><span>            btn_color: "#ffffff"</span>      <span class="comment">/*开关按钮颜色*/</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>`,
                         data: {
                             switcher: true,
-                            width_d: 300,
-                            color_1: "#4BD763",
-                            color_2: "#F9F9F9",
-                            color_3: "#ffffff"
+                            open_color: "#4BD763",
+                            close_color: "#F9F9F9",
+                            btn_color: "#ffffff"
                         }
                     }, {
                         name: "12002",
-                        explain: "这是一个3D switch插件，通过点击实现开关''on''与''off''的转换。\n" +
-                            "本插件可自定义配置项包括：打开颜色、关闭颜色、背景颜色、字体颜色。",
+                        explain: "这是一个3D switch插件，通过点击实现开关''on''与''off''的转换。本插件可自定义配置项包括：打开颜色、关闭颜色、背景颜色、字体颜色。",
                         template: `<div class="plugin-switcher-2">
-		<div x-plugin='plugin_12002' dataValue='switcher' yes-value="yes" no-value="no" style="width:{{width_d}}px"></div>
-	</div>`,
+                                        <div x-plugin='plugin_12002' dataValue='switcher' bgColor="bg_color" shadowColor="shadow_color" btnColor="btn_color"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>='plugin-switcher-1' <span class="attr">style</span>="width: 50px;height: 30px;"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-switcher" <span class="attr">x-plugin</span>="switcher" <span class="attr">dataItem</span>="switcher" <span class="attr">bgColor</span>="bg_color" <span class="attr">shadowColor</span>="shadow_color" <span class="attr">btnColor</span>="btn_color"><<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'switcher',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-switcher',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            switcher: true,</span>      <span class="comment">/*开关状态*/</span></pre>
+                                    <pre><span>            bg_color: '#292827',</span>      <span class="comment">/*开关背景颜色*/</span></pre>
+                                    <pre><span>            shadow_color: "#FF9900",</span>      <span class="comment">/*开关投影颜色*/</span></pre>
+                                    <pre><span>            btn_color: "#ffffff"</span>      <span class="comment">/*开关按钮颜色*/</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>`,
                         data: {
                             switcher: false,
-                            width_d: 200,
-                            small_div: {
-                                color_1: "#292827",
-                                color_2: "#FF9900",
-                                color_3: "#FF9900",
-                                color_4: "#FFFFFF"
-                            }
+                            bg_color: "#292827",
+                            shadow_color: "#FF9900",
+                            btn_color: "#FFFFFF"
                         }
                     }, {
                         name: "12003",
                         explain: "这是一个3D switch插件，通过点击实现开与关以及颜色变化。\n" +
                             "本插件可自定义配置项包括：打开颜色、关闭颜色。",
                         template: `<div class="plugin-switcher-3">
-		<div x-plugin='plugin_12003' dataValue='switcher' yes-value="yes" no-value="no"></div>
-	</div>`,
+                                        <div x-plugin='plugin_12003' dataItem='switcher'></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>='plugin-switcher-1' <span class="attr">style</span>="width: 50px;height: 30px;"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-switcher" <span class="attr">x-plugin</span>="switcher" <span class="attr">dataItem</span>="switcher"><<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'switcher',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-switcher',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            switcher: true</span>      <span class="comment">/*开关状态*/</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>`,
                         data: {
                             switcher: true,
                         }
@@ -1749,8 +1886,8 @@
                         explain: "这是本系统的按钮模板插件。\n" +
                             "本插件可自定义配置项包括：一列颜色、二列颜色、三列颜色。",
                         template: `<div class="nd-plugin-button-1">
-        <div x-plugin="plugin_12004" class="btn-list"></div>
-    </div>`,
+                                        <div x-plugin="plugin_12004" class="btn-list"></div>
+                                    </div>`,
                         data: {
                             list_one: [{
                                 value: "危险"

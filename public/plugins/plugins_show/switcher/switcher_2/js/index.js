@@ -9,9 +9,12 @@
     plugin_12002.prototype.init = function (view) {
         var me = this;
         var template =
-            `<div class='nd-plugin-switcher-box' style="width:{{width_d}}"><div class='nd-plugin-switcher' id='on'>ON</div><div class='nd-plugin-switcher' id='off'>OFF</div></div>`;
+            `<div class='nd-plugin-switcher-box'><div class='nd-plugin-switcher' id='on'>ON</div><div class='nd-plugin-switcher' id='off'>OFF</div></div>`;
         var dataValue = DD.attr(view, 'dataValue');
         view.$dataValue = dataValue;
+        view.$bgColor = DD.attr(view, 'bgColor');
+        view.$shadowColor = DD.attr(view, 'shadowColor');
+        view.$btnColor = DD.attr(view, 'btnColor');
         view.removeAttribute('dataValue');
         view.innerHTML = template;
         DD.Compiler.compile(view, view.$module);
@@ -34,10 +37,10 @@
         }
         setTimeout(function () {
             var data = view.$getData().data;
-            var color_1 = data.small_div.color_1;
-            var color_2 = data.small_div.color_2;
-            var color_3 = data.small_div.color_3;
-            var color_4 = data.small_div.color_4;
+            var color_1 = data[view.$bgColor];
+            var color_2 = data[view.$shadowColor];
+            var color_3 = data[view.$shadowColor];
+            var color_4 = data[view.$btnColor];
             var switcherON = view.querySelector("#on");
             var switcherOFF = view.querySelector("#off");
             var switcherBox = view.querySelector('.nd-plugin-switcher-box');

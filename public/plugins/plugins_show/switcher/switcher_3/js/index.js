@@ -9,9 +9,9 @@
 
     plugin_12003.prototype.init=function(view){
         var me = this;
-        var dataValue=DD.attr(view,'dataValue');
+        var dataValue=DD.attr(view,'dataItem');
         view.$dataValue=dataValue;
-        view.removeAttribute('dataValue');
+        view.removeAttribute('dataItem');
         var template="<div class='nd-plugin-switcher-box'></div>";
         view.innerHTML=template;
         DD.Compiler.compile(view,view.$module);

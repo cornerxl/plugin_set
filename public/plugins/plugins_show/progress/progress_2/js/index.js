@@ -24,6 +24,9 @@
         var show = DD.attr(view, 'showItem');
         view.$dataName = data;
         view.$showItem = show;
+        view.$processBgColor = DD.attr(view, 'processBgColor');
+        view.$processPercentColor = DD.attr(view, 'processPercentColor');
+        view.$processPercentNumColor = DD.attr(view, 'processPercentNumColor');
         view.innerHTML = template;
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
@@ -50,10 +53,14 @@
             var total = view.querySelector(".nd-plugin-probar-total");
             var pro = view.querySelector(".nd-plugin-probar-pro");
             var percent = view.querySelector(".nd-plugin-probar-percent");
-            DD.css(percent, "color", data.color_1);
-            DD.css(pro, "background-color", data.color_2);
-            DD.css(total, "background-color", data.color_3);
+            DD.css(percent, "color", data[view.$processPercentNumColor]);
+            DD.css(pro, "background-color", data[view.$processPercentColor]);
+            DD.css(total, "background-color", data[view.$processBgColor]);
             var totalHeight = window.getComputedStyle(total, null).height;
+            DD.css(pro, 'height', totalHeight);
+            DD.css(percent, "line-height", totalHeight);
+            DD.css(pro, 'border-radius', parseInt(totalHeight) / 1.5 + 'px');
+            DD.css(total, 'border-radius', parseInt(totalHeight) / 1.5 + 'px');
             if (data[view.$showItem]) {
                 //判断data[view.$dataName]是百分比还是小数
                 if (typeof data[view.$dataName] === 'string') {
@@ -93,9 +100,6 @@
                     }
                 }
             }
-
-            DD.css(pro, 'height', totalHeight);
-            DD.css(pro, 'border-radius', parseInt(totalHeight) / 1.5 + 'px');
         }
     };
 

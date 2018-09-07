@@ -10,11 +10,15 @@
     plugin_12001.prototype.init = function (view) {
         var me = this;
         var template = `<div class="nd-plugin-switcher-box">
-            <div class="nd-plugin-switcher-btn" style="width:{{width_d/4}}px;height:{{width_d/4}}px"></div></div>`;
+            <div class="nd-plugin-switcher-btn"></div></div>`;
         DD.addClass(view, 'nd-plugin-switcher');
         var data = DD.attr(view, 'dataItem') || 'data';
         //数据项名字
         view.$dataItem = data;
+        view.$switchStatus = DD.attr(view, 'switchStatus');
+        view.$openColor = DD.attr(view, 'openColor');
+        view.$closeColor = DD.attr(view, 'closeColor');
+        view.$btnColor = DD.attr(view, 'btnColor');
         //移除showItem
         view.removeAttribute('dataItem');
         //设置innerHTML
@@ -44,19 +48,21 @@
             //初始化设置switcher
             var switcherBox = view.querySelector(".nd-plugin-switcher-box");
             var switcherBtn = view.querySelector(".nd-plugin-switcher-btn");
-            DD.css(switcherBtn, 'background-color', data.color_3);
+            DD.css(switcherBtn, 'background-color', data[view.$btnColor]);
             var switcherBoxParent = switcherBox.parentNode.parentNode;
             var switcherBoxWidth = document.defaultView.getComputedStyle(switcherBoxParent, null).width;
             var switcherBoxHeight = document.defaultView.getComputedStyle(switcherBoxParent, null).height;
             DD.css(switcherBox, 'width', switcherBoxWidth);
             DD.css(switcherBox, 'height', switcherBoxHeight);
+            DD.css(switcherBtn, 'width', switcherBoxHeight);
+            DD.css(switcherBtn, 'height', switcherBoxHeight);
             DD.css(switcherBox, 'border-radius', switcherBoxHeight);
             var slideWidth = parseInt(document.defaultView.getComputedStyle(switcherBox, null).width) - parseInt(document.defaultView.getComputedStyle(switcherBtn, null).width);
             if (data.switcher) {
-                DD.css(switcherBox, 'background-color', data.color_1);
-                DD.css(switcherBtn, 'left', slideWidth + 'px');
+                DD.css(switcherBox, 'background-color', data[view.$openColor]);
+                DD.css(switcherBtn, 'left', slideWidth + 2 + 'px');
             } else {
-                DD.css(switcherBox, 'background-color', data.color_2);
+                DD.css(switcherBox, 'background-color', data[view.$closeColor]);
             }
 
 
@@ -64,12 +70,12 @@
             var clickEvent = function (e, d, v) {
                 if (data[view.$dataItem]) {
                     data[view.$dataItem] = false;
-                    DD.css(switcherBox, 'background-color', '#4BD763');
+                    DD.css(switcherBox, 'background-color', data[view.$openColor]);
                     DD.css(switcherBtn, 'left', 0);
                 } else {
                     data[view.$dataItem] = true;
-                    DD.css(switcherBox, 'background-color', '#F9F9F9');
-                    DD.css(switcherBtn, 'left', slideWidth + 'px');
+                    DD.css(switcherBox, 'background-color', data[view.$closeColor]);
+                    DD.css(switcherBtn, 'left', slideWidth + 2 + 'px');
                 }
                 DD.css(switcherBox, 'transition-property', 'border');
                 DD.css(switcherBox, 'transition-duration', '400ms');
