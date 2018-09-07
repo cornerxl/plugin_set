@@ -4,24 +4,25 @@
     button_list.prototype = {
         init: function(view) {
             var template = `<div class="nd-plugin-list-1">
-	<div x-repeat="list_one" class="list_one">{{value}}</div>
+    <div x-repeat="list_one" class="list_one">{{value}}</div>
 </div>
 <div class="nd-plugin-list-2">
-	<div x-repeat="list_two" class="list_two">
-	    <div class="list_i">{{value}}</div>{{name}}
-	</div>
+    <div x-repeat="list_two" class="list_two">
+        <div class="list_i">{{value}}</div>{{name}}
+    </div>
 </div>
 <div class="nd-plugin-list-3">
-	<div x-repeat="list_three" class="list_three">
-	<div class="list_i">{{value}}</div>
-	</div>
+    <div x-repeat="list_three" class="list_three">
+    <div class="list_i">{{value}}</div>
+    </div>
 </div>`;
+            view.$dataItem = DD.attr(view, "dataName");
+            view.removeAttribute("dataName");
             view.innerHTML = template;
-            view.$forceRender = true;
         },
         render: function(view) {
             var data = view.$getData().data;
-            var color=[];
+            var color = [];
             color.push(data.color_1);
             color.push(data.color_2);
             color.push(data.color_3);
@@ -106,50 +107,79 @@
         templateUrl: HTMLURL + "/plugin_download/button_1/index.html",
         data: {
             name: "按钮列表",
-            list_one: [{
-                value: "危险"
-            }, {
-                value: "警告"
-            }, {
-                value: "成功"
-            }],
-            list_two: [{
-                name: "删除",
-                value: "delete"
-            }, {
-                name: "编辑",
-                value: "edit"
-            }, {
-                name: "分享",
-                value: "share"
-            }],
-            list_three: [{
-                value: "keyboard_arrow_down"
-            }, {
-                value: "keyboard_arrow_up"
-            }, {
-                value: "keyboard_arrow_left"
-            }],
-            color_1:"#e53935",
-            color_2:"#ff9800",
-            color_3:"#4caf50"
+            button_data: {
+                list_one: [{
+                    value: "危险"
+                }, {
+                    value: "警告"
+                }, {
+                    value: "成功"
+                }],
+                list_two: [{
+                    name: "删除",
+                    value: "delete"
+                }, {
+                    name: "编辑",
+                    value: "edit"
+                }, {
+                    name: "分享",
+                    value: "share"
+                }],
+                list_three: [{
+                    value: "keyboard_arrow_down"
+                }, {
+                    value: "keyboard_arrow_up"
+                }, {
+                    value: "keyboard_arrow_left"
+                }],
+                color_1: "#e53935",
+                color_2: "#ff9800",
+                color_3: "#4caf50"
+            }
         },
-        onBeforeFirstRender:function(){
-            var me=this;
-            me.data.color_1="#e53935";
-            me.data.colro_2="#ff9800";
-            me.data.color_3="#4caf50";
+        onBeforeFirstRender: function() {
+            var me = this;
+            me.data.button_data = {
+                list_one: [{
+                    value: "危险"
+                }, {
+                    value: "警告"
+                }, {
+                    value: "成功"
+                }],
+                list_two: [{
+                    name: "删除",
+                    value: "delete"
+                }, {
+                    name: "编辑",
+                    value: "edit"
+                }, {
+                    name: "分享",
+                    value: "share"
+                }],
+                list_three: [{
+                    value: "keyboard_arrow_down"
+                }, {
+                    value: "keyboard_arrow_up"
+                }, {
+                    value: "keyboard_arrow_left"
+                }],
+                color_1: "#e53935",
+                color_2: "#ff9800",
+                color_3: "#4caf50"
+            }
         },
         methods: {
             ensure: function() {
                 var me = this;
+                var data = me.data.button_data;
                 var obj = {
                     plugin_id: 1301,
                     total: 0,
                     js: JSON.stringify({
-                    	color_1:me.data.color_1.replace("#",""),
-                    	color_2:me.data.color_2.replace("#",""),
-                    	color_3:me.data.color_3.replace("#","")
+                        color_1: data.color_1.replace("#", ""),
+                        color_2: data.color_2.replace("#", ""),
+                        color_3: data.color_3.replace("#", "")
                     }),
                     flag: 1,
                 }

@@ -1,10 +1,10 @@
 <div class='common-title'>
     {{name}}</div>
 <div class="nd-plugin-check-list">
-    <div x-plugin="check_list" class="content-check"></div>
+    <div x-plugin="check_list" class="content-check" dataName="checkbox_data" x-model="checkbox_data"></div>
 </div>
 <div class="common-title">配置</div>
-<div class="con-config">
+<div class="con-config" x-model="checkbox_data">
     <div class="itemss">
         <span class="span">选中颜色</span>
         <input type="color" class='input' x-field="check_color">

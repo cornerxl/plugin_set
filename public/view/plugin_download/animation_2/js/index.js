@@ -6,7 +6,7 @@ var my_download_animation_2 = function() {};
 my_download_animation_2.prototype = {
     init: function(view) {
         var me = this;
-        var template = `<div class="nd-plugin-loading-2" x-if="show">
+        var template = `<div class="nd-plugin-loading-2" x-show="show">
     <div class="spinner">
         <div class="rect1"></div>
         <div class="rect2"></div>
@@ -15,6 +15,8 @@ my_download_animation_2.prototype = {
         <div class="rect5"></div>
     </div>
 </div>`;
+        view.$dataItem = DD.attr(view, "dataName");
+        view.removeAttribute("dataName");
         view.innerHTML = template;
     },
     render: function(view) {
@@ -24,9 +26,9 @@ my_download_animation_2.prototype = {
         var width = parseInt(data.width);
         var color = data.color_1;
         var time = parseInt(data.animation_time);
-        if (time <=0) {
+        if (time <= 0) {
             time = 1.5;
-            data.animation_time=1.5;
+            data.animation_time = 1.5;
         }
         setTimeout(function() {
             me.content = view.querySelector(".spinner");
@@ -48,40 +50,43 @@ my_download_animation_2.prototype = {
 };
 DD.Plugin.create("my-download-animation-2", my_download_animation_2);
 (function() {
-        DD.createModule({
-                name: 'm_plugin_download_Animation_2',
-                requires: [{ type: 'css', path: HTMLURL + "/plugin_download/animation_2/css/index.css" }],
-                templateUrl: HTMLURL + "/plugin_download/animation_2/index.html",
-                data: {
-                    name: "方块动画",
-                    show: true,
-                    width: 80,
-                    height: 100,
-                    color_1: '#FDB702',
-                    animation_time: 1.2
-                },
-                onBeforeFistrRender:function(){
-                    var me=this;
-                    me.data.color_1='#FDB702';
-                    me.data.animation_time=1.2;
-                },
-                methods: {
-                    ensure: function() {
-                        var me = this;
-                        if (me.data.animation_time <0) {
-                            me.data.animation_time = 1;
-                        }
-                        var obj = {
-                            plugin_id: 902,
-                            js: JSON.stringify({ animation_time: me.data.animation_time, background_color: me.data.color_1.replace("#", "") }),
-                            total: 0,
-                            flag: 1
-                        }
-                        me.module.send('m_plugin_download', {
-                            upload: true,
-                            obj: obj
-                        });
-                }
+    DD.createModule({
+        name: 'm_plugin_download_Animation_2',
+        requires: [{ type: 'css', path: HTMLURL + "/plugin_download/animation_2/css/index.css" }],
+        templateUrl: HTMLURL + "/plugin_download/animation_2/index.html",
+        data: {
+            name: "方块动画",
+            buffering_data: {
+                show: true,
+                width: 80,
+                height: 100,
+                color_1: '#FDB702',
+                animation_time: 1.2
             }
-        });
+        },
+        onBeforeFistrRender: function() {
+            var me = this;
+            me.data.color_1 = '#FDB702';
+            me.data.animation_time = 1.2;
+        },
+        methods: {
+            ensure: function() {
+                var me = this;
+                var data = me.data.buffering_data;
+                if (data.animation_time < 0) {
+                    data.animation_time = 1;
+                }
+                var obj = {
+                    plugin_id: 902,
+                    js: JSON.stringify({ animation_time: data.animation_time, background_color: data.color_1.replace("#", "") }),
+                    total: 0,
+                    flag: 1
+                }
+                me.module.send('m_plugin_download', {
+                    upload: true,
+                    obj: obj
+                });
+            }
+        }
+    });
 }());

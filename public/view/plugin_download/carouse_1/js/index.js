@@ -14,8 +14,9 @@
        <div class="left"><div class="img-content"></div></div>
       <div class="right"><div class="img-content"></div></div>
     </div>`;
+            view.$dataItem = DD.attr(view, "dataName");
+            view.removeAttribute("dataName");
             view.innerHTML = template;
-            view.$forceRender = true;
         },
         render: function(view) {
             var me = this;
@@ -163,9 +164,9 @@
         templateUrl: HTMLURL + "/plugin_download/carouse_1/index.html",
         onBeforeFirstRender: function() {
             var me = this;
-            me.data.ca_photo.width = window.innerWidth * 0.5;
-            me.data.name = "常见轮播图";
-            me.data.small_div = {
+            me.data.carousel_data.ca_photo.width = window.innerWidth * 0.5;
+            me.data.carousel_data.name = "常见轮播图";
+            me.data.carousel_data.small_div = {
                 check: '#ff6800',
                 no_check: '#ffffff',
                 width: '8',
@@ -198,7 +199,8 @@
             }
         },
         data: {
-            name: '',
+            name: "常见轮播图",
+            carousel_data:{
             ca_photo: {
                 width: '',
                 check_color: '#ff6800',
@@ -215,12 +217,14 @@
                 left:false,
                 right:true,
             }
+        }
         },
         methods: {
             ensure: function() {
                 var me = this;
-                if (me.data.small_div.time < 2) {
-                    me.data.small_div.time = 3;
+                var data=me.data.carousel_data;
+                if (data.small_div.time < 2) {
+                    data.small_div.time = 3;
                 }
                 var obj = {
                     plugin_id: 101,
@@ -228,15 +232,15 @@
                         names: '.el-photo .plugin .content .span .photo-span',
                         width: {
                             names: 'width',
-                            values: me.data.small_div.width + 'px'
+                            values: data.small_div.width + 'px'
                         },
                         height: {
                             names: 'height',
-                            values: me.data.small_div.height + 'px'
+                            values: data.small_div.height + 'px'
                         },
                         background: {
                             names: 'background-color',
-                            values: me.data.small_div.no_check.replace("#", "")
+                            values: data.small_div.no_check.replace("#", "")
                         },
                         total: 3
                     }),
@@ -244,7 +248,7 @@
                         names: '.el-photo .plugin .content .span .is_check',
                         background: {
                             names: 'background-color',
-                            values: me.data.small_div.check.replace("#", "")
+                            values: data.small_div.check.replace("#", "")
                         },
                         total: 1
                     }),
@@ -252,14 +256,14 @@
                         names: '.el-photo .plugin .content .show',
                         transition: {
                             names: "transition",
-                            values: 'transform ' + (me.data.small_div.time - 1) + 's'
+                            values: 'transform ' + (data.small_div.time - 1) + 's'
                         },
                         total: 1
                     }),
                     js: JSON.stringify({
-                        time: me.data.small_div.time * 1000,
-                        left: me.data.small_div.right,
-                        right:me.data.small_div.left
+                        time: data.small_div.time * 1000,
+                        left: data.small_div.right,
+                        right:data.small_div.left
                     }),
                     //total是css的数量
                     //flag为1表明有js

@@ -191,8 +191,10 @@
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/carouse_3/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/carouse_3/index.html",
         data: {
-            width_data: '',
             name: '',
+            width_data: '',
+            carousel_data:{
+            width_data: '',
             ca_photo: {
                 width: '',
                 translate: false,
@@ -206,7 +208,7 @@
                 time:3,
                 left:false,
                 right:true
-            }
+            }}
         },
         onBeforeFirstRender: function() {
             var me = this;
@@ -223,7 +225,14 @@
              if(window.timer_3){
                 clearInterval(window.timer_3);
             }
-            me.data.small_div= {
+            me.data.carousel_data={
+            width_data: '',
+            ca_photo: {
+                width: '',
+                translate: false,
+                imgs: [{ url: HTMLURL + "/plugin_download/carouse_3/img/1.jpg" }, { url: HTMLURL + "/plugin_download/carouse_3/img/2.jpg" }, { url: HTMLURL + "/plugin_download/carouse_3/img/3.jpg" }, { url: HTMLURL + "/plugin_download/carouse_3/img/4.jpg" }],
+            },
+            small_div: {
                 check: '#ff6800',
                 no_check: '#ffffff',
                 width: '8',
@@ -231,12 +240,13 @@
                 time:3,
                 left:false,
                 right:true
-            };
+            }}
         },
         onRender: function() {
             var me = this;
             var tem = parseInt(DD.css(document.querySelector('.router-content'), 'height'));
             me.data.width_data = window.innerWidth * 0.5;
+            me.data.carousel_data.width_data=me.data.width_data;
             if (tem > (window.innerHeight - 80)) {
                 me.module.send('m_plugin_download', {
                     upload: false,
@@ -245,17 +255,11 @@
             }
         },
         methods: {
-            preload: function() {
-                var me = this;
-                me.data.ca_photo.span.forEach(function(i) {
-                    i.width = me.data.small_div.width;
-                    i.height = me.data.small_div.height;
-                });
-            },
             ensure: function() {
                 var me = this;
-                if(me.data.small_div.time<3){
-                    me.daya.small_div.time=3;
+                var data=me.data.carousel_data;
+                if(data.small_div.time<3){
+                    data.small_div.time=3;
                 }
                 var obj = {
                     plugin_id:103,
@@ -263,15 +267,15 @@
                         names: '.el-plugin .plugin .content .span .span-cont span .item-span',
                         width: {
                             names: 'width',
-                            values: me.data.small_div.width + 'px'
+                            values: data.small_div.width + 'px'
                         },
                         height: {
                             names: 'height',
-                            values: me.data.small_div.height + 'px'
+                            values: data.small_div.height + 'px'
                         },
                         background: {
                             names: 'background-color',
-                            values: me.data.small_div.no_check.replace("#", "")
+                            values: data.small_div.no_check.replace("#", "")
                         },
                         total: 3
                     }),
@@ -279,7 +283,7 @@
                         names: '.el-plugin .plugin .content .span .span-cont .is_check',
                         background: {
                             names: 'background-color',
-                            values: me.data.small_div.check.replace("#", "")
+                            values: data.small_div.check.replace("#", "")
                         },
                         total: 1
                     }),
@@ -287,14 +291,14 @@
                         names:'.el-plugin .plugin .content .img-photo',
                         transition:{
                             names:'transition',
-                            values:'all '+(me.data.small_div.time-1)+"s"
+                            values:'all '+(data.small_div.time-1)+"s"
                         },
                         total:1
                      }),
                     js:JSON.stringify({
-                        time:me.data.small_div.time*1000,
-                        left:me.data.small_div.left,
-                        right:me.data.small_div.right
+                        time:data.small_div.time*1000,
+                        left:data.small_div.left,
+                        right:data.small_div.right
                     }),
                     total: 3,
                     flag: 1

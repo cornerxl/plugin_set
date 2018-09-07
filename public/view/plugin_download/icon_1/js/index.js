@@ -22,7 +22,8 @@
         templateUrl: HTMLURL + "/plugin_download/icon_1/index.html",
 		data:{
 			name:"图标列表",
-			font:[]
+			Icon_data:{
+			font:[]}
 		},
 		onBeforeFirstRender:function(){
 			var me=this;
@@ -32,7 +33,7 @@
 				url: "http://localhost:3000/api/json?",
 				successFunc:function(r){
 					var result=JSON.parse(r);
-					me.data.$set("font",result.font.font);
+					me.data.Icon_data.$set("font",result.font.font);
 				}
 			});
 		},

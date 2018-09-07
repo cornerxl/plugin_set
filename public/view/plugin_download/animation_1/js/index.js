@@ -18,14 +18,16 @@
                                 <div></div>
                             </div>
                         </div>`;
+        view.$dataItem = DD.attr(view, "dataName") || "data";
         view.innerHTML = template;
+        view.removeAttribute('dataName');
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
     };
 
     Buffering.prototype.render = function(view) {
         var me = this;
-        var data = view.$getData().data;
+        var data = view.$getData().data[view.$dataItem];
         if (!data) {
             return;
         }
@@ -41,8 +43,7 @@
         setTimeout(delayRender, 0);
 
         function delayRender() {
-            var data = view.$getData().data;
-            var bufferingBox = document.querySelector(".nd-plugin-buffering-box");
+            var bufferingBox = view.querySelector(".nd-plugin-buffering-box");
             var par = view.querySelector(".nd-plugin-buffering-loader");
             var dom = []
             var dom = Array.from(par.getElementsByTagName("div"));
@@ -71,27 +72,32 @@
         templateUrl: HTMLURL + "/plugin_download/animation_1/index.html",
         data: {
             name: '泡泡动画',
-            small_div: {
-                animation_time: 1,
-                color_1: "#999999999"
+            buffering_data: {
+                small_div: {
+                    animation_time: 1,
+                    color_1: "#999999"
+                }
             }
         },
-        onBeforeFirstRender:function(){
-            var me=this;
-            me.data.small_div={
-                animation_time: 1,
-                color_1: "#999999999"
-            };
+        onBeforeFirstRender: function() {
+            var me = this;
+            me.data.buffering_data={
+                small_div: {
+                    animation_time: 1,
+                    color_1: "#999999"
+                }
+            }
         },
         methods: {
             ensure: function() {
                 var me = this;
-                if (me.data.small_div.animation_time <= 1) {
-                    me.data.small_div.animation_time = 1;
+                var data=me.data.buffering_data;
+                if (data.small_div.animation_time <= 1) {
+                    data.small_div.animation_time = 1;
                 }
                 var obj = {
                     plugin_id: 901,
-                    js: JSON.stringify({ animation_time: me.data.small_div.animation_time, background_color: me.data.small_div.color_1.replace("#","")}),
+                    js: JSON.stringify({ animation_time: data.small_div.animation_time, background_color: data.small_div.color_1.replace("#", "") }),
                     total: 0,
                     flag: 1
                 }

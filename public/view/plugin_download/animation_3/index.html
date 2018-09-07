@@ -1,18 +1,18 @@
 <div class='common-title'>
     {{name}}</div>
 <div class="animation-loading">
-    <div x-plugin="m-loading-animation-3">
+    <div x-plugin="m-loading-animation-3" dataName='buffering_data' x-model="buffering_data">
     </div>
 </div>
 <div class="common-title">配置</div>
 <div class="con-config">
     <div class="itemss">
         <span class="span">圆环颜色</span>
-        <input type="color" class='input' x-field="color_1">
+        <input type="color" class='input' x-field="buffering_data.color_1">
     </div>
     <div class="itemss">
         <span class="span">动画时间</span>
-        <input type="number" class='input' x-field="animation_time">
+        <input type="number" class='input' x-field="buffering_data.animation_time">
     </div>
 </div>
 <div class="con-eusure">

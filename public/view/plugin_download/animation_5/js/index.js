@@ -3,13 +3,15 @@
     var el_animation_5 = function() {}
     el_animation_5.prototype = {
         init: function(view) {
-            var template = `<div class="com-loading" x-if="datas.show">
+            var template = `<div class="com-loading" x-if="show">
         <div class="spinner">
             <div class="bounce1 small"></div>
             <div class="bounce2 small"></div>
             <div class="bounce3 small"></div>
         </div>
     </div>`;
+            view.$dataItem = DD.attr(view, "dataName");
+            view.removeAttribute("dataName");
             view.innerHTML = template;
         },
         render: function(view) {
@@ -30,24 +32,25 @@
         templateUrl: HTMLURL + "/plugin_download/animation_5/index.html",
         data: {
             name: '水滴动画',
-            color: " #363636",
-            datas: {
+            buffering_data: {
+                color: " #363636",
+                time: 2,
                 show: true
-            },
-            time: 2
+            }
         },
         methods: {
             ensure: function() {
                 var me = this;
-                if (me.data.time <= 0) {
-                    me.data.time = 1;
+                var data=me.data.buffering_data;
+                if (data.time <= 0) {
+                    data.time = 1;
                 }
                 var obj = {
                     plugin_id: 905,
                     total: 0,
                     js: JSON.stringify({
-                        time: me.data.time,
-                        color:me.data.color.replace("#","")
+                        time: data.time,
+                        color:data.color.replace("#","")
                     }),
                     flag: 1,
                 }

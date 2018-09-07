@@ -46,9 +46,9 @@
             var color1 = data.small_div.color_1;
             var color2 = data.small_div.color_2;
             var box_width = data.width_d / 10;
-            document.styleSheets[0].addRule('.nd-plugin-switcher-box::before', 'box-shadow:inset 0px 0px 0px ' + box_width/2 + 'px ' + color1 + ',inset 0px 0px 0px 1000px #fff');
+            document.styleSheets[0].addRule('.nd-plugin-switcher-box::before', 'box-shadow:inset 0px 0px 0px ' + box_width / 2 + 'px ' + color1 + ',inset 0px 0px 0px 1000px #fff');
             document.styleSheets[0].addRule('.nd-plugin-switcher-box::after', 'background-color:' + color1);
-            document.styleSheets[0].addRule('.checked::before', 'box-shadow:inset 0px 0px 0px ' + box_width/2 + 'px ' + color2 + ',inset 0px 0px 0px 1000px #fff');
+            document.styleSheets[0].addRule('.checked::before', 'box-shadow:inset 0px 0px 0px ' + box_width / 2 + 'px ' + color2 + ',inset 0px 0px 0px 1000px #fff');
             document.styleSheets[0].addRule('.checked::after', 'background-color:' + color2);
             document.styleSheets[0].addRule('.checked::after', 'color:blue');
             if (data.switcher) {
@@ -92,27 +92,35 @@
         data: {
             switcher: true,
             name: "3d按钮开关",
-            width_d: window.innerWidth * 0.4,
-            small_div: {
-                color_1: '#cccccc',
-                color_2: '#ff9900'
+            switcher_data: {
+                width_d: window.innerWidth * 0.4,
+                switcher: true,
+                small_div: {
+                    color_1: '#cccccc',
+                    color_2: '#ff9900'
+                }
             }
         },
         onBeforeFirstRender: function() {
             var me = this;
-            me.data.small_div={
-                color_1: '#cccccc',
-                color_2: '#ff9900'
-            };
+            me.data.switcher_data={
+                width_d: window.innerWidth * 0.4,
+                switcher: true,
+                small_div: {
+                    color_1: '#cccccc',
+                    color_2: '#ff9900'
+                }
+            }
         },
         methods: {
             ensure: function() {
                 var me = this;
+                var data=me.data.switcher_data;
                 var obj = {
                     plugin_id: 303,
                     js: JSON.stringify({
-                        color_1: me.data.small_div.color_1.replace("#", ""),
-                        color_2: me.data.small_div.color_2.replace("#", ""),
+                        color_1: data.small_div.color_1.replace("#", ""),
+                        color_2: data.small_div.color_2.replace("#", ""),
                     }),
                     total: 0,
                     flag: 1

@@ -97,35 +97,43 @@
         templateUrl: HTMLURL + "/plugin_download/switcher_2/index.html",
         data: {
             name: '3d开关',
-            switcher: false,
             width_d: 200,
-            small_div: {
-                color_1: "#292827",
-                color_2: "#FF9900",
-                color_3: "#FF9900",
-                color_4: "#FFFFFF"
+            switcher_data: {
+                switcher: false,
+                width_d: 200,
+                small_div: {
+                    color_1: "#292827",
+                    color_2: "#FF9900",
+                    color_3: "#FF9900",
+                    color_4: "#FFFFFF"
+                }
             }
         },
         onBeforeFirstRender: function() {
             var me = this;
             me.data.width_d = window.innerWidth * 0.45;
-            me.data.small_div={
-                color_1: "#292827",
-                color_2: "#FF9900",
-                color_3: "#FF9900",
-                color_4: "#FFFFFF"
+            me.data.switcher_data = {
+                switcher: false,
+                width_d: me.data.width_d,
+                small_div: {
+                    color_1: "#292827",
+                    color_2: "#FF9900",
+                    color_3: "#FF9900",
+                    color_4: "#FFFFFF"
+                }
             }
         },
-        methods:{
-        	 ensure: function() {
+        methods: {
+            ensure: function() {
                 var me = this;
+                var data=me.data.switcher_data;
                 var obj = {
                     plugin_id: 302,
                     js: JSON.stringify({
-                    	color_1:me.data.small_div.color_1.replace("#",""),
-                    	color_2:me.data.small_div.color_2.replace("#",""),
-                    	color_3:me.data.small_div.color_3.replace("#",""),
-                    	color_4:me.data.small_div.color_4.replace("#","")
+                        color_1: data.small_div.color_1.replace("#", ""),
+                        color_2: data.small_div.color_2.replace("#", ""),
+                        color_3: data.small_div.color_3.replace("#", ""),
+                        color_4: data.small_div.color_4.replace("#", "")
                     }),
                     total: 0,
                     flag: 1

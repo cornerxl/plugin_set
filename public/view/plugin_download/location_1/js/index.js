@@ -101,32 +101,32 @@
                 }]
             }
             var template = `<div class="nd-plugin-location-box">
-								<div class="nd-plugin-location-country">
-									<span></span>
-								</div>
-								<div class="nd-plugin-location-popular">
-									<span class="nd-plugin-location-star"></span>
-									<span>热门省份</span>
-								</div>
-								<ul class="nd-plugin-location-popularlist">
-									<li x-repeat="popular_country" name="location_li">
-										<div name={{name}}>{{name}}</div>
-									</li>
-								</ul>`;
+                                <div class="nd-plugin-location-country">
+                                    <span></span>
+                                </div>
+                                <div class="nd-plugin-location-popular">
+                                    <span class="nd-plugin-location-star"></span>
+                                    <span>热门省份</span>
+                                </div>
+                                <ul class="nd-plugin-location-popularlist">
+                                    <li x-repeat="popular_country" name="location_li">
+                                        <div name={{name}}>{{name}}</div>
+                                    </li>
+                                </ul>`;
             var letter = `<ul class="nd-plugin-location-letterlist">
-							<span>定位</span>`; //字母
+                            <span>定位</span>`; //字母
             for (var p in me.province) {
                 if (me.province[p].length > 0) {
                     letter += `<li><a href=#nd-plugin-location-` + p + `>` + p + `</a></li>`;
                     template += `<div class="nd-plugin-location-letter">
-									<div id=nd-plugin-location-` + p + `>` + p + `</div>
-								</div>
-								<div class="nd-plugin-location-provicesbox">`
+                                    <div id=nd-plugin-location-` + p + `>` + p + `</div>
+                                </div>
+                                <div class="nd-plugin-location-provicesbox">`
                     for (var i = 0; i < me.province[p].length; i++) {
                         template += `<div class="nd-plugin-location-provices">
-										<div name="` + me.province[p][i].name + `">` + me.province[p][i].name + `</div>
-										<span class="nd-plugin-location-checked"></span>
-									</div>`;
+                                        <div name="` + me.province[p][i].name + `">` + me.province[p][i].name + `</div>
+                                        <span class="nd-plugin-location-checked"></span>
+                                    </div>`;
                     }
                     template += `</div>`;
                 }
@@ -142,8 +142,8 @@
             var me = this;
             var data = view.$getData().data;
             setTimeout(function() {
-            	var pop=view.querySelector(".nd-plugin-location-popularlist");
-            	var fixed = view.querySelector(".nd-plugin-location-letterlist");
+                var pop = view.querySelector(".nd-plugin-location-popularlist");
+                var fixed = view.querySelector(".nd-plugin-location-letterlist");
                 var route = document.querySelector(".router-content");
                 var color1 = data.small_div.color_1;
                 var color2 = data.small_div.color_2;
@@ -153,17 +153,17 @@
                 li.forEach(function(i) {
                     DD.css(i, "color", color2);
                 });
-                li=Array.from(pop.getElementsByTagName("div"));
-                li.forEach(function(i){
-                	DD.css(i,"background-color",color1);
-                	DD.css(i,"background-color","#ffffff");
-                	if(window.my_li){
-                		DD.css(window.my_li,"background-color",color1);
-                	}
+                li = Array.from(pop.getElementsByTagName("div"));
+                li.forEach(function(i) {
+                    DD.css(i, "background-color", color1);
+                    DD.css(i, "background-color", "#ffffff");
+                    if (window.my_li) {
+                        DD.css(window.my_li, "background-color", color1);
+                    }
                 });
-                li=document.querySelectorAll(".nd-plugin-location-A");
-                li.forEach(function(i){
-                    DD.css(i,'color',color3);
+                li = document.querySelectorAll(".nd-plugin-location-A");
+                li.forEach(function(i) {
+                    DD.css(i, 'color', color3);
                 });
                 if (data.location_country) {
                     data.location_country = data.location_country.substring(0, 2);
@@ -198,7 +198,7 @@
                                 for (var i = 0; i < e.path[2].querySelectorAll('div').length; i++) {
                                     DD.css(e.path[2].querySelectorAll('div')[i], 'background-color', '#ffffff');
                                 }
-                                window.my_li=e.path[0];
+                                window.my_li = e.path[0];
                             }
                             data.location_country = DD.attr(e.path[0], 'name').substring(0, 2);
                             view.$forceRender = true;
@@ -217,44 +217,77 @@
         data: {
             name: "区域插件",
             width_d: 320,
-            small_div: {
-                color_1: '#ffffff',
-                color_2: '#66d9ef',
-                color_3: '#457eb1'
-            },
-             location_country: '重庆',
-            popular_country: [
-                { name: '北京' },
-                { name: '重庆' },
-                { name: '四川' },
-                { name: '江西' },
-                { name: '青海' },
-                { name: '重庆' },
-                { name: '江苏' },
-                { name: '天津' },
-                { name: '深圳' },
-                { name: '浙江' },
-                { name: '重庆' },
-                { name: '江苏' },
-                { name: '天津' },
-                { name: '深圳' },
-                { name: '浙江' }
-            ]
+            location_data: {
+                width_d: 320,
+                small_div: {
+                    color_1: '#ffffff',
+                    color_2: '#66d9ef',
+                    color_3: '#457eb1'
+                },
+                location_country: '重庆',
+                popular_country: [
+                    { name: '北京' },
+                    { name: '重庆' },
+                    { name: '四川' },
+                    { name: '江西' },
+                    { name: '青海' },
+                    { name: '重庆' },
+                    { name: '江苏' },
+                    { name: '天津' },
+                    { name: '深圳' },
+                    { name: '浙江' },
+                    { name: '重庆' },
+                    { name: '江苏' },
+                    { name: '天津' },
+                    { name: '深圳' },
+                    { name: '浙江' }
+                ]
+            }
         },
-        onRender:function(){
+        onRender: function() {
+            var me = this;
+            me.module.send("m_plugin_download", { no: true });
+        },
+        onBeforeFirstRender:function(){
             var me=this;
-            console.log(111111111);
-            me.module.send("m_plugin_download",{no:true});
+            me.data.location_data={
+                width_d: 320,
+                small_div: {
+                    color_1: '#ffffff',
+                    color_2: '#66d9ef',
+                    color_3: '#457eb1'
+                },
+                location_country: '重庆',
+                popular_country: [
+                    { name: '北京' },
+                    { name: '重庆' },
+                    { name: '四川' },
+                    { name: '江西' },
+                    { name: '青海' },
+                    { name: '重庆' },
+                    { name: '江苏' },
+                    { name: '天津' },
+                    { name: '深圳' },
+                    { name: '浙江' },
+                    { name: '重庆' },
+                    { name: '江苏' },
+                    { name: '天津' },
+                    { name: '深圳' },
+                    { name: '浙江' }
+                ]
+            };
+            me.data.width_d=320;
         },
-        methods:{
-         ensure: function() {
+        methods: {
+            ensure: function() {
                 var me = this;
-                if (me.data.small_div.animation_time <= 1) {
-                    me.data.small_div.animation_time = 1;
+                var data=me.data.location_data;
+                if (data.small_div.animation_time <= 1) {
+                    data.small_div.animation_time = 1;
                 }
                 var obj = {
-                    plugin_id:701,
-                    js: JSON.stringify({ color_1: me.data.small_div.color_1.replace("#",""),color_2: me.data.small_div.color_2.replace("#",""),color_3:me.data.small_div.color_3.replace("#","")}),
+                    plugin_id: 701,
+                    js: JSON.stringify({ color_1: data.small_div.color_1.replace("#", ""), color_2: data.small_div.color_2.replace("#", ""), color_3: data.small_div.color_3.replace("#", "") }),
                     total: 0,
                     flag: 1
                 }

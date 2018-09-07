@@ -23,7 +23,9 @@
 					            <span>转到:</span>
 					            <input type="number" x-field="to_page">
 					            <div class="go-to">GO</div>
-					        </div>`;
+					        </div>
+					        <div class="clear"></div>
+					        `;
 			view.innerHTML = template;
 			DD.Compiler.compile(view,view.$module);
 			view.$forceRender = true;
@@ -112,7 +114,7 @@
             row: 10,
             total:0,
             to_page:1,
-            allpage:0,
+            allpage:200,
 		},
 		methods:{
 			//更新函数

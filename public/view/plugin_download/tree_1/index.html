@@ -2,10 +2,10 @@
 	<div class='common-title'>
     {{name}}</div>
 <div class="el-tree">
-		<div x-plugin="tree"  class="content"></div>
+		<div x-plugin="tree"  class="content" x-model="tree_data"></div>
 	</div>
 <div class="common-title">配置</div>
-<div class="con-config">
+<div class="con-config" x-model="tree_data">
     <div class="itemss">
         <span class="span">字体颜色</span>
         <input type="color" class='input' x-field="color_1">
