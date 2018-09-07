@@ -44,7 +44,7 @@
 }
 .com-page .com-page-box .com-pre-page {
     background-color: #5eaee3;
-    color: #FFF;
+    color: #FFF!important;
 }
 .com-page .com-page-box .mar-left {
     margin-left: 5px;

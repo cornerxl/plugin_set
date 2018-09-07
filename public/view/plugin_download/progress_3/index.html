@@ -3,20 +3,20 @@
 <div class="el-svg-1">
    <div class="content">
    	<div class="ct">
-        <div x-plugin="svg-1" class="svg">
+        <div x-plugin="svg-1" class="svg" x-model="progress_data">
         </div>
         <div class="input">
             <div class="plus" e-click="add">+</div>
             <div class="dele" e-click="dele">-</div>
         </div>
-        <div class="num">{{100*per/10}}%
+        <div class="num" x-model="progress_data">{{100*per/10}}%
         </div>
     </div>
     </div>
 </div>
 <div class="common-title">配置</div>
-<div class="con-config">
-    <div class="itemss">
+<div class="con-config" x-model="progress_data">
+    <div class="itemss" >
         <span class="span">百分比颜色</span>
         <input type="color" class='input' x-field="color_2">
     </div>

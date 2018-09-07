@@ -275,21 +275,21 @@
                                     switch (n) {
                                         case 10:
                                             return "a";
-                                            
+
                                         case 11:
                                             return "b";
-                                            
+
                                         case 12:
                                             return "c";
-                                           
+
                                         case 13:
                                             return "d";
-                                          
+
                                         case 14:
                                             return "e";
-                                            
+
                                         case 15:
-                                            return "f";       
+                                            return "f";
                                     }
                                 }
                                 return n + "";
@@ -306,48 +306,45 @@
         },
     };
     DD.Plugin.create('color-picker-1', picker);
-    class picker_2 extends picker {
-        constructor() {
-            super();
-        }
-    }
-    DD.Plugin.create("color-picker-2", picker_2);
     DD.createModule({
         name: "m_plugin_download_ColorPicker_1",
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/colorPicker_1/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/colorPicker_1/index.html",
         data: {
-            left: 0,
-            first: 1,
-            r: 255,
-            g: 0,
-            b: 0,
-            H: 0,
-            s: 255,
-            v: 255,
-            show: false,
-            str: "#ff0000",
-            name: '颜色选择器'
+            colorpicker_data: {
+                left: 0,
+                first: 1,
+                r: 255,
+                g: 0,
+                b: 0,
+                H: 0,
+                s: 255,
+                v: 255,
+                show: false,
+                str: "#ff0000",
+                name: '颜色选择器'
+            }
         },
         onBeforeFirstRender: function() {
             var me = this;
-            me.data.lef = 0;
-            me.data.left = 0;
-            me.data.first = 1;
-            me.data.r = 255;
-            me.data.g = 0;
-            me.data.b = 0;
-            me.data.H = 0;
-            me.data.s = 255;
-            me.data.v = 255;
-            me.data.show = false;
-            me.data.str = "#ff0000";
-            me.data.name = '颜色选择器';
+            me.data.colorpicker_data = {
+                left: 0,
+                first: 1,
+                r: 255,
+                g: 0,
+                b: 0,
+                H: 0,
+                s: 255,
+                v: 255,
+                show: false,
+                str: "#ff0000",
+                name: '颜色选择器'
+            }
         },
         methods: {
             select: function() {
                 var me = this;
-                me.data.show = true;
+                me.data.colorpicker_data.show = true;
             },
             ensure: function() {
                 var me = this;

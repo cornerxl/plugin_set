@@ -140,7 +140,7 @@
         },
         data: {
             nowDate: '周一',
-            show: true,
+            show: false,
             options: [{
                 date: '周一'
             }, {

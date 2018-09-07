@@ -4,6 +4,7 @@
     margin:0 auto;
     overflow: hidden;
     position: relative;
+    padding: 50px 0;
 }
 
 .el-carouse_2 .carous_ct .plugin {

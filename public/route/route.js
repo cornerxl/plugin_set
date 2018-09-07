@@ -160,8 +160,22 @@
                     },{
                         path:'/Tree_1',
                         module:'m_plugin_download_Tree_1',
-                    }
-                    ,{
+                    },{
+                        path:'/Chart_1',
+                        module:'m_plugin_download_Chart_1',
+                    },{
+                        path:'/Chart_2',
+                        module:'m_plugin_download_Chart_2',
+                    },{
+                        path:'/Chart_3',
+                        module:'m_plugin_download_Chart_3',
+                    },{
+                        path:'/Chart_4',
+                        module:'m_plugin_download_Chart_4',
+                    },{
+                        path:'/Chart_5',
+                        module:'m_plugin_download_Chart_5',
+                    },{
                         path:'/Icon_1',
                         module:'m_plugin_download_Icon_1',
                     }]

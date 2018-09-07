@@ -18,18 +18,18 @@
             var template = `<div class="com-page" x-model="page">
                             <div class="com-go-pre"></div>
                             <div class="com-page-box">
-                                <span class="com-page-item mar-left" x-repeat="page_rows" x-class="{'com-pre-page': 'page===pre_page'}" e-click="goPage">{{page}}</span>
+                                <span class="com-page-item mar-left" x-repeat="page_rows" x-class="{'com-pre-page': 'page===pre_page'}">{{page}}</span>
                             </div>
-                            <div class="com-go-next" e-click="goNext"></div>
+                            <div class="com-go-next"></div>
                             <div class="com-go">
                                 <span>前往</span>
                                 <input type="text" x-field="go_page">
                                 <span>页</span>
-                                <button class="com-go-btn" e-click="goInputPage">GO</button>
+                                <button class="com-go-btn" >GO</button>
                             </div>
                         </div>`;
             view.innerHTML = template;
-            var data = DD.attr(view, 'dataItem') || 'data';
+            var data = DD.attr(view, 'dataName') || 'data';
             //数据项名字
             view.$dataItem = data;
             //移除showItem
@@ -38,12 +38,12 @@
             view.$forceRender = true;
         },
         render: function(view) {
-             var data = view.$getData().data;
-            var me=this;
-            if(!data.one){
-                return ;
+            var data = view.$getData().data;
+            var me = this;
+            if (!data.one) {
+                return;
             }
-            data.one=0;
+            data.one = 0;
             if (!data) {
                 return;
             }
@@ -189,7 +189,7 @@
                             pre_page: pre_page
                         }];
                     }
-                    data.page.$set("page_rows",data.page.page_rows);
+                    data.page.$set("page_rows", data.page.page_rows);
                 }
                 new DD.Event({
                     eventName: 'click',
@@ -214,7 +214,7 @@
                         if (data.page.pre_page === data.page.all_page) {
                             return;
                         }
-                          data.page.pre_page++;
+                        data.page.pre_page++;
                         changePageRows(data.page.pre_page, data.page.all_page);
                         // console.log(data);
                         // 请求数据
@@ -250,7 +250,6 @@
                                 // 请求数据
                                 // this.module.methodFactory.methods.updatePage.call(this);
                                 view.$forceRender = true;
-                                console.log(data.page.page_rows);
                             }
                         }
                     });
@@ -267,17 +266,19 @@
         templateUrl: HTMLURL + "/plugin_download/page_2/index.html",
         data: {
             name: '酷炫分页',
-            small_div: {
-                color_1: '#999999',
-                color_2: '#5eaee3'
-            },
-            page: {
-                pre_page: 1,
-                go_page: 1,
-                all_page: 16,
-                page_rows: []
-            },
-            one:1
+            page_data: {
+                small_div: {
+                    color_1: '#999999',
+                    color_2: '#5eaee3'
+                },
+                page: {
+                    pre_page: 1,
+                    go_page: 1,
+                    all_page: 16,
+                    page_rows: []
+                },
+                one: 1
+            }
         },
         methods: {
             ensure: function() {

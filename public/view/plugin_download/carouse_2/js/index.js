@@ -12,6 +12,8 @@
         </div>
     </div><div class="left"><div class="img-content"></div></div>
   <div class="right"><div class="img-content"></div></div>`;
+             view.$dataItem = DD.attr(view, "dataName");
+            view.removeAttribute("dataName");
             view.innerHTML = tem;
         },
         render: function(view) {
@@ -22,7 +24,7 @@
                 });
             };
             me.addspan = function() {
-                var index = (me.imgs.length-me.count)% me.imgs.length;
+                var index = (me.imgs.length - me.count) % me.imgs.length;
                 if (index < 0)
                     index += me.imgs.length
                 DD.addClass(me.span[index], 'active');
@@ -32,7 +34,7 @@
                 me.is_can = false;
                 window.timer_2 = setInterval(function() {
                     me.is_can = false;
-                    me.count+=me.direct;
+                    me.count += me.direct;
                     me.removespan();
                     me.addspan();
                     me.content.style.transform = 'rotateY(' + 2 * me.count * Math.PI / me.imgs.length + 'rad)'
@@ -57,10 +59,10 @@
                 me.imgw = parseInt(DD.css(me.imgs[0], 'width'));
                 me.span = view.querySelectorAll('.inline-span');
                 //1为left -1为right
-                if(view.$getData().data.small_div.right){
-                    me.direct=1;
+                if (view.$getData().data.small_div.right) {
+                    me.direct = 1;
                 }
-                me.direct=-1;
+                me.direct = -1;
                 var temp = (me.imgs.length) * 25;
                 DD.css(me.spans, 'width', temp + 'px');
                 //求出旋转中心点的z坐标
@@ -123,7 +125,7 @@
                     }
                 }
             });
-             new DD.Event({
+            new DD.Event({
                 eventName: 'click',
                 view: view.querySelector(".left"),
                 handler: function() {
@@ -148,49 +150,53 @@
         data: {
             width_data: '',
             name: '',
-            img_ct: {
-                width: '',
-                translate: false,
-                spans: [{}, {}, {}, {}, {}, {}],
-                imgs: [{ url: HTMLURL + "/plugin_download/carouse_2/img/1.jpg" }, { url: HTMLURL + "/plugin_download/carouse_2/img/2.jpg" }, { url: HTMLURL + "/plugin_download/carouse_2/img/3.jpg" }, { url: HTMLURL + "/plugin_download/carouse_2/img/4.jpg" }, { url: HTMLURL + "/plugin_download/carouse_2/img/2.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/1.jpg" }]
-            },
-            small_div: {
-                check: '#ff6800',
-                no_check: '#ffffff',
-                width: '8',
-                height: '8',
-                time: 5,
-                left:true,
-                right:false
+            carousel_data: {
+                width_data: '',
+                img_ct: {
+                    width: '',
+                    translate: false,
+                    spans: [{}, {}, {}, {}, {}, {}],
+                    imgs: [{ url: HTMLURL + "/plugin_download/carouse_2/img/1.jpg" }, { url: HTMLURL + "/plugin_download/carouse_2/img/2.jpg" }, { url: HTMLURL + "/plugin_download/carouse_2/img/3.jpg" }, { url: HTMLURL + "/plugin_download/carouse_2/img/4.jpg" }, { url: HTMLURL + "/plugin_download/carouse_2/img/2.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/1.jpg" }]
+                },
+                small_div: {
+                    check: '#ff6800',
+                    no_check: '#ffffff',
+                    width: '8',
+                    height: '8',
+                    time: 5,
+                    left: true,
+                    right: false
+                }
             }
         },
         onBeforeFirstRender: function() {
             var me = this;
             me.data.name = "水平旋转";
-            me.data.img_ct.spans.forEach(function(i) {
-                i.width = me.data.small_div.width;
-                i.height = me.data.small_div.height;
+            me.data.carousel_data.img_ct.spans.forEach(function(i) {
+                i.width = me.data.carousel_data.small_div.width;
+                i.height = me.data.carousel_data.small_div.height;
             });
-            me.data.img_ct.$set("spans", me.data.img_ct.spans);
-             if(window.timer_1){
+            me.data.carousel_data.img_ct.$set("spans", me.data.carousel_data.img_ct.spans);
+            if (window.timer_1) {
                 clearInterval(window.timer_1);
             }
-             if(window.timer_2){
+            if (window.timer_2) {
                 clearInterval(window.timer_2);
             }
-             if(window.timer_3){
+            if (window.timer_3) {
                 clearInterval(window.timer_3);
             }
-             if(window.timer_4){
+            if (window.timer_4) {
                 clearInterval(window.timer_4);
             }
-            me.data.small_div.left=true;
-            me.data.small_div.right=false;
+            me.data.carousel_data.small_div.left = true;
+            me.data.carousel_data.small_div.right = false;
         },
         onRender: function() {
             var me = this;
             var tem = parseInt(DD.css(document.querySelector('.router-content'), 'height'));
             me.data.width_data = window.innerWidth * 0.5;
+            me.data.carousel_data.width_data=me.data.width_data;
             if (tem > (window.innerHeight - 80)) {
                 me.module.send('m_plugin_download', {
                     upload: false,
@@ -199,32 +205,26 @@
             }
         },
         methods: {
-            preload: function() {
-                var me = this;
-                me.data.ca_photo.span.forEach(function(i) {
-                    i.width = me.data.small_div.width;
-                    i.height = me.data.small_div.height;
-                });
-            },
             ensure: function() {
                 var me = this;
-                if (me.data.small_div.time < 3)
-                    me.data.small_div.time = 3;
+                var data=me.data.carousel_data;
+                if (data.small_div.time < 3)
+                    data.small_div.time = 3;
                 var obj = {
                     plugin_id: 102,
                     class0: JSON.stringify({
                         names: '.carous_ct .spancont .span .inline-span',
                         width: {
                             names: 'width',
-                            values: me.data.small_div.width + 'px'
+                            values: data.small_div.width + 'px'
                         },
                         height: {
                             names: 'height',
-                            values: me.data.small_div.height + 'px'
+                            values: data.small_div.height + 'px'
                         },
                         background: {
                             names: 'background-color',
-                            values: me.data.small_div.no_check.replace("#", "")
+                            values: data.small_div.no_check.replace("#", "")
                         },
                         total: 3
                     }),
@@ -232,7 +232,7 @@
                         names: '.carous_ct .spancont .span .active',
                         background: {
                             names: 'background-color',
-                            values: me.data.small_div.check.replace("#", "")
+                            values: data.small_div.check.replace("#", "")
                         },
                         total: 1
                     }),
@@ -240,14 +240,14 @@
                         names: ".carous",
                         transition: {
                             names: 'transition',
-                            values: 'all ' + (me.data.small_div.time - 2) + 's'
+                            values: 'all ' + (data.small_div.time - 2) + 's'
                         },
                         total: 1
                     }),
                     js: JSON.stringify({
-                        time: me.data.small_div.time * 1000,
-                        left:me.data.small_div.left,
-                        right:me.data.small_div.right
+                        time: data.small_div.time * 1000,
+                        left: data.small_div.left,
+                        right: data.small_div.right
                     }),
                     total: 3,
                     flag: 1

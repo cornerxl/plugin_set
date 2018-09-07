@@ -13,6 +13,8 @@
         </div>
     </div>
 </div>`;
+            view.$dataItem = DD.attr(view, "dataName");
+            view.removeAttribute("dataName");
             view.innerHTML = template;
         },
         render: function(view) {
@@ -22,8 +24,8 @@
                 var left = view.querySelector(".left");
                 var color = data.color_1;
                 var time = parseInt(data.animation_time);
-                if(time<1)
-                    tme=2;
+                if (time < 1)
+                    tme = 2;
                 DD.css(left, "animation-duration", time + "s");
                 DD.css(right, "animation-duration", time + "s");
                 DD.css(left, "border-left-color", color);
@@ -40,20 +42,23 @@
         templateUrl: HTMLURL + "/plugin_download/animation_3/index.html",
         data: {
             name: "圆环动画",
-            show: true, // 是否显示
-            color_1: '#409EFF',
-            animation_time: 3
+            buffering_data: {
+                show: true, // 是否显示
+                color_1: '#409EFF',
+                animation_time: 3
+            }
         },
-        onBeforeFirstRender:function(){
-            var me=this;
-            me.data.color_1= '#409EFF';
-            me.data.animation_time=3
+        onBeforeFirstRender: function() {
+            var me = this;
+            me.data.color_1 = '#409EFF';
+            me.data.animation_time = 3
         },
         methods: {
             ensure: function() {
                 var me = this;
-                if (me.data.animation_time < 0) {
-                    me.data.animation_time = 1;
+                var data=me.data.buffering_data;
+                if (data.animation_time < 0) {
+                    data.animation_time = 1;
                 }
                 var obj = {
                     plugin_id: 903,
@@ -62,15 +67,15 @@
                         total: 3,
                         aniamatin: {
                             names: 'animation-duration',
-                            values: me.time + 's'
+                            values: data.animation_time + 's'
                         },
                         borderLeft: {
                             names: 'border-left-color',
-                            values: me.data.color_1.replace("#", "")
+                            values: data.color_1.replace("#", "")
                         },
                         borderRight: {
                             names: 'border-bottom-color',
-                            values: me.data.color_1.replace("#", "")
+                            values: data.color_1.replace("#", "")
                         }
                     }),
                     class1: JSON.stringify({
@@ -78,15 +83,15 @@
                         total: 3,
                         aniamatin: {
                             names: 'animation-duration',
-                            values: me.time + 's'
+                            values: data.data.animation_time + 's'
                         },
                         borderLeft: {
                             names: 'border-left-color',
-                            values: me.data.color_1.replace("#", "")
+                            values: data.color_1.replace("#", "")
                         },
                         borderRight: {
                             names: 'border-bottom-color',
-                            values: me.data.color_1.replace("#", "")
+                            values: data.color_1.replace("#", "")
                         }
                     }),
                     total: 2,

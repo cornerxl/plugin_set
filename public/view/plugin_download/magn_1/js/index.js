@@ -114,6 +114,8 @@
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/magn_1/css/index.css" }],
         data: {
             name: '放大镜',
+            width:10,
+            magn_data:{
             width: 10,
             urlsmall: '/plugin_set/public/view/plugin_download/magn_1/img/small.jpg',
             urlbig: '/plugin_set/public/view/plugin_download/magn_1/img/big.jpg',
@@ -121,11 +123,21 @@
                 opacity: 5,
                 color: "#cccccc",
                 per: 2
-            }
+            }}
         },
         onBeforeFirstRender: function() {
             var me = this;
             me.data.width = window.innerWidth * 0.6 / 2;
+            me.data.magn_data={
+            width: me.data.width,
+            urlsmall: '/plugin_set/public/view/plugin_download/magn_1/img/small.jpg',
+            urlbig: '/plugin_set/public/view/plugin_download/magn_1/img/big.jpg',
+            small_div: {
+                opacity: 5,
+                color: "#cccccc",
+                per: 2
+            }};
+
         },
         onRender: function() {
             var me = this;
@@ -140,8 +152,9 @@
         methods: {
             ensure: function() {
                 var me = this;
-                if (me.data.small_div.per <= 1) {
-                    me.data.small_div.per = 2;
+                var data=me.data.magn_data;
+                if (data.small_div.per <= 1) {
+                    data.small_div.per = 2;
                 }
                 var obj = {
                     plugin_id: 201,
@@ -149,15 +162,15 @@
                         names: '.magn',
                         backgroundColor: {
                             names: 'background-color',
-                            values: me.data.small_div.color.replace("#", "")
+                            values: data.small_div.color.replace("#", "")
                         },
                         opacity: {
                             names: 'background-color',
-                            values: me.data.small_div.color.replace("#", "")
+                            values: data.small_div.color.replace("#", "")
                         },
                         total: 2
                     }),
-                    js: JSON.stringify({ radio: me.data.small_div.per }),
+                    js: JSON.stringify({ radio:data.small_div.per }),
                     total: 1,
                     flag: 1
                 }

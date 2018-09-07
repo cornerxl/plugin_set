@@ -1,25 +1,25 @@
 <div class='common-title'>
     {{name}}</div>
 <div class="plugin-collapse">
-    <div x-plugin="collapse" dataName='collapse'></div>
+    <div x-plugin="collapse" dataName='collapse' x-model="collapse_data"></div>
 </div>
 <div class="common-title">配置</div>
-<div class="con-config" x-model='small_div'>
+<div class="con-config" x-model='collapse_data'>
     <div class="itemss">
         <span class="span">头部颜色</span>
-        <input type="color" class='input' x-field="headColor">
+        <input type="color" class='input' x-field="small_div.headColor">
     </div>
     <div class="itemss">
         <span class="span">字体大小</span>
-        <input type="number" class='input' x-field="fontSize">
+        <input type="number" class='input' x-field="small_div.fontSize">
     </div>
      <div class="itemss">
         <span class="span">字体颜色</span>
-        <input type="color" class='input' x-field="fontColor">
+        <input type="color" class='input' x-field="small_div.fontColor">
     </div>
      <div class="itemss">
         <span class="span">折叠时间</span>
-        <input type="number" class='input' x-field="time">
+        <input type="number" class='input' x-field="small_div.time">
     </div>
 </div>
 <div class="con-eusure">

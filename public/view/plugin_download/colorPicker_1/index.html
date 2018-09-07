@@ -1,9 +1,9 @@
 <div class='common-title'>
     {{name}}</div>
 <div class="el-color-picker-1">
-    <div x-plugin="color-picker-2" class="plugin-color">
+    <div x-plugin="color-picker-1" class="plugin-color" x-model="colorpicker_data">
     </div>
-    <div class="input">
+    <div class="input" x-model="colorpicker_data">
         <div style="background-color:{{str}}" class="input"></div>
         <div class="select" e-click="select">选择</div>
     </div>

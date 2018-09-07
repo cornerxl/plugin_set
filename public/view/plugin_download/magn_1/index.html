@@ -1,21 +1,21 @@
 <div class='common-title'>
     {{name}}</div>
 <div class="el-plugin-magn-1">
-    <div x-plugin='magn' class='plugin'  style="width:{{width}}px;height:{{width}}px"></div>
+    <div x-plugin='magn' class='plugin'  style="width:{{width}}px;height:{{width}}px" x-model="magn_data" dataName="magn_data"></div>
 </div>
 <div class="common-title">配置</div>
-<div class="con-config" x-model='small_div'>
+<div class="con-config" x-model='magn_data'>
     <div class="itemss">
         <span class="span">比例</span>
-        <input type="number" class='input' x-field="per">
+        <input type="number" class='input' x-field="small_div.per">
     </div>
     <div class="itemss">
         <span class="span">颜色</span>
-        <input type="color" class='input' x-field="color">
+        <input type="color" class='input' x-field="small_div.color">
     </div>
     <div class="itemss">
         <span class="span">透明度</span>
-        <input type="number" class='input' x-field="opacity">
+        <input type="number" class='input' x-field="small_div.opacity">
     </div>
 </div>
 <div class="con-eusure">

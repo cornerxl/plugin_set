@@ -3,7 +3,6 @@
     var tree = function() {};
     tree.prototype = {
         init: function(view) {
-            console.log(this.__proto__);
         },
         render: function(view) {
             var me = this;
@@ -31,7 +30,7 @@
             };
             var str = me.create(me.datas.arr);
             view.innerHTML = str;
-            view.$forceRender=true;
+            view.$forceRender = true;
             //重新编译
             DD.Compiler.compile(view, view.$module);
         }
@@ -44,101 +43,105 @@
         delayInit: true,
         data: {
             name: "树形组建",
-            color_1: '#333333',
-            color_2: '#1890ff',
-            one: 1,
-            arr: [{
-                click: false,
-                txt: "parent-1",
-                show: true,
+            tree_data: {
+                color_1: '#333333',
+                color_2: '#1890ff',
+                one: 1,
                 arr: [{
                     click: false,
-                    txt: "child-1",
-                    show: false,
+                    txt: "parent-1",
+                    show: true,
                     arr: [{
                         click: false,
-                        txt: "child-1-1",
+                        txt: "child-1",
+                        show: false,
+                        arr: [{
+                            click: false,
+                            txt: "child-1-1",
+                            show: false
+                        }, {
+                            click: false,
+                            txt: "child-1-2",
+                            show: false
+                        }]
+                    }, {
+                        click: false,
+                        txt: "child-2",
                         show: false
                     }, {
                         click: false,
-                        txt: "child-1-2",
+                        txt: "child-3",
+                        show: false
+                    }, {
+                        click: false,
+                        txt: "child-4",
                         show: false
                     }]
                 }, {
                     click: false,
-                    txt: "child-2",
-                    show: false
+                    txt: "parent-2",
+                    show: true
                 }, {
                     click: false,
-                    txt: "child-3",
-                    show: false
+                    txt: "parent-3",
+                    show: true
                 }, {
                     click: false,
-                    txt: "child-4",
-                    show: false
+                    txt: "parent-4",
+                    show: true
                 }]
-            }, {
-                click: false,
-                txt: "parent-2",
-                show: true
-            }, {
-                click: false,
-                txt: "parent-3",
-                show: true
-            }, {
-                click: false,
-                txt: "parent-4",
-                show: true
-            }]
+            }
         },
         onBeforeFirstRender: function() {
             var me = this;
-            me.data.one = 1;
-            me.data.color_1 = '#333333';
-            me.data.color_2 = '#1890ff';
-            me.data.arr = [{
-                click: false,
-                txt: "parent-1",
-                show: true,
+            me.data.tree_data = {
+                color_1: '#333333',
+                color_2: '#1890ff',
+                one: 1,
                 arr: [{
                     click: false,
-                    txt: "child-1",
-                    show: false,
+                    txt: "parent-1",
+                    show: true,
                     arr: [{
                         click: false,
-                        txt: "child-1-1",
+                        txt: "child-1",
+                        show: false,
+                        arr: [{
+                            click: false,
+                            txt: "child-1-1",
+                            show: false
+                        }, {
+                            click: false,
+                            txt: "child-1-2",
+                            show: false
+                        }]
+                    }, {
+                        click: false,
+                        txt: "child-2",
                         show: false
                     }, {
                         click: false,
-                        txt: "child-1-2",
+                        txt: "child-3",
+                        show: false
+                    }, {
+                        click: false,
+                        txt: "child-4",
                         show: false
                     }]
                 }, {
                     click: false,
-                    txt: "child-2",
-                    show: false
+                    txt: "parent-2",
+                    show: true
                 }, {
                     click: false,
-                    txt: "child-3",
-                    show: false
+                    txt: "parent-3",
+                    show: true
                 }, {
                     click: false,
-                    txt: "child-4",
-                    show: false
+                    txt: "parent-4",
+                    show: true
                 }]
-            }, {
-                click: false,
-                txt: "parent-2",
-                show: true
-            }, {
-                click: false,
-                txt: "parent-3",
-                show: true
-            }, {
-                click: false,
-                txt: "parent-4",
-                show: true
-            }];
+            }
         },
         methods: {
             show: function(e, d, v) {
@@ -169,6 +172,7 @@
             },
             ensure: function() {
                 var me = this;
+                var data=me.data.tree_data;
                 var obj = {
                     plugin_id: 1601,
                     class0: JSON.stringify({
@@ -176,7 +180,7 @@
                         total: 1,
                         color: {
                             names: 'background-color',
-                            values: me.data.color_2.replace("#", "")
+                            values: data.color_2.replace("#", "")
                         }
                     }),
                     class1: JSON.stringify({
@@ -184,7 +188,7 @@
                         total: 1,
                         color: {
                             names: 'color',
-                            values: me.data.color_1.replace("#", "")
+                            values: data.color_1.replace("#", "")
                         }
                     }),
                     total: 2,

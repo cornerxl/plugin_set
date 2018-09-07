@@ -88,47 +88,50 @@
         templateUrl: HTMLURL + "/plugin_download/foldCollapse_1/index.html",
         data: {
             name: "折叠",
-            isCollapse: true,
-            heading: '点击展开，再次点击折叠',
-            content: "NoDom提供了丰富的指令集，如x-repeat( 重复条目渲染 )、x-model(数据模型)、x-if/x-else(条件)、x-show(显示和隐藏)、x-route／x-router(路由)、 x-field(字段和双向绑定)、x-validity(字段验证)。 同时提供了自定义指令集，指令可以帮助简化模版，丰富渲染内容。",
-            small_div: {
-                headColor: "#f5f5f5",
-                fontSize: 12,
-                fontColor: '#666666',
-                time: 0.5
+            collapse_data: {
+                isCollapse: true,
+                heading: '点击展开，再次点击折叠',
+                content: "NoDom提供了丰富的指令集，如x-repeat( 重复条目渲染 )、x-model(数据模型)、x-if/x-else(条件)、x-show(显示和隐藏)、x-route／x-router(路由)、 x-field(字段和双向绑定)、x-validity(字段验证)。 同时提供了自定义指令集，指令可以帮助简化模版，丰富渲染内容。",
+                small_div: {
+                    headColor: "#f5f5f5",
+                    fontSize: 12,
+                    fontColor: '#666666',
+                    time: 0.5
+                }
             }
         },
         methods: {
             ensure: function() {
                 var me = this;
-                if (me.data.time <= 0) {
-                    me.data.time = 0.5;
+                var data=me.data.collapse_data;
+                if (data.time <= 0) {
+                    data.time = 0.5;
                 }
                 var obj = {
                     plugin_id: 801,
                     total: 2,
-                    class0:JSON.stringify({
-                        names:'.nd-plugin-collapse-heading',
-                        background:{
-                            names:'background-color',
-                            values:me.data.small_div.headColor.replace("#","")
+                    class0: JSON.stringify({
+                        names: '.nd-plugin-collapse-heading',
+                        background: {
+                            names: 'background-color',
+                            values: data.small_div.headColor.replace("#", "")
                         },
-                        total:1
+                        total: 1
                     }),
-                    class1:JSON.stringify({
-                        names:".nd-plugin-collapse-coninfo",
-                        color:{
-                            names:'color',
-                            values:me.data.small_div.fontColor.replace("#","")
+                    class1: JSON.stringify({
+                        names: ".nd-plugin-collapse-coninfo",
+                        color: {
+                            names: 'color',
+                            values: data.small_div.fontColor.replace("#", "")
                         },
-                        size:{
-                            names:"size",
-                            values:me.data.small_div.fontSize+'px'
+                        size: {
+                            names: "size",
+                            values: data.small_div.fontSize + 'px'
                         },
-                        total:2
+                        total: 2
                     }),
                     js: JSON.stringify({
-                        time: me.data.small_div.time
+                        time: data.small_div.time
                     }),
                     flag: 1,
                 }

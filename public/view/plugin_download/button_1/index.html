@@ -2,10 +2,10 @@
 <div class='common-title'>
     {{name}}</div>
 <div class="nd-plugin-button-1">
-    <div x-plugin="button-list" class="btn-list"></div>
+    <div x-plugin="button-list" class="btn-list" dataName="button_data" x-model="button_data"></div>
 </div>
 <div class="common-title">配置</div>
-<div class="con-config">
+<div class="con-config" x-model="button_data">
     <div class="itemss">
         <span class="span">一列颜色</span>
         <input type="color" class='input' x-field="color_1">

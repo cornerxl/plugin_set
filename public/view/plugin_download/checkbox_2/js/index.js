@@ -54,7 +54,7 @@
                     eventName: "click",
                     handler: function(e, d, v) {
                         var me = this;
-                        me.data.yes = !me.data.yes;
+                        me.data.checkbox_data.yes = !me.data.checkbox_data.yes;
                     }
                 });
                 new DD.Event({
@@ -62,7 +62,7 @@
                     eventName: "click",
                     handler: function(e, d, v) {
                         var me = this;
-                        me.data.yes_1 = !me.data.yes_1;
+                        me.data.checkbox_data.yes_1 = !me.data.checkbox_data.yes_1;
                     }
                 });
                 new DD.Event({
@@ -70,7 +70,7 @@
                     eventName: "click",
                     handler: function(e, d, v) {
                         var me = this;
-                        me.data.yes_2 = !me.data.yes_2;
+                        me.data.checkbox_data.yes_2 = !me.data.checkbox_data.yes_2;
                     }
                 });
             }, 0);
@@ -82,66 +82,79 @@
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/checkbox_2/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/checkbox_2/index.html",
         data: {
-            name:'炫酷选择框',
-            yes: true,
-            yes_1: true,
-            yes_2: true,
-            check_color:"#03a9f4",
-            no_check_color:'#000000'
+            name: '炫酷选择框',
+            checkbox_data: {
+                yes: true,
+                yes_1: true,
+                yes_2: true,
+                check_color: "#03a9f4",
+                no_check_color: '#000000'
+            }
         },
-        methods:{
+        onBeforeFirstRender: function() {
+            var me = this;
+            me.data.checkbox_data = {
+                yes: true,
+                yes_1: true,
+                yes_2: true,
+                check_color: "#03a9f4",
+                no_check_color: '#000000'
+            }
+        },
+        methods: {
             ensure: function() {
-                var me = this
+                var me = this;
+                var data=me.data.checkbox_data;
                 var obj = {
                     plugin_id: 1202,
                     total: 6,
-                    class0:JSON.stringify({
-                        names:".nd-plugin-check-list .content-check .check-one .check",
-                        background:{
-                            names:"color",
-                            values:me.data.check_color.replace("#","")
+                    class0: JSON.stringify({
+                        names: ".nd-plugin-check-list .content-check .check-one .check",
+                        background: {
+                            names: "color",
+                            values: data.check_color.replace("#", "")
                         },
-                        total:1
+                        total: 1
                     }),
-                     class1:JSON.stringify({
-                        names:".nd-plugin-check-list .content-check .check-two .check",
-                        background:{
-                            names:"color",
-                            values:me.data.check_color.replace("#","")
+                    class1: JSON.stringify({
+                        names: ".nd-plugin-check-list .content-check .check-two .check",
+                        background: {
+                            names: "color",
+                            values:data.check_color.replace("#", "")
                         },
-                         total:1
+                        total: 1
                     }),
-                      class2:JSON.stringify({
-                        names:".nd-plugin-check-list .content-check .check-three .check",
-                        background:{
-                            names:"color",
-                            values:me.data.check_color.replace("#","")
+                    class2: JSON.stringify({
+                        names: ".nd-plugin-check-list .content-check .check-three .check",
+                        background: {
+                            names: "color",
+                            values:data.check_color.replace("#", "")
                         },
-                         total:1
+                        total: 1
                     }),
-                      class3:JSON.stringify({
-                        names:".nd-plugin-check-list .content-check .check-one .no-check",
-                        background:{
-                            names:"color",
-                            values:me.data.no_check_color.replace("#","")
+                    class3: JSON.stringify({
+                        names: ".nd-plugin-check-list .content-check .check-one .no-check",
+                        background: {
+                            names: "color",
+                            values:data.no_check_color.replace("#", "")
                         },
-                        total:1
+                        total: 1
                     }),
-                     class4:JSON.stringify({
-                        names:".nd-plugin-check-list .content-check .check-two .no-check",
-                        background:{
-                            names:"color",
-                            values:me.data.no_check_color.replace("#","")
+                    class4: JSON.stringify({
+                        names: ".nd-plugin-check-list .content-check .check-two .no-check",
+                        background: {
+                            names: "color",
+                            values:data.no_check_color.replace("#", "")
                         },
-                         total:1
+                        total: 1
                     }),
-                      class5:JSON.stringify({
-                        names:".nd-plugin-check-list .content-check .check-three .no-check",
-                        background:{
-                            names:"color",
-                            values:me.data.no_check_color.replace("#","")
+                    class5: JSON.stringify({
+                        names: ".nd-plugin-check-list .content-check .check-three .no-check",
+                        background: {
+                            names: "color",
+                            values: data.no_check_color.replace("#", "")
                         },
-                         total:1
+                        total: 1
                     }),
                     flag: 0,
                 }
