@@ -37,10 +37,9 @@
             view.$forceRender = true;
         },
         render:function(view){
-            var data = view.$getData().data;
-            if(data.data){
-                data=data.data;
-            }
+            var data = view.$getData().data[view.$dataItem];
+            data_rows = [];
+
             if(!data){
                 return;
             }
@@ -53,34 +52,34 @@
             if(!module){
                 return;
             }
-            if(data.page.all_page >= 0) {
+            if(data.all_page >= 0) {
                 // 动态修改页码数组
-                if(data.page.all_page > 7) {
-                    data.page.page_rows = [];
+                if(data.all_page > 7) {
+                    data.page_rows = [];
                     for(var i = 1; i < 7; i ++) {
                         if(i === 6) {
-                            data.page.page_rows.push({
+                            data.page_rows.push({
                                 page: '...',
-                                pre_page: data.page.pre_page
+                                pre_page: data.pre_page
                             });
                         }else {
-                            data.page.page_rows.push({
+                            data.page_rows.push({
                                 page: i,
-                                pre_page: data.page.pre_page
+                                pre_page: data.pre_page
                             })
                         }
                     }
-                    data.page.page_rows.push({
-                        page: data.page.all_page,
-                        pre_page: data.page.pre_page
+                    data.page_rows.push({
+                        page: data.all_page,
+                        pre_page: data.pre_page
                     })
                 }else {
                     // 清空数据
-                    data.page.page_rows = [];
+                    data.page_rows = [];
                     for(var i = data.all_page; i > 0; i --) {
-                        data.page.page_rows.push({
+                        data.page_rows.push({
                             page: data.all_page - i + 1,
-                            pre_page: data.page.pre_page
+                            pre_page: data.pre_page
                         });
                     }
                 }
@@ -94,15 +93,15 @@
                 function changePageRows(pre_page, all_page) {
                     if(pre_page <= 6) {
                         if(all_page <= 6) {
-                            data.page.page_rows = [];
+                            data.page_rows = [];
                             for(var i = all_page; i > 0; i --) {
-                                data.page.page_rows.push({
+                                data.page_rows.push({
                                     page: all_page - i + 1,
                                     pre_page: pre_page
                                 });
                             }
                         }else {
-                            data.page.page_rows = [
+                            data.page_rows = [
                                 {
                                     page: 1,
                                     pre_page: pre_page
@@ -131,7 +130,7 @@
                             ]
                         }
                     }else if(pre_page > 6 && pre_page <= all_page - 5) {
-                        data.page.page_rows = [
+                        data.page_rows = [
                             {
                                 page: 1,
                                 pre_page: pre_page
@@ -159,7 +158,7 @@
                             }
                         ]
                     }else if(pre_page > all_page - 5) {
-                        data.page.page_rows = [
+                        data.page_rows = [
                             {
                                 page: 1,
                                 pre_page: pre_page
@@ -193,13 +192,15 @@
                     view:view.querySelector('.com-go-pre'),
                     handler:function(e,d,v){
                         var me = this;
-                        if(data.page.pre_page === 1) {
+                        if(data.pre_page === 1) {
                             return;
                         }
                         data.pre_page --;
-                        changePageRows(data.page.pre_page, data.page.all_page);
+                        changePageRows(data.pre_page, data.all_page);
                         // 请求数据
-                        // this.module.methodFactory.methods.updatePage.call(this);
+                        if(me.module.methodFactory.methods.updatePage){
+                            me.module.methodFactory.methods.updatePage.call(this);
+                        }
                         view.$forceRender = true;
                     }
                 });
@@ -208,13 +209,14 @@
                     view:view.querySelector('.com-go-next'),
                     handler:function(e,d,v){
                         var me = this;
-                        if(data.page.pre_page === data.page.all_page) {
+                        if(data.pre_page === data.all_page) {
                             return;
                         }
                         data.pre_page ++;
-                        changePageRows(data.page.pre_page, data.page.all_page);
-                        // 请求数据
-                        // this.module.methodFactory.methods.updatePage.call(this);
+                        changePageRows(data.pre_page, data.all_page);
+                        if(me.module.methodFactory.methods.updatePage){
+                            me.module.methodFactory.methods.updatePage.call(this);
+                        }
                         view.$forceRender = true;
                     }
                 });
@@ -223,13 +225,15 @@
                     view:view.querySelector('.com-go-btn'),
                     handler:function(e,d,v){
                         var me = this;
-                        if(parseInt(data.page.go_page) > data.page.all_page) {
+                        if(parseInt(data.go_page) > data.all_page) {
                             return;
                         }
-                        data.page.pre_page = parseInt(data.page.go_page);
-                        changePageRows(data.page.pre_page, data.page.all_page);
+                        data.pre_page = parseInt(data.go_page);
+                        changePageRows(data.pre_page, data.all_page);
                         // 请求数据
-                        // this.module.methodFactory.methods.updatePage.call(this);
+                        if(me.module.methodFactory.methods.updatePage){
+                            me.module.methodFactory.methods.updatePage.call(this);
+                        }
                         view.$forceRender = true;
                     }
                 });
@@ -240,10 +244,11 @@
                         view:page_arr[i],
                         handler:function(e,d,v){
                             if(d.page !== '...') {
-                                data.page.pre_page = d.page;
-                                changePageRows(data.page.pre_page, data.page.all_page);
-                                // 请求数据
-                                // this.module.methodFactory.methods.updatePage.call(this);
+                                data.pre_page = d.page;
+                                changePageRows(data.pre_page, data.all_page);
+                                if(me.module.methodFactory.methods.updatePage){
+                                    me.module.methodFactory.methods.updatePage.call(this);
+                                }
                                 view.$forceRender = true;
                             }
                         }

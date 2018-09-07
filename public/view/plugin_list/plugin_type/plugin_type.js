@@ -1292,18 +1292,24 @@
             ], onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-       <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                                                + i.template + `
+                                </div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>
+                            `;
                 });
                 props.template = tem + `</div>`;
             },
@@ -1314,16 +1320,35 @@
                 plugins: [
                     {
                         name: '08001',
-                        explain: '这是一款图片放大镜插件。可以一定程度上放大鼠标选中的区域。\n' +
-                            '本插件可自定义配置项包括：放大比例、颜色、透明度。',
+                        explain: '这是一款图片放大镜插件。可以一定程度上放大鼠标选中的区域。本插件可自定义配置项包括：放大比例、颜色、透明度、图片路径。在使用时，需定义图片标签的父元素标签的大小（width、height）。',
                         template: `<div class="el-plugin">
-		<div x-plugin='plugin_08001' class='plugin' x-model='magn'></div>
-	</div>`,
+                                        <div x-plugin='plugin_08001' class='plugin' dataName="photo_to_big"></div>
+                                    </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-photo-to-big" <span class="attr">x-plugin</span>="photo_to_big" <span class="attr">dataName</span>="photo_to_big_data"><<span class="element">/div></span></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'photo_to_big',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-photo-to-big',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            photo_to_big_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  small_img: '*****',</span>      <span class="comment">/*图片放大镜插件小图片路径*/</span></pre>
+                                    <pre><span>                  big_img: '*****',</span>      <span class="comment">/*图片放大镜插件大图片路径*/</span></pre>
+                                    <pre><span>                  radio: '2',</span>      <span class="comment">/*图片放大镜放大比例*/</span></pre>
+                                    <pre><span>                  mark_color: '#666666',</span>      <span class="comment">/*图片放大镜遮罩层颜色*/</span></pre>
+                                    <pre><span>                  mark_opacity: 0.2,</span>      <span class="comment">/*图片放大镜遮罩层透明度*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
                         data: {
-                            hasCreated: false,
-                            magn: {
-                                urlsmall: PLUGINURL + '/plugins_show/imgShow/magn_1/img/small.jpg',
-                                urlbig: PLUGINURL + '/plugins_show/imgShow/magn_1/img/big.jpg'
+                            photo_to_big: {
+                                small_img: PLUGINURL + '/plugins_show/imgShow/magn_1/img/small.jpg',
+                                big_img: PLUGINURL + '/plugins_show/imgShow/magn_1/img/big.jpg',
+                                radio: 2,
+                                mark_color: '#666666',
+                                mark_opacity: '0.2'
                             }
                         }
                     }
@@ -1331,10 +1356,10 @@
             },
             onBeforeFirstRender: function () {
                 var me = this;
-                if (!me.data.hasCreated) {
+                // if (!me.data.hasCreated) {
                     me.module.methodFactory.methods.createModules.call(me);
-                    me.data.hasCreated = true;
-                }
+                    // me.data.hasCreated = true;
+                // }
             },
             methods: {
                 createModules: function () {
