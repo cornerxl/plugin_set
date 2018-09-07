@@ -1,0 +1,24 @@
+<div class="pie-container clearfix" x-model="pie">
+            <div class='chart' x-plugin='Chart'  dataName='data' type='pie' 
+                title='{{title}}' legend='{{legend}}'
+                category='string,number' titleColor='{{titleColor}}'  
+                showPercent='{{showPercent}}' showText = '{{showText}}'></div>
+                <div class="con-config">
+                    <div class="itemss">
+                        <label for="" class="span">标题颜色</label>
+                        <input type="color" e-change="changeTitleColor" value="{{titleColor}}" class="input">
+                    </div>
+                    <div class="itemss">
+                        <label for="" class="span">图例</label>
+                        <select name="" id="" e-change="changeLegend" class="input">
+                            <option value="{{value}}" x-repeat="legends" class="input">{{text}}</option>
+                        </select>
+                    </div>
+                   <!--  <div class="option-group">
+                        <label for="">添加数据</label>
+                        <input type="text" x-field="addTitle">
+                        <input type="text" x-field="addData">
+                        <button e-click="addPieData">添加</button>
+                    </div> -->
+                </div>
+        </div>

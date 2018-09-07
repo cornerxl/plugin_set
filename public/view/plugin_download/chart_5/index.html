@@ -1,0 +1,33 @@
+<div class="radar-container clearfix" x-model="radar">
+            <div class='chart' x-plugin='Chart'  dataName='data' radarName="radar" type='radar' 
+                title='{{title}}' legend='{{legend}}'
+                titleColor='{{titleColor}}'  
+               ></div>
+            <div class="con-config">
+                <div class="itemss">
+                    <label for="" class="span">标题颜色</label>
+                    <input type="color" e-change="changeTitleColor" value="{{titleColor}}" class="input">
+                </div>
+                <div class="itemss">
+                    <label for="" class="span">图例</label>
+                    <select name="" id="" e-change="changeLegend" class="input">
+                        <option value="{{value}}" x-repeat="legends" class="input">{{text}}</option>
+                    </select>
+                </div>
+                <div class="itemss">
+                    <label for="" class="span">网格线颜色</label>
+                    <input type="color" e-change="changeRadarLineColor" class="input">
+                </div>
+                <div class="itemss">
+                    <label for="" class="span">区域颜色</label>
+                    <input type="text" x-field="changeColors" class="input">
+                    <!-- <button e-click="changeRadarColors">修改</button> -->
+                </div>
+                <!-- <div class="itemss">
+                    <label for="" class="span">添加数据</label>
+                    <input type="text" x-field="addTitle" class=''>
+                    <input type="text" x-field="addData">
+                    <button e-click="addRadarData">添加</button>
+                </div> -->
+            </div>
+        </div>
