@@ -760,7 +760,8 @@
                         onBeforeFirseRender: function () {
                             var me = this;
                         },
-                    }, {
+                    },
+                    {
                         name: '04002',
                         explain: "可自定义配置项包括：选中颜色、未选中颜色、checkBox大小。",
                         template: `<div class="nd-plugin-check">
@@ -795,77 +796,79 @@
                         onBeforeFirseRender: function () {
                             var me = this;
                         },
-                    },{
-                        name: '04003',
-                        explain: "可自定义配置项包括：选中颜色、不选颜色、checkBox大小。",
-                        template: `<div class="nd-plugin-check">
-                                        <div class="content-check" x-plugin="plugin_04003" dataName="check_data"></div>
-                                    </div>`,
-                        htmlcode: `<pre class="instruction-code">
-                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-3" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
-                                    </pre>`,
-                        jscode: `<pre class="instruction-code">
-                                    <pre><span>{</span></pre>
-                                    <pre><span>      name: 'check_3',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
-                                    <pre><span>      el: '.plugin-check-3',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
-                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
-                                    <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
-                                    <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
-                                    <pre><span>                  no_check_color: '#000000',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
-                                    <pre><span>                  size: 30,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
-                                    <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
-                                    <pre><span>            }</span></pre>
-                                    <pre><span>     }</pre>
-                                    <pre><span>}</span></pre>
-                                </pre>`,
-                        data: {
-                            name: 'check03',
-                            check_data : {
-                                check_color: '#26a2ff',
-                                no_check_color: '#000000',
-                                is_check: true,
-                                size: 30
-                            }
-                        },
-                        onBeforeFirseRender: function () {
-                            var me = this;
-                        },
-                    },{
-                        name: '04004',
-                        explain: "可自定义配置项包括：选中颜色、不选颜色、checkBox大小。",
-                        template: `<div class="nd-plugin-check">
-                                        <div class="content-check" x-plugin="plugin_04004" dataName="check_data"></div>
-                                    </div>`,
-                        htmlcode: `<pre class="instruction-code">
-                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-4" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
-                                    </pre>`,
-                        jscode: `<pre class="instruction-code">
-                                    <pre><span>{</span></pre>
-                                    <pre><span>      name: 'check_4',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
-                                    <pre><span>      el: '.plugin-check-4',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
-                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
-                                    <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
-                                    <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
-                                    <pre><span>                  no_check_color: '#aaaaaa',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
-                                    <pre><span>                  size: 30,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
-                                    <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
-                                    <pre><span>            }</span></pre>
-                                    <pre><span>     }</pre>
-                                    <pre><span>}</span></pre>
-                                </pre>`,
-                        data: {
-                            name: 'check04',
-                            check_data : {
-                                check_color: '#26a2ff',
-                                no_check_color: '#aaaaaa',
-                                is_check: true,
-                                size: 30
-                            }
-                        },
-                        onBeforeFirseRender: function () {
-                            var me = this;
-                        },
-                    }
+                    },
+                    // {
+                    //     name: '04003',
+                    //     explain: "可自定义配置项包括：选中颜色、不选颜色、checkBox大小。",
+                    //     template: `<div class="nd-plugin-check">
+                    //                     <div class="content-check" x-plugin="plugin_04003" dataName="check_data"></div>
+                    //                 </div>`,
+                    //     htmlcode: `<pre class="instruction-code">
+                    //                     <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-3" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
+                    //                 </pre>`,
+                    //     jscode: `<pre class="instruction-code">
+                    //                 <pre><span>{</span></pre>
+                    //                 <pre><span>      name: 'check_3',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                    //                 <pre><span>      el: '.plugin-check-3',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                    //                 <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                    //                 <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                    //                 <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
+                    //                 <pre><span>                  no_check_color: '#000000',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
+                    //                 <pre><span>                  size: 30,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
+                    //                 <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
+                    //                 <pre><span>            }</span></pre>
+                    //                 <pre><span>     }</pre>
+                    //                 <pre><span>}</span></pre>
+                    //             </pre>`,
+                    //     data: {
+                    //         name: 'check03',
+                    //         check_data : {
+                    //             check_color: '#26a2ff',
+                    //             no_check_color: '#000000',
+                    //             is_check: true,
+                    //             size: 30
+                    //         }
+                    //     },
+                    //     onBeforeFirseRender: function () {
+                    //         var me = this;
+                    //     },
+                    // },
+                    // {
+                    //     name: '04004',
+                    //     explain: "可自定义配置项包括：选中颜色、不选颜色、checkBox大小。",
+                    //     template: `<div class="nd-plugin-check">
+                    //                     <div class="content-check" x-plugin="plugin_04004" dataName="check_data"></div>
+                    //                 </div>`,
+                    //     htmlcode: `<pre class="instruction-code">
+                    //                     <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-check-4" <span class="attr">x-plugin</span>="check" <span class="attr">dataName</span>="check_data"><<span class="element">/div></span></pre>
+                    //                 </pre>`,
+                    //     jscode: `<pre class="instruction-code">
+                    //                 <pre><span>{</span></pre>
+                    //                 <pre><span>      name: 'check_4',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                    //                 <pre><span>      el: '.plugin-check-4',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                    //                 <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                    //                 <pre><span>            check_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                    //                 <pre><span>                  check_color: '#26a2ff',</span>      <span class="comment">/*选择框选中颜色*/</span></pre>
+                    //                 <pre><span>                  no_check_color: '#aaaaaa',</span>      <span class="comment">/*选择框未选中颜色*/</span></pre>
+                    //                 <pre><span>                  size: 30,</span>      <span class="comment">/*选择框宽度、高度*/</span></pre>
+                    //                 <pre><span>                  is_check: true</span>      <span class="comment">/*选择框是否选中*/</span></pre>
+                    //                 <pre><span>            }</span></pre>
+                    //                 <pre><span>     }</pre>
+                    //                 <pre><span>}</span></pre>
+                    //             </pre>`,
+                    //     data: {
+                    //         name: 'check04',
+                    //         check_data : {
+                    //             check_color: '#26a2ff',
+                    //             no_check_color: '#aaaaaa',
+                    //             is_check: true,
+                    //             size: 30
+                    //         }
+                    //     },
+                    //     onBeforeFirseRender: function () {
+                    //         var me = this;
+                    //     },
+                    // }
                 ]
             },
             onBeforeFirstRender: function () {
