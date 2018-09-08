@@ -691,11 +691,6 @@
                 {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_1/js/index.js'},
                 {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_2/css/index.css'},
                 {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_2/js/index.js'},
-
-                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_3/css/index.css'},
-                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_3/js/index.js'},
-                {type: 'css', path: PLUGINURL + '/plugins_show/checkBox/checkbox_4/css/index.css'},
-                {type: 'js', path: PLUGINURL + '/plugins_show/checkBox/checkbox_4/js/index.js'}
             ], onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
