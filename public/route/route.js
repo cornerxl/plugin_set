@@ -56,6 +56,9 @@
                         path:'/table',
                         module:'m_plugin_table'
                     },{
+                        path:'/chart',
+                        module:'m_plugin_chart'
+                    },{
                         path:'/tree',
                         module:'m_plugin_tree'
                     }]

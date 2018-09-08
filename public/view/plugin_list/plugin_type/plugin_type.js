@@ -2222,5 +2222,313 @@
                     })
                 }
             },
+        },{
+            name: "m_plugin_chart",
+            delayInit: true,
+            requires: [
+                {type: 'css', path: PLUGINURL + '/plugins_show/chart/chart_1/css/index.css'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/chart/chart_2/css/index.css'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/chart/chart_3/css/index.css'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/chart/chart_4/css/index.css'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/chart/chart_5/css/index.css'},
+            ],
+            onStart: function (props) {
+                //props指的是config
+                var tem = `<div class="plugin-type el-plugin-type">
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class="explain">本章节主要展示插件库中的相关图表插件。</p>`;
+                props.data.plugins.forEach(function (i) {
+                    tem += `<div class='plugin-item'>
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                        + i.template + `</div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>`;
+                });
+                props.template = tem;
+            },
+            modules: [],
+            data: {
+                hasCreated: false,
+                name: "图表",
+                plugins: [
+                    {
+                        name:"15001",
+                        explain:"本插件是直方图插件，能直观地表示出数据的具体数值",
+                        template:`<div id="app">
+    <div class="histogram-container clearfix" x-model="histogram">
+        <div style="height: 400px; width: 800px;" class='chart' x-plugin='Chart'  dataName='data' type='histogram'
+             title='{{title}}' legend='{{legend}}' yTitle='销售额(万元)' xTitle='2017年上半年'
+             category='string,number' gridLine='{{gridLine}}' titleColor='{{titleColor}}'
+             gridLineColor='{{gridLineColor}}'>
+        </div>
+    </div>
+</div>`,
+                        data:{
+                            histogram: {
+                                "title": "直方图",
+                                "legend": "",
+                                "marker": false,
+                                "titleColor": "#000000",
+                                "gridLine": 0,
+                                "gridLineColor": "#cccccc",
+                                "legends": [
+                                    { "value": "", "text": "无" },
+                                    { "value": "top", "text": "顶部" },
+                                    { "value": "right", "text": "右侧" },
+                                    { "value": "bottom", "text": "底部" }
+                                ],
+                                "lines": [
+                                    { "value": 0, "text": "无" },
+                                    { "value": 1, "text": "横向" },
+                                    { "value": 2, "text": "纵向" },
+                                    { "value": 3, "text": "全部" }
+                                ],
+                                "data": [{
+                                    "title": "成都店",
+                                    "datas": [
+                                        { "x": "1月", "y": 300 },
+                                        { "x": "2月", "y": 320 },
+                                        { "x": "3月", "y": 280 },
+                                        { "x": "4月", "y": 250 },
+                                        { "x": "5月", "y": 300 },
+                                        { "x": "6月", "y": 380 }
+                                    ]
+                                }, {
+                                    "title": "北京店",
+                                    "datas": [
+                                        { "x": "1月", "y": 900 },
+                                        { "x": "2月", "y": 820 },
+                                        { "x": "3月", "y": 880 },
+                                        { "x": "4月", "y": 850 },
+                                        { "x": "5月", "y": 900 },
+                                        { "x": "6月", "y": 980 }
+                                    ]
+                                }, {
+                                    "title": "上海店",
+                                    "datas": [
+                                        { "x": "1月", "y": 600 },
+                                        { "x": "2月", "y": 520 },
+                                        { "x": "3月", "y": 580 },
+                                        { "x": "4月", "y": 550 },
+                                        { "x": "5月", "y": 600 },
+                                        { "x": "6月", "y": 680 }
+                                    ]
+                                }],
+                            },
+                        }
+                    }, {
+                        name:"15002",
+                        explain:"本插件是折线图插件，能直观地表示出数据的具体数值",
+                        template:`
+    <div class="line-container clearfix" x-model="line">
+        <div style="height: 400px; width: 800px;" class='chart' x-plugin='Chart'  dataName='data' type='line' title='{{title}}'
+             legend='{{legend}}' yTitle='' xTitle='' symbolSize='{{symbolSize}}' radarName='radar'
+             category='string,number' gridLine='{{gridLine}}' marker='{{marker}}'
+             titleColor='{{titleColor}}' gridLineColor='{{gridLineColor}}'>
+        </div>
+</div>`,
+                        data:{
+                            line: {
+                                "title": "折线图",
+                                "legend": "",
+                                "marker": false,
+                                "titleColor": "#000000",
+                                "gridLine": 0,
+                                "gridLineColor": "#cccccc",
+                                "legends": [
+                                    { "value": "", "text": "无" },
+                                    { "value": "top", "text": "顶部" },
+                                    { "value": "right", "text": "右侧" },
+                                    { "value": "bottom", "text": "底部" }
+                                ],
+                                "lines": [
+                                    { "value": 0, "text": "无" },
+                                    { "value": 1, "text": "横向" },
+                                    { "value": 2, "text": "纵向" },
+                                    { "value": 3, "text": "全部" }
+                                ],
+                                "data": [{
+                                    "title": "成都店",
+                                    "datas": [
+                                        { "x": "1月", "y": 300 },
+                                        { "x": "2月", "y": 320 },
+                                        { "x": "3月", "y": 280 },
+                                        { "x": "4月", "y": 250 },
+                                        { "x": "5月", "y": 300 },
+                                        { "x": "6月", "y": 380 }
+                                    ]
+                                }, {
+                                    "title": "北京店",
+                                    "datas": [
+                                        { "x": "1月", "y": 900 },
+                                        { "x": "2月", "y": 820 },
+                                        { "x": "3月", "y": 880 },
+                                        { "x": "4月", "y": 850 },
+                                        { "x": "5月", "y": 900 },
+                                        { "x": "6月", "y": 980 }
+                                    ]
+                                }, {
+                                    "title": "上海店",
+                                    "datas": [
+                                        { "x": "1月", "y": 600 },
+                                        { "x": "2月", "y": 520 },
+                                        { "x": "3月", "y": 580 },
+                                        { "x": "4月", "y": 550 },
+                                        { "x": "5月", "y": 600 },
+                                        { "x": "6月", "y": 680 }
+                                    ]
+                                }],
+                            }
+                    }},{
+                        name:"15003",
+                        explain:"本插件是饼状图插件，能直观地表示出数据的占比",
+                        template:`<div class="pie-container clearfix" x-model="pie">
+            <div class='chart' x-plugin='Chart'  dataName='data' type='pie'
+                 title='{{title}}' legend='{{legend}}'
+                 category='string,number' titleColor='{{titleColor}}'
+                 showPercent='{{showPercent}}' showText = '{{showText}}'></div>
+    </div>`,
+                        data:{
+                            pie:{
+                                "title":"饼状图",
+                                "legend":"",
+                                "titleColor":"#000000",
+                                "legend":"",
+                                "showPercent":true,
+                                "showText":true,
+                                "legends":[
+                                    {"value":"","text":"无"},
+                                    {"value":"top","text":"顶部"},
+                                    {"value":"right","text":"右侧"},
+                                    {"value":"bottom","text":"底部"}
+                                ],
+                                "data":[
+                                    {"value":300,"title":"数据一"},
+                                    {"value":800,"title":"数据二"},
+                                    {"value":600,"title":"数据三"},
+                                    {"value":100,"title":"数据四"},
+                                    {"value":400,"title":"数据五"},
+                                    {"value":450,"title":"数据六"}
+                                ],
+                            },
+                        }},{
+                        name:"15004",
+                        explain:"本插件是雷达图插件，能直观地表示出数据的具体数值",
+                        template:`<div class="radar-container clearfix" x-model="radar">
+        <div class='chart' x-plugin='Chart'  dataName='data' radarName="radar" type='radar'
+             title='{{title}}' legend='{{legend}}'
+             titleColor='{{titleColor}}'
+        ></div>
+    </div>`,
+                        data:{
+                            radar: {
+                                "title":"雷达图实例",
+                                "legend":"right",
+                                "marker":true,
+                                "titleColor":"#000000",
+                                "legends":[
+                                    {"value":"","text":"无"},
+                                    {"value":"top","text":"顶部"},
+                                    {"value":"right","text":"右侧"},
+                                    {"value":"bottom","text":"底部"}
+                                ],
+                                "radar": {
+                                    "titles": ['顶点一', '顶点二', '顶点三', '顶点四', '顶点五', '顶点六'],
+                                    "colors": ['#e6e6e6', '#f5f5f5'],
+                                    "lineColor": "#ccc"
+                                },
+                                "data":[
+                                    {
+                                        "title": '111',
+                                        "datas": [93, 55, 45, 78, 66, 45]
+                                    },
+                                    {
+                                        "title": '555',
+                                        "datas": [45, 79, 79, 88, 93, 67]
+                                    }
+                                ],
+                            }
+                        }},{
+                        name:"15005",
+                        explain:"本插件是散点图插件，能直观地表示出数据的分布情况",
+                        template:`<div class="scatter-container clearfix" x-model="scatter">
+        <div class='chart' x-plugin='Chart'  dataName='data' type='scatter'
+             title='{{title}}' legend='{{legend}}' gridLine="{{gridLine}}" symbolSize="{{symbolSize}}"
+             category='number,number' titleColor='{{titleColor}}'  gridLineColor='{{gridLineColor}}'
+             showPercent='{{showPercent}}' showText = '{{showText}}'></div></div>`,
+                        data:{
+                            scatter: {
+                                "title": "散点图",
+                                "legend": "",
+                                "marker": false,
+                                "titleColor": "#000000",
+                                "legend": "",
+                                "symbolSize": 8,
+                                "gridLine": 0,
+                                "gridLineColor": "#cccccc",
+                                "legends": [
+                                    { "value": "", "text": "无" },
+                                    { "value": "top", "text": "顶部" },
+                                    { "value": "right", "text": "右侧" },
+                                    { "value": "bottom", "text": "底部" }
+                                ],
+                                "lines": [
+                                    { "value": 0, "text": "无" },
+                                    { "value": 1, "text": "横向" },
+                                    { "value": 2, "text": "纵向" },
+                                    { "value": 3, "text": "全部" }
+                                ],
+                                "data": [{
+                                    "title": "测试",
+                                    "datas": [
+                                        {x: 10.0, y:8.04},
+                                        {x:8.0, y:6.95},
+                                        {x:13.0, y:7.58},
+                                        {x:9.0, y:8.81},
+                                        {x:11.0, y:8.33},
+                                        {x:14.0, y:9.96},
+                                        {x:6.0, y:7.24},
+                                        {x:4.0, y:4.26},
+                                        {x:12.0,y: 10.84},
+                                        {x:7.0, y:4.82},
+                                        {x:5.0, y:5.68}
+                                    ],
+                                    cs: ''
+                                }],
+                                addX: '',
+                                addY: ''
+                            },
+                        }}
+                ]
+            },
+            onBeforeFirstRender: function () {
+                var me = this;
+                if (!me.data.hasCreated) {
+                    me.module.methodFactory.methods.createModules.call(me);
+                    me.data.hasCreated = true;
+                }
+            },
+            methods: {
+                createModules: function () {
+                    var me = this;
+                    me.data.plugins.forEach(function (item) {
+                        var m = DD.createModule({
+                            name: 'm_plugin_' + item.name,
+                            el: '.el-plugin-' + item.name,
+                            data: item.data,
+                            parent: me.module
+                        });
+                    })
+                }
+            },
         }]);
 }());

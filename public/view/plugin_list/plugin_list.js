@@ -70,6 +70,10 @@
                     name: "菜单树",
                     path: "/route/plugin_list/tree",
                     active: false
+                },{
+                    name: "图表",
+                    path: "/route/plugin_list/chart",
+                    active: false
                 }
             ]
         },
