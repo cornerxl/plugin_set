@@ -1354,10 +1354,10 @@
             },
             onBeforeFirstRender: function () {
                 var me = this;
-                // if (!me.data.hasCreated) {
+                if (!me.data.hasCreated) {
                     me.module.methodFactory.methods.createModules.call(me);
-                    // me.data.hasCreated = true;
-                // }
+                    me.data.hasCreated = true;
+                }
             },
             methods: {
                 createModules: function () {
