@@ -2095,20 +2095,25 @@
             onStart: function (props) {
                 //props指的是config
                 var tem = `<div class="plugin-type el-plugin-type">
-    <div class="plugin-name">{{name}}插件</div>`;
+                                <div class="plugin-name">{{name}}插件</div>
+                                <p class="explain">本章节主要展示插件库中的相关图表插件。</p>`;
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
-        <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `
-        </div>
-        <div class='plugin-explain'>
-            <p>插件说明:</p>
-            <p class='explain'>` + i.explain + `</p>
-         </div>
-    </div>
-    `;
+                                <div class="plugin-content el-plugin-` + i.name + `">`
+                        + i.template + `</div>
+                                <br>
+                                <div class="instruction-title-sec">HTML代码</div>
+                                <br>` + i.htmlcode +  `<br>
+                                <div class="instruction-title-sec">JS代码</div>
+                                <br>` + i.jscode + `<br>
+                                <div class='plugin-explain'>
+                                    <p class="instruction-title-sec">插件说明:</p>
+                                    <br>
+                                    <p class='explain'>` + i.explain + `</p>
+                                </div>
+                            </div>`;
                 });
-                props.template = tem + `</div>`;
+                props.template = tem;
             },
             modules: [],
             data: {
