@@ -8105,6 +8105,7 @@ DD.FormMsgs = {
         var py = me.scaleValues.y.px;
 
         var px1, py1;	// 单位值像素值
+        var tx, ty;
         var disx = 0;
         var minx = me.scaleValues.x.values[0];
         var miny = me.scaleValues.y.values[0];
