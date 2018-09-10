@@ -92,6 +92,7 @@
         data: {
             switcher: true,
             name: "3d按钮开关",
+            width_d: window.innerWidth * 0.4,
             switcher_data: {
                 width_d: window.innerWidth * 0.4,
                 switcher: true,
