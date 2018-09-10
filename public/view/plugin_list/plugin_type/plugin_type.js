@@ -1679,6 +1679,7 @@
                             "本插件可自定义配置项包括：百分比颜色、剩余百分比颜色。",
                         template: `<div class="el-svg-1">
                                         <div class="content">
+                                        <div class="ct">
                                             <div x-plugin="plugin_11003" class="svg">
                                             </div>
                                             <div class="input">
@@ -1686,6 +1687,7 @@
                                                 <div class="dele" e-click="dele">-</div>
                                             </div>
                                             <div class="num">{{100*per/10}}%
+                                            </div>
                                             </div>
                                         </div>
                                         <div style="color: red">修改</div>
@@ -1710,24 +1712,29 @@
                                 </pre>`,
                         data: {
                             name: "圆环进度条",
-                            r: 90,
-                            r1: '',
-                            r2: '',
-                            per: 1,
-                            color_1: '#f5f5f5',
-                            color_2: '#108ee9'
+                            //
+                            proBar:0.9,
+                            r1:90*2*Math.PI*0.1,
+                            r2:90*2*Math.PI,
+                            proR:90,
+                            proBar: 0.9,
+                            percent: true,
+                            per:1,
+                            process_all_color:"#f5f5f5",
+                            process_percent_num_color: "#ffffff",
+                            process_percent_color: '#4A98FF',
+                            process_bg_color: '#DDDDDD'
                         },
                         methods: {
                             add: function () {
                                 var me = this;
                                 me.data.per += me.data.per > 9 ? 0 : 1;
-                                me.data.r1 = me.data.per / 10 * Math.PI * 2 * me.data.r;
-                                console.log(me.data.r1);
+                                me.data.r1 = me.data.per / 10 * Math.PI * 2 * me.data.proR;
                             },
                             dele: function () {
                                 var me = this;
                                 me.data.per -= me.data.per < 1 ? 0 : 1;
-                                me.data.r1 = me.data.per / 10 * Math.PI * 2 * me.data.r;
+                                me.data.r1 = me.data.per / 10 * Math.PI * 2 * me.data.proR;
                             },
                         }
                     },
