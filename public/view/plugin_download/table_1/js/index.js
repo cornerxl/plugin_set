@@ -292,7 +292,7 @@
             name: "多用表格",
             table: {
                 color_1: "#000",
-                color_2: '#1b7adc',
+                color_2: '#ffffff',
                 show_reverse: false,
                 check_all: false,
                 thead: [{ name: '姓名' }, { name: '年龄' }, { name: '身高' }, { name: '体重' }, { name: '学历' }, { name: '工作经历' }],

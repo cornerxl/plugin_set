@@ -22,6 +22,7 @@
 }
 
 .el-plugin-table-1 .plugin .addmmit {
+    margin-top: 5px;
     width: 100%;
     overflow: hidden;
 }
@@ -51,12 +52,13 @@
 .el-plugin-table-1 .plugin .reverse .cont .head {
     font-size: 12px;
     height: 20px;
-    padding: 5px 15px;
+    padding: 0px 15px 5px 15px;
     position: relative;
     border-bottom: 1px solid #ddd;
 }
 
 .el-plugin-table-1 .plugin .reverse .cont .item {
+    font-size: 14px;
     padding: 0 30px;
 }
 
@@ -75,8 +77,8 @@
     position: absolute;
     width: 15px;
     height: 15px;
-    top: 5px;
     right: 20px;
+    top:0px;
     background-image: url("../img/del.png");
     background-size: cover;
 }
@@ -85,14 +87,17 @@
     cursor: pointer;
     text-align: center;
     color: #fff;
-    background-color: #337AB7;
-    width: 50px;
+    font-size:14px;
+    background-color: #ff9800;
+    width: 60px;
     padding: 2px 3px;
     margin: 0 auto;
+    margin-top:5px;
     border-radius: 3px;
 }
 
 .el-plugin-table-1 .plugin .addmmit .page {
+    padding: 5px;
     float: right;
 }
 
@@ -100,20 +105,20 @@
     cursor: pointer;
     float: left;
     font-size: 12px;
-    padding: 6px 5px;
+    padding: 10px 5px;
 }
 
 .el-plugin-table-1 .plugin .addmmit .page .next {
     cursor: pointer;
     float: left;
     font-size: 12px;
-    padding: 6px 5px;
+    padding: 10px 5px;
 }
 
 .el-plugin-table-1 .plugin .addmmit .page .go {
     float: left;
     font-size: 12px;
-    padding: 6px 5px;
+    padding: 10px 5px;
 }
 
 .el-plugin-table-1 .plugin .addmmit .page .go .ensure {
@@ -125,9 +130,9 @@
     border-radius: 3px;
     border: 1px solid #ddd;
     height: 10px;
-    width: 30px;
+    width: 40px;
     margin-right: 10px;
-    padding: 2px;
+    padding: 5px;
     outline: none;
 }
 
@@ -147,33 +152,32 @@
 }
 
 .el-plugin-table-1 .plugin .common .left .item {
-    color:#fff!important;
     cursor: pointer;
     float: left;
-    padding: 8px;
-    background-color: #1b7adc;
+    padding: 8px 20px;
 }
-
+.el-plugin-table-1 .plugin .common .left .item:hover{
+    background-color: #bae7ff;
+}
 .el-plugin-table-1 .plugin .common .left .border-right {
     border-right: 1px solid #ddd;
 }
 
 .el-plugin-table-1 .plugin .common .right {
-    width: 40%;
     overflow-y: hidden;
     float: right;
 }
 
 .el-plugin-table-1 .plugin .common .right .item {
     cursor: pointer;
-    background-color: #1b7adc;
-    color: #fff;
     padding: 6px 8px;
     float: right;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-
+.el-plugin-table-1 .plugin .common .right .item:hover{
+    background-color: #bae7ff;
+}
 .el-plugin-table-1 .plugin .common .right .search {
     float: right;
     overflow-y: hidden;
@@ -198,7 +202,9 @@
 .el-plugin-table-1 .plugin .my-table .table .list {
     overflow: hidden;
 }
-
+.el-plugin-table-1 .plugin .my-table .table .list :hover{
+    background-color: #EEE8AA;
+}
 .el-plugin-table-1 .plugin .my-table .table .list .rows {
     text-align: center;
     box-sizing: border-box;
@@ -268,5 +274,5 @@
 }
 
 .el-plugin-table-1 .plugin .check {
-    background-color: #F7F7F9;
+    background-color:  #EEE8AA;
 }
