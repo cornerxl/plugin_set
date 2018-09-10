@@ -11,35 +11,40 @@
 
 .el-tree .content .ct {
     overflow: hidden;
-    width: 200px;
+    width: 160px;
     padding: 2px 0px;
     position: relative;
 }
 
 .el-tree .content .ct .input {
     box-sizing: border-box;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #d9d9d9;
     float: left;
+    margin-right: 5px;
 }
 
 .el-tree .content .ct .check {
-    background-color: #1890ff;
+    /*background-color: #1890ff;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .el-tree .content .ct .check:after {
     display: block;
     position: absolute;
     content: "";
-    border: 2px solid #fff;
+  /*  border: 2px solid #fff;
     border-top: none;
     border-right: none;
-    left: 10px;
-    bottom: 20px;
-    width: 20px;
-    height: 10px;
-    transform: rotate(-45deg);
+    left:3px;
+    bottom: 10px;*/
+    background-color:#1890ff;
+    width: 14px;
+    height: 14px;
+    /*transform: rotate(-45deg);*/
 }
 
 .el-tree .content .ct span {
@@ -47,19 +52,19 @@
     box-sizing: border-box;
     text-align: center;
     font-size: 12px;
-    height: 40px;
-    line-height: 40px;
-    width: 160px;
+    height: 20px;
+    line-height: 20px;
+    width: 80px;
     float: left;
 }
-
+.el-tree .content .ct span:hover{
+    background-color: #bae7ff;
+}
 .el-tree {
-    height: 400px;
     display: flex;
     justify-content: center;
 }
 
 .el-tree .content {
     width: 200px;
-    margin-top: 100px;
 }
