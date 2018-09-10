@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="app">
+    <div class="histogram-container clearfix" x-model="histogram">
+        <div style="height: 400px; width: 800px;" class='chart' x-plugin='Chart'  dataName='data' type='histogram'
+             title='{{title}}' legend='{{legend}}' yTitle='销售额(万元)' xTitle='2017年上半年'
+             category='string,number' gridLine='{{gridLine}}' titleColor='{{titleColor}}'
+             gridLineColor='{{gridLineColor}}'>
+        </div>
+        <div class="option">
+            <div class="option-group">
+                <label for="">标题颜色</label>
+                <input type="color" e-change="changeTitleColor" value="{{titleColor}}">
+            </div>
+            <div class="option-group">
+                <label for="">图例</label>
+                <select name="" id="" e-change="changeLegend">
+                    <option value="{{value}}" x-repeat="legends">{{text}}</option>
+                </select>
+            </div>
+            <div class="option-group">
+                <label for="">网格线</label>
+                <select name="" id="" e-change="changeLine">
+                    <option value="{{value}}" x-repeat="lines">{{text}}</option>
+                </select>
+            </div>
+            <div class="option-group">
+                <label for="">网格线颜色</label>
+                <input type="color" e-change="changeLineColor" value="{{gridLineColor}}">
+            </div>
+            <div class="option-group">
+                <label for="">添加数据</label>
+                <input type="text" x-field="addTitle">
+                <input type="text" x-field="addData">
+                <button e-click="addLineData">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/nodom-full.js"></script>
+<script src="js/index.js"></script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="app">
+    <div class="pie-container clearfix" x-model="pie">
+            <div class='chart' x-plugin='Chart'  dataName='data' type='pie'
+                 title='{{title}}' legend='{{legend}}'
+                 category='string,number' titleColor='{{titleColor}}'
+                 showPercent='{{showPercent}}' showText = '{{showText}}'></div>
+            <div class="option">
+                <div class="option-group">
+                    <label for="">标题颜色</label>
+                    <input type="color" e-change="changeTitleColor" value="{{titleColor}}">
+                </div>
+                <div class="option-group">
+                    <label for="">图例</label>
+                    <select name="" id="" e-change="changeLegend">
+                        <option value="{{value}}" x-repeat="legends">{{text}}</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="">添加数据</label>
+                    <input type="text" x-field="addTitle">
+                    <input type="text" x-field="addData">
+                    <button e-click="addPieData">添加</button>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/nodom-full.js"></script>
+<script src="js/index.js"></script>
+</html>
