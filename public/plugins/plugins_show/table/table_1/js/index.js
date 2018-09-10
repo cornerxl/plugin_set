@@ -110,6 +110,7 @@
                     me.setwidth();
                 }
                 me.view.onscroll = function() {
+                     me.setwidth();
                     if (me.view.scrollTop > me.second_thead.scrollHeight) {
                         DD.css(me.first_thead, "display", "block");
                     }
