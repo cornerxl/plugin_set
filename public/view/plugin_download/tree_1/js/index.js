@@ -42,7 +42,7 @@
         templateUrl: HTMLURL + "/plugin_download/tree_1/index.html",
         delayInit: true,
         data: {
-            name: "树形组建",
+            name: "树形组件",
             tree_data: {
                 color_1: '#333333',
                 color_2: '#1890ff',
@@ -176,7 +176,7 @@
                 var obj = {
                     plugin_id: 1601,
                     class0: JSON.stringify({
-                        names: '.el-tree .content .ct .check',
+                        names: '.el-tree .content .ct .check:after',
                         total: 1,
                         color: {
                             names: 'background-color',
@@ -184,7 +184,7 @@
                         }
                     }),
                     class1: JSON.stringify({
-                        names: '.el-tree .content .ct txt',
+                        names: '.el-tree .content .ct span',
                         total: 1,
                         color: {
                             names: 'color',
