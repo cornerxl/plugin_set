@@ -1875,7 +1875,8 @@
                                     <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
                                     <pre><span>            switcher: true</span>      <span class="comment">/*开关状态*/</span></pre>
                                     <pre><span>     }</pre>
-                                    <pre><span>}</span></pre>`,
+                                    <pre><span>}</span></pre>
+                                 </pre>`,
                         data: {
                             switcher: true,
                         }
@@ -2098,7 +2099,7 @@
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
                                 <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `</div>
+                                    + i.template + `</div>
                                 <br>
                                 <div class="instruction-title-sec">HTML代码</div>
                                 <br>` + i.htmlcode +  `<br>
@@ -2243,7 +2244,7 @@
                 props.data.plugins.forEach(function (i) {
                     tem += `<div class='plugin-item'>
                                 <div class="plugin-content el-plugin-` + i.name + `">`
-                        + i.template + `</div>
+                                    + i.template + `</div>
                                 <br>
                                 <div class="instruction-title-sec">HTML代码</div>
                                 <br>` + i.htmlcode +  `<br>
@@ -2265,20 +2266,86 @@
                 plugins: [
                     {
                         name:"15001",
-                        explain:"本插件是直方图插件，能直观地表示出数据的具体数值",
-                        template:`<div id="app">
-    <div class="histogram-container clearfix" x-model="histogram">
-        <div style="height: 400px; width: 800px;" class='chart' x-plugin='Chart'  dataName='data' type='histogram'
-             title='{{title}}' legend='{{legend}}' yTitle='销售额(万元)' xTitle='2017年上半年'
-             category='string,number' gridLine='{{gridLine}}' titleColor='{{titleColor}}'
-             gridLineColor='{{gridLineColor}}'>
-        </div>
-    </div>
-</div>`,
+                        explain:"本插件是直方图插件，能直观地表示出两个或多个不同属性的值，帮助用户更为直观的观察数据。在使用直方图时，需对绑定插件的标签设置宽度及高度，其图标插件的大小进行自适应。直方图可动态设置标题颜色、图例是否显示以及显示位置、网格线是否显示及显示位置、网格线的颜色同时也支持动态的添加数据，具体可配置项，可在配置及下载列表进行查看。",
+                        template:`<div class="histogram-container clearfix" x-model="histogram">
+                                            <div class='plugin-chart' x-plugin='Chart'  dataName='data' type='histogram'
+                                                 title='{{title}}' legend='{{legend}}' yTitle='销售额(万元)' xTitle='2017年上半年'
+                                                 category='string,number' gridLine='{{gridLine}}' titleColor='{{titleColor}}'
+                                                 gridLineColor='{{gridLineColor}}'>
+                                            </div>
+                                        </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>=histogram-container clearfix' <span class="attr">x-model</span>="histogram"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-chart" <span class="attr">x-plugin</span>="Chart" <span class="attr">dataName</span>="data" <span class="attr">type</span>="histogram"</pre>
+                                        <pre>          <span class="attr">title</span>="<span>{</span>{title}}" <span class="attr">legend</span>="<span>{</span>{legend}}" <span class="attr">yTitle</span>="销售额(万元)" <span class="attr">xTitle</span>="2017年上半年"</pre>
+                                        <pre>          <span class="attr">category</span>="<span>{</span>{string,number}}" <span class="attr">gridLine</span>="<span>{</span>{gridLine}}" <span class="attr">titleColor</span>="<span>{</span>{titleColor}}"</pre>
+                                        <pre>          <span class="attr">gridLineColor</span>="<span>{</span>{gridLineColor}}"></pre>
+                                        <pre>      <<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'chart',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-chart',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            histogram:{</span>      <span class="comment">/*直方图数据项*/</span></pre>
+                                    <pre><span>                  title: '直方图',</span>      <span class="comment">/*插件标题*/</span></pre>
+                                    <pre><span>                  legend: '',</span>      <span class="comment">/*图例信息*/</span></pre>
+                                    <pre><span>                  marker: false,</span>      <span class="comment">/*标记信息*/</span></pre>
+                                    <pre><span>                  titleColor: '#000000',</span>      <span class="comment">/*标题颜色*/</span></pre>
+                                    <pre><span>                  gridLine: 0,</span>      <span class="comment">/*网格线标识*/</span></pre>
+                                    <pre><span>                  gridLineColor: "#cccccc",</span>      <span class="comment">/*网格线颜色*/</span></pre>
+                                    <pre><span>                  legends: [,</span>      <span class="comment">/*图例信息是否显示以及显示位置*/</span></pre>
+                                    <pre><span>                        { "value": "", "text": "无" },</span>      <span class="comment">/*不显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "top", "text": "顶部" },</span>      <span class="comment">/*在图表顶部显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "right", "text": "右侧" },</span>      <span class="comment">/*在图表右侧显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "bottom", "text": "底部" }</span>      <span class="comment">/*在图表底部显示图例信息*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  lines: [</span>      <span class="comment">/*网格线是否显示以及显示样式*/</span></pre>
+                                    <pre><span>                        { "value": 0, "text": "无" },</span>      <span class="comment">/*不显示网格线*/</span></pre>
+                                    <pre><span>                        { "value": 1, "text": "横向" },</span>      <span class="comment">/*显示横向网格线*/</span></pre>
+                                    <pre><span>                        { "value": 2, "text": "纵向" },</span>      <span class="comment">/*显示纵向网格线*/</span></pre>
+                                    <pre><span>                        { "value": 3, "text": "全部" }</span>      <span class="comment">/*显示横向、纵向网格线*/</span></pre>
+                                    <pre><span>                  ],</span>      <span class="comment">/*网格线是否显示以及显示样式*/</span></pre>
+                                    <pre><span>                  data: [{</span>      <span class="comment">/*直方图数据，横纵坐标根据数据最大值、最小值自动分段*/</span></pre>
+                                    <pre><span>                       title: '成都店',</span></pre>
+                                    <pre><span>                       datas: [,</span></pre>
+                                    <pre><span>                             { "x": "1月", "y": 300 },</span></pre>
+                                    <pre><span>                             { "x": "2月", "y": 320 },</span></pre>
+                                    <pre><span>                             { "x": "3月", "y": 280 },</span></pre>
+                                    <pre><span>                             { "x": "4月", "y": 250 },</span></pre>
+                                    <pre><span>                             { "x": "5月", "y": 300 },</span></pre>
+                                    <pre><span>                             { "x": "6月", "y": 380 }</span></pre>
+                                    <pre><span>                       ]</span></pre>
+                                    <pre><span>                  }, {</span></pre>
+                                    <pre><span>                       title: '北京店',</span></pre>
+                                    <pre><span>                       datas: [,</span></pre>
+                                    <pre><span>                             { "x": "1月", "y": 900 },</span></pre>
+                                    <pre><span>                             { "x": "2月", "y": 820 },</span></pre>
+                                    <pre><span>                             { "x": "3月", "y": 880 },</span></pre>
+                                    <pre><span>                             { "x": "4月", "y": 850 },</span></pre>
+                                    <pre><span>                             { "x": "4月", "y": 850 },</span></pre>
+                                    <pre><span>                             { "x": "6月", "y": 980 }</span></pre>
+                                    <pre><span>                       ]</span></pre>
+                                    <pre><span>                  }, {</span></pre>
+                                    <pre><span>                       title: '上海店',</span></pre>
+                                    <pre><span>                       datas: [,</span></pre>
+                                    <pre><span>                             { "x": "1月", "y": 600 },</span></pre>
+                                    <pre><span>                             { "x": "2月", "y": 520 },</span></pre>
+                                    <pre><span>                             { "x": "3月", "y": 580 },</span></pre>
+                                    <pre><span>                             { "x": "4月", "y": 550 },</span></pre>
+                                    <pre><span>                             { "x": "4月", "y": 600 },</span></pre>
+                                    <pre><span>                             { "x": "6月", "y": 680 }</span></pre>
+                                    <pre><span>                       ]</span></pre>
+                                    <pre><span>                  }]</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                 </pre>`,
                         data:{
                             histogram: {
                                 "title": "直方图",
-                                "legend": "",
+                                "legend": "top",
                                 "marker": false,
                                 "titleColor": "#000000",
                                 "gridLine": 0,
@@ -2330,20 +2397,87 @@
                         }
                     }, {
                         name:"15002",
-                        explain:"本插件是折线图插件，能直观地表示出数据的具体数值",
-                        template:`
-    <div class="line-container clearfix" x-model="line">
-        <div style="height: 400px; width: 800px;" class='chart' x-plugin='Chart'  dataName='data' type='line' title='{{title}}'
-             legend='{{legend}}' yTitle='' xTitle='' symbolSize='{{symbolSize}}' radarName='radar'
-             category='string,number' gridLine='{{gridLine}}' marker='{{marker}}'
-             titleColor='{{titleColor}}' gridLineColor='{{gridLineColor}}'>
-        </div>
-</div>`,
+                        explain:"本插件是折线图插件，能直观地表示出数据的变化趋势，帮助用户更为直观的观察数据。在使用折线图时，需对绑定插件的标签设置宽度及高度，其图标插件的大小进行自适应。折线图可动态设置标题颜色、是否显示折线标记、图例是否显示以及显示位置、网格线是否显示及显示位置、网格线的颜色同时也支持动态的添加数据，具体可配置项，可在配置及下载列表进行查看。",
+                        template:`<div class="line-container clearfix" x-model="line">
+                                        <div class='chart' x-plugin='Chart'  dataName='data' type='line' title='{{title}}'
+                                             legend='{{legend}}' yTitle='' xTitle='' symbolSize='{{symbolSize}}' radarName='radar'
+                                             category='string,number' gridLine='{{gridLine}}' marker='{{marker}}'
+                                             titleColor='{{titleColor}}' gridLineColor='{{gridLineColor}}'>
+                                        </div>
+                                </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>=histogram-container clearfix' <span class="attr">x-model</span>="line"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-chart" <span class="attr">x-plugin</span>="Chart" <span class="attr">dataName</span>="data" <span class="attr">type</span>="line"</pre>
+                                        <pre>          <span class="attr">title</span>="<span>{</span>{title}}" <span class="attr">legend</span>="<span>{</span>{legend}}" <span class="attr">yTitle</span>="销售额(万元)" <span class="attr">xTitle</span>="2017年上半年"</pre>
+                                        <pre>          <span class="attr">category</span>="<span>{</span>{string,number}}" <span class="attr">gridLine</span>="<span>{</span>{gridLine}}" <span class="attr">titleColor</span>="<span>{</span>{titleColor}}"</pre>
+                                        <pre>          <span class="attr">gridLineColor</span>="<span>{</span>{gridLineColor}}"></pre>
+                                        <pre>      <<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'chart',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-chart',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            line:{</span>      <span class="comment">/*直方图数据项*/</span></pre>
+                                    <pre><span>                  title: '折线图',</span>      <span class="comment">/*插件标题*/</span></pre>
+                                    <pre><span>                  legend: '',</span>      <span class="comment">/*图例信息*/</span></pre>
+                                    <pre><span>                  marker: true,</span>      <span class="comment">/*标记信息*/</span></pre>
+                                    <pre><span>                  titleColor: '#000000',</span>      <span class="comment">/*标题颜色*/</span></pre>
+                                    <pre><span>                  gridLine: 0,</span>      <span class="comment">/*网格线标识*/</span></pre>
+                                    <pre><span>                  gridLineColor: "#cccccc",</span>      <span class="comment">/*网格线颜色*/</span></pre>
+                                    <pre><span>                  legends: [,</span>      <span class="comment">/*图例信息是否显示以及显示位置*/</span></pre>
+                                    <pre><span>                        { "value": "", "text": "无" },</span>      <span class="comment">/*不显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "top", "text": "顶部" },</span>      <span class="comment">/*在图表顶部显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "right", "text": "右侧" },</span>      <span class="comment">/*在图表右侧显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "bottom", "text": "底部" }</span>      <span class="comment">/*在图表底部显示图例信息*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  lines: [</span>      <span class="comment">/*网格线是否显示以及显示样式*/</span></pre>
+                                    <pre><span>                        { "value": 0, "text": "无" },</span>      <span class="comment">/*不显示网格线*/</span></pre>
+                                    <pre><span>                        { "value": 1, "text": "横向" },</span>      <span class="comment">/*显示横向网格线*/</span></pre>
+                                    <pre><span>                        { "value": 2, "text": "纵向" },</span>      <span class="comment">/*显示纵向网格线*/</span></pre>
+                                    <pre><span>                        { "value": 3, "text": "全部" }</span>      <span class="comment">/*显示横向、纵向网格线*/</span></pre>
+                                    <pre><span>                  ],</span>      <span class="comment">/*网格线是否显示以及显示样式*/</span></pre>
+                                    <pre><span>                  data: [{</span>      <span class="comment">/*折线图数据，横纵坐标根据数据最大值、最小值自动分段*/</span></pre>
+                                    <pre><span>                       title: '成都店',</span></pre>
+                                    <pre><span>                       datas: [,</span></pre>
+                                    <pre><span>                             { "x": "1月", "y": 300 },</span></pre>
+                                    <pre><span>                             { "x": "2月", "y": 320 },</span></pre>
+                                    <pre><span>                             { "x": "3月", "y": 280 },</span></pre>
+                                    <pre><span>                             { "x": "4月", "y": 250 },</span></pre>
+                                    <pre><span>                             { "x": "5月", "y": 300 },</span></pre>
+                                    <pre><span>                             { "x": "6月", "y": 380 }</span></pre>
+                                    <pre><span>                       ]</span></pre>
+                                    <pre><span>                  }, {</span></pre>
+                                    <pre><span>                       title: '北京店',</span></pre>
+                                    <pre><span>                       datas: [,</span></pre>
+                                    <pre><span>                             { "x": "1月", "y": 900 },</span></pre>
+                                    <pre><span>                             { "x": "2月", "y": 820 },</span></pre>
+                                    <pre><span>                             { "x": "3月", "y": 880 },</span></pre>
+                                    <pre><span>                             { "x": "4月", "y": 850 },</span></pre>
+                                    <pre><span>                             { "x": "4月", "y": 850 },</span></pre>
+                                    <pre><span>                             { "x": "6月", "y": 980 }</span></pre>
+                                    <pre><span>                       ]</span></pre>
+                                    <pre><span>                  }, {</span></pre>
+                                    <pre><span>                       title: '上海店',</span></pre>
+                                    <pre><span>                       datas: [,</span></pre>
+                                    <pre><span>                             { "x": "1月", "y": 600 },</span></pre>
+                                    <pre><span>                             { "x": "2月", "y": 520 },</span></pre>
+                                    <pre><span>                             { "x": "3月", "y": 580 },</span></pre>
+                                    <pre><span>                             { "x": "4月", "y": 550 },</span></pre>
+                                    <pre><span>                             { "x": "4月", "y": 600 },</span></pre>
+                                    <pre><span>                             { "x": "6月", "y": 680 }</span></pre>
+                                    <pre><span>                       ]</span></pre>
+                                    <pre><span>                  }]</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                 </pre>`,
                         data:{
                             line: {
                                 "title": "折线图",
                                 "legend": "",
-                                "marker": false,
+                                "marker": true,
                                 "titleColor": "#000000",
                                 "gridLine": 0,
                                 "gridLineColor": "#cccccc",
@@ -2393,19 +2527,55 @@
                             }
                     }},{
                         name:"15003",
-                        explain:"本插件是饼状图插件，能直观地表示出数据的占比",
+                        explain:"本插件是饼图插件，能直观地表示出数据的所占百分比，帮助用户更为直观的观察数据。在使用饼图时，需对绑定插件的标签设置宽度及高度，其图标插件的大小进行自适应。饼图可动态设置标题颜色、是否显示百分比、是否显示每部分所表示内容、同时支持动态的添加数据。具体可配置项，可在配置及下载列表进行查看。",
                         template:`<div class="pie-container clearfix" x-model="pie">
-            <div class='chart' x-plugin='Chart'  dataName='data' type='pie'
-                 title='{{title}}' legend='{{legend}}'
-                 category='string,number' titleColor='{{titleColor}}'
-                 showPercent='{{showPercent}}' showText = '{{showText}}'></div>
-    </div>`,
+                                        <div class='chart' x-plugin='Chart'  dataName='data' type='pie'
+                                             title='{{title}}' legend='{{legend}}'
+                                             category='string,number' titleColor='{{titleColor}}'
+                                             showPercent='{{showPercent}}' showText = '{{showText}}'></div>
+                                </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>=histogram-container clearfix' <span class="attr">x-model</span>="pie"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-chart" <span class="attr">x-plugin</span>="Chart" <span class="attr">dataName</span>="data" <span class="attr">type</span>="pie"</pre>
+                                        <pre>          <span class="attr">title</span>="<span>{</span>{title}}" <span class="attr">legend</span>="<span>{</span>{legend}}"</pre>
+                                        <pre>          <span class="attr">category</span>="<span>{</span>{string,number}}" <span class="attr">titleColor</span>="<span>{</span>{titleColor}}"</pre>
+                                        <pre>          <span class="attr">showPercent</span>="<span>{</span>{showPercent}}" <span class="attr">showText</span>="<span>{</span>{showText}}"></pre>
+                                        <pre>      <<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'chart',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-chart',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            pie:{</span>      <span class="comment">/*直方图数据项*/</span></pre>
+                                    <pre><span>                  title: '饼状图',</span>      <span class="comment">/*插件标题*/</span></pre>
+                                    <pre><span>                  legend: '',</span>      <span class="comment">/*图例信息*/</span></pre>
+                                    <pre><span>                  showPercent: true,</span>      <span class="comment">/*是否显示百分比*/</span></pre>
+                                    <pre><span>                  showText: true,</span>      <span class="comment">/*是否显示文字提示*/</span></pre>
+                                    <pre><span>                  legends: [,</span>      <span class="comment">/*图例信息是否显示以及显示位置*/</span></pre>
+                                    <pre><span>                        { "value": "", "text": "无" },</span>      <span class="comment">/*不显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "top", "text": "顶部" },</span>      <span class="comment">/*在图表顶部显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "right", "text": "右侧" },</span>      <span class="comment">/*在图表右侧显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "bottom", "text": "底部" }</span>      <span class="comment">/*在图表底部显示图例信息*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  data: [</span>      <span class="comment">/*饼图数据，根据用户数据，自动匹配所占百分比*/</span></pre>
+                                    <pre><span>                        {"value":300,"title":"数据一"},</span></pre>
+                                    <pre><span>                        {"value":800,"title":"数据二"},</span></pre>
+                                    <pre><span>                        {"value":600,"title":"数据三"},</span></pre>
+                                    <pre><span>                        {"value":100,"title":"数据四"},</span></pre>
+                                    <pre><span>                        {"value":400,"title":"数据五"},</span></pre>
+                                    <pre><span>                        {"value":450,"title":"数据六"}</span></pre>
+                                    <pre><span>                  ]</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                 </pre>`,
                         data:{
                             pie:{
                                 "title":"饼状图",
                                 "legend":"",
                                 "titleColor":"#000000",
-                                "legend":"",
                                 "showPercent":true,
                                 "showText":true,
                                 "legends":[
@@ -2425,13 +2595,53 @@
                             },
                         }},{
                         name:"15004",
-                        explain:"本插件是雷达图插件，能直观地表示出数据的具体数值",
+                        explain:"本插件是雷达图插件，能直观地表示出各项数据的比率情况，帮助用户更为直观的观察数据。在使用雷达图插件时，需对绑定插件的标签设置宽度及高度，其图标插件的大小进行自适应。雷达图可动态设置标题颜色、是否显示图例、边框颜色、主区域颜色以及动态的添加数据。具体可配置项，可在配置及下载列表进行查看。",
                         template:`<div class="radar-container clearfix" x-model="radar">
-        <div class='chart' x-plugin='Chart'  dataName='data' radarName="radar" type='radar'
-             title='{{title}}' legend='{{legend}}'
-             titleColor='{{titleColor}}'
-        ></div>
-    </div>`,
+                                    <div class='chart' x-plugin='Chart'  dataName='data' radarName="radar" type='radar'
+                                         title='{{title}}' legend='{{legend}}'
+                                         titleColor='{{titleColor}}'
+                                    ></div>
+                                </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>=histogram-container clearfix' <span class="attr">x-model</span>="radar"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-chart" <span class="attr">x-plugin</span>="Chart" <span class="attr">dataName</span>="data" <span class="attr">radarName</span>="radar" <span class="attr">type</span>="radar"</pre>
+                                        <pre>          <span class="attr">title</span>="<span>{</span>{title}}" <span class="attr">legend</span>="<span>{</span>{legend}}"</pre>
+                                        <pre>          <span class="attr">titleColor</span>="<span>{</span>{titleColor}}"></pre>
+                                        <pre>      <<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'chart',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-chart',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            radar:{</span>      <span class="comment">/*雷达图数据项*/</span></pre>
+                                    <pre><span>                  title: '雷达图',</span>      <span class="comment">/*插件标题*/</span></pre>
+                                    <pre><span>                  legend: 'right',</span>      <span class="comment">/*图例信息*/</span></pre>
+                                    <pre><span>                  marker: true,</span>      <span class="comment">/*标记信息*/</span></pre>
+                                    <pre><span>                  titleColor: '#000000',</span>      <span class="comment">/*标题颜色*/</span></pre>
+                                    <pre><span>                  legends: [,</span>      <span class="comment">/*图例信息是否显示以及显示位置*/</span></pre>
+                                    <pre><span>                        { "value": "", "text": "无" },</span>      <span class="comment">/*不显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "top", "text": "顶部" },</span>      <span class="comment">/*在图表顶部显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "right", "text": "右侧" },</span>      <span class="comment">/*在图表右侧显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "bottom", "text": "底部" }</span>      <span class="comment">/*在图表底部显示图例信息*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  radar: {</span></pre>
+                                    <pre><span>                        titles: ['顶点一', '顶点二', '顶点三', '顶点四', '顶点五', '顶点六'],</span>      <span class="comment">/*雷达图顶点*/</span></pre>
+                                    <pre><span>                        colors: ['#e6e6e6', '#f5f5f5'],</span>      <span class="comment">/*主区域颜色*/</span></pre>
+                                    <pre><span>                        lineColor: "#ccc"</span>      <span class="comment">/*雷达图边框颜色*/</span></pre>
+                                    <pre><span>                  },</span></pre>
+                                    <pre><span>                  data: [{</span>      <span class="comment">/*雷达图数据*/</span></pre>
+                                    <pre><span>                       title: '111',</span></pre>
+                                    <pre><span>                       datas: [93, 55, 45, 78, 66, 45]</span></pre>
+                                    <pre><span>                  }, {</span></pre>
+                                    <pre><span>                       title: '555',</span></pre>
+                                    <pre><span>                       datas: [45, 79, 79, 88, 93, 67]</span></pre>
+                                    <pre><span>                  }]</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                 </pre>`,
                         data:{
                             radar: {
                                 "title":"雷达图实例",
@@ -2462,19 +2672,72 @@
                             }
                         }},{
                         name:"15005",
-                        explain:"本插件是散点图插件，能直观地表示出数据的分布情况",
+                        explain:"本插件是散点图插件，能直观地表示出数据的分布情况，帮助用户更为直观的观察数据。在使用散点图插件时，需对绑定插件的标签设置宽度及高度，其图标插件的大小进行自适应。散点图可动态设置标题颜色、是否显示图例、网格线、网格线颜色、散点图半径以及动态的添加数据。具体可配置项，可在配置及下载列表进行查看。",
                         template:`<div class="scatter-container clearfix" x-model="scatter">
-        <div class='chart' x-plugin='Chart'  dataName='data' type='scatter'
-             title='{{title}}' legend='{{legend}}' gridLine="{{gridLine}}" symbolSize="{{symbolSize}}"
-             category='number,number' titleColor='{{titleColor}}'  gridLineColor='{{gridLineColor}}'
-             showPercent='{{showPercent}}' showText = '{{showText}}'></div></div>`,
+                                    <div class='chart' x-plugin='Chart'  dataName='data' type='scatter'
+                                         title='{{title}}' legend='{{legend}}' gridLine="{{gridLine}}" symbolSize="{{symbolSize}}"
+                                         category='number,number' titleColor='{{titleColor}}'  gridLineColor='{{gridLineColor}}'></div>
+                                  </div>`,
+                        htmlcode: `<pre class="instruction-code">
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>=histogram-container clearfix' <span class="attr">x-model</span>="scatter"></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-chart" <span class="attr">x-plugin</span>="Chart" <span class="attr">dataName</span>="data" <span class="attr">type</span>="scatter"</pre>
+                                        <pre>          <span class="attr">title</span>="<span>{</span>{title}}" <span class="attr">legend</span>="<span>{</span>{legend}}" <span class="attr">gridLine</span>="<span>{</span>{gridLine}}"</pre>
+                                        <pre>          <span class="attr">category</span>="<span>{</span>{string,number}}" <span class="attr">titleColor</span>="<span>{</span>{titleColor}}"</pre>
+                                        <pre>          <span class="attr">gridLineColor</span>="<span>{</span>{gridLineColor}}"></pre>
+                                        <pre>      <<span class="element">/div></span></pre>
+                                        <pre><<span class="element">/div</span>></pre>
+                                    </pre>`,
+                        jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'chart',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-chart',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            scatter:{</span>      <span class="comment">/*散点图数据项*/</span></pre>
+                                    <pre><span>                  title: '散点图',</span>      <span class="comment">/*插件标题*/</span></pre>
+                                    <pre><span>                  legend: '',</span>      <span class="comment">/*图例信息*/</span></pre>
+                                    <pre><span>                  marker: false,</span>      <span class="comment">/*标记信息*/</span></pre>
+                                    <pre><span>                  titleColor: '#000000',</span>      <span class="comment">/*标题颜色*/</span></pre>
+                                    <pre><span>                  symbolSize: 8,</span>      <span class="comment">/*散点图点的大小*/</span></pre>
+                                    <pre><span>                  gridLine: 0,</span>      <span class="comment">/*网格线标识*/</span></pre>
+                                    <pre><span>                  gridLineColor: "#cccccc",</span>      <span class="comment">/*网格线颜色*/</span></pre>
+                                    <pre><span>                  legends: [,</span>      <span class="comment">/*图例信息是否显示以及显示位置*/</span></pre>
+                                    <pre><span>                        { "value": "", "text": "无" },</span>      <span class="comment">/*不显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "top", "text": "顶部" },</span>      <span class="comment">/*在图表顶部显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "right", "text": "右侧" },</span>      <span class="comment">/*在图表右侧显示图例信息*/</span></pre>
+                                    <pre><span>                        { "value": "bottom", "text": "底部" }</span>      <span class="comment">/*在图表底部显示图例信息*/</span></pre>
+                                    <pre><span>                  ],</span></pre>
+                                    <pre><span>                  lines: [</span>      <span class="comment">/*网格线是否显示以及显示样式*/</span></pre>
+                                    <pre><span>                        { "value": 0, "text": "无" },</span>      <span class="comment">/*不显示网格线*/</span></pre>
+                                    <pre><span>                        { "value": 1, "text": "横向" },</span>      <span class="comment">/*显示横向网格线*/</span></pre>
+                                    <pre><span>                        { "value": 2, "text": "纵向" },</span>      <span class="comment">/*显示纵向网格线*/</span></pre>
+                                    <pre><span>                        { "value": 3, "text": "全部" }</span>      <span class="comment">/*显示横向、纵向网格线*/</span></pre>
+                                    <pre><span>                  ],</span>      <span class="comment">/*网格线是否显示以及显示样式*/</span></pre>
+                                    <pre><span>                  data: [{</span>      <span class="comment">/*折线图数据，横纵坐标根据数据最大值、最小值自动分段*/</span></pre>
+                                    <pre><span>                       title: '测试',</span></pre>
+                                    <pre><span>                       datas: [,</span></pre>
+                                    <pre><span>                             {x: 10.0, y:8.04},</span></pre>
+                                    <pre><span>                             {x:8.0, y:6.95},</span></pre>
+                                    <pre><span>                             {x:13.0, y:7.58},</span></pre>
+                                    <pre><span>                             {x:9.0, y:8.81},</span></pre>
+                                    <pre><span>                             {x:11.0, y:8.33},</span></pre>
+                                    <pre><span>                             {x:14.0, y:9.96},</span></pre>
+                                    <pre><span>                             {x:6.0, y:7.24},</span></pre>
+                                    <pre><span>                             {x:4.0, y:4.26},</span></pre>
+                                    <pre><span>                             {x:12.0,y: 10.84},</span></pre>
+                                    <pre><span>                             {x:7.0, y:4.82},</span></pre>
+                                    <pre><span>                             {x:5.0, y:5.68}</span></pre>
+                                    <pre><span>                       ]</span></pre>
+                                    <pre><span>                  }]</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                 </pre>`,
                         data:{
                             scatter: {
                                 "title": "散点图",
                                 "legend": "",
                                 "marker": false,
                                 "titleColor": "#000000",
-                                "legend": "",
                                 "symbolSize": 8,
                                 "gridLine": 0,
                                 "gridLineColor": "#cccccc",

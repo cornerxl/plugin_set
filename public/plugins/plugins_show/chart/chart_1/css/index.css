@@ -3,7 +3,7 @@
     content: '';
     clear: both;
 }
-.chart, .option{
+.plugin-chart, .option{
     float: left;
     margin: 20px;
 }
@@ -19,7 +19,7 @@
     margin-right: 20px;
     width: 120px;
 }
-.chart{
+.plugin-chart{
     width: 800px;
     height: 400px;
 }
