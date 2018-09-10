@@ -129,16 +129,16 @@
                             page:1,
                             row:15,
                         };
-                        LoadDataCommon.getList(me, url+'.action',params, function (r) {
-                            me.data.table.th=[];
-                            r.rows.forEach(function(it,index,arr){
-                                me.data.table.th.push({
-                                    td:it,
-                                    check:false,
-                                });
-                            });
-                            me.data.table.$set('th',me.data.table.th);
-                        });
+                        // LoadDataCommon.getList(me, url+'.action',params, function (r) {
+                        //     me.data.table.th=[];
+                        //     r.rows.forEach(function(it,index,arr){
+                        //         me.data.table.th.push({
+                        //             td:it,
+                        //             check:false,
+                        //         });
+                        //     });
+                        //     me.data.table.$set('th',me.data.table.th);
+                        // });
                     }
                 });
                 //删除按钮
