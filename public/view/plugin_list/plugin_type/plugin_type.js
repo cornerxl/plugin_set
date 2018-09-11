@@ -1543,7 +1543,9 @@
                                 pre_page: 1,
                                 go_page: 1,
                                 all_page: 16,
-                                page_rows: []
+                                page_rows: [],
+                                //标记物
+                                one:1
                             }
                         }
                     }
