@@ -63,6 +63,8 @@ ul li {
 }
 
 //颜色
+////按钮背景 下载页面
+@pluginDownbtn:#ff8d00;
 @foreRed: #d02200;
 @foreBlue: #409EFF;
 @foreShallowGreen: #EFF9EB;
@@ -164,13 +166,15 @@ ul li {
             vertical-align: top;
             border-radius: 2px;
             height: 20px;
+            width: 80px;
+            text-align: center;
             line-height: 20px;
-            padding: 8px 10px;
+            padding: 8px 0px;
             display: inline-block;
-            background-color: @foreRed;
+            background-color: @pluginDownbtn;
             color: @foreWhite;
             .font12;
-            margin-right: 20px;
+            margin-right: 5px;
         }
         .input {
             cursor:pointer;
@@ -195,17 +199,17 @@ ul li {
             line-height: 20px;
             padding: 8px 10px;
             display: inline-block;
-            background-color: @foreRed;
+            background-color: @pluginDownbtn;
             color: @foreWhite;
             .font12;
-            margin-right: 20px;
+            margin-right: 5px;
         }
         .input {
             cursor:pointer;
-            vertical-align: top;
+            vertical-align:bottom;
             height: 30px;
             padding: 2px;
-            width: 50px;
+            width: 30px;
             outline: none;
         }
     }
@@ -218,7 +222,7 @@ ul li {
     .font12;
     >div{
         cursor:pointer;
-        background-color: @foreRed;
+        background-color: @pluginDownbtn;
         color:@foreWhite;
         height: 20px;
         padding: 5px 2px;
