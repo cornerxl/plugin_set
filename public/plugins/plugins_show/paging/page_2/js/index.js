@@ -39,7 +39,7 @@
         render:function(view){
             var data = view.$getData().data[view.$dataItem];
             data_rows = [];
-
+            var me=this;
             if(!data){
                 return;
             }
@@ -52,6 +52,7 @@
             if(!module){
                 return;
             }
+            if(data.one){
             if(data.all_page >= 0) {
                 // 动态修改页码数组
                 if(data.all_page > 7) {
@@ -83,7 +84,8 @@
                         });
                     }
                 }
-            }
+            }}
+            data.one=false;
             setTimeout(function () {
                 /**
                  * 修改page_rows
