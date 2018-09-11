@@ -2,6 +2,129 @@
  * Created by xll on 2018/6/28.
  */
 (function() {
+    var canvas = {
+        dom: document.querySelector(".mycanvas"),
+        partical: [],
+        ctx: '',
+        color: "#0077b375",
+        count: 400,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        target: {
+            x: "",
+            y: "",
+            max: 20000
+        },
+        flag: true,
+        init: function(data) {
+            var me = this;
+            me.show=data;
+            me.dom=document.querySelector(".mycanvas");
+            me.ctx = me.dom.getContext("2d");
+            me.partical=[];
+            me.config();
+            me.getData();
+            me.draw();
+            me.dom.addEventListener("mousemove", function(e) {
+                me.set(e);
+            }, false);
+            me.dom.addEventListener("mouseover", function() {
+                me.reset();
+            }, false);
+            me.ctx.clearRect(0,0,me.width,me.height);
+            me.flag=true;
+        },
+        config: function() {
+            var me = this;
+            me.dom.setAttribute("width", me.width + 'px');
+            me.dom.setAttribute("height", me.height + 'px');
+            document.querySelector('.canvas-ct').style.width = me.width + 'px';
+            document.querySelector('.canvas-ct').style.height = me.height + 'px';
+        },
+        getData: function() {
+            var me = this;
+            for (var i = 0; i < me.count; i++) {
+                me.partical.push({
+                    x: Math.random() * me.width,
+                    y: Math.random() * me.height,
+                    sx: Math.random() * 2 - 1,
+                    sy: Math.random() * 2 - 1,
+                    max: 12000
+                });
+            }
+        },
+        draw: function() {
+            var me = this;
+            if(!me.show){
+                 me.ctx.clearRect(0, 0, me.width, me.height);
+                return ;
+            }
+            me.ctx.clearRect(0, 0, me.width, me.height);
+            var tem = me.partical.slice(0);
+            tem.unshift(me.target);
+            me.ctx.strokeStyle = me.color;
+            me.partical.forEach(function(i, index) {
+                i.x += i.sx;
+                i.y += i.sy;
+                //反弹
+                i.sx *= i.x > me.width || i.x < 0 ? -1 : 1;
+                i.sy *= i.y > me.height || i.y < 0 ? -1 : 1;
+                me.ctx.fillRect(i.x - 0.5, i.y - 0.5, 1, 1);
+                var x, y;
+                for (var j = 0; j < tem.length; j++) {
+                    t = tem[j];
+                    if (i !== t && t.x && t.y) {
+                        //找到距离小于一定的点,链接起来
+                        x = (i.x - t.x) * (i.x - t.x);
+                        y = (i.y - t.y) * (i.y - t.y);
+                        if ((x + y) < t.max) {
+                            me.ctx.beginPath();
+                            me.ctx.lineWidth = (t.max - (x + y)) / t.max;
+                            me.ctx.moveTo(i.x, i.y);
+                            me.ctx.lineTo(t.x, t.y);
+                            me.ctx.stroke();
+                            me.ctx.closePath();
+                        }
+                    }
+                };
+                //删去当前的点减少性能浪费以及颜色更浅
+                tem.splice(tem.indexOf(i), 1);
+            });
+            if (me.flag) {
+                window.requestAnimationFrame(me.draw.bind(me));
+            }
+        },
+        set: function(e) {
+            var me = this;
+            me.target.x = e.offsetX;
+            me.target.y = e.offsetY;
+        },
+        reset: function() {
+            var me = this;
+            me.target.x = "";
+            me.target.y = "";
+        },
+        resize:function(){
+            var me=this;
+            me.flag=false;
+            me.width=window.innerWidth;
+            me.height-window.innerHeight;
+            me.init();
+        }
+    };
+    window.canvas=canvas;
+    // window.onresize = function() {
+    //     canvas.resize();
+    // };
+    window.onkeydown=function(e){
+        if(e.keyCode==123){
+            e.preventDefault();
+            alert("请尊重劳动成果")
+            return ;
+        }
+    }
+})();
+(function() {
     DD.createModule({
         name: 'm_plugin_download',
         el: '.el-downlist',
@@ -41,15 +164,16 @@
             HTMLURL + '/plugin_download/chart_2/js/index.js',
             HTMLURL + '/plugin_download/chart_3/js/index.js',
             HTMLURL + '/plugin_download/chart_4/js/index.js',
-              HTMLURL + '/plugin_download/chart_5/js/index.js'
-
+            HTMLURL + '/plugin_download/chart_5/js/index.js',
         ],
         data: {
             public_path: '/plugin_set/public/plugins/plugin_down/',
             down: false,
             src: '',
             name: '',
+            show:true,
             route_height: '',
+            route:"/greet",
             first_type: [{
                     first_name: '轮播图',
                     show: false,
@@ -130,7 +254,8 @@
         onBeforeFirstRender: function() {
             var me = this;
             me.data.route_height = window.innerHeight - 80;
-        },
+            setTimeout(canvas.init.bind(canvas,me.data.show),2000);
+    },
         onRender: function() {},
         onReceive: function(m, data) {
             var me = this;
@@ -327,6 +452,8 @@
                     });
                 });
                 data.active = true;
+                me.data.show=false;
+                canvas.show=false;
             },
             getName: function(e, data, view) {
                 var me = this;
@@ -348,7 +475,6 @@
                         me.data.src = me.data.public_path + name.split("/")[name.split('/').length - 1];
                     }
                 });
-            }
-        }
+            }}
     });
-}())
+})();
