@@ -28,6 +28,21 @@ plugin_02003.prototype = {
     },
     render: function(view) {
         var me = this;
+        var data = view.$getData().data[view.$dataItem];
+        setTimeout(function() {
+            var right = view.querySelector(".right");
+            var left = view.querySelector(".left");
+            var color = data.color_1;
+            var time = parseInt(data.animation_time);
+            if (time < 1)
+                tme = 2;
+            DD.css(left, "animation-duration", time + "s");
+            DD.css(right, "animation-duration", time + "s");
+            DD.css(left, "border-left-color", color);
+            DD.css(left, "border-bottom-color", color);
+            DD.css(right, "border-left-color", color);
+            DD.css(right, "border-bottom-color", color);
+        }, 0);
     }
 };
 DD.Plugin.create("plugin_02003", plugin_02003);

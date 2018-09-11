@@ -3,24 +3,26 @@
     var el_animation_5 = function() {}
     el_animation_5.prototype = {
         init: function(view) {
-            var template = `<div class="com-loading" x-if="show">
-        <div class="spinner">
-            <div class="bounce1 small"></div>
-            <div class="bounce2 small"></div>
-            <div class="bounce3 small"></div>
-        </div>
-    </div>`;
+            var template = `<div class="com-loading">
+                                <div class="spinner">
+                                    <div class="bounce1 small"></div>
+                                    <div class="bounce2 small"></div>
+                                    <div class="bounce3 small"></div>
+                                </div>
+                            </div>`;
             view.$dataItem = DD.attr(view, "dataName");
             view.removeAttribute("dataName");
             view.innerHTML = template;
         },
         render: function(view) {
-            var data = view.$getData().data;
+            var data = view.$getData().data[view.$dataItem];
             setTimeout(function() {
                 var dom = view.querySelectorAll(".small");
                 dom.forEach(function(i, index) {
                     DD.css(i, "background-color", data.color);
                     DD.css(i, "animation-delay", (data.time / 5) * index + 's');
+                    DD.css(i, "width", 2 * data.radius + 'px');
+                    DD.css(i, "height", 2 * data.radius + 'px');
                 });
             }, 0)
         }
@@ -35,7 +37,8 @@
             buffering_data: {
                 color: " #363636",
                 time: 2,
-                show: true
+                show: true,
+                radius: 5
             }
         },
         methods: {

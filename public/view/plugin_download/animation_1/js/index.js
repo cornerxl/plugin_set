@@ -45,13 +45,14 @@
         function delayRender() {
             var bufferingBox = view.querySelector(".nd-plugin-buffering-box");
             var par = view.querySelector(".nd-plugin-buffering-loader");
-            var dom = []
             var dom = Array.from(par.getElementsByTagName("div"));
-            var small_time = data.small_div.animation_time / dom.length;
+            var small_time = data.animation_time / dom.length;
             dom.forEach(function(item, index) {
-                DD.css(item, "animation-duration", data.small_div.animation_time + 's');
+                DD.css(item, "animation-duration", data.animation_time + 's');
                 DD.css(item, "animation-delay", small_time * index + 's');
-                DD.css(item, "background-color", data.small_div.color_1);
+                DD.css(item, "background-color", data.color_1);
+                DD.css(item, "width", 2 * data.radius + 'px');
+                DD.css(item, "height", 2 * data.radius + 'px');
             });
             var bufferingBoxParents = bufferingBox.parentNode.parentNode;
             var bufferingBoxWidth = document.defaultView.getComputedStyle(bufferingBoxParents, null).width;
@@ -73,31 +74,24 @@
         data: {
             name: '泡泡动画',
             buffering_data: {
-                small_div: {
-                    animation_time: 1,
-                    color_1: "#999999"
-                }
+                animation_time: 1,
+                color_1: "#999999",
+                radius: 5
             }
         },
         onBeforeFirstRender: function() {
             var me = this;
-            me.data.buffering_data={
-                small_div: {
-                    animation_time: 1,
-                    color_1: "#999999"
-                }
-            }
         },
         methods: {
             ensure: function() {
                 var me = this;
                 var data=me.data.buffering_data;
-                if (data.small_div.animation_time <= 1) {
-                    data.small_div.animation_time = 1;
+                if (data.animation_time <= 1) {
+                    data.animation_time = 1;
                 }
                 var obj = {
                     plugin_id: 901,
-                    js: JSON.stringify({ animation_time: data.small_div.animation_time, background_color: data.small_div.color_1.replace("#", "") }),
+                    js: JSON.stringify({ animation_time: data.animation_time, background_color: data.color_1.replace("#", "") }),
                     total: 0,
                     flag: 1
                 }

@@ -18,7 +18,7 @@
             view.innerHTML = template;
         },
         render: function(view) {
-            var data = view.$getData().data;
+            var data = view.$getData().data[view.$dataItem];
             setTimeout(function() {
                 var right = view.querySelector(".right");
                 var left = view.querySelector(".left");

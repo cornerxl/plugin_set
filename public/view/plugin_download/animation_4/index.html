@@ -1,7 +1,7 @@
 <div class='common-title'>
     {{name}}</div>
 <div class="el-animation-4">
-    <div x-plugin="el-animation-4" style="height:100%" dataName='buffering_data' x-model="buffering_data"></div>
+    <div x-plugin="el-animation-4" style="height:100%" dataName='buffering_data'></div>
 </div>
 <div class="common-title">配置</div>
 <div class="con-config" x-model="buffering_data">
@@ -12,6 +12,14 @@
     <div class="itemss">
         <span class="span">动画时间</span>
         <input type="number" class='input' x-field="time">
+    </div>
+    <div class="itemss">
+        <span class="span">动画盒子宽度</span>
+        <input type="number" class='input' x-field="width">
+    </div>
+    <div class="itemss">
+        <span class="span">动画盒子高度</span>
+        <input type="number" class='input' x-field="height">
     </div>
 </div>
 <div class="con-eusure">

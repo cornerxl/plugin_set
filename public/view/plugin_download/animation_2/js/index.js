@@ -66,8 +66,6 @@ DD.Plugin.create("my-download-animation-2", my_download_animation_2);
         },
         onBeforeFistrRender: function() {
             var me = this;
-            me.data.color_1 = '#FDB702';
-            me.data.animation_time = 1.2;
         },
         methods: {
             ensure: function() {

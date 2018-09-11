@@ -251,6 +251,8 @@
                                     <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
                                     <pre><span>            buffering_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
                                     <pre><span>                  show: true</span>      <span class="comment">/*在接收到消息时，显示动画*/</span></pre>
+                                    <pre><span>                  color: '#409EFF'</span>      <span class="comment">/*动画颜色*/</span></pre>
+                                    <pre><span>                  animation_time: 3</span>      <span class="comment">/*动画时间*/</span></pre>
                                     <pre><span>            }</span></pre>
                                     <pre><span>     }</pre>
                                     <pre><span>}</span></pre>
@@ -258,6 +260,8 @@
                     data: {
                         buffering_data: {
                             show: true, // 是否显示
+                            color_1: '#409EFF',
+                            animation_time: 3
                         }
                     }
                 }, {
