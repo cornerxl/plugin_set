@@ -254,6 +254,7 @@
         onBeforeFirstRender: function() {
             var me = this;
             me.data.route_height = window.innerHeight - 80;
+            me.data.show=true;
             setTimeout(canvas.init.bind(canvas,me.data.show),2000);
     },
         onRender: function() {},
