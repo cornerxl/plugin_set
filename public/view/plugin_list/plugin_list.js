@@ -15,11 +15,11 @@
                     path: "/route/plugin_list/instruction",
                     active: true
                 },{
-                    name: "地址",
-                    path: "/route/plugin_list/address",
+                    name: "图表",
+                    path: "/route/plugin_list/chart",
                     active: false
                 },{
-                    name: "缓冲",
+                    name: "缓冲动画",
                     path: "/route/plugin_list/buffering",
                     active: false
                 }, {
@@ -27,12 +27,12 @@
                     path: "/route/plugin_list/carousel",
                     active: false
                 }, {
-                    name: "选择框",
-                    path: "/route/plugin_list/checkBox",
+                    name: "分页",
+                    path: "/route/plugin_list/paging",
                     active: false
                 }, {
-                    name: "颜色选择",
-                    path: "/route/plugin_list/colorPicker",
+                    name: "选择框",
+                    path: "/route/plugin_list/checkBox",
                     active: false
                 }, {
                     name: "日期选择",
@@ -51,16 +51,16 @@
                     path: "/route/plugin_list/inputAuto",
                     active: false
                 }, {
-                    name: "分页",
-                    path: "/route/plugin_list/paging",
-                    active: false
-                }, {
                     name: "进度条",
                     path: "/route/plugin_list/progress",
                     active: false
                 }, {
                     name: "开关",
                     path: "/route/plugin_list/switcher",
+                    active: false
+                },{
+                    name: "地址",
+                    path: "/route/plugin_list/address",
                     active: false
                 }, {
                     name: "表格",
@@ -70,9 +70,9 @@
                     name: "菜单树",
                     path: "/route/plugin_list/tree",
                     active: false
-                },{
-                    name: "图表",
-                    path: "/route/plugin_list/chart",
+                }, {
+                    name: "颜色选择",
+                    path: "/route/plugin_list/colorPicker",
                     active: false
                 }
             ]

@@ -8,8 +8,7 @@ DD.createModule({
             "legend": "",
             "marker": false,
             "titleColor": "#000000",
-            "legend": "",
-            "gridLine": 1,
+            "gridLine": 0,
             "gridLineColor": "#cccccc",
             "legends": [
                 { "value": "", "text": "无" },

@@ -1,119 +1,91 @@
-;
-(function() {
-    var tree = function() {};
-    tree.prototype = {
-        init: function(view) {},
-        render: function(view) {
-            var me = this;
-            me.datas = view.$getData().data;
-            if (!me.datas.one) {
-                return;
-            }
-            me.datas.one = 0;
-            me.create = function(arr) {
-                var s = "";
-                var tem = `<div class="item" id="{{txt}}" x-repeat="arr" x-show="show">
-				   <div class="ct">
-					      <div   e-click="check" x-class="{'check':'click'}" class="input"></div>
-					      <span class="txt" e-click="show">{{txt}}</span>
-				   </div>\r\n`;
-                arr.forEach(function(i, index, a) {
-                    if (i.arr) {
-                        s += me.create(i.arr);
-                    }
-                    tem += s;
-                    s = "";
-                });
-                return tem + `</div>\r\n`;
-            };
-            var str = me.create(me.datas.arr);
-            console.log(str);
-            view.innerHTML = str;
-            DD.Compiler.compile(view, view.$module);
-        }
+window.data={
+    animation_time:1,
+    background_color:'#999999',
+};
+;(function() {
+    var Buffering = function() {
+
     };
-    DD.Plugin.create("tree", tree);
+    Buffering.prototype.init = function(view) {
+        var me = this;
+        var template = `<div class='nd-plugin-buffering-box'>
+							<div class='mask'></div>
+							<div class='nd-plugin-buffering-loader'>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						</div>`;
+        view.innerHTML = template;
+        DD.Compiler.compile(view, view.$module);
+        view.$forceRender = true;
+    };
+
+    Buffering.prototype.render = function(view) {
+        var me = this;
+        var data = view.$getData().data;
+        if (!data) {
+            return;
+        }
+        var module;
+        if (!data.module) {
+            module = view.$module;
+        } else {
+            module = data.module;
+        }
+        if (!module) {
+            return;
+        }
+        setTimeout(delayRender, 0);
+
+        function delayRender() {
+            var data = view.$getData().data;
+            var bufferingBox = document.querySelector(".nd-plugin-buffering-box");
+            var par = view.querySelector(".nd-plugin-buffering-loader");
+            var dom = []
+            var dom = Array.from(par.getElementsByTagName("div"));
+            var small_time = data.small_div.animation_time / dom.length;
+            dom.forEach(function(item, index) {
+                DD.css(item, "animation-duration", data.small_div.animation_time + 's');
+                DD.css(item, "animation-delay", small_time * index + 's');
+                DD.css(item, "background-color", data.small_div.color_1);
+            });
+            var bufferingBoxParents = bufferingBox.parentNode.parentNode;
+            var bufferingBoxWidth = document.defaultView.getComputedStyle(bufferingBoxParents, null).width;
+            var bufferingBoxHeight = document.defaultView.getComputedStyle(bufferingBoxParents, null).height;
+            DD.css(bufferingBox, 'width', bufferingBoxWidth);
+            DD.css(bufferingBox, 'height', bufferingBoxHeight);
+            var mask = document.querySelector(".mask");
+            DD.css(mask, 'width', bufferingBoxWidth);
+            DD.css(mask, 'height', bufferingBoxHeight);
+        };
+    }
+
+    DD.Plugin.create("buffering", Buffering);
+
     DD.createModule({
-        el: '.el-tree',
-        data: {
-            one: 1,
-            arr: [{
-                click: false,
-                txt: "parent-1",
-                show: true,
-                arr: [{
-                    click: false,
-                    txt: "child-1",
-                    show: false,
-                    arr: [{
-                        click: false,
-                        txt: "child-1-1",
-                        show: false
-                    }, {
-                        click: false,
-                        txt: "child-1-2",
-                        show: false
-                    }]
-                }, {
-                    click: false,
-                    txt: "child-2",
-                    show: false
-                }, {
-                    click: false,
-                    txt: "child-3",
-                    show: false
-                }, {
-                    click: false,
-                    txt: "child-4",
-                    show: false
-                }]
-            }, {
-                click: false,
-                txt: "parent-2",
-                show: true
-            }, {
-                click: false,
-                txt: "parent-3",
-                show: true
-            }, {
-                click: false,
-                txt: "parent-4",
-                show: true
-            }]
+        el: '.plugin-buffering',
+        data:{
+            small_div: {
+                animation_time: 1,
+                color_1: "#999999999"
+            }
         },
         onBeforeFirstRender:function(){
             var me=this;
-            me.data.one=1;
-        },
-        methods: {
-            show: function(e, d, v) {
-                var me = this;
-                if (d.arr) {
-                    d.arr.forEach(function(i) {
-                        i.show = !i.show
-                        //可以全部展开 此方法
-                        // me.module.methodFactory.methods.show.call(me, e, i, v);
-                    });
+            if(window.data){
+                if(window.data.animation_time){
+                    me.data.small_div.animation_time=window.data.animation_time;
                 }
-            },
-            check: function(e, d, v) {
-                var me = this;
-                d.click = !d.click;
-                me.module.methodFactory.methods.checkall.call(me, d);
-            },
-            checkall: function(d) {
-                var me = this;
-                // d.click=!d.click;
-                if (d.arr) {
-                    d.arr.forEach(function(i) {
-                        i.click = d.click;
-                        if (i.arr) {
-                            me.module.methodFactory.methods.checkall.call(me, i);
-                        }
-
-                    })
+                if(window.data.background_color){
+                    me.data.small_div.color_1=window.data.background_color;
                 }
             }
         }
     });
-})()
+}());
