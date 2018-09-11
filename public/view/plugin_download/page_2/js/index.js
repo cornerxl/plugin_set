@@ -40,13 +40,41 @@
         render: function(view) {
             var data = view.$getData().data;
             var me = this;
-            if (!data.one) {
-                return;
+            if (data.one) {
+                if (data.page.all_page >= 0) {
+                    // 动态修改页码数组
+                    if (data.page.all_page > 7) {
+                        data.page.page_rows = [];
+                        for (var i = 1; i < 8; i++) {
+                            if (i === 7) {
+                                data.page.page_rows.push({
+                                    page: '...',
+                                    pre_page: data.page.pre_page
+                                });
+                            } else {
+                                data.page.page_rows.push({
+                                    page: i,
+                                    pre_page: data.page.pre_page
+                                })
+                            }
+                        }
+                        data.page.page_rows.push({
+                            page: data.page.all_page,
+                            pre_page: data.page.pre_page
+                        })
+                    } else {
+                        // 清空数据
+                        data.page.page_rows = [];
+                        for (var i = data.page.all_page; i > 0; i--) {
+                            data.page.page_rows.push({
+                                page: data.page.all_page - i + 1,
+                                pre_page: data.page.pre_page
+                            });
+                        }
+                    }
+                }
             }
             data.one = 0;
-            if (!data) {
-                return;
-            }
             var module;
             if (!data.module) {
                 module = view.$module;
@@ -55,38 +83,6 @@
             }
             if (!module) {
                 return;
-            }
-            if (data.page.all_page >= 0) {
-                // 动态修改页码数组
-                if (data.page.all_page > 7) {
-                    data.page.page_rows = [];
-                    for (var i = 1; i < 8; i++) {
-                        if (i === 7) {
-                            data.page.page_rows.push({
-                                page: '...',
-                                pre_page: data.page.pre_page
-                            });
-                        } else {
-                            data.page.page_rows.push({
-                                page: i,
-                                pre_page: data.page.pre_page
-                            })
-                        }
-                    }
-                    data.page.page_rows.push({
-                        page: data.page.all_page,
-                        pre_page: data.page.pre_page
-                    })
-                } else {
-                    // 清空数据
-                    data.page.page_rows = [];
-                    for (var i = data.page.all_page; i > 0; i--) {
-                        data.page.page_rows.push({
-                            page: data.page.all_page - i + 1,
-                            pre_page: data.page.pre_page
-                        });
-                    }
-                }
             }
             setTimeout(function() {
                 var box = [];
@@ -100,6 +96,8 @@
                  * @param all_page   总页数
                  */
                 function changePageRows(pre_page, all_page) {
+                    console.log(pre_page);
+                    console.log(all_page);
                     if (pre_page <= 6) {
                         if (all_page <= 6) {
                             data.page.page_rows = [];
@@ -266,19 +264,21 @@
         templateUrl: HTMLURL + "/plugin_download/page_2/index.html",
         data: {
             name: '酷炫分页',
-            page_data: {
-                small_div: {
-                    color_1: '#999999',
-                    color_2: '#5eaee3'
-                },
-                page: {
-                    pre_page: 1,
-                    go_page: 1,
-                    all_page: 16,
-                    page_rows: []
-                },
-                one: 1
-            }
+            small_div: {
+                color_1: '#999999',
+                color_2: '#5eaee3'
+            },
+            page: {
+                pre_page: 1,
+                go_page: 1,
+                all_page: 16,
+                page_rows: []
+            },
+            one: 1
+        },
+        onBeforeFirstRender: function() {
+            var me = this;
+            me.data.one = 1;
         },
         methods: {
             ensure: function() {
