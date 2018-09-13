@@ -63,10 +63,18 @@ var config = {
         var object = JSON.parse(obj["js"]);
         var tem = [];
         for (var k in object) {
-            if (k.indexOf("color") !== -1) {
+            if (k.indexOf("color") !== -1 || k.indexOf("Color") !== -1) {
                 tem.push("    " + k + ":'#" + object[k] + "',\r\n");
             } else {
-                tem.push("    " + k + ':' + object[k] + ',\r\n');
+                if (k.indexOf("legend")!==-1) {
+                    tem.push("    " + k + ":'" + object[k] + "',\r\n");
+                } else {
+                    if (!object[k]) {
+                        tem.push("    " + k + ":'',\r\n");
+                    } else {
+                        tem.push("    " + k + ':' + object[k] + ',\r\n');
+                    }
+                }
             }
         }
         var str = 'window.data={\r\n';
