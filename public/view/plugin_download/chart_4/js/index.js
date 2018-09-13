@@ -3,7 +3,7 @@ DD.createModule({
     requires: [{ type: 'css', path: HTMLURL + "/plugin_download/chart_4/css/index.css" }],
     templateUrl: HTMLURL + "/plugin_download/chart_4/index.html",
     data: {
-            scatter: {
+        scatter: {
             "title": "散点图",
             "legend": "",
             "marker": false,
@@ -46,6 +46,26 @@ DD.createModule({
         }
     },
     methods: {
+         ensure:function(){
+            var me=this;
+            var obj = {
+                    plugin_id: 1704,
+                    total: 0,
+                    js:JSON.stringify({
+                         titleColor:me.data.scatter.titleColor.replace("#",""),
+                         legend: me.data.scatter.legend+'',
+                         gridLine:me.data.scatter.gridLine,
+                         gridLineColor:me.data.scatter.gridLineColor.replace("#",""),
+                         cs:me.data.scatter.data.cs
+                    }),
+                    flag: 1
+                }
+                me.module.send('m_plugin_download', {
+                    upload: true,
+                    obj: obj
+                });
+            
+        },
         changeTitleColor(e, data, view) {
             data.titleColor = e.target.value;
         },

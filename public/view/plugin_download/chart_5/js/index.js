@@ -35,6 +35,25 @@ DD.createModule({
         }
     },
     methods: {
+         ensure:function(){
+            var me=this;
+            var obj = {
+                    plugin_id: 1705,
+                    total: 0,
+                    js:JSON.stringify({
+                         titleColor:me.data.radar.titleColor.replace("#",""),
+                         legend: `${me.data.radar.legend}`,
+                         marker:me.data.radar.marker,
+                         changeColors:me.data.radar.changeColors.replace("#","")
+                    }),
+                    flag: 1
+                }
+                me.module.send('m_plugin_download', {
+                    upload: true,
+                    obj: obj
+                });
+            
+        },
         changeTitleColor(e, data, view) {
             data.titleColor = e.target.value;
         },

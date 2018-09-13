@@ -59,6 +59,25 @@ DD.createModule({
         },
     },
     methods: {
+          ensure:function(){
+            var me=this;
+            var obj = {
+                    plugin_id: 1702,
+                    total: 0,
+                    js:JSON.stringify({
+                         titleColor:me.data.histogram.titleColor.replace("#",""),
+                         gridLineColor:me.data.histogram.gridLineColor.replace("#",""),
+                         gridLine:me.data.histogram.gridLine,
+                         legend: me.data.histogram.legend+''
+                    }),
+                    flag: 1
+                }
+                me.module.send('m_plugin_download', {
+                    upload: true,
+                    obj: obj
+                });
+            
+        },
         changeTitleColor(e, data, view) {
             data.titleColor = e.target.value;
         },

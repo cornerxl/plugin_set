@@ -29,6 +29,23 @@ DD.createModule({
         },
     },
     methods: {
+         ensure:function(){
+            var me=this;
+            var obj = {
+                    plugin_id: 1703,
+                    total: 0,
+                    js:JSON.stringify({
+                         titleColor:me.data.pie.titleColor.replace("#",""),
+                         legend: me.data.pie.legend+''
+                    }),
+                    flag: 1
+                }
+                me.module.send('m_plugin_download', {
+                    upload: true,
+                    obj: obj
+                });
+            
+        },
         changeTitleColor(e, data, view) {
             data.titleColor = e.target.value;
         },
