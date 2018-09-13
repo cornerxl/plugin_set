@@ -1533,7 +1533,9 @@
                                     <pre><span>                  pre_page: 1,</span>      <span class="comment">/*分页插件当前页*/</span></pre>
                                     <pre><span>                  go_page: 1,</span>      <span class="comment">/*分页插件需跳转页数*/</span></pre>
                                     <pre><span>                  all_page: 16,</span>      <span class="comment">/*分页插件总页数*/</span></pre>
-                                    <pre><span>                  page_rows: []</span>      <span class="comment">/*插件渲染需要，只需传入空数组*/</span></pre>
+                                    <pre><span>                  page_rows: [],</span>      <span class="comment">/*插件渲染需要，只需传入空数组*/</span></pre>
+                                    <pre><span>                  pre_color: '#5eaee3',</span>      <span class="comment">/*当前页颜色*/</span></pre>
+                                    <pre><span>                  word_color: '#999999'</span>      <span class="comment">/*页码字体颜色*/</span></pre>
                                     <pre><span>            }</span></pre>
                                     <pre><span>     }</pre>
                                     <pre><span>}</span></pre>
@@ -1544,6 +1546,8 @@
                                 go_page: 1,
                                 all_page: 16,
                                 page_rows: [],
+                                pre_color: '#5eaee3',
+                                word_color: '#999999',
                                 //标记物
                                 one:1
                             }

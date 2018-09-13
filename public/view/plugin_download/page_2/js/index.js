@@ -88,7 +88,12 @@
                 var box = [];
                 box = view.querySelectorAll(".com-page-item");
                 box.forEach(function(i) {
-                    DD.css(i, "color", data.small_div.color_1);
+                    if(parseInt(i.innerText) === data.page.pre_page) {
+                        DD.css(i, "background-color", data.color_2);
+                    } else {
+                        DD.css(i, "color", data.color_1);
+                    }
+
                 });
                 /**,
                  * 修改page_rows
@@ -96,8 +101,6 @@
                  * @param all_page   总页数
                  */
                 function changePageRows(pre_page, all_page) {
-                    console.log(pre_page);
-                    console.log(all_page);
                     if (pre_page <= 6) {
                         if (all_page <= 6) {
                             data.page.page_rows = [];
@@ -264,10 +267,8 @@
         templateUrl: HTMLURL + "/plugin_download/page_2/index.html",
         data: {
             name: '酷炫分页',
-            small_div: {
-                color_1: '#999999',
-                color_2: '#5eaee3'
-            },
+            color_1: '#999999',
+            color_2: '#5eaee3',
             page: {
                 pre_page: 1,
                 go_page: 1,
@@ -290,7 +291,7 @@
                         total: 1,
                         color: {
                             names: "background-color",
-                            values: me.data.small_div.color_2.replace("#", "")
+                            values: me.data.color_2.replace("#", "")
                         }
                     }),
                     class1: JSON.stringify({
@@ -298,7 +299,7 @@
                         total: 1,
                         color: {
                             names: 'color',
-                            values: me.data.small_div.color_1.replace("#", "")
+                            values: me.data.color_1.replace("#", "")
                         }
                     }),
                     total: 2,

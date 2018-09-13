@@ -87,6 +87,15 @@
             }}
             data.one=false;
             setTimeout(function () {
+                box = view.querySelectorAll(".com-page-item");
+                box.forEach(function(i) {
+                    if(parseInt(i.innerText) === data.pre_page) {
+                        DD.css(i, "background-color", data.pre_color);
+                    } else {
+                        DD.css(i, "color", data.word_color);
+                    }
+
+                });
                 /**
                  * 修改page_rows
                  * @param pre_page   当前页
