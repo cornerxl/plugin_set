@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>图表</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/nodom-full.js"></script>
+</head>
+
+<body>
+	<div class="nd-plugin-chart">
+    <div class="histogram-container clearfix" x-model="histogram">
+        <div style="height: 400px; width: 800px;margin:0 auto" class='chart' x-plugin='Chart' dataName='data' type='histogram' title='{{title}}' legend='{{legend}}' yTitle='销售额(万元)' xTitle='2017年上半年' category='string,number' gridLine='{{gridLine}}' titleColor='{{titleColor}}' gridLineColor='{{gridLineColor}}'>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+<script src="js/index.js"></script>
+
+</html>

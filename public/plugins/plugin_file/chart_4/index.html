@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>图表</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/nodom-full.js"></script>
+</head>
+
+<body>
+	<div class="nd-plugin-chart">
+    <div class="scatter-container clearfix" x-model="scatter">
+        <div class='chart' x-plugin='Chart' dataName='data' type='scatter' title='{{title}}' legend='{{legend}}' gridLine="{{gridLine}}" symbolSize="{{symbolSize}}" category='number,number' titleColor='{{titleColor}}' gridLineColor='{{gridLineColor}}' showPercent='{{showPercent}}' showText='{{showText}}'></div>
+    </div>
+    </div>
+</body>
+<script src="js/index.js"></script>
+
+</html>
