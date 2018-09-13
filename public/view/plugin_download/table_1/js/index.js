@@ -101,10 +101,9 @@
             setTimeout(function() {
                 DD.css(view, "color", me.datas.color_1);
                 var arr = Array.from(view.querySelector(".left").children);
-                arr.forEach(function(i) {
-                    console.log(i);
-                    DD.css(i, "background-color", me.datas.color_2);
-                })
+                // arr.forEach(function(i) {
+                //     DD.css(i, "background-color", me.datas.color_2);
+                // })
                 me.reverse = view.querySelector('.reverse');
                 me.header = view.querySelector('.header');
                 me.data = view.$getData().data;
@@ -118,6 +117,7 @@
                     me.setwidth();
                 }
                 me.view.onscroll = function() {
+                    me.setwidth();
                     if (me.view.scrollTop > me.second_thead.scrollHeight) {
                         DD.css(me.first_thead, "display", "block");
                     }
