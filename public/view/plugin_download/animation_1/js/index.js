@@ -92,7 +92,23 @@
                 var obj = {
                     plugin_id: 901,
                     js: JSON.stringify({ animation_time: data.animation_time, background_color: data.color_1.replace("#", "") }),
-                    total: 0,
+                    class0:JSON.stringify({
+                        names:".nd-plugin-buffering-loader>div",
+                        total:3,
+                        color:{
+                            names:"background-color",
+                            values:data.color_1.replace("#", "")
+                        },
+                        width:{
+                            names:"width",
+                            values:me.data.buffering_data.radius+"px"
+                        },
+                        height:{
+                            names:"height",
+                            values:me.data.buffering_data.radius+"px"
+                        }
+                    }),
+                    total: 1,
                     flag: 1
                 }
                 me.module.send('m_plugin_download', {

@@ -42,8 +42,8 @@
         templateUrl: HTMLURL + "/plugin_download/animation_3/index.html",
         data: {
             name: "圆环动画",
+             show: true, // 是否显示
             buffering_data: {
-                show: true, // 是否显示
                 color_1: '#409EFF',
                 animation_time: 3
             }
