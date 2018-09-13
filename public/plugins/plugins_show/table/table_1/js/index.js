@@ -1,7 +1,7 @@
 ;(function() {
     var plugin_13001 = function() {};
     plugin_13001.prototype = {
-        init: function(view) {
+         init: function(view) {
             var tem = `<div class="common">
             <div class="left">
                 <div class='item border-right add-btn'>新增</div>
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="header">
+        <div class="header" >
             <div class="head-cont">
                 <div class='thead'>
                     <input class='input' type="checkbox" x-field='check_all' yes-value='true' no-value='false' />
@@ -35,7 +35,7 @@
                     <div class='rows'>
                         <input class="input" type="checkbox" x-field='check' yes-value='true' no-value='false' />
                     </div>
-                    <div class="rows" x-repeat='td'>{{ct}}
+                    <div class="rows" x-repeat='td'><span class="span">{{ct}}</span>
                     </div>
                 </div>
             </div>
@@ -66,6 +66,7 @@
         },
         render: function(view) {
             var me = this;
+            me.datas = view.$getData().data;
             me.setwidth = function() {
                 var me = this;
                 me.dom1.forEach(function(item, index) {
@@ -97,6 +98,11 @@
                 DD.css(me.header, "top", me.view.offsetTop + 'px');
             }
             setTimeout(function() {
+                DD.css(view, "color", me.datas.color_1);
+                var arr = Array.from(view.querySelector(".left").children);
+                // arr.forEach(function(i) {
+                //     DD.css(i, "background-color", me.datas.color_2);
+                // })
                 me.reverse = view.querySelector('.reverse');
                 me.header = view.querySelector('.header');
                 me.data = view.$getData().data;
@@ -110,7 +116,7 @@
                     me.setwidth();
                 }
                 me.view.onscroll = function() {
-                     me.setwidth();
+                    me.setwidth();
                     if (me.view.scrollTop > me.second_thead.scrollHeight) {
                         DD.css(me.first_thead, "display", "block");
                     }
@@ -123,22 +129,29 @@
                     eventName: 'click',
                     view: view.querySelector('.search-btn'),
                     handler: function(e, data, v) {
-                        var tem=v.nextElementSibling.firstElementChild.value.replace(/ /ig,'');
-                        var url='';
-                        var params={
-                            page:1,
-                            row:15,
+                        console.log(v.nextElementSibling.firstElementChild);
+                        var tem = v.nextElementSibling.firstElementChild.value.replace(/ /ig, '');
+                        var url = '';
+                        var params = {
+                            page: 1,
+                            row: 15,
                         };
-                        // LoadDataCommon.getList(me, url+'.action',params, function (r) {
-                        //     me.data.table.th=[];
-                        //     r.rows.forEach(function(it,index,arr){
-                        //         me.data.table.th.push({
-                        //             td:it,
-                        //             check:false,
-                        //         });
-                        //     });
-                        //     me.data.table.$set('th',me.data.table.th);
-                        // });
+                        DD.request({
+                            params: {
+                                key: tem
+                            },
+                            url: "http://localhost:3000/api/search.action",
+                            // successFunc: function(r) {
+                            //     me.data.table.th = [];
+                            //     r.rows.forEach(function(it, index, arr) {
+                            //         me.data.table.th.push({
+                            //             td: it,
+                            //             check: false,
+                            //         });
+                            //     });
+                            //     me.data.table.$set('th', me.data.table.th);
+                            // }
+                        });
                     }
                 });
                 //删除按钮
