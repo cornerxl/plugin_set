@@ -21,7 +21,7 @@ my_download_animation_2.prototype = {
     },
     render: function(view) {
         var me = this;
-        var data = view.$getData().data;
+        var data = view.$getData().data[view.$dataItem];
         var height = parseInt(data.height);
         var width = parseInt(data.width);
         var color = data.color_1;
@@ -57,12 +57,12 @@ DD.Plugin.create("my-download-animation-2", my_download_animation_2);
         data: {
             name: "方块动画",
             buffering_data: {
-                show: true,
                 width: 80,
                 height: 100,
                 color_1: '#FDB702',
-                animation_time: 1.2
-            }
+                animation_time: 1.2,
+                 show:true
+            },
         },
         onBeforeFistrRender: function() {
             var me = this;
