@@ -32,11 +32,13 @@
 		},
 		render:function(view){
 			var data=view.$getData().data;
-			var color_1=data.color_1;
-			var color_2=data.color_2;
+            if(data.total && data.row) {
+                data.allpage = Math.ceil(data.total /data.row);
+            }
+			var color_1=data.word_color;
+			var color_2=data.page_color;
 			setTimeout(function(){
 				var red=[];
-				console.log(view);
 				var plugin=view.querySelector(".nd-plugin-paging");
 				red=view.querySelectorAll(".red");
 				red.forEach(function(i){
@@ -106,15 +108,14 @@
         templateUrl: HTMLURL + "/plugin_download/page_1/index.html",
 		data: {
 			//字体颜色
-			color_1:"#000000",
+			word_color:"#000000",
 			//页数颜色
-			color_2:"#ff0000",
+			page_color:"#ff0000",
 			name:'常见分页',
             page: 1,
             row: 10,
-            total:0,
+            total:100,
             to_page:1,
-            allpage:200,
 		},
 		methods:{
 			//更新函数
@@ -130,7 +131,7 @@
                         total: 1,
                         color:{
                         	names:"color",
-                        	values:me.data.color_2.replace("#","")
+                        	values:me.data.page_color.replace("#","")
                          }
                     }),
                     class1: JSON.stringify({
@@ -138,7 +139,7 @@
                         total: 1,
                         color: {
                             names: 'color',
-                            values:me.data.color_1.replace("#","")
+                            values:me.data.word_color.replace("#","")
                         }
                     }),
                     total: 2,

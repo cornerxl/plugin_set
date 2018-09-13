@@ -1,6 +1,6 @@
 /*分页插件*/
 .nd-plugin-paging {
-  float: right;
+  /*float: right;*/
   width: 700px;
   height: 20px;
   margin-top: 20px;
