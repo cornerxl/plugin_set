@@ -62,7 +62,7 @@ DD.Plugin.create("my-download-animation-2", my_download_animation_2);
             },
             show: true
         },
-        onBeforeFistrRender: function() {
+        onBeforeFirstRender: function() {
             var me = this;
             var tem = me.data.buffering_data;
             if (window.data) {
