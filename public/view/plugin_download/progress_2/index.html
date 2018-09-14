@@ -5,21 +5,21 @@
 <div class='common-title'>
     {{name}}</div>
    <div class="plugin-probar">
-        <div x-plugin="proBar" dataItem="proBar" showItem="percent" ></div>
+        <div x-plugin="proBar" dataItem="proBar" showItem="percent"  processBgColor="process_bg_color" processPercentColor="process_percent_color" processPercentNum="process_percent_num_color"></div>
     </div>
 <div class="common-title">配置</div>
 <div class="con-config">
     <div class="itemss">
         <span class="span">字体颜色</span>
-        <input type="color" class='input' x-field="color_1">
+        <input type="color" class='input' x-field="process_percent_num_color">
     </div>
     <div class="itemss">
         <span class="span">百分比颜色</span>
-        <input type="color" class='input' x-field="color_2">
+        <input type="color" class='input' x-field="process_percent_color">
     </div>
      <div class="itemss">
-        <span class="span">剩余百分比颜色</span>
-        <input type="color" class='input' x-field="color_3">
+        <span class="span">背景颜色</span>
+        <input type="color" class='input' x-field="process_bg_color">
     </div>
 </div>
 <div class="con-eusure">

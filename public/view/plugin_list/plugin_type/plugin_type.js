@@ -1626,7 +1626,7 @@
                 plugins: [
                     {
                         name: "11001",
-                        explain: "使用此进度条需设置绑定x-plugin标签父元素的宽度及高度，这样进度条的宽度及高度根据父元素进行适配。可以通过鼠标点击来改变进度。用户可选择是横向进度条还是纵向进度条，然后传入不同参数。本插件可自定义配置项包括：背景颜色、百分比颜色、剩余百分比颜色、提示圆圈颜色，是否显示百分比数字等参数。",
+                        explain: "使用此进度条需设置绑定x-plugin标签父元素的宽度及高度，这样进度条的宽度及高度根据父元素进行适配。可以通过鼠标点击来改变进度。本插件可自定义配置项包括：背景颜色、百分比颜色、剩余百分比颜色、提示圆圈颜色，是否显示百分比数字等参数。",
                         template: `<div class="plugin-dragprobar-HV" style="width: 300px;height: 50px;margin: 0 auto;">
                                         <div x-plugin="plugin_11001" process="drag_pro_bar_process" showStyle="show_style" processBoxBg="process_box_bg" 
                                         percentColor="percent_color" processBg="process_bg" dragBtnWidth="drag_btn_width" dragBtnColor="drag_btn_color"></div>
@@ -1642,7 +1642,6 @@
                                     <pre><span>      el: '.plugin-process',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
                                     <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
                                     <pre><span>            drag_pro_bar_process: 0.4,</span>      <span class="comment">/*当前进度条比例*/</span></pre>
-                                    <pre><span>            show_style: 'horizontal',</span>      <span class="comment">/*是横向显示还是纵向显示，横向：horizontal，纵向：vertical*/</span></pre>
                                     <pre><span>            process_box_bg: 'rgba(96,96,96,0.5)',</span>      <span class="comment">/*进度条盒子背景*/</span></pre>
                                     <pre><span>            percent_color: '#ffffff',</span>      <span class="comment">/*进度条已占比例颜色*/</span></pre>
                                     <pre><span>            drag_btn_width: 10,</span>      <span class="comment">/*进度条圆点大小*/</span></pre>
@@ -1711,20 +1710,16 @@
                                         <div style="color: red">修改</div>
                                     </div>`,
                         htmlcode: `<pre class="instruction-code">
-                                        <pre><<span class="element">div</span> <span class="attr">class</span>='plugin-dragprobarHV' <span class="attr">style</span>="width: 300px;height: 20px;"></pre>
-                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-process" <span class="attr">x-plugin</span>="proBar" <span class="attr">dataItem</span>="proBar" <span class="attr">showItem</span>="percent" <span class="attr">processBgColor</span>="process_bg_color" <span class="attr">processPercentColor</span>="process_percent_color" <span class="attr">processPercentNumColor</span>="process_percent_num_color"><<span class="element">/div></span></pre>
-                                        <pre><<span class="element">/div</span>></pre>
+                                        <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-process" <span class="attr">x-plugin</span>="proBar"><<span class="element">/div></span></pre>
                                     </pre>`,
                         jscode: `<pre class="instruction-code">
                                     <pre><span>{</span></pre>
                                     <pre><span>      name: 'process',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
                                     <pre><span>      el: '.plugin-process',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
                                     <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
-                                    <pre><span>            proBar: 0.9,</span>      <span class="comment">/*当前进度条比例*/</span></pre>
-                                    <pre><span>            percent: true,</span>      <span class="comment">/*显示小数还是百分比，true显示百分比，false显示小数*/</span></pre>
-                                    <pre><span>            process_percent_num_color: '#ffffff',</span>      <span class="comment">/*进度条比例数字颜色*/</span></pre>
+                                    <pre><span>            per: 1,</span>      <span class="comment">/*总共10份，当前进度条比例*/</span></pre>
+                                    <pre><span>            process_all_color: '#f5f5f5',</span>      <span class="comment">/*进度条基础颜色*/</span></pre>
                                     <pre><span>            process_percent_color: '#4A98FF',</span>      <span class="comment">/*进度条已占比例颜色*/</span></pre>
-                                    <pre><span>            process_bg_color: '#DDDDDD'</span>      <span class="comment">/*进度条未占比例颜色*/</span></pre>
                                     <pre><span>     }</pre>
                                     <pre><span>}</span></pre>
                                 </pre>`,

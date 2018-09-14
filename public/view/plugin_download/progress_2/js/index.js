@@ -24,6 +24,9 @@
         var show = DD.attr(view, 'showItem');
         view.$dataName = data;
         view.$showItem = show;
+        view.$processBgColor = DD.attr(view, 'processBgColor');
+        view.$processPercentColor = DD.attr(view, 'processPercentColor');
+        view.$processPercentNumColor = DD.attr(view, 'processPercentNum');
         view.innerHTML = template;
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
@@ -50,10 +53,14 @@
             var total = view.querySelector(".nd-plugin-probar-total");
             var pro = view.querySelector(".nd-plugin-probar-pro");
             var percent = view.querySelector(".nd-plugin-probar-percent");
-            DD.css(percent, "color", data.color_1);
-            DD.css(pro, "background-color", data.color_2);
-            DD.css(total, "background-color", data.color_3);
+            DD.css(percent, "color", data[view.$processPercentNumColor]);
+            DD.css(pro, "background-color", data[view.$processPercentColor]);
+            DD.css(total, "background-color", data[view.$processBgColor]);
             var totalHeight = window.getComputedStyle(total, null).height;
+            DD.css(pro, 'height', totalHeight);
+            DD.css(percent, "line-height", totalHeight);
+            DD.css(pro, 'border-radius', parseInt(totalHeight) / 1.5 + 'px');
+            DD.css(total, 'border-radius', parseInt(totalHeight) / 1.5 + 'px');
             if (data[view.$showItem]) {
                 //判断data[view.$dataName]是百分比还是小数
                 if (typeof data[view.$dataName] === 'string') {
@@ -93,11 +100,8 @@
                     }
                 }
             }
-
-            DD.css(pro, 'height', totalHeight);
-            DD.css(pro, 'border-radius', parseInt(totalHeight) / 1.5 + 'px');
         }
-    }
+    };
 
     DD.Plugin.create("proBar", ProBar);
     DD.createModule({
@@ -108,15 +112,12 @@
             name: "普通进度条",
             proBar: 0.9,
             percent: true,
-            color_1: "#ffffff",
-            color_2: '#4A98FF',
-            color_3: '#DDDDDD'
+            process_percent_num_color: "#ffffff",
+            process_percent_color: '#4A98FF',
+            process_bg_color: '#DDDDDD'
         },
         onBeforeFirstRender:function(){
             var me=this;
-            me.data.color_1='#ffffff';
-            me.data.color_2='#4A98FF';
-            me.data.color_3='#DDDDDD';
         },
         methods: {
             ensure: function() {
@@ -127,7 +128,7 @@
                         names:".nd-plugin-probar-box .nd-plugin-probar-total .nd-plugin-probar-pro",
                         background:{
                             names:"background-color",
-                            values:me.data.color_2.replace("#","")
+                            values:me.data.process_percent_color.replace("#","")
                         },
                         total:1
                     }),
@@ -135,7 +136,7 @@
                         names:".nd-plugin-probar-box .nd-plugin-probar-totals",
                         background:{
                             names:"background-color",
-                            values:me.data.color_3.replace("#","")
+                            values:me.data.process_bg_color.replace("#","")
                         },
                         total:1
                     }),
@@ -143,7 +144,7 @@
                         names:".nd-plugin-probar-box .nd-plugin-probar-total .nd-plugin-probar-percent",
                         background:{
                             names:"color",
-                            values:me.data.color_1.replace("#","")
+                            values:me.data.process_percent_num_color.replace("#","")
                         },
                         total:1
                     }),

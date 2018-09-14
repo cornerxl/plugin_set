@@ -98,8 +98,7 @@
                     },{
                          path:'/Progress_3',
                         module:'m_plugin_download_Progress_3'
-                    }
-                    ,{
+                    },{
                          path:'/Page_1',
                         module:'m_plugin_download_Page_1'
                     },{
