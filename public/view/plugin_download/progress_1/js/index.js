@@ -150,15 +150,15 @@
                     if (e.target.className === 'nd-plugin-dragprobar-btn') {
                         return;
                     }
-                    if(data[view.$showStyle] === 'horizontal') {
+                    if (data[view.$showStyle] === 'horizontal') {
                         var box_width = parseInt(DD.css(box, 'width'));
                         data[view.$dataName] = e.offsetX / box_width;
                         DD.css(percent, "width", e.offsetX + 'px');
                         DD.css(btn, "left", e.offsetX + 'px');
-                    }else if(data[view.$showStyle]  === 'vertical'){
+                    } else if (data[view.$showStyle] === 'vertical') {
                         var box_height = parseInt(DD.css(box, 'height'));
                         data[view.$dataName] = e.offsetY / box_height;
-                        DD.css(percent, "top",e.offsetY + 'px');
+                        DD.css(percent, "top", e.offsetY + 'px');
                         DD.css(percent, "height", (1 - data[view.$dataName]) * box_height + 'px');
                         DD.css(btn, "top", e.offsetY + 'px');
                     }
@@ -191,7 +191,13 @@
                 var me = this;
                 var obj = {
                     plugin_id: 501,
-                    js: JSON.stringify({ color_1: me.data.process_box_bg.replace("#", ""), color_2: me.data.percent_color.replace("#", ""), color_3: me.data.drag_btn_color.replace("#", "") }),
+                    js: JSON.stringify({
+                        process_bg: me.data.process_bg.replace("#", ""),
+                        process_box_bg: me.data.process_box_bg.replace("#", ""),
+                        percent_color: me.data.percent_color.replace("#", ""),
+                        drag_btn_color: me.data.drag_btn_color.replace("#", ""),
+                        drag_btn_width: me.data.drag_btn_width
+                    }),
                     total: 0,
                     flag: 1
                 }

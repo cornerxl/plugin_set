@@ -105,7 +105,7 @@
         methods: {
             ensure: function() {
                 var me = this;
-                var data=me.data.switcher_data;
+                var data=me.data;
                 var obj = {
                     plugin_id: 303,
                     js: JSON.stringify({
