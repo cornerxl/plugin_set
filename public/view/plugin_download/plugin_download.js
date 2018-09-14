@@ -179,8 +179,8 @@
             route: "/greet",
             first_type: [{
                 first_name: '图表',
-                show: false,
-                plugin: [{ name: '折线图', route: "/route/plugin_download/Chart_1", active: false }, { name: "直方图", route: "/route/plugin_download/Chart_2", active: false }, { name: '饼状图图', route: "/route/plugin_download/Chart_3", active: false }, { name: '散点图', route: "/route/plugin_download/Chart_4", active: false }, { name: '雷达图', route: "/route/plugin_download/Chart_5", active: false }]
+                show: true,
+                plugin: [{ name: '折线图', route: "/route/plugin_download/Chart_1", active: true }, { name: "直方图", route: "/route/plugin_download/Chart_2", active: false }, { name: '饼状图图', route: "/route/plugin_download/Chart_3", active: false }, { name: '散点图', route: "/route/plugin_download/Chart_4", active: false }, { name: '雷达图', route: "/route/plugin_download/Chart_5", active: false }]
             }, {
                 first_name: '缓冲动画',
                 show: false,
@@ -253,7 +253,9 @@
             me.data.show = true;
             setTimeout(canvas.init.bind(canvas, me.data.show), 2000);
         },
-        onRender: function() {},
+        onFirstRender: function() {
+            // DD.Router.go("/route/plugin_download/Chart_1");
+        },
         onReceive: function(m, data) {
             var me = this;
             if (m === 'm_plugin_download_Carousel_1') {
