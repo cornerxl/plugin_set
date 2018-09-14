@@ -210,7 +210,7 @@
                     },{
                         path:'/Chart_1',
                         module:'m_plugin_download_Chart_1',
-                        active:false
+                        active:true
                     },{
                         path:'/Chart_2',
                         module:'m_plugin_download_Chart_2',
