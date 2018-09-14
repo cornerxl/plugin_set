@@ -1,0 +1,24 @@
+
+.nd-plugin-check-list .content-check >div{
+    cursor: pointer;
+	position: relative;
+	 width: 40px;
+    height: 40px;
+    margin: 0 auto;	
+}
+.nd-plugin-check-list .content-check .check-one .item {
+	 position: absolute;
+	 left: 8px;
+	 top:8px;
+	visibility: hidden;
+}
+.nd-plugin-check-list .content-check .check-one .item .fill{
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
+    margin:0 auto;
+}
+.nd-plugin-check-list .content-check .check-one .no-check{
+	visibility: visible;
+	color:"#00000080";
+}
