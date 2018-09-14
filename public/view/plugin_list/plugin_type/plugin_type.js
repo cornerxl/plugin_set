@@ -1878,14 +1878,13 @@
                         }
                     }, {
                         name: "12003",
-                        explain: "这是一个3D switch插件，通过点击实现开与关以及颜色变化。\n" +
-                            "本插件可自定义配置项包括：打开颜色、关闭颜色。",
-                        template: `<div class="plugin-switcher-3">
-                                        <div x-plugin='plugin_12003' dataItem='switcher'></div>
+                        explain: "这是一个3D switch插件，通过点击实现开与关以及颜色变化，使用此插件，需给插件渲染容器的父元素设置宽度和高度。本插件可自定义配置项包括：打开颜色、关闭颜色。",
+                        template: `<div class="plugin-switcher-3" style="width: 50px;height: 50px;">
+                                        <div x-plugin='plugin_12003'  dataItem='switcher' openColor="open_color" closeColor="close_color"></div>
                                     </div>`,
                         htmlcode: `<pre class="instruction-code">
                                         <pre><<span class="element">div</span> <span class="attr">class</span>='plugin-switcher-1' <span class="attr">style</span>="width: 50px;height: 30px;"></pre>
-                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-switcher" <span class="attr">x-plugin</span>="switcher" <span class="attr">dataItem</span>="switcher"><<span class="element">/div></span></pre>
+                                        <pre>      <<span class="element">div</span> <span class="attr">class</span>="plugin-switcher" <span class="attr">x-plugin</span>="switcher" <span class="attr">dataItem</span>="switcher" <span class="attr">openColor</span>="open_color" <span class="attr">closeColor</span>="close_color"><<span class="element">/div></span></pre>
                                         <pre><<span class="element">/div</span>></pre>
                                     </pre>`,
                         jscode: `<pre class="instruction-code">
@@ -1899,6 +1898,8 @@
                                  </pre>`,
                         data: {
                             switcher: true,
+                            open_color: '#cccccc',
+                            close_color: '#ff9900'
                         }
                     }, {
                         name: "12004",

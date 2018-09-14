@@ -1,21 +1,21 @@
 <div class='common-title'>
     {{name}}</div>
-<div class="plugin-switcher-1">
-    <div x-plugin='switcher_1' dataItem='switcher' yes-value='yes' no-value='no' style='width:{{width_d}}px;height:{{width_d/4}}px' x-model="switcher_data"></div>
+<div class="plugin-switcher-1" style="width: 50px;height: 30px;">
+    <div x-plugin='switcher_1' dataItem='switcher' openColor="open_color" closeColor="close_color" btnColor="btn_color"></div>
 </div>
 <div class="common-title">配置</div>
-<div class="con-config" x-model='switcher_data'>
+<div class="con-config">
     <div class="itemss">
         <span class="span">打开颜色</span>
-        <input type="color" class='input' x-field="small_div.color_1">
+        <input type="color" class='input' x-field="open_color">
     </div>
     <div class="itemss">
         <span class="span">关闭颜色</span>
-        <input type="color" class='input' x-field="small_div.color_2">
+        <input type="color" class='input' x-field="close_color">
     </div>
     <div class="itemss">
         <span class="span">按钮颜色</span>
-        <input type="color" class='input' x-field="small_div.color_3">
+        <input type="color" class='input' x-field="btn_color">
     </div>
 </div>
 <div class="con-eusure">

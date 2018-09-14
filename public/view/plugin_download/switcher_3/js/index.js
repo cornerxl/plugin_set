@@ -13,6 +13,8 @@
         view.removeAttribute('dataValue');
         var template = `<div class="nd-plugin-switcher-box" style="width{{width_d}}px"></div>`;
         view.innerHTML = template;
+        view.$openColor = DD.attr(view, 'openColor');
+        view.$closeColor = DD.attr(view, 'closeColor');
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
     };
@@ -37,14 +39,14 @@
             var switcherBox = view.querySelector(".nd-plugin-switcher-box");
             var switcherBtn = view.querySelector(".nd-plugin-switcher-btn");
             var check = view.querySelector(".check");
-            var switcherBoxParent = switcherBox.parentNode;
+            var switcherBoxParent = switcherBox.parentNode.parentNode;
             var switcherBoxWidth = document.defaultView.getComputedStyle(switcherBoxParent, null).width;
             var switcherBoxHeight = document.defaultView.getComputedStyle(switcherBoxParent, null).height;
             DD.css(switcherBox, 'width', switcherBoxWidth);
             DD.css(switcherBox, 'height', switcherBoxHeight);
             DD.css(switcherBox, 'border-radius', switcherBoxHeight);
-            var color1 = data.small_div.color_1;
-            var color2 = data.small_div.color_2;
+            var color1 = data[view.$closeColor];
+            var color2 = data[view.$openColor];
             var box_width = data.width_d / 10;
             document.styleSheets[0].addRule('.nd-plugin-switcher-box::before', 'box-shadow:inset 0px 0px 0px ' + box_width / 2 + 'px ' + color1 + ',inset 0px 0px 0px 1000px #fff');
             document.styleSheets[0].addRule('.nd-plugin-switcher-box::after', 'background-color:' + color1);
@@ -90,28 +92,14 @@
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/switcher_3/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/switcher_3/index.html",
         data: {
-            switcher: true,
             name: "3d按钮开关",
             width_d: window.innerWidth * 0.4,
-            switcher_data: {
-                width_d: window.innerWidth * 0.4,
-                switcher: true,
-                small_div: {
-                    color_1: '#cccccc',
-                    color_2: '#ff9900'
-                }
-            }
+            switcher: true,
+            close_color: '#cccccc',
+            open_color: '#ff9900'
         },
         onBeforeFirstRender: function() {
             var me = this;
-            me.data.switcher_data={
-                width_d: window.innerWidth * 0.4,
-                switcher: true,
-                small_div: {
-                    color_1: '#cccccc',
-                    color_2: '#ff9900'
-                }
-            }
         },
         methods: {
             ensure: function() {
@@ -120,8 +108,8 @@
                 var obj = {
                     plugin_id: 303,
                     js: JSON.stringify({
-                        color_1: data.small_div.color_1.replace("#", ""),
-                        color_2: data.small_div.color_2.replace("#", ""),
+                        color_1: data.close_color.replace("#", ""),
+                        color_2: data.open_color.replace("#", ""),
                     }),
                     total: 0,
                     flag: 1

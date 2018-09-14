@@ -4,21 +4,24 @@
 
 ;
 (function() {
-    var Switcher_2 = function() {
+    var Switcher_2 = function () {
 
     };
-    Switcher_2.prototype.init = function(view) {
+    Switcher_2.prototype.init = function (view) {
         var me = this;
         var template =
-            `<div class='nd-plugin-switcher-box' style="width:{{width_d}}px;margin:0 auto"><div class='nd-plugin-switcher' id='on'>ON</div><div class='nd-plugin-switcher' id='off'>OFF</div></div>`;
+            `<div class='nd-plugin-switcher-box'><div class='nd-plugin-switcher' id='on'>ON</div><div class='nd-plugin-switcher' id='off'>OFF</div></div>`;
         var dataValue = DD.attr(view, 'dataValue');
         view.$dataValue = dataValue;
+        view.$bgColor = DD.attr(view, 'bgColor');
+        view.$shadowColor = DD.attr(view, 'shadowColor');
+        view.$btnColor = DD.attr(view, 'btnColor');
         view.removeAttribute('dataValue');
         view.innerHTML = template;
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
     };
-    Switcher_2.prototype.render = function(view) {
+    Switcher_2.prototype.render = function (view) {
         var me = this;
         var data = view.$getData().data;
         if (!data) {
@@ -33,12 +36,12 @@
         if (!module) {
             return;
         }
-        setTimeout(function() {
+        setTimeout(function () {
             var data = view.$getData().data;
-            var color_1 = data.small_div.color_1;
-            var color_2 = data.small_div.color_2;
-            var color_3 = data.small_div.color_3;
-            var color_4 = data.small_div.color_4;
+            var color_1 = data[view.$bgColor];
+            var color_2 = data[view.$shadowColor];
+            var color_3 = data[view.$shadowColor];
+            var color_4 = data[view.$btnColor];
             var switcherON = view.querySelector("#on");
             var switcherOFF = view.querySelector("#off");
             var switcherBox = view.querySelector('.nd-plugin-switcher-box');
@@ -66,7 +69,7 @@
                 DD.css(switcherOFF, 'text-shadow', '0 0 5px #fff,0 0 10px #fff,0 0 20px ' + color_3 + ',0 0 35px ' + color_3 + ',0 0 40px ' + color_3 + ',0 0 50px ' + color_3);
                 DD.css(switcherON, 'text-shadow', 'none');
             }
-            var clickEvent = function(e, d, v) {
+            var clickEvent = function (e, d, v) {
                 if (data[view.$dataValue]) {
                     data[view.$dataValue] = false;
                     DD.css(switcherOFF, 'color', color_4);
@@ -98,30 +101,14 @@
         data: {
             name: '3d开关',
             width_d: 200,
-            switcher_data: {
-                switcher: false,
-                width_d: 200,
-                small_div: {
-                    color_1: "#292827",
-                    color_2: "#FF9900",
-                    color_3: "#FF9900",
-                    color_4: "#FFFFFF"
-                }
-            }
+            switcher: false,
+            bg_color: "#292827",
+            shadow_color: "#FF9900",
+            btn_color: "#FFFFFF"
         },
         onBeforeFirstRender: function() {
             var me = this;
             me.data.width_d = window.innerWidth * 0.45;
-            me.data.switcher_data = {
-                switcher: false,
-                width_d: me.data.width_d,
-                small_div: {
-                    color_1: "#292827",
-                    color_2: "#FF9900",
-                    color_3: "#FF9900",
-                    color_4: "#FFFFFF"
-                }
-            }
         },
         methods: {
             ensure: function() {
@@ -130,10 +117,10 @@
                 var obj = {
                     plugin_id: 302,
                     js: JSON.stringify({
-                        color_1: data.small_div.color_1.replace("#", ""),
-                        color_2: data.small_div.color_2.replace("#", ""),
-                        color_3: data.small_div.color_3.replace("#", ""),
-                        color_4: data.small_div.color_4.replace("#", "")
+                        color_1: data.bg_color.replace("#", ""),
+                        color_2: data.shadow_color.replace("#", ""),
+                        color_3: data.shadow_color.replace("#", ""),
+                        color_4: data.btn_color.replace("#", "")
                     }),
                     total: 0,
                     flag: 1
