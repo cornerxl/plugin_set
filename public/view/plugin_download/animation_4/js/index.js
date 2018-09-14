@@ -51,7 +51,7 @@
         methods: {
             ensure: function() {
                 var me = this;
-                var data=me.buffering_data;
+                var data=me.data.buffering_data;
                 if (data.time < 0) {
                     data.time = 1;
                 }
