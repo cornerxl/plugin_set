@@ -40,26 +40,6 @@
  		</div>
  		</div>
  		</div>
- 		<div class="xDate-config" x-model='xDate_color'>
- 		<div class="xDate-config-item">
- 		<span>表头颜色</span><input class="xDate-color" type="color" x-field='header_color' value="{{header_color}}">
- 		</div>
- 		<div class="xDate-config-item">
- 		<span>背景颜色</span><input class="xDate-color" type="color" x-field='bg_color' value="{{bg_color}}">
- 		</div>
- 		<div class="xDate-config-item">
- 		<span>别月颜色</span><input class="xDate-color" type="color" x-field='day_color' value="{{day_color}}">
- 		</div>
- 		<div class="xDate-config-item">
- 		<span>今日背景</span><input class="xDate-color" type="color" x-field='today_color' value="{{today_color}}">
- 		</div>
- 		<div class="xDate-config-item">
- 		<span>本月颜色</span><input class="xDate-color" type="color" x-field='month_color' value="{{month_color}}">
- 		</div>
- 		<div class="xDate-config-item">
- 		<button class='xDate-apply'>应用</button>
- 		</div>
- 		</div>
  		</div>
  		</div>`;
         view.innerHTML = template;
@@ -269,7 +249,7 @@
                 year: "", //当前 年/月/日
                 month: "",
                 day: "",
-                show: true,
+                show: false,
                 xDate_color: { //日历自定义颜色
                     header_color: '#e6e6e6',
                     bg_color: '#fff',

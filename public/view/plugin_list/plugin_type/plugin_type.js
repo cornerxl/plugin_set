@@ -1246,6 +1246,8 @@
                                     <pre><span>                  content: 'NoDom提供了丰富的指令集，如x-repeat( 重复条目渲染 )、x-model(数据模型)、x-if/x-else(条件)、x-show(显示和隐藏)、x-route／x-router(路由)、 x-field(字段和双向绑定)、x-validity(字段验证)。 同时提供了自定义指令集，指令可以帮助简化模版，丰富渲染内容。',</span>      <span class="comment">/*插件具体内容信息*/</span></pre>
                                     <pre><span>                  head_color: '#f5f5f5',</span>      <span class="comment">/*折叠插件头部背景颜色*/</span></pre>
                                     <pre><span>                  content_color: '#FFFFFF',</span>      <span class="comment">/*插件具体内容背景颜色*/</span></pre>
+                                    <pre><span>                  head_font_color: '#666666',</span>      <span class="comment">/*插件具体头部字体颜色*/</span></pre>
+                                    <pre><span>                  content_font_color: '#999999',</span>      <span class="comment">/*插件具体内容字体颜色*/</span></pre>
                                     <pre><span>                  head_font_size: 16,</span>      <span class="comment">/*折叠插件头部字体大小*/</span></pre>
                                     <pre><span>                  content_font_size: 14,</span>      <span class="comment">/*插件具体内容字体大小*/</span></pre>
                                     <pre><span>            }</span></pre>
@@ -1258,8 +1260,10 @@
                                 isCollapse: true,
                                 heading: '点击展开，再次点击折叠',
                                 content: "NoDom提供了丰富的指令集，如x-repeat( 重复条目渲染 )、x-model(数据模型)、x-if/x-else(条件)、x-show(显示和隐藏)、x-route／x-router(路由)、 x-field(字段和双向绑定)、x-validity(字段验证)。 同时提供了自定义指令集，指令可以帮助简化模版，丰富渲染内容。",
-                                head_color: '#f5f5f5',
-                                content_color: '#FFFFFF',
+                                head_bg_color: '#f5f5f5',
+                                content_bg_color: '#FFFFFF',
+                                head_font_color: '#666666',
+                                content_font_color: '#999999',
                                 head_font_size: 16,
                                 content_font_size: 14
                             }

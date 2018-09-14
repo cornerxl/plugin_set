@@ -54,8 +54,10 @@
                 DD.css(collapseCon, 'height', 0);
                 DD.css(collapseHead, 'border-bottom', 'none');
             }
-            DD.css(collapseHead, 'background-color', data.head_color);
-            DD.css(collapseCon, 'background-color', data.content_color);
+            DD.css(collapseHead, 'background-color', data.head_bg_color);
+            DD.css(collapseCon, 'background-color', data.content_bg_color);
+            DD.css(collapseHead, 'color', data.head_font_color);
+            DD.css(collapseCon, 'color', data.content_font_color);
             DD.css(collapseHead, 'font-size', data.head_font_size + 'px');
             DD.css(collapseCon, 'font-size', data.content_font_size + 'px');
             var clickEvent = function (e,d,v) {
