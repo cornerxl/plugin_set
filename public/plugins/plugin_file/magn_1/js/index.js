@@ -3,15 +3,21 @@
     var magn = function() {};
     magn.prototype = {
         init: function(view) {
-            var tem = `<div class='ct' style="position:relative; width:100%;height:100%"><div class="small">
-    </div>
-    <img src="{{urlsmall}}" class='small-img'>
-    <div class="magn"></div>
-    <div class="big"><img src="{{urlbig}}" class='big_img'></div></div>`
+            var tem = `<div class='ct' style="position:relative; width:100%;height:100%">
+                            <div class="small"></div>
+                            <img class='small-img'>
+                            <div class="magn"></div>
+                        <div class="big"><img class='big_img'></div></div>`
             view.innerHTML = tem;
+            var data = DD.attr(view, 'dataName') || 'data';
+            view.$dataName = data;
+            DD.Compiler.compile(view, view.$module);
+            view.$forceRender = true;
+            view.$onceRender = false;
         },
-       render: function(view) {
+        render: function(view) {
             var me = this;
+            var data = view.$getData().data[view.$dataName];
             me.getx = function(x) {
                 var me = this;
                 if (x <= me.width / 2) {
@@ -46,19 +52,25 @@
             //渲染结束后开始执行
             setTimeout(function() {
                 //比例系数
-                me.radio = 2;
-                if (window.data && window.data.radio) {
-                    me.radio = window.data.radio;
-                }
+                me.radio = data.radio;
                 me.move_y = 0;
                 me.move_x = 0;
-                me.bigimg = view.querySelector('.big_img');
+                if(!view.$onceRender) {
+                    me.bigimg = view.querySelector('.big_img');
+                    me.smallimg = view.querySelector('.small-img');
+                    DD.attr(me.bigimg, 'src', data.big_img);
+                    DD.attr(me.smallimg, 'src', data.small_img);
+                    view.$onceRender = true;
+                }
+
                 //可以移动的小方块
                 me.magn = view.querySelector('.magn');
                 me.content_div = view.querySelector('.ct');
                 var ct_height = parseInt(DD.css(me.content_div, "height"));
                 var ct_width = parseInt(DD.css(me.content_div, "width"));
                 DD.css(me.magn, "width", (ct_width / me.radio) + 'px');
+                DD.css(me.magn, "background-color", data.mark_color);
+                DD.css(me.magn, "opacity", data.mark_opacity/10);
                 DD.css(me.magn, "height", (ct_height / me.radio) + 'px');
                 DD.css(me.bigimg, "width", (ct_width * me.radio) + 'px');
                 DD.css(me.bigimg, "height", (ct_height * me.radio) + 'px');
@@ -97,11 +109,28 @@
     };
     DD.Plugin.create('magn', magn);
     DD.createModule({
-        el: '.el-plugin',
+        el:".el-plugin",
         data: {
-            magn: {
-                urlsmall: 'img/small.jpg',
-                urlbig: 'img/big.jpg'
+            photo_to_big: {
+                small_img: '/plugin_set/public/view/plugin_download/magn_1/img/small.jpg',
+                big_img: '/plugin_set/public/view/plugin_download/magn_1/img/big.jpg',
+                radio: 2,
+            }
+        },
+        onBeforeFirstRender: function() {
+            var me = this;
+            if(window.data){
+                window.data.radio=me.data.photo_to_big.radio;
+            }
+        },
+        onRender: function() {
+            var me = this;
+            var tem = parseInt(DD.css(document.querySelector('.router-content'), 'height'));
+            if (tem > (window.innerHeight - 80)) {
+                me.module.send('m_plugin_download', {
+                    upload: false,
+                    height: tem,
+                });
             }
         }
     });

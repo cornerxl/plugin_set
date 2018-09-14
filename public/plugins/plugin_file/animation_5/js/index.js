@@ -36,15 +36,13 @@
     		time:2
     	},
     	onBeforeFirstRender:function(){
-    		var me=this;
-    		if(window.data){
-    			if(window.data.color){
-    				me.data.color=window.data.color;
-    			}
-    			if(window.data.time){
-    				me.data.time=window.data.time;
-    			}
-    		}
+    		var me = this;
+            var tem = me.data;
+            if (window.data) {
+                Object.keys(window.data).forEach(i => {
+                    tem[i] = window.data[i];
+                });
+            }
     	}
     })
 })()

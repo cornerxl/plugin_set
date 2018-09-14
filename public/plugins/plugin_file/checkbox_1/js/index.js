@@ -15,6 +15,11 @@
             setTimeout(function() {
                 me.check = view.querySelector(".check");
                 me.empty = view.querySelector(".empty");
+                 if(data.is_circle) {
+                    DD.css(me.check, 'border-radius', '100%');
+                } else {
+                    DD.css(me.check, 'border-radius', 0);
+                }
                 new DD.Event({
                 	view:me.check,
                 	eventName:"click",
@@ -33,6 +38,13 @@
             no_check_color: '#ffffff',
             empty_color: '#cccccc',
             yes: true,
+            is_circle:false,
         },
+        onBeforeFirstRender:function(){
+            var me=this;
+            if(window.data){
+                window.data.is_circle=me.data.is_circle;
+            }
+        }
     });
 })()

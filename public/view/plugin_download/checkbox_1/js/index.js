@@ -76,7 +76,15 @@
                             names: "background-color",
                             values: data.check_color.replace("#", "")
                         },
-                        total: 1
+                        width:{
+                            names:'width',
+                            values:me.data.check_data.size+'px'
+                        },
+                        height:{
+                            names:'height',
+                            values:me.data.check_data.size+'px'
+                        },
+                        total: 3
                     }),
                     class1: JSON.stringify({
                         names: ".nd-plugin-check-1 .check-content .empty",
@@ -94,7 +102,8 @@
                         },
                         total: 1
                     }),
-                    flag: 0,
+                    js:JSON.stringify({is_circle:me.data.check_data.is_circle}),
+                    flag:1,
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

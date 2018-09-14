@@ -11,28 +11,28 @@
         var dataValue = DD.attr(view, 'dataValue');
         view.$dataValue = dataValue;
         view.removeAttribute('dataValue');
-        var template = `<div class="nd-plugin-switcher-box" style="width{{width_d}}px"></div>`;
+        var template = `<div class="nd-plugin-switcher-box" style="width:{{width_d}}px"></div>`;
         view.innerHTML = template;
-        view.$openColor = DD.attr(view, 'openColor');
-        view.$closeColor = DD.attr(view, 'closeColor');
+        view.$openColor = DD.attr(view, 'openColor')||"open_color";
+        view.$closeColor = DD.attr(view, 'closeColor')||"close_color";
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
     };
     ThreeDimensionSwithcerA.prototype.render = function(view) {
         var me = this;
         var data = view.$getData().data;
-        if (!data) {
-            return;
-        }
-        var module;
-        if (!data.module) {
-            module = view.$module;
-        } else {
-            module = data.module;
-        }
-        if (!module) {
-            return;
-        }
+        // if (!data) {
+        //     return;
+        // }
+        // var module;
+        // if (!data.module) {
+        //     module = view.$module;
+        // } else {
+        //     module = data.module;
+        // }
+        // if (!module) {
+        //     return;
+        // }
         setTimeout(delayRender, 0);
 
         function delayRender() {
@@ -42,6 +42,7 @@
             var switcherBoxParent = switcherBox.parentNode.parentNode;
             var switcherBoxWidth = document.defaultView.getComputedStyle(switcherBoxParent, null).width;
             var switcherBoxHeight = document.defaultView.getComputedStyle(switcherBoxParent, null).height;
+            console.log(switcherBoxWidth);
             DD.css(switcherBox, 'width', switcherBoxWidth);
             DD.css(switcherBox, 'height', switcherBoxHeight);
             DD.css(switcherBox, 'border-radius', switcherBoxHeight);
@@ -108,8 +109,8 @@
                 var obj = {
                     plugin_id: 303,
                     js: JSON.stringify({
-                        color_1: data.close_color.replace("#", ""),
-                        color_2: data.open_color.replace("#", ""),
+                        close_color: data.close_color.replace("#", ""),
+                        open_color: data.open_color.replace("#", ""),
                     }),
                     total: 0,
                     flag: 1

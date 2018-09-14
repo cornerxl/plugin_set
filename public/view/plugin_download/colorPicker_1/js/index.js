@@ -322,8 +322,8 @@
                 v: 255,
                 show: false,
                 str: "#ff0000",
-                name: '颜色选择器'
-            }
+            },
+            name: '颜色选择器'
         },
         onBeforeFirstRender: function() {
             var me = this;

@@ -202,7 +202,7 @@
 .el-plugin-table-1 .plugin .my-table .table .list {
     overflow: hidden;
 }
-.el-plugin-table-1 .plugin .my-table .table .list :hover{
+.el-plugin-table-1 .plugin .my-table .table .list:hover{
     background-color: #EEE8AA;
 }
 .el-plugin-table-1 .plugin .my-table .table .list .rows {

@@ -117,7 +117,7 @@
                     if (me.is_can) {
                         me.is_can = false;
                         clearInterval(window.timer);
-                        me.doself(1);
+                        me.doself();
                         me.updata();
                     }
                 }
