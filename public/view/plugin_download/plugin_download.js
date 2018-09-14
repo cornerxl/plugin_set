@@ -252,9 +252,14 @@
             me.data.route_height = window.innerHeight - 80;
             me.data.show = true;
             setTimeout(canvas.init.bind(canvas, me.data.show), 2000);
-        },
-        onFirstRender: function() {
-            // DD.Router.go("/route/plugin_download/Chart_1");
+            me.data.first_type.forEach(i=>{
+                i.plugin.forEach(it=>{
+                    it.active=false;
+                });
+                i.show=false;
+            })
+             me.data.first_type[0].show=true;
+            me.data.first_type[0].plugin[0].active=true;
         },
         onReceive: function(m, data) {
             var me = this;
