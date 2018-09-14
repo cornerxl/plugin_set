@@ -119,7 +119,7 @@
                 if (me.province[p].length > 0) {
                     letter += `<li><a href=#nd-plugin-location-` + p + `>` + p + `</a></li>`;
                     template += `<div class="nd-plugin-location-letter">
-                                    <div id=nd-plugin-location-` + p + `>` + p + `</div>
+                                    <div id=nd-plugin-location-` + p + ` class='nd-plugin-location-title'>` + p + `</div>
                                 </div>
                                 <div class="nd-plugin-location-provicesbox">`
                     for (var i = 0; i < me.province[p].length; i++) {
@@ -148,6 +148,7 @@
                 var color1 = data.small_div.color_1;
                 var color2 = data.small_div.color_2;
                 var color3 = data.small_div.color_3;
+                var color4 = data.small_div.color_4;
                 var li = [];
                 li = Array.from(fixed.getElementsByTagName("a"));
                 li.forEach(function(i) {
@@ -156,12 +157,12 @@
                 li = Array.from(pop.getElementsByTagName("div"));
                 li.forEach(function(i) {
                     DD.css(i, "background-color", color1);
-                    DD.css(i, "background-color", "#ffffff");
+                    DD.css(i, "border", '1px solid' + color4);
                     if (window.my_li) {
                         DD.css(window.my_li, "background-color", color1);
                     }
                 });
-                li = document.querySelectorAll(".nd-plugin-location-A");
+                li = document.querySelectorAll(".nd-plugin-location-title");
                 li.forEach(function(i) {
                     DD.css(i, 'color', color3);
                 });
@@ -222,7 +223,8 @@
                 small_div: {
                     color_1: '#ffffff',
                     color_2: '#66d9ef',
-                    color_3: '#457eb1'
+                    color_3: '#457eb1',
+                    color_4: '#5a8dba'
                 },
                 location_country: '重庆',
                 popular_country: [
@@ -250,32 +252,6 @@
         },
         onBeforeFirstRender:function(){
             var me=this;
-            me.data.location_data={
-                width_d: 320,
-                small_div: {
-                    color_1: '#ffffff',
-                    color_2: '#66d9ef',
-                    color_3: '#457eb1'
-                },
-                location_country: '重庆',
-                popular_country: [
-                    { name: '北京' },
-                    { name: '重庆' },
-                    { name: '四川' },
-                    { name: '江西' },
-                    { name: '青海' },
-                    { name: '重庆' },
-                    { name: '江苏' },
-                    { name: '天津' },
-                    { name: '深圳' },
-                    { name: '浙江' },
-                    { name: '重庆' },
-                    { name: '江苏' },
-                    { name: '天津' },
-                    { name: '深圳' },
-                    { name: '浙江' }
-                ]
-            };
             me.data.width_d=320;
         },
         methods: {
@@ -287,7 +263,7 @@
                 }
                 var obj = {
                     plugin_id: 701,
-                    js: JSON.stringify({ color_1: data.small_div.color_1.replace("#", ""), color_2: data.small_div.color_2.replace("#", ""), color_3: data.small_div.color_3.replace("#", "") }),
+                    js: JSON.stringify({ color_1: data.small_div.color_1.replace("#", ""), color_2: data.small_div.color_2.replace("#", ""), color_3: data.small_div.color_3.replace("#", ""),color_4: data.small_div.color4.replace("#", "") }),
                     total: 0,
                     flag: 1
                 }
