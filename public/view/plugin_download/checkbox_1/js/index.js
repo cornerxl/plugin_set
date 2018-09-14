@@ -4,28 +4,41 @@
     checkBox.prototype = {
         init: function(view) {
             var template = `<div class="check-content">
-        <div class="empty"></div>
-        <div class="check"></div>
-    </div>`;
+                                <div class="check"></div>
+	                        </div>`;
             view.innerHTML = template;
+            var data = DD.attr(view, 'dataName') || 'data';
+            //数据项名字
+            view.$dataItem = data;
+            //移除showItem
+            view.removeAttribute('dataName');
+            //设置innerHTML
+            DD.Compiler.compile(view, view.$module);
+            view.$forceRender = true;
         },
         render: function(view) {
             var me = this;
-            var data = view.$getData().data;
+            var data = view.$getData().data[view.$dataItem];
             setTimeout(function() {
                 me.check = view.querySelector(".check");
-                me.empty = view.querySelector(".empty");
-                DD.css(me.empty, "background-color", data.empty_color);
-                if (data.yes) {
+                DD.css(me.check, 'width', data.size + 'px');
+                DD.css(me.check, 'height', data.size + 'px');
+                if(data.is_circle) {
+                    DD.css(me.check, 'border-radius', '100%');
+                } else {
+                    DD.css(me.check, 'border-radius', 0);
+                }
+
+                if (data.is_check) {
                     DD.css(me.check, "background-color", data.check_color);
                 } else {
                     DD.css(me.check, "background-color", data.no_check_color);
                 }
                 new DD.Event({
-                    view: me.check,
-                    eventName: "click",
-                    handler: function() {
-                        data.yes = !data.yes;
+                    view:me.check,
+                    eventName:"click",
+                    handler:function(){
+                        data.is_check = !data.is_check;
                     }
                 });
             }, 0);
@@ -38,26 +51,22 @@
         templateUrl: HTMLURL + "/plugin_download/checkbox_1/index.html",
         data: {
             name: '普通选择框',
-            checkbox_data: {
+            check_data : {
                 check_color: '#26a2ff',
                 no_check_color: '#ffffff',
                 empty_color: '#cccccc',
-                yes: true
+                is_check: false,
+                is_circle: false,
+                size: 20
             }
         },
         onBeforeFirseRender: function() {
             var me = this;
-            me.data.checkbox_data = {
-                check_color: '#26a2ff',
-                no_check_color: '#ffffff',
-                empty_color: '#cccccc',
-                yes: true
-            }
         },
         methods: {
             ensure: function() {
                 var me = this;
-                var data=me.data.checkbox_data;
+                var data=me.data.check_data;
                 var obj = {
                     plugin_id: 1201,
                     total: 3,

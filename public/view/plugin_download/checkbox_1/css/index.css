@@ -32,3 +32,15 @@
 	border-radius: 50%;
 	background-color: #fff;
 }
+
+.nd-plugin-check-1 .check-content .no-is-circle::after {
+	display: block;
+	position: absolute;
+	content:"";
+	top:25%;
+	left:25%;
+	width: 50%;
+	height: 50%;
+	border-radius: 0;
+	background-color: #fff;
+}
