@@ -62,6 +62,10 @@
                                     <pre><span>            location_country:  '*****'</span>      <span class="comment">/*当前位置城市名*/</span></pre>
                                     <pre><span>            popular_country: [{name: '北京'}]</span>      <span class="comment">/*热门城市数组*/</span></pre>
                                     <pre><span>            small_div: {</span>      <span class="comment">/*颜色对象*/</span></pre>
+                                    <pre><span>                  color_1: '#ffffff',</span>      <span class="comment">/*热门城市bg颜色*/</span></pre>
+                                    <pre><span>                  color_2: '#66d9ef',</span>      <span class="comment">/*定位颜色*/</span></pre>
+                                    <pre><span>                  color_3: '#457eb1',</span>      <span class="comment">/*城市列表标题颜色*/</span></pre>
+                                    <pre><span>                  color_4: '#5a8dba'</span>      <span class="comment">/*热门城市边框颜色*/</span></pre>
                                     <pre><span>      }</span></pre>
                                     <pre><span>}</span></pre>
                                 </pre>`,
@@ -87,7 +91,8 @@
                             small_div: {
                                 color_1: '#ffffff',
                                 color_2: '#66d9ef',
-                                color_3: '#457eb1'
+                                color_3: '#457eb1',
+                                color_4: '#5a8dba'
                             }
 
                         },
