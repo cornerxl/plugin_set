@@ -154,11 +154,11 @@
                         },
                         opacity: {
                             names: 'opacity',
-                            values: data.mark_opacity
+                            values: data.mark_opacity<1?data.mark_opacity:data.mark_opacity/10
                         },
                         total: 2
                     }),
-                    js: JSON.stringify({ radio:data.mark_color.radio}),
+                    js: JSON.stringify({ radio:data.radio}),
                     total: 1,
                     flag: 1
                 }

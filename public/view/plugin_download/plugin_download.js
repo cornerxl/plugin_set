@@ -400,6 +400,24 @@
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
             }
+             if (m === 'm_plugin_download_Checkbox_3') {
+                if (data.upload) {
+                    var params = data.obj;
+                    me.module.methodFactory.methods.upload.call(me, params);
+                }
+            }
+             if (m === 'm_plugin_download_Checkbox_4') {
+                if (data.upload) {
+                    var params = data.obj;
+                    me.module.methodFactory.methods.upload.call(me, params);
+                }
+            }
+             if (m === 'm_plugin_download_Checkbox_5') {
+                if (data.upload) {
+                    var params = data.obj;
+                    me.module.methodFactory.methods.upload.call(me, params);
+                }
+            }
             if (m === 'm_plugin_download_Checkbox_2') {
                 if (data.upload) {
                     var params = data.obj;

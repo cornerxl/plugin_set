@@ -170,24 +170,44 @@
     DD.Plugin.create('dragProBarHV', DragProBarHV);
     DD.createModule({
         name: "m_plugin_download_Progress_1",
-        requires: [{ type: 'css', path: HTMLURL + "/plugin_download/progress_1/css/index.css" }],
-        templateUrl: HTMLURL + "/plugin_download/progress_1/index.html",
+        el:".plugin-dragprobarHV",
         data: {
             name: "横向进度条",
             drag_pro_bar_process: 0.4,
             show_style: "horizontal",
-            process_box_bg: "rgba(96,96,96,0.5)",
+            process_box_bg: "#56565608",
             percent_color: "#ffffff",
             drag_btn_width: 10,
             process_bg: '#000',
             drag_btn_color: '#00ff00'
         },
-        onBeforeFistrRender: function() {
+       onBeforeFirstRender: function() {
             var me = this;
             var tem = me.data;
             if (window.data) {
                 Object.keys(window.data).forEach(i => {
                     tem[i] = window.data[i];
+                });
+            }
+        },
+        methods: {
+            ensure: function() {
+                var me = this;
+                var obj = {
+                    plugin_id: 501,
+                    js: JSON.stringify({
+                        process_bg: me.data.process_bg.replace("#", ""),
+                        process_box_bg: me.data.process_box_bg.replace("#", ""),
+                        percent_color: me.data.percent_color.replace("#", ""),
+                        drag_btn_color: me.data.drag_btn_color.replace("#", ""),
+                        drag_btn_width: me.data.drag_btn_width
+                    }),
+                    total: 0,
+                    flag: 1
+                };
+                me.module.send('m_plugin_download', {
+                    upload: true,
+                    obj: obj
                 });
             }
         }

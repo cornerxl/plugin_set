@@ -31,6 +31,7 @@ var config = {
         //由于css存在覆盖问题,故将新形成的class放在前面
         fs.writeFileSync(path + '/css/index.css', str + str_old, 'utf-8');
         //flag为1代表有js数据需要修改,0代表没有需要修改
+        console.log(obj);
         if (JSON.parse(obj.flag) === 1) {
             me.jsconfig(obj, path, "index");
         }
@@ -66,7 +67,7 @@ var config = {
             if (k.indexOf("color") !== -1 || k.indexOf("Color") !== -1) {
                 tem.push("    " + k + ":'#" + object[k] + "',\r\n");
             } else {
-                if (k.indexOf("legend")!==-1) {
+                if (k.indexOf("legend")!==-1||(object[k]+"").indexOf("rgba")!==-1||(object[k]+"").indexOf("rgb")!==-1) {
                     tem.push("    " + k + ":'" + object[k] + "',\r\n");
                 } else {
                     if (!object[k]) {

@@ -193,7 +193,7 @@
                     plugin_id: 501,
                     js: JSON.stringify({
                         process_bg: me.data.process_bg.replace("#", ""),
-                        process_box_bg: me.data.process_box_bg.replace("#", ""),
+                        process_box_bg: me.data.process_box_bg.replace("#", "")+'',
                         percent_color: me.data.percent_color.replace("#", ""),
                         drag_btn_color: me.data.drag_btn_color.replace("#", ""),
                         drag_btn_width: me.data.drag_btn_width

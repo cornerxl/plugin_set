@@ -106,7 +106,7 @@
         },
          onBeforeFistrRender: function() {
             var me = this;
-            var tem = me.data.buffering_data;
+            var tem = me.data.collapse_data;
             if (window.data) {
                 Object.keys(window.data).forEach(i => {
                     tem[i] = window.data[i];

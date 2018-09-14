@@ -124,32 +124,13 @@
                 var me = this;
                 var obj = {
                     plugin_id: 502,
-                    class0:JSON.stringify({
-                        names:".nd-plugin-probar-box .nd-plugin-probar-total .nd-plugin-probar-pro",
-                        background:{
-                            names:"background-color",
-                            values:me.data.process_percent_color.replace("#","")
-                        },
-                        total:1
-                    }),
-                    class1:JSON.stringify({
-                        names:".nd-plugin-probar-box .nd-plugin-probar-totals",
-                        background:{
-                            names:"background-color",
-                            values:me.data.process_bg_color.replace("#","")
-                        },
-                        total:1
-                    }),
-                    class2:JSON.stringify({
-                        names:".nd-plugin-probar-box .nd-plugin-probar-total .nd-plugin-probar-percent",
-                        background:{
-                            names:"color",
-                            values:me.data.process_percent_num_color.replace("#","")
-                        },
-                        total:1
-                    }),
-                    total: 3,
-                    flag: 0
+                    total: 0,
+                    flag: 1,
+                    js:JSON.stringify({
+                        process_percent_num_color:me.data.process_percent_num_color.replace("#",""),
+                        process_percent_color:me.data.process_percent_color.replace("#",""),
+                        process_bg_color:me.data.process_bg_color.replace("#","")
+                    })
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

@@ -112,8 +112,8 @@
         el:".el-plugin",
         data: {
             photo_to_big: {
-                small_img: '/plugin_set/public/view/plugin_download/magn_1/img/small.jpg',
-                big_img: '/plugin_set/public/view/plugin_download/magn_1/img/big.jpg',
+                small_img: 'img/small.jpg',
+                big_img: 'img/big.jpg',
                 radio: 2,
             }
         },

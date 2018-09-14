@@ -115,17 +115,18 @@
                 }
                 var obj = {
                     plugin_id: 801,
-                    js: JSON.stringify({
+                    js:JSON.stringify({
                         time: data.time,
                         head_bg_color: data.head_font_color.replace("#",""),
-                        content_bg_color: data.content.content_bg_color.replace("#",""),
+                        content_bg_color: data.content_bg_color.replace("#",""),
                         head_font_color: data.head_font_color.replace("#",""),
                         content_font_color:data.content_bg_color.replace("#",""),
                         head_font_size: data.head_font_size,
-                        content_font_size: data.content_font_color
+                        content_font_size: data.content_font_size
                     }),
-                    flag: 1,
-                }
+                    total:0,
+                    flag: 1
+                };
                 me.module.send('m_plugin_download', {
                     upload: true,
                     obj: obj
