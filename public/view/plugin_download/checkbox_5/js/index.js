@@ -61,6 +61,7 @@
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/checkbox_5/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/checkbox_5/index.html",
         data: {
+            name: "心形选择框",
             check_data: {
                 size: 24,
                 yes_2:true,

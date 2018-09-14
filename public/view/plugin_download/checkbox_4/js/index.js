@@ -61,6 +61,7 @@
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/checkbox_4/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/checkbox_4/index.html",
         data: {
+            name: "眼睛选择框",
             check_data: {
                 size: 24,
                 yes_2:true,

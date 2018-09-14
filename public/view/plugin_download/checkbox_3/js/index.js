@@ -67,6 +67,7 @@
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/checkbox_3/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/checkbox_3/index.html",
         data:{
+            name: "方形选择框",
             check_data:{
                 check_color:"#03a9f4",
                 no_check_color:"#00000080",

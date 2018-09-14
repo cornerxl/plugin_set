@@ -196,7 +196,7 @@
             }, {
                 first_name: '选择框',
                 show: false,
-                plugin: [{ name: "常见", route: "/route/plugin_download/Checkbox_1", active: false }, { name: "酷炫", route: "/route/plugin_download/Checkbox_2", active: false },{ name: "svg选择框", route: "/route/plugin_download/Checkbox_3", active: false }, { name: "酷炫", route: "/route/plugin_download/Checkbox_4", active: false }, { name: "酷炫", route: "/route/plugin_download/Checkbox_5", active: false }]
+                plugin: [{ name: "常见", route: "/route/plugin_download/Checkbox_1", active: false },{ name: "方形", route: "/route/plugin_download/Checkbox_3", active: false }, { name: "眼睛", route: "/route/plugin_download/Checkbox_4", active: false }, { name: "心形", route: "/route/plugin_download/Checkbox_5", active: false }]
             }, {
                 first_name: '日期选择',
                 show: false,
