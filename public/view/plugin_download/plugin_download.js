@@ -156,6 +156,9 @@
             HTMLURL + '/plugin_download/page_2/js/index.js',
             HTMLURL + '/plugin_download/checkbox_1/js/index.js',
             HTMLURL + '/plugin_download/checkbox_2/js/index.js',
+            HTMLURL + '/plugin_download/checkbox_3/js/index.js',
+            HTMLURL + '/plugin_download/checkbox_4/js/index.js',
+            HTMLURL + '/plugin_download/checkbox_5/js/index.js',
             HTMLURL + '/plugin_download/button_1/js/index.js',
             HTMLURL + '/plugin_download/icon_1/js/index.js',
             HTMLURL + '/plugin_download/colorPicker_1/js/index.js',
@@ -193,7 +196,7 @@
             }, {
                 first_name: '选择框',
                 show: false,
-                plugin: [{ name: "常见", route: "/route/plugin_download/Checkbox_1", active: false }, { name: "酷炫", route: "/route/plugin_download/Checkbox_2", active: false }]
+                plugin: [{ name: "常见", route: "/route/plugin_download/Checkbox_1", active: false }, { name: "酷炫", route: "/route/plugin_download/Checkbox_2", active: false },{ name: "svg选择框", route: "/route/plugin_download/Checkbox_3", active: false }, { name: "酷炫", route: "/route/plugin_download/Checkbox_4", active: false }, { name: "酷炫", route: "/route/plugin_download/Checkbox_5", active: false }]
             }, {
                 first_name: '日期选择',
                 show: false,
