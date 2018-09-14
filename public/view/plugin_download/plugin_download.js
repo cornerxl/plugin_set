@@ -216,7 +216,7 @@
             }, {
                 first_name: '进度条',
                 show: false,
-                plugin: [{ name: '普通', route: "/route/plugin_download/Progress_2", active: false }, { name: "多功能", route: "/route/plugin_download/Progress_1", active: false }, { name: "圆环", route: "/route/plugin_download/Progress_3", active: false }]
+                plugin: [{ name: '普通', route: "/route/plugin_download/Progress_2", active: false }, { name: "横向拖动", route: "/route/plugin_download/Progress_1", active: false }, { name: "圆环", route: "/route/plugin_download/Progress_3", active: false }]
             }, {
                 first_name: '开关',
                 show: false,
