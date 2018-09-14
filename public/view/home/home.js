@@ -58,7 +58,7 @@ window.data = {
             });
             setTimeout(function() {
                 window.partical.init();
-            }, 200);
+            }, 1000);
         },
         onFirstRender:function(){
             var me=this;
@@ -95,6 +95,7 @@ window.data = {
             me.canvas1.width = me.width;
             me.canvas1.height = me.height;
             me.canvas1 = me.canvas1.getContext('2d');
+            //第一进入页面设置标记物
             if (!me.loaded) {
                 var me = this;
                 me.img.src = me.src;
@@ -236,6 +237,7 @@ window.data = {
                 window.requestAnimationFrame(me.drawpatical.bind(me));
             } else {
                 me.overdraw();
+                // me.loaded=false;
             }
         },
         drawrect: function(item) {

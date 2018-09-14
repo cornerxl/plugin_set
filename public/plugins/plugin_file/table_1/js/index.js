@@ -95,7 +95,6 @@
                 DD.css(me.first_thead, "border", "1px solid #ddd");
                 DD.css(me.header, "width", me.second_thead.offsetWidth + 'px');
                 DD.css(me.header, "top", me.view.offsetTop + 'px');
-                console.log(me.view.offsetTop);
             }
             setTimeout(function() {
                 me.reverse = view.querySelector('.reverse');

@@ -1,9 +1,11 @@
+.animation-loading{
+    width: 100%;
+    position: relative;
+    height: 300px;
+}
 .nd-plugin-loading-2 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    position: absolute;
+    height: 300px!important;
     width: 100%;
     margin: auto;
     background-color: rgba(255, 255, 255, 0.7);
@@ -18,7 +20,9 @@
     width: 50px;
     height: 60px;
     text-align: center;
-    font-size: 10px
+    font-size: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .nd-plugin-loading-2 .spinner>div {

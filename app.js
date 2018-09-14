@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var index = require('./server/index');
+// var index = require('./server/index');
 var down = require('./server/api/down');
 var imgs=require("./server/api/imgs");
 var post=require("./server/api/post");
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use("/plugin_set/public", express.static(path.join(__dirname, 'public')));
 //get获取数据
-app.use('/', index);
+// app.use('/', index);
 app.use('/api/down',down);
 app.use('/api/imgs',imgs);
 app.use('/api/json',json);

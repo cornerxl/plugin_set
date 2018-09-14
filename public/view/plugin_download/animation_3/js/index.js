@@ -83,7 +83,7 @@
                         total: 3,
                         aniamatin: {
                             names: 'animation-duration',
-                            values: data.data.animation_time + 's'
+                            values: data.animation_time + 's'
                         },
                         borderLeft: {
                             names: 'border-left-color',

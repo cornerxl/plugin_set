@@ -2,11 +2,11 @@
  * Created by xll on 2017/11/27.
  */
 (function() {
-    var Collapse = function () {
+    var Collapse = function() {
 
     }
 
-    Collapse.prototype.init = function (view) {
+    Collapse.prototype.init = function(view) {
         var me = this;
         var template = `<div class="nd-plugin-collapse-box nd-plugin-slideimg-panel">
                             <div class="nd-plugin-collapse-heading">
@@ -23,22 +23,23 @@
         view.$forceRender = true;
     }
 
-    Collapse.prototype.render = function (view) {
+    Collapse.prototype.render = function(view) {
         var me = this;
         var data = view.$getData().data[view.$dataName];
-        if(!data){
+        if (!data) {
             return;
         }
         var module;
-        if(!data.module){
+        if (!data.module) {
             module = view.$module;
-        }else {
+        } else {
             module = data.module;
         }
-        if(!module){
+        if (!module) {
             return;
         }
         setTimeout(delayRender, 0);
+
         function delayRender() {
             var collapseHead = document.querySelector(".nd-plugin-collapse-heading");
             var collapseCon = document.querySelector(".nd-plugin-collapse-content");
@@ -46,10 +47,10 @@
             collapseHead.innerText = data.heading;
             collapseConInfo.innerText = data.content;
             var collapseConInfoHeight = parseInt(window.getComputedStyle(collapseConInfo, null).height) + parseInt(20) + 'px';
-            if(data.isCollapse){
+            if (data.isCollapse) {
                 DD.css(collapseCon, 'height', collapseConInfoHeight);
                 DD.css(collapseHead, 'border-bottom', '1px solid #ddd');
-            }else {
+            } else {
                 DD.css(collapseCon, 'height', 0);
                 DD.css(collapseHead, 'border-bottom', 'none');
             }
@@ -59,28 +60,28 @@
             DD.css(collapseConInfo, 'color', data.content_font_color);
             DD.css(collapseHead, 'font-size', data.head_font_size + 'px');
             DD.css(collapseCon, 'font-size', data.content_font_size + 'px');
-            var clickEvent = function (e,d,v) {
-                if(data.isCollapse){
+            var clickEvent = function(e, d, v) {
+                if (data.isCollapse) {
                     DD.css(collapseCon, 'height', 0);
-                    setTimeout(function () {
+                    setTimeout(function() {
                         DD.css(collapseHead, 'border-bottom', 'none');
                     }, 500);
                     data.isCollapse = false;
-                }else {
+                } else {
                     data.isCollapse = true;
                     DD.css(collapseCon, 'height', collapseConInfoHeight);
                     DD.css(collapseHead, 'border-bottom', '1px solid #ddd');
                 }
                 DD.css(collapseCon, 'transition-property', 'height');
-                DD.css(collapseCon, 'transition-duration', data.time+'s');
+                DD.css(collapseCon, 'transition-duration', data.time + 's');
                 DD.css(collapseCon, '-webkit-transition-property', 'height');
-                DD.css(collapseCon, '-webkit-transition-duration', data.time+'s');
+                DD.css(collapseCon, '-webkit-transition-duration', data.time + 's');
             }
             //点击事件
             new DD.Event({
-                eventName:'click',
-                view:collapseHead,
-                handler:clickEvent
+                eventName: 'click',
+                view: collapseHead,
+                handler: clickEvent
             });
         }
     }
@@ -108,35 +109,20 @@
         methods: {
             ensure: function() {
                 var me = this;
-                var data=me.data.collapse_data;
+                var data = me.data.collapse_data;
                 if (data.time <= 0) {
                     data.time = 0.5;
                 }
                 var obj = {
                     plugin_id: 801,
-                    total: 2,
-                    class0: JSON.stringify({
-                        names: '.nd-plugin-collapse-heading',
-                        background: {
-                            names: 'background-color',
-                            values: data.small_div.headColor.replace("#", "")
-                        },
-                        total: 1
-                    }),
-                    class1: JSON.stringify({
-                        names: ".nd-plugin-collapse-coninfo",
-                        color: {
-                            names: 'color',
-                            values: data.small_div.fontColor.replace("#", "")
-                        },
-                        size: {
-                            names: "size",
-                            values: data.small_div.fontSize + 'px'
-                        },
-                        total: 2
-                    }),
                     js: JSON.stringify({
-                        time: data.small_div.time
+                        time: data.time,
+                        head_bg_color: data.head_font_color.replace("#",""),
+                        content_bg_color: data.content.content_bg_color.replace("#",""),
+                        head_font_color: data.head_font_color.replace("#",""),
+                        content_font_color:data.content_bg_color.replace("#",""),
+                        head_font_size: data.head_font_size,
+                        content_font_size: data.content_font_color
                     }),
                     flag: 1,
                 }

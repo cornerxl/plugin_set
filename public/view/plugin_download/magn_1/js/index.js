@@ -70,7 +70,7 @@
                 var ct_width = parseInt(DD.css(me.content_div, "width"));
                 DD.css(me.magn, "width", (ct_width / me.radio) + 'px');
                 DD.css(me.magn, "background-color", data.mark_color);
-                DD.css(me.magn, "opacity", data.mark_opacity);
+                DD.css(me.magn, "opacity", data.mark_opacity/10);
                 DD.css(me.magn, "height", (ct_height / me.radio) + 'px');
                 DD.css(me.bigimg, "width", (ct_width * me.radio) + 'px');
                 DD.css(me.bigimg, "height", (ct_height * me.radio) + 'px');
@@ -119,7 +119,7 @@
                 big_img: '/plugin_set/public/view/plugin_download/magn_1/img/big.jpg',
                 radio: 2,
                 mark_color: '#666666',
-                mark_opacity: '0.2'
+                mark_opacity: '2'
             }
         },
         onBeforeFirstRender: function() {
@@ -153,12 +153,12 @@
                             values: data.mark_color.replace("#", "")
                         },
                         opacity: {
-                            names: 'background-color',
-                            values: data.mark_color.replace("#", "")
+                            names: 'opacity',
+                            values: data.mark_opacity
                         },
                         total: 2
                     }),
-                    js: JSON.stringify({ radio:data.mark_color.radio }),
+                    js: JSON.stringify({ radio:data.mark_color.radio}),
                     total: 1,
                     flag: 1
                 }
