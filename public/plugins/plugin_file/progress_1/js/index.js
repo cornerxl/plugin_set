@@ -1,7 +1,8 @@
 ﻿/**
  * Created by xll on 2017/11/30.
  */
-;(function() {
+;
+(function() {
 
     /**
      * 数据项配置说明
@@ -22,12 +23,17 @@
                         </div>`;
         DD.addClass(view, 'nd-plugin-dragprobar');
         //数据项名
-        var data = DD.attr(view, 'dataItem');
+        var data = DD.attr(view, 'process');
         view.$dataName = data;
         //显示样式
         var showStyle = DD.attr(view, 'showStyle');
         view.$showStyle = showStyle;
 
+        view.$processBoxBg = DD.attr(view, 'processBoxBg');
+        view.$percentColor = DD.attr(view, 'percentColor');
+        view.$processBg = DD.attr(view, 'processBg');
+        view.$dragBtnWidth = DD.attr(view, 'dragBtnWidth');
+        view.$dragBtnColor = DD.attr(view, 'dragBtnColor');
         view.innerHTML = template;
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
@@ -48,33 +54,35 @@
         if (!module) {
             return;
         }
-
         setTimeout(delayRender, 0);
 
         function delayRender() {
             var box = document.querySelector(".nd-plugin-dragprobar-box");
-            DD.css(box,"background-color","rgba(96,96,96,0.5)");
+            DD.css(box, "background-color", "rgba(96,96,96,0.5)");
             var boxParents = box.parentNode.parentNode;
             var boxParentsStyle = window.getComputedStyle(boxParents, null);
             var percent = document.querySelector(".nd-plugin-dragprobar-percent");
             var btn = document.querySelector(".nd-plugin-dragprobar-btn");
             var total = document.querySelector(".nd-plugin-dragprobar-total");
+            var temp = 0;
             var totalWidth;
             var totalHeight;
-            var color_1=data.small_div.color_1;
-            var color_2=data.small_div.color_2;
-            var color_3=data.small_div.color_3;
-            DD.css(box,"background-color",color_1);
-            DD.css(total,"background-color",color_3);
-            DD.css(percent,"background-color",color_2);
+            DD.css(box, "background-color", data[view.$processBoxBg]);
+            DD.css(total, "background-color", data[view.$processBg]);
+            DD.css(percent, "background-color", data[view.$percentColor]);
+            DD.css(btn, 'width', data[view.$dragBtnWidth] + 'px');
+            DD.css(btn, 'height', data[view.$dragBtnWidth] + 'px');
+            DD.css(btn, 'margin-top', -(data[view.$dragBtnWidth] / 2 - 1) + 'px');
+            DD.css(btn, 'margin-left', -(data[view.$dragBtnWidth] / 2 - 1) + 'px');
+            DD.css(btn, 'background-color', data[view.$dragBtnColor]);
             if (data[view.$showStyle] === "vertical") {
                 //设置总滑动条长宽
-                DD.css(total, 'width', '10px');
+                DD.css(total, 'width', '2px');
                 DD.css(total, 'height', boxParentsStyle.height);
                 totalWidth = window.getComputedStyle(total, null).width;
                 totalHeight = window.getComputedStyle(total, null).height;
                 //设置percent的width
-                DD.css(percent, 'width', '10px');
+                DD.css(percent, 'width', '2px');
                 //设置percent的height，top及btn的top
                 if (data[view.$dataName]) {
                     if (typeof data[view.$dataName] === 'string') {
@@ -101,6 +109,7 @@
                 }
 
             } else if (data[view.$showStyle] === 'horizontal') {
+
                 DD.css(box, 'height', boxParentsStyle.height);
                 //设置总滑动条长宽
                 DD.css(total, 'width', boxParentsStyle.width);
@@ -131,97 +140,56 @@
                     alert("找不到数据dragProBar！");
                 }
             }
-            var clickEvent = function() {
-                //判断鼠标是否按下
-                var flag = false;
-                btn.addEventListener('touchstart', function() {
-                    flag = true;
-                    boxParents.addEventListener('touchmove', function(e) {
-                        e.preventDefault();
-                        if (flag) {
-                            if (data[view.$showStyle] === 'vertical') {
-                                var percentHeight;
-                                e.touches[0]
-                                if (e.touches[0].pageY >= parseFloat(totalHeight)) {
-                                    percentHeight = 0;
-                                } else if (e.touches[0].pageY <= 0) {
-                                    percentHeight = "100%";
-                                } else {
-                                    data[view.$dataName] = parseFloat(1) - parseFloat(e.touches[0].pageY / parseFloat(totalHeight));
-                                    percentHeight = data[view.$dataName] * 100 + '%';
-                                }
-
-                                DD.css(percent, 'height', percentHeight);
-                                DD.css(percent, 'top', (parseFloat(1) - parseFloat(data[view.$dataName])) * 100 + '%');
-                                DD.css(btn, 'top', (parseFloat(1) - parseFloat(data[view.$dataName])) * 100 + '%')
-                            } else if (data[view.$showStyle] === 'horizontal') {
-                                var percentWidth;
-                                if (e.touches[0].pageX >= parseFloat(totalWidth)) {
-                                    percentWidth = '100%';
-                                } else if (e.touches[0].pageX <= 0) {
-                                    percentWidth = 0;
-                                } else {
-                                    data[view.$dataName] = e.touches[0].pageX / parseFloat(totalWidth);
-                                    percentWidth = data[view.$dataName] * 100 + '%';
-                                }
-                                DD.css(percent, 'width', percentWidth);
-                                DD.css(btn, 'left', percentWidth);
-                            }
-                        }
-                    })
-                    boxParents.addEventListener('touchend', function() {
-                        flag = false;
-                    })
-                });
-            }
-            clickEvent();
             new DD.Event({
                 eventName: 'click',
                 view: box,
                 delg: true,
-                capture:true,
-                handler: function(e, data, view) {
+                capture: true,
+                handler: function(e, data, v) {
                     var me = this;
                     if (e.target.className === 'nd-plugin-dragprobar-btn') {
                         return;
                     }
-                    var box_width = parseInt(DD.css(box, 'width'));
-                    data[view.$dataName] = e.offsetX / box_width;
-                    DD.css(percent, "width", e.offsetX + 'px');
-                    DD.css(btn, "left", e.offsetX + 'px');
+                    if (data[view.$showStyle] === 'horizontal') {
+                        var box_width = parseInt(DD.css(box, 'width'));
+                        data[view.$dataName] = e.offsetX / box_width;
+                        DD.css(percent, "width", e.offsetX + 'px');
+                        DD.css(btn, "left", e.offsetX + 'px');
+                    } else if (data[view.$showStyle] === 'vertical') {
+                        var box_height = parseInt(DD.css(box, 'height'));
+                        data[view.$dataName] = e.offsetY / box_height;
+                        DD.css(percent, "top", e.offsetY + 'px');
+                        DD.css(percent, "height", (1 - data[view.$dataName]) * box_height + 'px');
+                        DD.css(btn, "top", e.offsetY + 'px');
+                    }
+
                 }
             });
         }
     }
     DD.Plugin.create('dragProBarHV', DragProBarHV);
     DD.createModule({
-        name:"m_plugin_download_Progress_1",
-        el:'.plugin-dragprobarHV',
+        name: "m_plugin_download_Progress_1",
+        requires: [{ type: 'css', path: HTMLURL + "/plugin_download/progress_1/css/index.css" }],
+        templateUrl: HTMLURL + "/plugin_download/progress_1/index.html",
         data: {
-            dragProBarHV: 0.4,
-            showStyle: "horizontal",
-            width_d:window.innerWidth*0.45,
-            name:"进度条",
-            small_div:{
-                color_1:"rgba(96,96,96,0.5)",
-                color_2:"#ffffff",
-                width:10,
-                color_3:'#000000'
-            }
+            name: "横向进度条",
+            drag_pro_bar_process: 0.4,
+            show_style: "horizontal",
+            process_box_bg: "rgba(96,96,96,0.5)",
+            percent_color: "#ffffff",
+            drag_btn_width: 10,
+            process_bg: '#000',
+            drag_btn_color: '#00ff00'
         },
-        onBeforeFirstRender:function(){
-            var me=this;
-            if(window.data){
-                if(window.data.color_1){
-                    me.data.small_div.color_1=window.data.color_1;
-                }
-                if(window.data.color_2){
-                    me.data.small_div.color_2=window.data.color_2;
-                }
-                if(window.data.color_3){
-                    me.data.small_div.color_3=window.data.color_3;
-                }
+        onBeforeFistrRender: function() {
+            var me = this;
+            var tem = me.data;
+            if (window.data) {
+                Object.keys(window.data).forEach(i => {
+                    tem[i] = window.data[i];
+                });
             }
-        },
+        }
     });
 }());

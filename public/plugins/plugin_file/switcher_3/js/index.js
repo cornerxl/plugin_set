@@ -100,12 +100,8 @@
         onBeforeFirstRender: function() {
             var me = this;
             if(window.data){
-                if(window.data.color_1){
-                    me.data.small_div.color_1=window.data.color_1;
-                }
-                if(window.data.color_2){
-                    me.data.small_div.color_2=window.data.color_2;
-                }
+                me.data.small_div.color_1=window.data.close_color;
+                me.data.small_div.color_2=window.data.open_color;
             }
         }
     })
