@@ -55,7 +55,8 @@ DD.createModule({
                          legend: me.data.scatter.legend+'',
                          gridLine:me.data.scatter.gridLine,
                          gridLineColor:me.data.scatter.gridLineColor.replace("#",""),
-                         cs:me.data.scatter.data.cs
+                         cs:me.data.scatter.data.cs,
+                         symbolSize:me.data.scatter.symbolSize
                     }),
                     flag: 1
                 }

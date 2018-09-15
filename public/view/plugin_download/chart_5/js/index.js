@@ -44,6 +44,7 @@ DD.createModule({
                          titleColor:me.data.radar.titleColor.replace("#",""),
                          legend: `${me.data.radar.legend}`,
                          marker:me.data.radar.marker,
+                         lineColor:me.data.radar.radar.lineColor.replace("#",""),
                          changeColors:me.data.radar.changeColors.replace("#","")
                     }),
                     flag: 1

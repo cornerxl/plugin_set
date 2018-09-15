@@ -249,7 +249,7 @@
         onBeforeFirstRender:function(){
             var me=this;
             me.data.width_d=320;
-            var tem=me.data.location_data;
+            var tem=me.data.location_data.small_div;
             if(window.data){
                 Object.keys(window.data).forEach(k=>{
                     tem[k]=window.data[k];

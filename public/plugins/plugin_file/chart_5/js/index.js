@@ -46,7 +46,8 @@
                 to[i]=tem[i];
             });
         };
-        console.log(this);
+        to.radar.lineColor=window.data.lineColor;
+        to.radar.colors = window.data.changeColors.split(' ');
     },
     methods: {
         changeTitleColor(e, data, view) {
