@@ -7,7 +7,7 @@
         </div>
         <div class="itemss">
             <label for="" class="span">图例</label>
-            <select name="" id="" e-change="changeLegend" class="input">
+            <select name="" id="" e-change="changeLegend" class="input" x-field="legend">
                 <option value="{{value}}" x-repeat="legends" class="input">{{text}}</option>
             </select>
         </div>
@@ -17,7 +17,7 @@
         </div>
         <div class="itemss">
             <label for="" class="span">区域颜色</label>
-            <input type="color" x-field="changeColors" class="input">
+            <input type="text" x-field="changeColors" e-change="changeRadarColors" class="input">
             <!-- <button e-click="changeRadarColors">修改</button> -->
         </div>
         <!-- <div class="itemss">

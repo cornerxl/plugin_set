@@ -8,8 +8,7 @@ DD.createModule({
             "legend": "",
             "marker": false,
             "titleColor": "#000000",
-            "legend": "",
-            "symbolSize": 8,
+            "symbolSize": 12,
             "gridLine": 0,
             "gridLineColor": "#cccccc",
             "legends": [
@@ -39,7 +38,7 @@ DD.createModule({
                     {x:7.0, y:4.82},
                     {x:5.0, y:5.68}
                 ],
-                cs: ''
+                cs: 8
             }],
             addX: '',
             addY: ''
@@ -72,43 +71,11 @@ DD.createModule({
         changeLegend(e, data, view) {
             data.legend = e.target.value;
         },
-        changeMarker(e, data, view) {
-            data.marker = e.target.checked;
-        },
         changeLine(e, data) {
             data.gridLine = e.target.value;
         },
         changeLineColor(e, data) {
             data.gridLineColor = e.target.value;
-        },
-        addLineData(e, data) {
-            var d = DD.clone(data.data);
-            var o = {};
-            var ad = data.addData.split(' ');
-            var datas = [
-                { "x": "1月" },
-                { "x": "2月" },
-                { "x": "3月" },
-                { "x": "4月" },
-                { "x": "5月" },
-                { "x": "6月" }
-            ]
-            for (var i = 0, l = 6; i < l; i++) {
-                datas[i].y = parseInt(ad[i], 10);
-            }
-            o.datas = datas;
-            o.title = data.addTitle;
-            d.push(o);
-            data.data = d;
-        },
-        addPieData(e, data) {
-            var cD = DD.clone(data.data);
-            var d = {
-                title: data.addTitle,
-                value: parseInt(data.addData, 10)
-            }
-            cD.push(d);
-            data.data = cD;
         },
         addScatterData(e, data) {
             var cD = DD.clone(data.data);
@@ -117,31 +84,6 @@ DD.createModule({
                 y: parseFloat(data.addY, 10)
             })
             data.data = cD;
-        },
-        addRadarData(e, data) {
-            var cD = DD.clone(data.data);
-            var ads = data.addData.split(' ');
-            for (var i = 0, l = ads.length; i < l; i++) {
-                ads[i] = parseFloat(ads[i], 10);
-            }
-            cD.push({
-                title: data.addTitle,
-                datas: ads
-            })
-            data.data = cD;
-        },
-        changeRadarLineColor(e, data) {
-            var radar = DD.clone(data.radar);
-            radar.lineColor = e.target.value;
-            data.radar = radar;
-        },
-        changeRadarColors(e, data) {
-            var radar = DD.clone(data.radar);
-            radar.colors = data.changeColors.split(' ');
-            data.radar = radar;
-        },
-        changeSymbolSize(e, data) {
-            data.symbolSize = parseInt(data.cs, 10);
         }
     }
 })

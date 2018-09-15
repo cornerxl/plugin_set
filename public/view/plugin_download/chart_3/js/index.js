@@ -7,7 +7,6 @@ DD.createModule({
             "title":"饼状图",
             "legend":"",
             "titleColor":"#000000",
-            "legend":"",
             "showPercent":true,
             "showText":true,
             "legends":[

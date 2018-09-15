@@ -14,6 +14,14 @@
                             <option value="{{value}}" x-repeat="legends" class="input">{{text}}</option>
                         </select>
                     </div>
+                    <div class="check">
+                        <span class="span">显示百分比</span>
+                        <input type="checkbox" class='input' x-field="showPercent" yes-value='true' no-value='false'>
+                    </div>
+                    <div class="check">
+                        <span class="span">显示内容</span>
+                        <input type="checkbox" class='input' x-field="showText" yes-value='true' no-value='false'>
+                    </div>
                    <!--  <div class="option-group">
                         <label for="">添加数据</label>
                         <input type="text" x-field="addTitle">

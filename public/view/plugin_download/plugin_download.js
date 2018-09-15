@@ -180,7 +180,7 @@
             first_type: [{
                 first_name: '图表',
                 show: true,
-                plugin: [{ name: '折线图', route: "/route/plugin_download/Chart_1", active: true }, { name: "直方图", route: "/route/plugin_download/Chart_2", active: false }, { name: '饼状图图', route: "/route/plugin_download/Chart_3", active: false }, { name: '散点图', route: "/route/plugin_download/Chart_4", active: false }, { name: '雷达图', route: "/route/plugin_download/Chart_5", active: false }]
+                plugin: [{ name: '折线图', route: "/route/plugin_download/Chart_1", active: true }, { name: "直方图", route: "/route/plugin_download/Chart_2", active: false }, { name: '饼状图', route: "/route/plugin_download/Chart_3", active: false }, { name: '散点图', route: "/route/plugin_download/Chart_4", active: false }, { name: '雷达图', route: "/route/plugin_download/Chart_5", active: false }]
             }, {
                 first_name: '缓冲动画',
                 show: false,
