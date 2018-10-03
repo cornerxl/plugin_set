@@ -1,6 +1,6 @@
 ;
 (function() {
-    var tree = function() {};
+    var tree=function(){};
     tree.prototype = {
         init: function(view) {},
         render: function(view) {
@@ -10,25 +10,37 @@
                 return;
             }
             me.datas.one = 0;
+            //递归方法创建无限树
             me.create = function(arr) {
                 var s = "";
-                var tem = `<div class="item" id="{{txt}}" x-repeat="arr" x-show="show">
-				   <div class="ct">
-					      <div   e-click="check" x-class="{'check':'click'}" class="input"></div>
-					      <span class="txt" e-click="show">{{txt}}</span>
-				   </div>\r\n`;
+                var tem = `  <div class="item" id="{{txt}}" x-repeat="arr" x-show="show">
+                   <div class="ct">
+                          <div   e-click="check" x-class="{'check':'click'}" class="input"></div>
+                          <span class="txt" e-click="show">{{txt}}</span>
+                   </div>\r\n`;
+                var arrd = [];
+                var count = 0;
                 arr.forEach(function(i, index, a) {
                     if (i.arr) {
-                        s += me.create(i.arr);
+                        arrd[count] = me.create(i.arr);
+                        count += 1;
                     }
-                    tem += s;
-                    s = "";
                 });
-                return tem + `</div>\r\n`;
+                var length = 0;
+                var max = "\r\n";
+                arrd.forEach(i => {
+                    if (i.length > length) {
+                        max = i;
+                        length = i.length;
+                    }
+                });
+                return tem + max + `</div>\r\n`;
             };
-            var str = me.create(me.datas.arr);
-            console.log(str);
+            var str = me.create(me.datas.arr) + `</div>`;
             view.innerHTML = str;
+            view.$forceRender = true;
+            console.log(str);
+            //重新编译
             DD.Compiler.compile(view, view.$module);
         }
     };
