@@ -2,8 +2,7 @@
 (function() {
     var tree = function() {};
     tree.prototype = {
-        init: function(view) {
-        },
+        init: function(view) {},
         render: function(view) {
             var me = this;
             me.datas = view.$getData().data;
@@ -14,23 +13,33 @@
             //递归方法创建无限树
             me.create = function(arr) {
                 var s = "";
-                var tem = `<div class="item" id="{{txt}}" x-repeat="arr" x-show="show">
+                var tem = `  <div class="item" id="{{txt}}" x-repeat="arr" x-show="show">
                    <div class="ct">
                           <div   e-click="check" x-class="{'check':'click'}" class="input"></div>
                           <span class="txt" e-click="show">{{txt}}</span>
                    </div>\r\n`;
+                var arrd = [];
+                var count = 0;
                 arr.forEach(function(i, index, a) {
                     if (i.arr) {
-                        s += me.create(i.arr);
+                        arrd[count] = me.create(i.arr);
+                        count += 1;
                     }
-                    tem += s;
-                    s = "";
                 });
-                return tem + `</div>\r\n`;
+                var length = 0;
+                var max = "\r\n";
+                arrd.forEach(i => {
+                    if (i.length > length) {
+                        max = i;
+                        length = i.length;
+                    }
+                });
+                return tem + max + `</div>\r\n`;
             };
-            var str = me.create(me.datas.arr);
+            var str = me.create(me.datas.arr) + `</div>`;
             view.innerHTML = str;
             view.$forceRender = true;
+            console.log(str);
             //重新编译
             DD.Compiler.compile(view, view.$module);
         }
@@ -38,7 +47,10 @@
     DD.Plugin.create("tree", tree);
     DD.createModule({
         name: "m_plugin_download_Tree_1",
-        requires: [{ type: 'css', path: HTMLURL + "/plugin_download/tree_1/css/index.css" }],
+        requires: [{
+            type: 'css',
+            path: HTMLURL + "/plugin_download/tree_1/css/index.css"
+        }],
         templateUrl: HTMLURL + "/plugin_download/tree_1/index.html",
         delayInit: true,
         data: {
@@ -80,7 +92,7 @@
                 }, {
                     click: false,
                     txt: "parent-2",
-                    show: true
+                    show: false,
                 }, {
                     click: false,
                     txt: "parent-3",
@@ -131,7 +143,42 @@
                 }, {
                     click: false,
                     txt: "parent-2",
-                    show: true
+                    show: true,
+                    arr: [{
+                        click: false,
+                        txt: "child-1",
+                        show: false,
+                        arr: [{
+                            click: false,
+                            txt: "child-1-1",
+                            show: false,
+                            arr:[{
+                                click: false,
+                                txt: "child-1-1-1",
+                                show: false
+                            }, {
+                                click: false,
+                                txt: "child-1-1-2",
+                                show: false
+                            }]
+                        }, {
+                            click: false,
+                            txt: "child-1-2",
+                            show: false
+                        }]
+                    }, {
+                        click: false,
+                        txt: "child-2",
+                        show: false
+                    }, {
+                        click: false,
+                        txt: "child-3",
+                        show: false
+                    }, {
+                        click: false,
+                        txt: "child-4",
+                        show: false
+                    }]
                 }, {
                     click: false,
                     txt: "parent-3",
@@ -172,7 +219,7 @@
             },
             ensure: function() {
                 var me = this;
-                var data=me.data.tree_data;
+                var data = me.data.tree_data;
                 var obj = {
                     plugin_id: 1601,
                     class0: JSON.stringify({
