@@ -2,12 +2,12 @@
  * 日期插件
  */
 
-(function() {
-    var xDate = function() {
+(function () {
+    var xDate = function () {
 
     };
 
-    xDate.prototype.init = function(view) {
+    xDate.prototype.init = function (view) {
         var dataYear = DD.attr(view, 'Year');
         var dataMonth = DD.attr(view, 'Month');
         var dataDay = DD.attr(view, 'Day');
@@ -47,7 +47,7 @@
         view.$forceRender = true;
     }
 
-    xDate.prototype.render = function(view) {
+    xDate.prototype.render = function (view) {
         var me = this;
         var data = view.$getData().data;
         if (!data) {
@@ -64,7 +64,7 @@
         }
         setTimeout(delayRender, 500);
         var input = view.querySelector('#xDate-input');
-        var setDateInfo = function(year, month, day) {
+        var setDateInfo = function (year, month, day) {
             var date;
             if (!month || !year) {
                 date = new Date();
@@ -95,14 +95,14 @@
             ];
             var index = 0;
             for (var i = 1; i <= firstDay.getDay(); i++) {
-                weeks[0].push({ day: lastDayOfLastMonth - firstDay.getDay() + i, month: 0, today: false });
+                weeks[0].push({day: lastDayOfLastMonth - firstDay.getDay() + i, month: 0, today: false});
             }
             for (var j = 1; j <= allDays; j++) {
                 var state = year === thisYear && month == thisMonth && j == thisDate;
                 if (weeks[index].length < 7) {
-                    weeks[index].push({ day: j, month: 1, today: state });
+                    weeks[index].push({day: j, month: 1, today: state});
                 } else {
-                    weeks[++index].push({ day: j, month: 1, today: state });
+                    weeks[++index].push({day: j, month: 1, today: state});
                 }
             }
             for (var k = 0; k < weeks.length; k++) {
@@ -112,14 +112,14 @@
             }
             var nextMonthDays = 7 - weeks[weeks.length - 1].length;
             for (var day = 1; day <= nextMonthDays; day++) {
-                weeks[weeks.length - 1].push({ day: day, month: 2, today: false });
+                weeks[weeks.length - 1].push({day: day, month: 2, today: false});
             }
             data.xDate.year = year;
             data.xDate.month = month;
             data.xDate.day = today;
             data.xDate.xDate_week = [];
             for (var k = 0; k < weeks.length; k++) {
-                data.xDate.xDate_week.push({ xDate_days: weeks[k] });
+                data.xDate.xDate_week.push({xDate_days: weeks[k]});
             }
             if (data.xDate.day > allDays) {
                 data.xDate.day = allDays;
@@ -131,7 +131,7 @@
         }
 
         function delayRender() {
-            var updateCSS = function() {
+            var updateCSS = function () {
                 me.days = view.getElementsByClassName('xDate-day');
                 me.header = view.querySelector('.xDate-header');
                 me.bg = view.querySelector('.xDate-body');
@@ -150,7 +150,7 @@
             };
             //变量提升写在这
             updateCSS();
-            var preMonth = function() {
+            var preMonth = function () {
                 if (data.xDate.month === 1) {
                     data.xDate.year--;
                     data.xDate.month = 12;
@@ -161,7 +161,7 @@
                 updateCSS();
             };
 
-            var nextMonth = function() {
+            var nextMonth = function () {
                 if (data.xDate.month === 12) {
                     data.xDate.year++;
                     data.xDate.month = 1;
@@ -172,7 +172,7 @@
                 updateCSS();
             };
 
-            var backToday = function() {
+            var backToday = function () {
                 var date = new Date();
                 data.xDate.month = date.getMonth() + 1;
                 data.xDate.year = date.getFullYear();
@@ -181,14 +181,13 @@
                 updateCSS();
             };
 
-            var changeShowState = function() { //view 渲染速度过慢会导致updateCss报错
+            var changeShowState = function () { //view 渲染速度过慢会导致updateCss报错
                 data.xDate.show = !data.xDate.show;
-                console.log(data.xDate.show);
                 // if(data.xDate.show){
                 // 	setTimeout(updateCSS,100);
                 // }
             };
-            var chooseDay = function(e, d, v) {
+            var chooseDay = function (e, d, v) {
                 data.xDate.show = false;
                 data.xDate.day = d.day;
                 input.value = data.xDate.year + '/' + data.xDate.month + '/' + data.xDate.day;
@@ -197,32 +196,8 @@
             if (data.xDate.show) {
                 me.preBtn = view.querySelector('#preMonthBtn');
                 me.nextBtn = view.querySelector('#nextMonthBtn');
-                me.doBtn = view.querySelector('.xDate-apply');
-                var days=view.getElementsByClassName('xDate-day');
+                me.days = view.querySelectorAll(".xDate-day");
                 me.todayBtn = view.querySelector('#goToToday');
-                new DD.Event({
-                    eventName: 'click',
-                    view: me.preBtn,
-                    handler: preMonth
-                })
-
-                new DD.Event({
-                    eventName: 'click',
-                    view: me.nextBtn,
-                    handler: nextMonth
-                })
-
-                new DD.Event({
-                    eventName: 'click',
-                    view: me.doBtn,
-                    handler: updateCSS
-                })
-
-                new DD.Event({
-                    eventName: 'click',
-                    view: me.todayBtn,
-                    handler: backToday
-                })
 
                 for (var i = 0; i < me.days.length; i++) {
                     new DD.Event({
@@ -231,6 +206,24 @@
                         handler: chooseDay
                     })
                 }
+
+                new DD.Event({
+                    eventName: 'click',
+                    view: me.preBtn,
+                    handler: preMonth
+                });
+
+                new DD.Event({
+                    eventName: 'click',
+                    view: me.nextBtn,
+                    handler: nextMonth
+                });
+
+                new DD.Event({
+                    eventName: 'click',
+                    view: me.todayBtn,
+                    handler: backToday
+                })
             }
 
             new DD.Event({
@@ -243,7 +236,7 @@
     DD.Plugin.create("xDate", xDate);
     DD.createModule({
         name: 'm_plugin_download_Date_1',
-        requires: [{ type: 'css', path: HTMLURL + "/plugin_download/dateInput_1/css/index.css" }],
+        requires: [{type: 'css', path: HTMLURL + "/plugin_download/dateInput_1/css/index.css"}],
         templateUrl: HTMLURL + "/plugin_download/dateInput_1/index.html",
         data: {
             name: '日历',
@@ -278,7 +271,7 @@
             }
         },
         methods: {
-            ensure: function() {
+            ensure: function () {
                 var me = this;
                 var me_data = me.data.xDate.xDate_color;
                 var obj = {
@@ -287,8 +280,8 @@
                         header_color: me_data.header_color.replace("#", ""),
                         bg_color: me_data.bg_color.replace("#", ""),
                         day_color: me_data.day_color.replace("#", ""),
-                        today_color:me_data.today_color.replace("#",""),
-                        month_color:me_data.month_color.replace("#","")
+                        today_color: me_data.today_color.replace("#", ""),
+                        month_color: me_data.month_color.replace("#", "")
                     }),
                     total: 0,
                     flag: 1
