@@ -9,6 +9,7 @@
         templateUrl: HTMLURL + '/plugin_list/plugin_list.html',
         requires: [HTMLURL + '/plugin_list/plugin_type/plugin_type.js', HTMLURL + '/plugin_list/plugin_instruction/plugin_instruction.js'],
         data: {
+            route_height: '',
             plugin_list: [
                 {
                     name: "插件使用说明",
@@ -70,15 +71,17 @@
                     name: "菜单树",
                     path: "/route/plugin_list/tree",
                     active: false
-                }, {
-                    name: "颜色选择",
-                    path: "/route/plugin_list/colorPicker",
-                    active: false
                 }
+                // , {
+                //     name: "颜色选择",
+                //     path: "/route/plugin_list/colorPicker",
+                //     active: false
+                // }
             ]
         },
         onBeforeFirstRender: function () {
             var me = this;
+            me.data.route_height = window.innerHeight - 80;
             me.data.plugin_list.forEach(function (item) {
                 item.active = false;
             });

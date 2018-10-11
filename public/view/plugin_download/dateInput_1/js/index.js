@@ -183,6 +183,7 @@
 
             var changeShowState = function() { //view 渲染速度过慢会导致updateCss报错
                 data.xDate.show = !data.xDate.show;
+                console.log(data.xDate.show);
                 // if(data.xDate.show){
                 // 	setTimeout(updateCSS,100);
                 // }
@@ -197,7 +198,7 @@
                 me.preBtn = view.querySelector('#preMonthBtn');
                 me.nextBtn = view.querySelector('#nextMonthBtn');
                 me.doBtn = view.querySelector('.xDate-apply');
-                // var days=view.getElementsByClassName('xDate-day');
+                var days=view.getElementsByClassName('xDate-day');
                 me.todayBtn = view.querySelector('#goToToday');
                 new DD.Event({
                     eventName: 'click',

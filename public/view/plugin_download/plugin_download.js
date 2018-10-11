@@ -233,19 +233,21 @@
                 first_name: '菜单树',
                 show: false,
                 plugin: [{ name: "数组件", route: "/route/plugin_download/Tree_1", active: false }]
-            }, {
-                first_name: '颜色选择器',
-                show: false,
-                plugin: [{ name: "选择器", route: "/route/plugin_download/ColorPicker_1", active: false }]
-            }, {
-                first_name: '按钮',
-                show: false,
-                plugin: [{ name: "按钮列表", route: "/route/plugin_download/Button_1", active: false }]
-            }, {
-                first_name: '图标库',
-                show: false,
-                plugin: [{ name: "图标列表", route: "/route/plugin_download/Icon_1", active: false }]
-            }]
+            }
+            // , {
+            //     first_name: '颜色选择器',
+            //     show: false,
+            //     plugin: [{ name: "选择器", route: "/route/plugin_download/ColorPicker_1", active: false }]
+            // }, {
+            //     first_name: '按钮',
+            //     show: false,
+            //     plugin: [{ name: "按钮列表", route: "/route/plugin_download/Button_1", active: false }]
+            // }, {
+            //     first_name: '图标库',
+            //     show: false,
+            //     plugin: [{ name: "图标列表", route: "/route/plugin_download/Icon_1", active: false }]
+            // }
+            ]
         },
         onBeforeFirstRender: function() {
             var me = this;
