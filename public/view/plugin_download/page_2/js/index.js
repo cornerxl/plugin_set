@@ -87,14 +87,14 @@
             setTimeout(function() {
                 var box = [];
                 box = view.querySelectorAll(".com-page-item");
-                box.forEach(function(i) {
-                    if(parseInt(i.innerText) === data.page.pre_page) {
-                        DD.css(i, "background-color", data.color_2);
-                    } else {
-                        DD.css(i, "color", data.color_1);
-                    }
-
-                });
+                // box.forEach(function(i) {
+                //     if(parseInt(i.innerText) === data.page.pre_page) {
+                //         DD.css(i, "background-color", data.color_2);
+                //     } else {
+                //         DD.css(i, "color", data.color_1);
+                //     }
+                //
+                // });
                 /**,
                  * 修改page_rows
                  * @param pre_page   当前页

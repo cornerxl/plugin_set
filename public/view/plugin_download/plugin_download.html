@@ -15,17 +15,17 @@
     <div class='router-content'>
         <div x-router></div>
     </div>
-<div class="down-page" x-show="down">
-    <div class="down-content">
-        <div class="head">
-            下载插件
-            <div class="dele-btn" e-click="close">
-                <div class="content"></div>
+    <div class="down-page" x-show="down">
+        <div class="down-content">
+            <div class="head">
+                下载插件
+                <div class="dele-btn" e-click="close">
+                    <div class="content"></div>
+                </div>
+            </div>
+            <div class="list">
+                <a href="{{src}}" download e-click="close">下载</a>
             </div>
         </div>
-        <div class="list">
-            <a href="{{src}}" download e-click="close">点击下载</a>
-        </div>
     </div>
-</div>
 </div>
