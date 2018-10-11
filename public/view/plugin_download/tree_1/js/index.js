@@ -60,48 +60,48 @@
                 color_2: '#1890ff',
                 one: 1,
                 arr: [{
+                click: false,
+                txt: "parent-1",
+                show: true,
+                arr: [{
                     click: false,
-                    txt: "parent-1",
-                    show: true,
+                    txt: "child-1",
+                    show: false,
                     arr: [{
                         click: false,
-                        txt: "child-1",
-                        show: false,
-                        arr: [{
-                            click: false,
-                            txt: "child-1-1",
-                            show: false
-                        }, {
-                            click: false,
-                            txt: "child-1-2",
-                            show: false
-                        }]
-                    }, {
-                        click: false,
-                        txt: "child-2",
+                        txt: "child-1-1",
                         show: false
                     }, {
                         click: false,
-                        txt: "child-3",
-                        show: false
-                    }, {
-                        click: false,
-                        txt: "child-4",
+                        txt: "child-1-2",
                         show: false
                     }]
                 }, {
                     click: false,
-                    txt: "parent-2",
-                    show: false,
+                    txt: "child-2",
+                    show: false
                 }, {
                     click: false,
-                    txt: "parent-3",
-                    show: true
+                    txt: "child-3",
+                    show: false
                 }, {
                     click: false,
-                    txt: "parent-4",
-                    show: true
+                    txt: "child-4",
+                    show: false
                 }]
+            }, {
+                click: false,
+                txt: "parent-2",
+                show: true
+            }, {
+                click: false,
+                txt: "parent-3",
+                show: true
+            }, {
+                click: false,
+                txt: "parent-4",
+                show: true
+            }]
             }
         },
         onBeforeFirstRender: function() {
@@ -110,87 +110,52 @@
                 color_1: '#333333',
                 color_2: '#1890ff',
                 one: 1,
+               arr: [{
+                click: false,
+                txt: "parent-1",
+                show: true,
                 arr: [{
                     click: false,
-                    txt: "parent-1",
-                    show: true,
+                    txt: "child-1",
+                    show: false,
                     arr: [{
                         click: false,
-                        txt: "child-1",
-                        show: false,
-                        arr: [{
-                            click: false,
-                            txt: "child-1-1",
-                            show: false
-                        }, {
-                            click: false,
-                            txt: "child-1-2",
-                            show: false
-                        }]
-                    }, {
-                        click: false,
-                        txt: "child-2",
+                        txt: "child-1-1",
                         show: false
                     }, {
                         click: false,
-                        txt: "child-3",
-                        show: false
-                    }, {
-                        click: false,
-                        txt: "child-4",
+                        txt: "child-1-2",
                         show: false
                     }]
                 }, {
                     click: false,
-                    txt: "parent-2",
-                    show: true,
-                    arr: [{
-                        click: false,
-                        txt: "child-1",
-                        show: false,
-                        arr: [{
-                            click: false,
-                            txt: "child-1-1",
-                            show: false,
-                            arr:[{
-                                click: false,
-                                txt: "child-1-1-1",
-                                show: false
-                            }, {
-                                click: false,
-                                txt: "child-1-1-2",
-                                show: false
-                            }]
-                        }, {
-                            click: false,
-                            txt: "child-1-2",
-                            show: false
-                        }]
-                    }, {
-                        click: false,
-                        txt: "child-2",
-                        show: false
-                    }, {
-                        click: false,
-                        txt: "child-3",
-                        show: false
-                    }, {
-                        click: false,
-                        txt: "child-4",
-                        show: false
-                    }]
+                    txt: "child-2",
+                    show: false
                 }, {
                     click: false,
-                    txt: "parent-3",
-                    show: true
+                    txt: "child-3",
+                    show: false
                 }, {
                     click: false,
-                    txt: "parent-4",
-                    show: true
+                    txt: "child-4",
+                    show: false
                 }]
+            }, {
+                click: false,
+                txt: "parent-2",
+                show: true
+            }, {
+                click: false,
+                txt: "parent-3",
+                show: true
+            }, {
+                click: false,
+                txt: "parent-4",
+                show: true
+            }]
             }
         },
-        methods: {
+       methods: {
             show: function(e, d, v) {
                 var me = this;
                 if (d.arr) {
@@ -221,13 +186,13 @@
                 var me = this;
                 d.click = !d.click;
                 if (!d.click&& d.txt.indexOf("parent") === -1) {
-                    parent = me.module.methodFactory.methods.sendPro.call(me, d.txt, me.data.arr);
+                    parent = me.module.methodFactory.methods.sendPro.call(me, d.txt, me.data.tree_data.arr);
                     if (parent) {
                         parent.click = false;
                     }
                 }
                 if (d.click&& d.txt.indexOf("parent") === -1) {
-                    parent = me.module.methodFactory.methods.sendPro.call(me, d.txt, me.data.arr);
+                    parent = me.module.methodFactory.methods.sendPro.call(me, d.txt, me.data.tree_data.arr);
                     if (parent) {
                         if(parent.arr.every(function(i){
                             return i.click;
