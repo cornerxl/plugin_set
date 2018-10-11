@@ -246,6 +246,7 @@
         requires: [{ type: 'css', path: HTMLURL + "/plugin_download/dateInput_1/css/index.css" }],
         templateUrl: HTMLURL + "/plugin_download/dateInput_1/index.html",
         data: {
+            name: '日历',
             xDate: {
                 year: "", //当前 年/月/日
                 month: "",

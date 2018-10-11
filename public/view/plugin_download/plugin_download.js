@@ -200,7 +200,7 @@
             }, {
                 first_name: '日期选择',
                 show: false,
-                plugin: [{ name: "星期", route: "/route/plugin_download/Date_1", active: false }, { name: "年月日", route: "/route/plugin_download/Date_2", active: false }]
+                plugin: [{ name: "日历", route: "/route/plugin_download/Date_1", active: false }, { name: "年月日", route: "/route/plugin_download/Date_2", active: false }]
             }, {
                 first_name: '折叠',
                 show: false,

@@ -12,7 +12,8 @@
 .el-plugin-date-1 .xDate .xDate-input {
     height: 30px;
     padding: 0;
-    margin: 10px
+    margin: 10px;
+    text-align: center;
 }
 
 .el-plugin-date-1 .xDate .xDate-input input[type='text'] {
