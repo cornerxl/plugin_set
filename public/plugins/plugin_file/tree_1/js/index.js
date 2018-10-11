@@ -1,6 +1,6 @@
 ;
 (function() {
-    var tree=function(){};
+    var tree = function() {};
     tree.prototype = {
         init: function(view) {},
         render: function(view) {
@@ -93,9 +93,9 @@
                 show: true
             }]
         },
-        onBeforeFirstRender:function(){
-            var me=this;
-            me.data.one=1;
+        onBeforeFirstRender: function() {
+            var me = this;
+            me.data.one = 1;
         },
         methods: {
             show: function(e, d, v) {
@@ -108,9 +108,41 @@
                     });
                 }
             },
+            sendPro: function(txt, data) {
+                var me = this;
+                var tem = null;  
+                data.forEach(i => {
+                    if (i.arr) {
+                        i.arr.forEach(it => {
+                            if (it.txt === txt)
+                                tem = i;
+                            if (!tem) {
+                                tem = me.module.methodFactory.methods.sendPro.call(me, txt, i.arr);
+                            }
+                        });
+                    }
+                });
+                return tem;
+            },
             check: function(e, d, v) {
                 var me = this;
                 d.click = !d.click;
+                if (!d.click&& d.txt.indexOf("parent") === -1) {
+                    parent = me.module.methodFactory.methods.sendPro.call(me, d.txt, me.data.arr);
+                    if (parent) {
+                        parent.click = false;
+                    }
+                }
+                if (d.click&& d.txt.indexOf("parent") === -1) {
+                    parent = me.module.methodFactory.methods.sendPro.call(me, d.txt, me.data.arr);
+                    if (parent) {
+                        if(parent.arr.every(function(i){
+                            return i.click;
+                        })){
+                            parent.click=true;
+                        }
+                    }
+                }
                 me.module.methodFactory.methods.checkall.call(me, d);
             },
             checkall: function(d) {
