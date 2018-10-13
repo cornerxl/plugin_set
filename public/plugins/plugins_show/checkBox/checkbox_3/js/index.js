@@ -1,7 +1,7 @@
 ;
 (function() {
-    var plugin_040041 = function() {};
-    plugin_040041.prototype = {
+    var plugin_04003 = function() {};
+    plugin_04003.prototype = {
         init: function(view) {
             var template = `<div class="check-three">
                                 <div class="check-icon" x-class="{'check':'yes_2'}">
@@ -55,40 +55,5 @@
             }, 0);
         }
     };
-    DD.Plugin.create("check_box_4", plugin_040041);
-    DD.createModule({
-        name:"m_plugin_download_Checkbox_4",
-        requires: [{ type: 'css', path: HTMLURL + "/plugin_download/checkbox_3/css/index.css" }],
-        templateUrl: HTMLURL + "/plugin_download/checkbox_3/index.html",
-        data: {
-            name: "眼睛选择框",
-            check_data: {
-                size: 24,
-                yes_2:true,
-                check_color: "#03a9f4",
-                is_check: true,
-                no_check_color: "#00000080"
-            }
-        },
-        methods:{
-              ensure: function() {
-                var me = this;
-                var data=me.data.check_data;
-                var obj = {
-                    plugin_id: 1204,
-                    total: 0,
-                    js:JSON.stringify({
-                        size:data.size,
-                        check_color:data.check_color.replace("#",""),
-                        no_check_color:data.no_check_color.replace("#","")
-                    }),
-                    flag: 1,
-                }
-                me.module.send('m_plugin_download', {
-                    upload: true,
-                    obj: obj
-                });
-            }
-        }
-    })
+    DD.Plugin.create("plugin_04003", plugin_04003);
 })()

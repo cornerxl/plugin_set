@@ -1,0 +1,24 @@
+
+.nd-plugin-check .content-check >div{
+    cursor: pointer;
+	position: relative;
+	width: 40px;
+    height: 40px;
+    margin: 0 auto;	
+}
+.nd-plugin-check .content-check .check-two >div{
+	 font-family: Material Icons !important;
+	 /*font-size: 30px;*/
+	 text-align: center;
+	 user-select: none;
+	 position: absolute;
+	 top:5px;
+	 left:5px;
+	 visibility: hidden;
+}
+.nd-plugin-check .content-check .check-two .check{
+	visibility: visible;
+}
+.nd-plugin-check .content-check .check-two .no-check{
+	visibility: visible;
+}
