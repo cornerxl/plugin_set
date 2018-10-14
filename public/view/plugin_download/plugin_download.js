@@ -148,6 +148,7 @@
             HTMLURL + '/plugin_download/animation_3/js/index.js',
             HTMLURL + '/plugin_download/animation_4/js/index.js',
             HTMLURL + '/plugin_download/animation_5/js/index.js',
+            HTMLURL + '/plugin_download/animation_6/js/index.js',
             HTMLURL + '/plugin_download/foldCollapse_1/js/index.js',
             HTMLURL + '/plugin_download/location_1/js/index.js',
             HTMLURL + '/plugin_download/dateInput_1/js/index.js',
@@ -184,7 +185,7 @@
             }, {
                 first_name: '缓冲动画',
                 show: false,
-                plugin: [{ name: '泡泡动画', route: "/route/plugin_download/Animation_1", active: false }, { name: '方块动画', route: "/route/plugin_download/Animation_2", active: false }, { name: '圆环动画', route: "/route/plugin_download/Animation_3", active: false }, { name: '闪烁动画', route: "/route/plugin_download/Animation_4", active: false }, { name: '水滴动画', route: "/route/plugin_download/Animation_5", active: false }]
+                plugin: [{ name: '泡泡动画', route: "/route/plugin_download/Animation_1", active: false }, { name: '方块动画', route: "/route/plugin_download/Animation_2", active: false }, { name: '圆环动画', route: "/route/plugin_download/Animation_3", active: false }, { name: '闪烁动画', route: "/route/plugin_download/Animation_4", active: false }, { name: '水滴动画', route: "/route/plugin_download/Animation_5", active: false }, { name: '线动画', route: "/route/plugin_download/Animation_6", active: false }]
             }, {
                 first_name: '轮播图',
                 show: false,
@@ -270,30 +271,35 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Carousel_2') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Carousel_3') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Carousel_4') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Magn_1') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Switch_1') {
                 if (data.upload) {
@@ -306,6 +312,7 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Switch_3') {
                 if (data.upload) {
@@ -318,30 +325,35 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Progress_2') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Progress_3') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Animation_1') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Animation_2') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Animation_3') {
                 if (data.upload) {
@@ -354,12 +366,20 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Animation_5') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+            }
+            if (m === 'm_plugin_download_Animation_6') {
+                if (data.upload) {
+                    var params = data.obj;
+                    me.module.methodFactory.methods.upload.call(me, params);
+                }
+                return;
             }
             if (m === 'm_plugin_download_Location_1') {
                 if (data.upload) {
@@ -372,6 +392,7 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Date_1') {
                 if (data.upload) {
@@ -384,6 +405,7 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Page_2') {
                 if (data.upload) {
@@ -396,36 +418,42 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Complete_1') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Checkbox_1') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
              if (m === 'm_plugin_download_Checkbox_3') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                 return;
             }
              if (m === 'm_plugin_download_Checkbox_4') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                 return;
             }
              if (m === 'm_plugin_download_Checkbox_5') {
                 if (data.upload) {
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                 return;
             }
             if (m === 'm_plugin_download_Checkbox_2') {
                 if (data.upload) {
@@ -438,6 +466,7 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Icon_1') {
                 if (data.upload) {
@@ -450,6 +479,7 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Tree_1') {
                 if (data.upload) {
@@ -462,6 +492,7 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
             if (m === 'm_plugin_download_Chart_1') {
                 if (data.upload) {
@@ -475,6 +506,7 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
 
             if (m === 'm_plugin_download_Chart_3') {
@@ -482,6 +514,7 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
 
             if (m === 'm_plugin_download_Chart_4') {
@@ -489,6 +522,7 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
 
             if (m === 'm_plugin_download_Chart_5') {
@@ -496,6 +530,7 @@
                     var params = data.obj;
                     me.module.methodFactory.methods.upload.call(me, params);
                 }
+                return;
             }
 
 

@@ -148,7 +148,9 @@
                 {type: 'css', path: PLUGINURL + '/plugins_show/buffering/animation_4/css/index.css'},
                 {type: 'js', path: PLUGINURL + '/plugins_show/buffering/animation_4/js/index.js'},
                 {type: 'css', path: PLUGINURL + '/plugins_show/buffering/animation_5/css/index.css'},
-                {type: 'js', path: PLUGINURL + '/plugins_show/buffering/animation_5/js/index.js'}
+                {type: 'js', path: PLUGINURL + '/plugins_show/buffering/animation_5/js/index.js'},
+                {type: 'css', path: PLUGINURL + '/plugins_show/buffering/animation_6/css/index.css'},
+                {type: 'js', path: PLUGINURL + '/plugins_show/buffering/animation_6/js/index.js'}
             ],
             onStart: function (props) {
                 //props指的是config
@@ -333,6 +335,36 @@
                             time: 2,
                             radius: 5
                         },
+                    }
+                },{
+                    name: "02006",
+                    explain: "这是本系统第一个缓冲插件，即加载动画，由多个长方形旋转组成。本插件可自定义配置项包括：长方形颜色、动画时间",
+                    template: `<div class="plugin-buffering" style="height: 100px;">
+		                            <div x-plugin='plugin_02006' dataName='buffering_data'></div>
+	                            </div>`,
+                    htmlcode: `<pre class="instruction-code">
+                                    <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-6" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
+                                </pre>`,
+                    jscode: `<pre class="instruction-code">
+                                    <pre><span>{</span></pre>
+                                    <pre><span>      name: 'buffering_6',</span>      <span class="comment">/*插件模块的模块名称*/</span></pre>
+                                    <pre><span>      el: '.plugin-buffering-6',</span>      <span class="comment">/*插件渲染容器*/</span></pre>
+                                    <pre><span>      data: {</span>      <span class="comment">/*配置参数项*/</span></pre>
+                                    <pre><span>            buffering_data: {</span>      <span class="comment">/*插件绑定的容器中，绑定的数据对象的名称*/</span></pre>
+                                    <pre><span>                  show: true</span>      <span class="comment">/*在接收到消息时，显示动画*/</span></pre>
+                                    <pre><span>                  color: "#FF0000",</span>      <span class="comment">/*缓冲动画颜色*/</span></pre>
+                                    <pre><span>                  animation_time: 1</span>      <span class="comment">/*缓冲动画时间*/</span></pre>
+                                    <pre><span>                  radius: 5</span>      <span class="comment">/*缓冲动画单个圆半径*/</span></pre>
+                                    <pre><span>            }</span></pre>
+                                    <pre><span>     }</pre>
+                                    <pre><span>}</span></pre>
+                                </pre>`,
+                    data: {
+                        buffering_data: {
+                            show: true,
+                            animation_time: 1,
+                            color: "#0000FF",
+                        }
                     }
                 }]
             },

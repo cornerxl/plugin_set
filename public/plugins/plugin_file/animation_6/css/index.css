@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-.nd-plugin-buffering-box {
+.nd-plugin-buffering-box-line {
     position: relative;
 	box-sizing: border-box;
     display: -webkit-flex;
@@ -42,12 +42,12 @@
     } 
 }
 
-.nd-plugin-buffering-loader {
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader {
 	position: relative;
 }
 
 
-.nd-plugin-buffering-loader > div {
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div {
     background-color: #999;
     border-radius: 2px;
     margin: 2px;
@@ -58,14 +58,14 @@
     height: 10px;
 }
 
-.nd-plugin-buffering-loader > div:nth-child(1) {
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(1) {
 	top: 15px;
     left: 0;
     -webkit-animation: nd-plugin-buffering-loader 1s 0s infinite ease-in-out;
     animation: nd-plugin-buffering-loader 1s 0s infinite ease-in-out;
 }
 
-.nd-plugin-buffering-loader > div:nth-child(2) {
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(2) {
 	top: 10.605px;
     left: 10.605px;
     -webkit-transform: rotate(-45deg);
@@ -75,7 +75,7 @@
     animation: nd-plugin-buffering-loader 1s 0.12s infinite ease-in-out;
 }
 
-.nd-plugin-buffering-loader > div:nth-child(3) {
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(3) {
 	top: 0;
     left: 15px;
     -webkit-transform: rotate(90deg);
@@ -85,7 +85,7 @@
     animation: nd-plugin-buffering-loader 1s 0.24s infinite ease-in-out;
 }
 
-.nd-plugin-buffering-loader > div:nth-child(4) {
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(4) {
 	top: -10.605px;
     left: 10.605px;
     -webkit-transform: rotate(45deg);
@@ -95,14 +95,14 @@
     animation: nd-plugin-buffering-loader 1s 0.36s infinite ease-in-out;
 }
 
-.nd-plugin-buffering-loader > div:nth-child(5) {
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(5) {
 	top: -15px;
     left: 0;
     -webkit-animation: nd-plugin-buffering-loader 1s 0.48s infinite ease-in-out;
     animation: nd-plugin-buffering-loader 1s 0.48s infinite ease-in-out;
 }
 
-.nd-plugin-buffering-loader > div:nth-child(6) {
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(6) {
     top: -10.605px;
     left: -10.605px;
     -webkit-transform: rotate(-45deg);
@@ -112,7 +112,7 @@
     animation: nd-plugin-buffering-loader 1s 0.6s infinite ease-in-out;
 }
 
-.nd-plugin-buffering-loader > div:nth-child(7) {
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(7) {
 	top: 0;
     left: -15px;
     -webkit-transform: rotate(90deg);
@@ -122,7 +122,7 @@
     animation: nd-plugin-buffering-loader 1s 0.72s infinite ease-in-out;
 }
 
-.nd-plugin-buffering-loader > div:nth-child(8) {
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(8) {
 	top: 10.605px;
     left: -10.605px;
     -webkit-transform: rotate(45deg);
