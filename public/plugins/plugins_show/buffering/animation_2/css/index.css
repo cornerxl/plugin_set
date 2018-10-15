@@ -11,7 +11,7 @@
     align-items: center;
     z-index: 1000;
     justify-content: center;
-    height: 100px;
+    height: 100px !important;
 }
 
 .nd-plugin-loading-2 .spinner {

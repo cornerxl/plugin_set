@@ -7,14 +7,14 @@ my_download_animation_2.prototype = {
     init: function(view) {
         var me = this;
         var template = `<div class="nd-plugin-loading-2" x-show="show">
-    <div class="spinner">
-        <div class="rect1"></div>
-        <div class="rect2"></div>
-        <div class="rect3"></div>
-        <div class="rect4"></div>
-        <div class="rect5"></div>
-    </div>
-</div>`;
+                            <div class="spinner">
+                                <div class="rect1"></div>
+                                <div class="rect2"></div>
+                                <div class="rect3"></div>
+                                <div class="rect4"></div>
+                                <div class="rect5"></div>
+                            </div>
+                        </div>`;
         view.$dataItem = DD.attr(view, "dataName");
         view.removeAttribute("dataName");
         view.innerHTML = template;
@@ -74,9 +74,16 @@ DD.Plugin.create("my-download-animation-2", my_download_animation_2);
                 if (data.animation_time < 0) {
                     data.animation_time = 1;
                 }
+                // 方块个数
+                var len = document.querySelector('.spinner').children.length;
                 var obj = {
                     plugin_id: 902,
-                    js: JSON.stringify({ animation_time: data.animation_time, background_color: data.color_1.replace("#", "") }),
+                    js: JSON.stringify({
+                        animation_time: data.animation_time,
+                        color_1: data.color_1.replace("#", ""),
+                        height: data.height,
+                        width: data.width
+                    }),
                     total: 0,
                     flag: 1
                 }

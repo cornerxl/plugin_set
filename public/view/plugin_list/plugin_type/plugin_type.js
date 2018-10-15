@@ -214,7 +214,7 @@
                 }, {
                     name: "02002",
                     explain: "这是本系统第二个缓冲插件，即加载动画，由动感动画组成。本插件可自定义配置项包括：方块颜色、动画时间、动画外层盒子宽度、高度。",
-                    template: `<div x-plugin="plugin_02002" dataName='buffering_data'>
+                    template: `<div x-plugin="plugin_02002" dataName='buffering_data' style="width: 100%; height: 100px;">
                                </div>`,
                     htmlcode: `<pre class="instruction-code">
                                     <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-2" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
@@ -245,8 +245,8 @@
                     }
                 }, {
                     name: "02003",
-                    explain: "这是本系统第三个缓冲插件，即加载动画，由动感动画组成。",
-                    template: `<div x-plugin="plugin_02003" dataName='buffering_data'>
+                    explain: "这是本系统第三个缓冲插件，即加载动画，由圆圈组成。在圆圈中间可设置加载动画图片，比如logo。",
+                    template: `<div x-plugin="plugin_02003" dataName='buffering_data' style="width: 100%; height: 100px;">
                                </div>`,
                     htmlcode: `<pre class="instruction-code">
                                     <pre><<span class="element">div</span> <span class="attr">class</span>="plugin-buffering-3" <span class="attr">x-plugin</span>="buffering" <span class="attr">dataName</span>="buffering_data"><<span class="element">/div></span></pre>
@@ -260,6 +260,7 @@
                                     <pre><span>                  show: true</span>      <span class="comment">/*在接收到消息时，显示动画*/</span></pre>
                                     <pre><span>                  color: '#409EFF'</span>      <span class="comment">/*动画颜色*/</span></pre>
                                     <pre><span>                  animation_time: 3</span>      <span class="comment">/*动画时间*/</span></pre>
+                                    <pre><span>                  size: 64</span>      <span class="comment">/*圆圈大小*/</span></pre>
                                     <pre><span>            }</span></pre>
                                     <pre><span>     }</pre>
                                     <pre><span>}</span></pre>
@@ -268,7 +269,8 @@
                         buffering_data: {
                             show: true, // 是否显示
                             color_1: '#409EFF',
-                            animation_time: 3
+                            animation_time: 3,
+                            size: 64
                         }
                     }
                 }, {

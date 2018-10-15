@@ -1,43 +1,37 @@
-.com-loading-animation-3 {
-    position: fixed;
-    top: 91px;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.7);
+.nd-plugin-buffering-box-3 {
+    position: relative;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
 }
 
-.com-loading-animation-3 .imgbox {
+.nd-plugin-buffering-box-3 .nd-plugin-buffering-imgbox {
     position: relative;
     width: 64px;
     height: 64px;
-    transform: translateX(-32px)
+    transform: translateX(-32px);
 }
 
-.com-loading-animation-3 .leftbox {
+.nd-plugin-buffering-box-3 .nd-plugin-buffering-leftbox {
     position: absolute;
     box-sizing: border-box;
     left: 0;
     width: 32px;
     height: 64px;
-    overflow: hidden
+    overflow: hidden;
 }
 
-.com-loading-animation-3 .rightbox {
+.nd-plugin-buffering-box-3 .nd-plugin-buffering-rightbox {
     position: absolute;
     left: 32px;
     box-sizing: border-box;
     width: 32px;
     height: 64px;
-    overflow: hidden
+    overflow: hidden;
 }
 
-.com-loading-animation-3 .left {
+.nd-plugin-buffering-box-3 .nd-plugin-buffering-left {
     box-sizing: border-box;
     width: 64px;
     height: 64px;
@@ -50,7 +44,7 @@
     animation: moveleft 3s infinite linear;
 }
 
-.com-loading-animation-3 .right {
+.nd-plugin-buffering-box-3 .nd-plugin-buffering-right {
     margin-left: -32px;
     border-left: 3px solid #409EFF;
     border-bottom: 3px solid #409EFF;
@@ -61,7 +55,7 @@
     box-sizing: border-box;
     width: 64px;
     height: 64px;
-    border-radius: 50%
+    border-radius: 50%;
 }
 
 @keyframes moveleft {
