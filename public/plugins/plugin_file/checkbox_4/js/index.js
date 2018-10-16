@@ -1,13 +1,13 @@
 ;
 (function() {
-    var plugin_04004 = function() {};
-    plugin_04004.prototype = {
+    var CheckBox = function() {};
+    CheckBox.prototype = {
         init: function(view) {
             var template = `<div class="check-three">
-                                <div class="check-icon" x-class="{'check':'yes_2'}">
+                                <div class="check-icon" x-class="{'check':'is_check'}">
                                     visibility_off
                                 </div>
-                                <div class="check-icon" x-class="{'no-check':'!yes_2'}">
+                                <div class="check-icon" x-class="{'no-check':'!is_check'}">
                                     visibility
                                 </div>
                             </div>`;
@@ -55,13 +55,12 @@
             }, 0);
         }
     };
-    DD.Plugin.create("check_box_4", plugin_04004);
+    DD.Plugin.create("checkBox", CheckBox);
     DD.createModule({
         el: '.nd-plugin-check',
         data: {
             check_data: {
                 size: 24,
-                yes_2:true,
                 check_color: "#03a9f4",
                 is_check: true,
                 no_check_color: "#00000080"

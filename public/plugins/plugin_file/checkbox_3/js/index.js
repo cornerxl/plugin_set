@@ -1,7 +1,7 @@
 ;
 (function() {
-    var plugin_04002 = function() {};
-    plugin_04002.prototype = {
+    var CheckBox = function() {};
+    CheckBox.prototype = {
         init: function(view) {
             var template = `<div class="check-one">
                                 <div class="item" x-class="{'no-check':true}">
@@ -61,7 +61,7 @@
             }, 0);
         }
     };
-    DD.Plugin.create("check_list", plugin_04002);
+    DD.Plugin.create("checkBox", CheckBox);
     DD.createModule({
         el:'.nd-plugin-check-list',
         data:{
@@ -72,46 +72,13 @@
                 is_check:true
             },
         },
-        methods:{
-             ensure: function() {
-                var me = this;
-                var data=me.data.check_data;
-                var obj = {
-                    plugin_id: 1601,
-                    class0: JSON.stringify({
-                        names: '.nd-plugin-check-list .content-check .check-one .item .fill',
-                        total: 1,
-                        width: {
-                            names: 'width',
-                            values: data.size+"px",
-                        },
-                        height:{
-                            names:"height",
-                            values:data.size+'px'
-                        }
-                    }),
-                    class1: JSON.stringify({
-                        names: '.nd-plugin-check-list .content-check .check-one .item .no_check',
-                        total: 1,
-                        color: {
-                            names: 'color',
-                            values: data.no_check_color.replace("#", "")
-                        }
-                    }),
-                    class2: JSON.stringify({
-                        names: '.nd-plugin-check-list .content-check .check-one .item .check',
-                        total: 1,
-                        color: {
-                            names: 'color',
-                            values: data.check_color.replace("#", "")
-                        }
-                    }),
-                    total: 3,
-                    flag: 0
-                }
-                me.module.send('m_plugin_download', {
-                    upload: true,
-                    obj: obj
+        onBeforeFirstRender: function () {
+            var me = this;
+            if (window.data) {
+                var tem = window.data;
+                var to = me.data.check_data;
+                Object.keys(tem).forEach(i => {
+                    to[i] = tem[i];
                 });
             }
         }

@@ -64,7 +64,6 @@
             name: "心形选择框",
             check_data: {
                 size: 24,
-                yes_2:true,
                 check_color: "#03a9f4",
                 is_check: true,
                 no_check_color: "#00000080"
@@ -81,7 +80,8 @@
                     js:JSON.stringify({
                         size:data.size,
                         check_color:data.check_color.replace("#",""),
-                        no_check_color:data.no_check_color.replace("#","")
+                        no_check_color:data.no_check_color.replace("#",""),
+                        is_check: data.is_check
                     }),
                     flag: 1,
                 }

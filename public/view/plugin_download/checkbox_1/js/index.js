@@ -4,7 +4,9 @@
     checkBox.prototype = {
         init: function(view) {
             var template = `<div class="check-content">
-                                <div class="check"></div>
+                                <div class="check">
+                                    <div class="check-center"></div>
+                                </div>
 	                        </div>`;
             view.innerHTML = template;
             var data = DD.attr(view, 'dataName') || 'data';
@@ -21,12 +23,15 @@
             var data = view.$getData().data[view.$dataItem];
             setTimeout(function() {
                 me.check = view.querySelector(".check");
+                var checkCenter = view.querySelector('.check-center');
                 DD.css(me.check, 'width', data.size + 'px');
                 DD.css(me.check, 'height', data.size + 'px');
                 if(data.is_circle) {
                     DD.css(me.check, 'border-radius', '100%');
+                    DD.css(checkCenter, 'border-radius', '100%');
                 } else {
                     DD.css(me.check, 'border-radius', 0);
+                    DD.css(checkCenter, 'border-radius', 0);
                 }
 
                 if (data.is_check) {
@@ -69,40 +74,47 @@
                 var data=me.data.check_data;
                 var obj = {
                     plugin_id: 1201,
-                    total: 3,
-                    class0: JSON.stringify({
-                        names: ".nd-plugin-check-1 .check-content .check",
-                        background: {
-                            names: "background-color",
-                            values: data.check_color.replace("#", "")
-                        },
-                        width:{
-                            names:'width',
-                            values:me.data.check_data.size+'px'
-                        },
-                        height:{
-                            names:'height',
-                            values:me.data.check_data.size+'px'
-                        },
-                        total: 3
+                    total: 0,
+                    // class0: JSON.stringify({
+                    //     names: ".nd-plugin-check-1 .check-content .check",
+                    //     background: {
+                    //         names: "background-color",
+                    //         values: data.check_color.replace("#", "")
+                    //     },
+                    //     width:{
+                    //         names:'width',
+                    //         values:me.data.check_data.size+'px'
+                    //     },
+                    //     height:{
+                    //         names:'height',
+                    //         values:me.data.check_data.size+'px'
+                    //     },
+                    //     total: 3
+                    // }),
+                    // class1: JSON.stringify({
+                    //     names: ".nd-plugin-check-1 .check-content .empty",
+                    //     background: {
+                    //         names: "background-color",
+                    //         values: data.empty_color.replace("#", "")
+                    //     },
+                    //     total: 1
+                    // }),
+                    // class2: JSON.stringify({
+                    //     names: ".nd-plugin-check-1 .check-content .no-check",
+                    //     background: {
+                    //         names: "background-color",
+                    //         values: data.no_check_color.replace("#", "")
+                    //     },
+                    //     total: 1
+                    // }),
+                    js:JSON.stringify({
+                        is_circle:me.data.check_data.is_circle,
+                        check_color: me.data.check_data.check_color.replace('#', ''),
+                        no_check_color: me.data.check_data.no_check_color.replace('#', ''),
+                        empty_color: me.data.check_data.empty_color.replace('#', ''),
+                        is_check: me.data.check_data.is_check,
+                        size: me.data.check_data.size
                     }),
-                    class1: JSON.stringify({
-                        names: ".nd-plugin-check-1 .check-content .empty",
-                        background: {
-                            names: "background-color",
-                            values: data.empty_color.replace("#", "")
-                        },
-                        total: 1
-                    }),
-                    class2: JSON.stringify({
-                        names: ".nd-plugin-check-1 .check-content .no-check",
-                        background: {
-                            names: "background-color",
-                            values: data.no_check_color.replace("#", "")
-                        },
-                        total: 1
-                    }),
-                    js:JSON.stringify({is_circle:me.data.check_data.is_circle}),
                     flag:1,
                 }
                 me.module.send('m_plugin_download', {

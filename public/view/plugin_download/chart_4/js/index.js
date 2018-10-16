@@ -77,14 +77,6 @@ DD.createModule({
         },
         changeLineColor(e, data) {
             data.gridLineColor = e.target.value;
-        },
-        addScatterData(e, data) {
-            var cD = DD.clone(data.data);
-            cD[0].datas.push({
-                x: parseFloat(data.addX, 10),
-                y: parseFloat(data.addY, 10)
-            })
-            data.data = cD;
         }
     }
 })

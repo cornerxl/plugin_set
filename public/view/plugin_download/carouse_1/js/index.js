@@ -201,23 +201,22 @@
         data: {
             name: "常见轮播图",
             carousel_data:{
-            ca_photo: {
-                width: '',
-                check_color: '#ff6800',
-                translate: false,
-                imgs: [{ url: HTMLURL + "/plugin_download/carouse_1/img/1.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/2.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/3.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/4.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/5.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/1.jpg" }],
-                span: [{ blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }],
-            },
-            small_div: {
-                check: '#ff6800',
-                no_check: '#ffffff',
-                width: '8',
-                height: '8',
-                time: 3,
-                left:false,
-                right:true,
+                ca_photo: {
+                    width: '',
+                    check_color: '#ff6800',
+                    translate: false,
+                    imgs: [{ url: HTMLURL + "/plugin_download/carouse_1/img/1.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/2.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/3.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/4.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/5.jpg" }, { url: HTMLURL + "/plugin_download/carouse_1/img/1.jpg" }],
+                    span: [{ blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }],
+                },
+                small_div: {
+                    check: '#ff6800',
+                    no_check: '#ffffff',
+                    width: '8',
+                    height: '8',
+                    time: 3,
+                    left:false
+                }
             }
-        }
         },
         methods: {
             ensure: function() {
@@ -228,46 +227,17 @@
                 }
                 var obj = {
                     plugin_id: 101,
-                    class0: JSON.stringify({
-                        names: '.el-photo .plugin .content .span .photo-span',
-                        width: {
-                            names: 'width',
-                            values: data.small_div.width + 'px'
-                        },
-                        height: {
-                            names: 'height',
-                            values: data.small_div.height + 'px'
-                        },
-                        background: {
-                            names: 'background-color',
-                            values: data.small_div.no_check.replace("#", "")
-                        },
-                        total: 3
-                    }),
-                    class1: JSON.stringify({
-                        names: '.el-photo .plugin .content .span .is_check',
-                        background: {
-                            names: 'background-color',
-                            values: data.small_div.check.replace("#", "")
-                        },
-                        total: 1
-                    }),
-                    class2: JSON.stringify({
-                        names: '.el-photo .plugin .content .show',
-                        transition: {
-                            names: "transition",
-                            values: 'transform ' + (data.small_div.time - 1) + 's'
-                        },
-                        total: 1
-                    }),
                     js: JSON.stringify({
                         time: data.small_div.time * 1000,
-                        left: data.small_div.right,
-                        right:data.small_div.left
+                        left:data.small_div.left,
+                        check_color: data.small_div.check.replace('#', ''),
+                        no_check_color: data.small_div.no_check.replace('#', ''),
+                        width: data.small_div.width,
+                        height: data.small_div.height,
                     }),
                     //total是css的数量
                     //flag为1表明有js
-                    total: 3,
+                    total: 0,
                     flag: 1
                 };
                 me.module.send('m_plugin_download', {

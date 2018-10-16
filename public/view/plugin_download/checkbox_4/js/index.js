@@ -4,10 +4,10 @@
     plugin_040041.prototype = {
         init: function(view) {
             var template = `<div class="check-three">
-                                <div class="check-icon" x-class="{'check':'yes_2'}">
+                                <div class="check-icon" x-class="{'check':'is_check'}">
                                     visibility_off
                                 </div>
-                                <div class="check-icon" x-class="{'no-check':'!yes_2'}">
+                                <div class="check-icon" x-class="{'no-check':'!is_check'}">
                                     visibility
                                 </div>
                             </div>`;
@@ -58,13 +58,12 @@
     DD.Plugin.create("check_box_4", plugin_040041);
     DD.createModule({
         name:"m_plugin_download_Checkbox_4",
-        requires: [{ type: 'css', path: HTMLURL + "/plugin_download/checkbox_3/css/index.css" }],
-        templateUrl: HTMLURL + "/plugin_download/checkbox_3/index.html",
+        requires: [{ type: 'css', path: HTMLURL + "/plugin_download/checkbox_4/css/index.css" }],
+        templateUrl: HTMLURL + "/plugin_download/checkbox_4/index.html",
         data: {
             name: "眼睛选择框",
             check_data: {
                 size: 24,
-                yes_2:true,
                 check_color: "#03a9f4",
                 is_check: true,
                 no_check_color: "#00000080"
@@ -80,7 +79,8 @@
                     js:JSON.stringify({
                         size:data.size,
                         check_color:data.check_color.replace("#",""),
-                        no_check_color:data.no_check_color.replace("#","")
+                        no_check_color:data.no_check_color.replace("#",""),
+                        is_check: data.is_check
                     }),
                     flag: 1,
                 }

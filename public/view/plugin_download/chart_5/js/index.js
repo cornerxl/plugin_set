@@ -66,18 +66,6 @@ DD.createModule({
             radar.lineColor = e.target.value;
             data.radar = radar;
         },
-        addRadarData(e, data) {
-            var cD = DD.clone(data.data);
-            var ads = data.addData.split(' ');
-            for(var i=0,l=ads.length; i<l; i++) {
-                ads[i] = parseFloat(ads[i], 10);
-            }
-            cD.push({
-                title: data.addTitle,
-                datas: ads
-            })
-            data.data = cD;
-        },
         changeRadarColors(e, data) {
             var radar = DD.clone(data.radar);
             radar.colors = data.changeColors.split(' ');

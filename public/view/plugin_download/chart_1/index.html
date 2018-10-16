@@ -8,7 +8,7 @@
         </div>
         <div class="itemss">
             <label for="" class="span">图例</label>
-            <select name="" id="" e-change="changeLegend" class="input">
+            <select name="" id="" e-change="changeLegend" class="input" x-fields="legend">
                 <option value="{{value}}" x-repeat="legends">{{text}}</option>
             </select>
         </div>
@@ -18,7 +18,7 @@
         </div>
         <div class="itemss">
             <label for="" class="span">网格线</label>
-            <select name="" id="" e-change="changeLine" class="input">
+            <select name="" id="" e-change="changeLine" class="input" x-field="gridLine">
                 <option value="{{value}}" x-repeat="lines" class="input">{{text}}</option>
             </select>
         </div>

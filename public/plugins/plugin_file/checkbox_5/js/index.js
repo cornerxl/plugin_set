@@ -1,7 +1,7 @@
 ;
 (function() {
-    var plugin_040031 = function() {};
-    plugin_040031.prototype = {
+    var CheckBox = function() {};
+    CheckBox.prototype = {
         init: function(view) {
             var template = `<div class="check-two">
                                 <div class="check-icon">
@@ -54,7 +54,7 @@
             }, 0);
         }
     };
-    DD.Plugin.create("check_box_5", plugin_040031);
+    DD.Plugin.create("checkBox", CheckBox);
     DD.createModule({
         el: '.nd-plugin-check-checkbox5',
         data: {

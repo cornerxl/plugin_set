@@ -81,36 +81,42 @@
                 var data=me.data.check_data;
                 var obj = {
                     plugin_id: 1203,
-                    class0: JSON.stringify({
-                        names: '.nd-plugin-check-list .content-check .check-one .item .fill',
-                        total: 1,
-                        width: {
-                            names: 'width',
-                            values: data.size+"px",
-                        },
-                        height:{
-                            names:"height",
-                            values:data.size+'px'
-                        }
+                    js:JSON.stringify({
+                        check_color:data.check_color.replace('#', ''),
+                        no_check_color:data.no_check_color.replace('#', ''),
+                        size:data.size,
+                        is_check:data.is_check
                     }),
-                    class1: JSON.stringify({
-                        names: '.nd-plugin-check-list .content-check .check-one .item .no_check',
-                        total: 1,
-                        color: {
-                            names: 'color',
-                            values: data.no_check_color.replace("#", "")
-                        }
-                    }),
-                    class2: JSON.stringify({
-                        names: '.nd-plugin-check-list .content-check .check-one .item .check',
-                        total: 1,
-                        color: {
-                            names: 'color',
-                            values: data.check_color.replace("#", "")
-                        }
-                    }),
-                    total: 3,
-                    flag: 0
+                    // class0: JSON.stringify({
+                    //     names: '.nd-plugin-check-list .content-check .check-one .item .fill',
+                    //     total: 1,
+                    //     width: {
+                    //         names: 'width',
+                    //         values: data.size+"px",
+                    //     },
+                    //     height:{
+                    //         names:"height",
+                    //         values:data.size+'px'
+                    //     }
+                    // }),
+                    // class1: JSON.stringify({
+                    //     names: '.nd-plugin-check-list .content-check .check-one .item .no_check',
+                    //     total: 1,
+                    //     color: {
+                    //         names: 'color',
+                    //         values: data.no_check_color.replace("#", "")
+                    //     }
+                    // }),
+                    // class2: JSON.stringify({
+                    //     names: '.nd-plugin-check-list .content-check .check-one .item .check',
+                    //     total: 1,
+                    //     color: {
+                    //         names: 'color',
+                    //         values: data.check_color.replace("#", "")
+                    //     }
+                    // }),
+                    total: 0,
+                    flag: 1
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

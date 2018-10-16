@@ -21,7 +21,7 @@
 	margin-bottom: 20px;
 	border-radius: 50%;
 }
-.nd-plugin-check-1 .check-content .check::after{
+.nd-plugin-check-1 .check-content .check-center{
 	display: block;
 	position: absolute;
 	content:"";
