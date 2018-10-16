@@ -146,20 +146,24 @@
                 }
                 var obj = {
                     plugin_id: 201,
-                    class0: JSON.stringify({
-                        names: '.magn',
-                        backgroundColor: {
-                            names: 'background-color',
-                            values: data.mark_color.replace("#", "")
-                        },
-                        opacity: {
-                            names: 'opacity',
-                            values: data.mark_opacity<1?data.mark_opacity:data.mark_opacity/10
-                        },
-                        total: 2
+                    // class0: JSON.stringify({
+                    //     names: '.magn',
+                    //     backgroundColor: {
+                    //         names: 'background-color',
+                    //         values: data.mark_color.replace("#", "")
+                    //     },
+                    //     opacity: {
+                    //         names: 'opacity',
+                    //         values: data.mark_opacity<1?data.mark_opacity:data.mark_opacity/10
+                    //     },
+                    //     total: 2
+                    // }),
+                    js: JSON.stringify({
+                        radio:data.radio,
+                        mark_color: data.mark_color.replace('#', ''),
+                        mark_opacity: data.mark_opacity
                     }),
-                    js: JSON.stringify({ radio:data.radio}),
-                    total: 1,
+                    total: 0,
                     flag: 1
                 }
                 me.module.send('m_plugin_download', {

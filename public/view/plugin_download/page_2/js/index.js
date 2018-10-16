@@ -87,14 +87,16 @@
             setTimeout(function() {
                 var box = [];
                 box = view.querySelectorAll(".com-page-item");
-                // box.forEach(function(i) {
-                //     if(parseInt(i.innerText) === data.page.pre_page) {
-                //         DD.css(i, "background-color", data.color_2);
-                //     } else {
-                //         DD.css(i, "color", data.color_1);
-                //     }
-                //
-                // });
+                box.forEach(function(i) {
+                    if(parseInt(i.innerText) === data.page.pre_page) {
+                        DD.css(i, "background-color", data.color_2);
+                        // DD.css(i, "color", data.color_1);
+                    } else {
+                        DD.css(i, "background-color", '#ffffff');
+                        DD.css(i, "color", data.color_1);
+                    }
+
+                });
                 /**,
                  * 修改page_rows
                  * @param pre_page   当前页
@@ -302,8 +304,12 @@
                             values: me.data.color_1.replace("#", "")
                         }
                     }),
-                    total: 2,
-                    flag: 0
+                    js: JSON.stringify({
+                        color_1: me.data.color_1.replace('#', ''),
+                        color_2: me.data.color_2.replace('#', '')
+                    }),
+                    total: 0,
+                    flag: 1
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

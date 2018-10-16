@@ -263,7 +263,12 @@
                 }
                 var obj = {
                     plugin_id: 701,
-                    js: JSON.stringify({ color_1: data.small_div.color_1.replace("#", ""), color_2: data.small_div.color_2.replace("#", ""), color_3: data.small_div.color_3.replace("#", ""),color_4: data.small_div.color4.replace("#", "") }),
+                    js: JSON.stringify({
+                        color_1: data.small_div.color_1.replace("#", ""),
+                        color_2: data.small_div.color_2.replace("#", ""),
+                        color_3: data.small_div.color_3.replace("#", ""),
+                        color_4: data.small_div.color4.replace("#", "")
+                    }),
                     total: 0,
                     flag: 1
                 }

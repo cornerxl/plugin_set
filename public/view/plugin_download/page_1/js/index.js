@@ -125,25 +125,13 @@
 			ensure:function(){
 				var me=this;
 				 var obj = {
+                     js: JSON.stringify({
+                         word_color: me.data.word_color.replace('#', ''),
+                         page_color: me.data.page_color.replace('#', '')
+                     }),
                     plugin_id: 1101,
-                    class0: JSON.stringify({
-                        names: '.nd-plugin-paging .red',
-                        total: 1,
-                        color:{
-                        	names:"color",
-                        	values:me.data.page_color.replace("#","")
-                         }
-                    }),
-                    class1: JSON.stringify({
-                        names: '.nd-plugin-paging',
-                        total: 1,
-                        color: {
-                            names: 'color',
-                            values:me.data.word_color.replace("#","")
-                        }
-                    }),
-                    total: 2,
-                    flag: 0
+                    total: 0,
+                    flag: 1
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

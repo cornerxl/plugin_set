@@ -175,7 +175,11 @@
                 var me = this;
                 var obj = {
                     plugin_id: 1002,
-                    js: JSON.stringify({ select_color: me.data.select_color.replace("#", ""), font_color: me.data.font_color.replace("#", ""), font_size:me.data.font_size }),
+                    js: JSON.stringify({
+                        select_color: me.data.select_color.replace("#", ""),
+                        font_color: me.data.font_color.replace("#", ""),
+                        font_size:me.data.font_size
+                    }),
                     total: 0,
                     flag: 1
                 }

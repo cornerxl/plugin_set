@@ -174,17 +174,6 @@
                     me.data.font_size = window.data.font_size;
                 }
             }
-        },
-        methods: {
-            confirm: function(e, d, v) {
-                var me = this;
-                me.module.send('m_show', { nowDate: me.data.nowDate });
-                me.data.show = false;
-            },
-            cancel: function(e, d, v) {
-                var me = this;
-                me.data.show = false;
-            }
         }
     });
 

@@ -115,12 +115,16 @@
                 small_img: 'img/small.jpg',
                 big_img: 'img/big.jpg',
                 radio: 2,
+                mark_color: '#666666',
+                mark_opacity: '2'
             }
         },
         onBeforeFirstRender: function() {
             var me = this;
             if(window.data){
-                window.data.radio=me.data.photo_to_big.radio;
+                me.data.photo_to_big.radio = window.data.radio;
+                me.data.photo_to_big.mark_color = window.data.mark_color;
+                me.data.photo_to_big.mark_opacity = window.data.mark_opacity;
             }
         },
         onRender: function() {
