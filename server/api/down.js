@@ -24,6 +24,7 @@ router.get('/', function(req, res, next) {
     });
     //前段传给后台的参数
     var plugin_id = req.query.plugin_id;
+    var isLess = req.query.isLess;
     //查询
     var sql = 'select js_path from js where js_id=?';
     var js_id = plugin_id;

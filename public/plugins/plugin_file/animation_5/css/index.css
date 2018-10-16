@@ -1,11 +1,11 @@
 .el-animation-5 .com-loading {
-    position: fixed;
-    top: 0.72rem;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 20rem;
-    margin: auto;
+    /*position: fixed;*/
+    /*top: 0.72rem;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*width: 20rem;*/
+    /*margin: auto;*/
     display: flex;
     align-items: center;
     justify-content: center
@@ -26,7 +26,7 @@
     -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
     animation: bouncedelay 1.4s infinite ease-in-out;
     Preventfirstframefromflickeringwhenanimationstarts-webkit-animation-fill-mode: both;
-    animation-fill-mode: both
+    animation-fill-mode: both;
 }
 
 .el-animation-5 .com-loading .spinner .bounce1 {

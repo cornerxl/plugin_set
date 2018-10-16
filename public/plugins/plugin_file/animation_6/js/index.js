@@ -1,9 +1,9 @@
 (function() {
-    var Animation_6 = function() {
+    var Loading = function() {
 
     };
 
-    Animation_6.prototype.init = function(view) {
+    Loading.prototype.init = function(view) {
         var me = this;
         var template = `<div class='nd-plugin-buffering-box-line' style="margin:0 auto">
                             <div class='mask'></div>
@@ -25,7 +25,7 @@
         view.$forceRender = true;
     };
 
-    Animation_6.prototype.render = function(view) {
+    Loading.prototype.render = function(view) {
         var me = this;
         var data = view.$getData().data[view.$dataItem];
         if (!data) {
@@ -63,7 +63,7 @@
         };
     }
 
-    DD.Plugin.create("Animation_6", Animation_6);
+    DD.Plugin.create("loading", Loading);
 
     DD.createModule({
         el: '.plugin-buffering',
@@ -75,13 +75,11 @@
         },
         onBeforeFirstRender:function(){
             var me=this;
-            if(window.data){
-                if(window.data.animation_time){
-                    me.data.buffering_data.animation_time=window.data.animation_time;
-                }
-                if(window.data.background_color){
-                    me.data.buffering_data.color_1=window.data.background_color;
-                }
+            var tem = me.data.buffering_data;
+            if (window.data) {
+                Object.keys(window.data).forEach(i => {
+                    tem[i] = window.data[i];
+                });
             }
         }
     });

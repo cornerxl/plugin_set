@@ -52,22 +52,26 @@
             ensure: function() {
                 var me = this;
                 var data=me.data.buffering_data;
+                console.log(data);
                 if (data.time < 0) {
                     data.time = 1;
                 }
                 var obj = {
                     plugin_id: 904,
-                    class0: JSON.stringify({
-                        names: '.el-animation-4 .content span',
-                        total: 1,
-                        background_color: {
-                            names: 'background-color',
-                            values: data.color.replace("#", "")
-                        }
-                    }),
-                    total: 1,
+                    // class0: JSON.stringify({
+                    //     names: '.el-animation-4 .content span',
+                    //     total: 1,
+                    //     background_color: {
+                    //         names: 'background-color',
+                    //         values: data.color.replace("#", "")
+                    //     }
+                    // }),
+                    total: 0,
                     js: JSON.stringify({
-                        time:data.time
+                        time:data.time,
+                        color: data.color.replace("#", ""),
+                        width: data.width,
+                        height: data.height
                     }),
                     flag: 1,
                 }

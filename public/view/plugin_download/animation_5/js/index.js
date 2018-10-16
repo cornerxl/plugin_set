@@ -36,7 +36,6 @@
             name: '水滴动画',
             buffering_data: {
                 color: " #363636",
-                time: 2,
                 show: true,
                 radius: 5
             }
@@ -52,8 +51,9 @@
                     plugin_id: 905,
                     total: 0,
                     js: JSON.stringify({
-                        time: data.time,
-                        color:data.color.replace("#","")
+                        color:data.color.replace("#",""),
+                        show: true,
+                        radius: data.radius
                     }),
                     flag: 1,
                 }

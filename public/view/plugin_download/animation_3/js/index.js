@@ -33,11 +33,6 @@
                 var rightBox = view.querySelector(".nd-plugin-buffering-rightbox");
                 var leftBox = view.querySelector(".nd-plugin-buffering-leftbox");
                 var imgBox = view.querySelector('.nd-plugin-buffering-imgbox');
-                console.log(left);
-                console.log(right);
-                console.log(rightBox);
-                console.log(leftBox);
-                console.log(imgBox);
                 var color = data.color_1;
                 var time = parseInt(data.animation_time);
                 if (time < 1)
@@ -91,100 +86,106 @@
                 }
                 var obj = {
                     plugin_id: 903,
-                    class0: JSON.stringify({
-                        names: '.nd-plugin-buffering-box-3 .nd-plugin-buffering-left',
-                        total: 5,
-                        aniamatin: {
-                            names: 'animation-duration',
-                            values: data.animation_time + 's'
-                        },
-                        borderLeft: {
-                            names: 'border-left-color',
-                            values: data.color_1.replace("#", "")
-                        },
-                        borderRight: {
-                            names: 'border-bottom-color',
-                            values: data.color_1.replace("#", "")
-                        },
-                        leftW: {
-                            names: 'width',
-                            values: data.size + 'px'
-                        },
-                        leftH: {
-                            names: 'height',
-                            values: data.size + 'px'
-                        }
+                    js: JSON.stringify({
+                        show: true,
+                        color_1: data.color_1.replace("#", ""),
+                        animation_time: data.animation_time,
+                        size: data.size
                     }),
-                    class1: JSON.stringify({
-                        names: '.nd-plugin-buffering-box-3 .nd-plugin-buffering-right',
-                        total: 6,
-                        aniamatin: {
-                            names: 'animation-duration',
-                            values: data.animation_time + 's'
-                        },
-                        borderLeft: {
-                            names: 'border-left-color',
-                            values: data.color_1.replace("#", "")
-                        },
-                        borderRight: {
-                            names: 'border-bottom-color',
-                            values: data.color_1.replace("#", "")
-                        },
-                        rightW: {
-                            names: 'width',
-                            values: data.size + 'px'
-                        },
-                        rightH: {
-                            names: 'height',
-                            values: data.size + 'px'
-                        },
-                        rightM: {
-                            names: 'margin-left',
-                            values: (-data.size / 2) + 'px'
-                        }
-                    }),
-                    class2: JSON.stringify({
-                        names: '.nd-plugin-buffering-box-3 .nd-plugin-buffering-imgbox',
-                        total: 2,
-                        imgW: {
-                            names: 'width',
-                            values: data.size + 'px'
-                        },
-                        imgH: {
-                            names: 'height',
-                            values: data.size + 'px'
-                        }
-                    }),
-                    class3: JSON.stringify({
-                        names: '.nd-plugin-buffering-box-3 .nd-plugin-buffering-leftbox',
-                        total: 2,
-                        leftW: {
-                            names: 'width',
-                            values: (data.size / 2) + 'px'
-                        },
-                        leftH: {
-                            names: 'height',
-                            values: data.size + 'px'
-                        }
-                    }),
-                    class4: JSON.stringify({
-                        names: '.nd-plugin-buffering-box-3 .nd-plugin-buffering-rightbox',
-                        total: 5,
-                        leftW: {
-                            names: 'width',
-                            values: (data.size / 2) + 'px'
-                        },
-                        leftH: {
-                            names: 'height',
-                            values: data.size + 'px'
-                        },
-                        left: {
-                            names: 'left',
-                            values: (data.size / 2) + 'px'
-                        }
-                    }),
-                    total: 5,
-                    flag: 0
+                    // class0: JSON.stringify({
+                    //     names: '.nd-plugin-buffering-box-3 .nd-plugin-buffering-left',
+                    //     total: 5,
+                    //     aniamatin: {
+                    //         names: 'animation-duration',
+                    //         values: data.animation_time + 's'
+                    //     },
+                    //     borderLeft: {
+                    //         names: 'border-left-color',
+                    //         values: data.color_1.replace("#", "")
+                    //     },
+                    //     borderRight: {
+                    //         names: 'border-bottom-color',
+                    //         values: data.color_1.replace("#", "")
+                    //     },
+                    //     leftW: {
+                    //         names: 'width',
+                    //         values: data.size + 'px'
+                    //     },
+                    //     leftH: {
+                    //         names: 'height',
+                    //         values: data.size + 'px'
+                    //     }
+                    // }),
+                    // class1: JSON.stringify({
+                    //     names: '.nd-plugin-buffering-box-3 .nd-plugin-buffering-right',
+                    //     total: 6,
+                    //     aniamatin: {
+                    //         names: 'animation-duration',
+                    //         values: data.animation_time + 's'
+                    //     },
+                    //     borderLeft: {
+                    //         names: 'border-left-color',
+                    //         values: data.color_1.replace("#", "")
+                    //     },
+                    //     borderRight: {
+                    //         names: 'border-bottom-color',
+                    //         values: data.color_1.replace("#", "")
+                    //     },
+                    //     rightW: {
+                    //         names: 'width',
+                    //         values: data.size + 'px'
+                    //     },
+                    //     rightH: {
+                    //         names: 'height',
+                    //         values: data.size + 'px'
+                    //     },
+                    //     rightM: {
+                    //         names: 'margin-left',
+                    //         values: (-data.size / 2) + 'px'
+                    //     }
+                    // }),
+                    // class2: JSON.stringify({
+                    //     names: '.nd-plugin-buffering-box-3 .nd-plugin-buffering-imgbox',
+                    //     total: 2,
+                    //     imgW: {
+                    //         names: 'width',
+                    //         values: data.size + 'px'
+                    //     },
+                    //     imgH: {
+                    //         names: 'height',
+                    //         values: data.size + 'px'
+                    //     }
+                    // }),
+                    // class3: JSON.stringify({
+                    //     names: '.nd-plugin-buffering-box-3 .nd-plugin-buffering-leftbox',
+                    //     total: 2,
+                    //     leftW: {
+                    //         names: 'width',
+                    //         values: (data.size / 2) + 'px'
+                    //     },
+                    //     leftH: {
+                    //         names: 'height',
+                    //         values: data.size + 'px'
+                    //     }
+                    // }),
+                    // class4: JSON.stringify({
+                    //     names: '.nd-plugin-buffering-box-3 .nd-plugin-buffering-rightbox',
+                    //     total: 5,
+                    //     leftW: {
+                    //         names: 'width',
+                    //         values: (data.size / 2) + 'px'
+                    //     },
+                    //     leftH: {
+                    //         names: 'height',
+                    //         values: data.size + 'px'
+                    //     },
+                    //     left: {
+                    //         names: 'left',
+                    //         values: (data.size / 2) + 'px'
+                    //     }
+                    // }),
+                    total: 0,
+                    flag: 1
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

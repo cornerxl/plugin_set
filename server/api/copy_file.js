@@ -1,6 +1,7 @@
 //由于各种原因可能导致压缩的文件夹存在故要在新建文件夹之前删掉
 //加载删除模块
 var dele = require('./dele_file');
+var compLess = require('./less');
 var copy = {
     //由于主模块要使用 故全部采用了同步读取和写入的方式
     /**
@@ -14,6 +15,7 @@ var copy = {
         //tem是读取文件夹下面的文件组成的一个数组
         var tem = me.fs.readdirSync(from);
         tem.forEach(function(item) {
+            console.log(item);
             //如果是图片就特殊处理base64编码
             if (item.indexOf("js") === -1 || item.indexOf('css') === -1 || item.indexOf('html') === -1) {
                 var str = me.fs.readFileSync(from + '/' + item, 'base64');

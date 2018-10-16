@@ -32,11 +32,6 @@
                 var rightBox = view.querySelector(".nd-plugin-buffering-rightbox");
                 var leftBox = view.querySelector(".nd-plugin-buffering-leftbox");
                 var imgBox = view.querySelector('.nd-plugin-buffering-imgbox');
-                console.log(left);
-                console.log(right);
-                console.log(rightBox);
-                console.log(leftBox);
-                console.log(imgBox);
                 var color = data.color_1;
                 var time = parseInt(data.animation_time);
                 if (time < 1)
@@ -75,9 +70,14 @@
                 animation_time: 3
             }
         },
-        onReceive: function(module, data) {
+        onBeforeFirstRender: function() {
             var me = this;
-            me.data.$set('datas', data);
+            var tem = me.data.buffering_data;
+            if (window.data) {
+                Object.keys(window.data).forEach(i => {
+                    tem[i] = window.data[i];
+                });
+            }
         }
     });
 })()

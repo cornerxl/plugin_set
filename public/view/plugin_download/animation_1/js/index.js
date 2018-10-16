@@ -83,7 +83,7 @@
             var me = this;
         },
         methods: {
-            ensure: function() {
+            ensure: function(e, data, view) {
                 var me = this;
                 var data=me.data.buffering_data;
                 if (data.animation_time <= 1) {
@@ -91,25 +91,14 @@
                 }
                 var obj = {
                     plugin_id: 901,
-                    js: JSON.stringify({ animation_time: data.animation_time, background_color: data.color_1.replace("#", "") }),
-                    class0:JSON.stringify({
-                        names:".nd-plugin-buffering-loader>div",
-                        total:3,
-                        color:{
-                            names:"background-color",
-                            values:data.color_1.replace("#", "")
-                        },
-                        width:{
-                            names:"width",
-                            values:me.data.buffering_data.radius+"px"
-                        },
-                        height:{
-                            names:"height",
-                            values:me.data.buffering_data.radius+"px"
-                        }
-                    }),
-                    total: 1,
+                    js: JSON.stringify({ animation_time: data.animation_time, color_1: data.color_1.replace("#", ""), radius: data.radius }),
+                    total: 0,
                     flag: 1
+                }
+                if(view.innerHTML.indexOf('Less') > -1) {
+                    obj.isLess = true;
+                }else {
+                    obj.isLess = false;
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

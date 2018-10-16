@@ -1,0 +1,331 @@
+* {
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'PingFangSC', 'helvetica neue', 'hiragino sans gb', 'arial', 'microsoft yahei ui', 'microsoft yahei', 'simsun', 'sans-serif' !important;
+}
+
+ul li {
+    list-style: none;
+}
+
+//内容宽度
+@contentWidth: 1200px;
+// 字体大小
+@font0: 0px;
+@font10: 10px;
+@font12: 12px;
+@font14: 14px;
+@font16: 16px;
+@font18: 18px;
+@font20: 20px;
+@font22: 22px;
+@font24: 24px;
+@font26: 26px;
+.font0 {
+    font-size: @font0;
+}
+
+.font10 {
+    font-size: @font10;
+}
+
+.font12 {
+    font-size: @font12;
+}
+
+.font14 {
+    font-size: @font14;
+}
+
+.font16 {
+    font-size: @font16;
+}
+
+.font18 {
+    font-size: @font18;
+}
+
+.font20 {
+    font-size: @font20;
+}
+
+.font22 {
+    font-size: @font22;
+}
+
+.font24 {
+    font-size: @font24;
+}
+
+.font26 {
+    font-size: @font26;
+}
+
+//颜色
+////按钮背景 下载页面
+@pluginDownbtn:#ff8d00;
+@foreRed: #d02200;
+@foreBlue: #409EFF;
+@foreShallowGreen: #EFF9EB;
+@foreGreen: #67c23a;
+@foreBlack: #000;
+@fore333: #333;
+@fore666: #666;
+@fore999: #999;
+@foreWhite: #FFF;
+@fore008489: #008489;
+@foreBrown: #2f2222;
+
+.fore-red {
+    color: @foreRed;
+}
+
+.fore-blue {
+    color: @foreBlue;
+}
+
+.fore-shallow-green {
+    color: @foreShallowGreen;
+}
+
+.fore-green {
+    color: @foreGreen;
+}
+
+.fore-black {
+    color: @foreBlack;
+}
+
+.fore333 {
+    color: @fore333;
+}
+
+.fore666 {
+    color: @fore666;
+}
+
+.fore999 {
+    color: @fore999;
+}
+
+.fore-white {
+    color: @foreWhite;
+}
+
+.fore008489 {
+    color: @fore008489;
+}
+
+.fore-brown {
+    color: @foreBrown;
+}
+
+//清除浮动
+.clear {
+    clear: both;
+}
+
+.con-header {
+    width: 100%;
+    padding: 20px;
+    height: 80px;
+    background-color: @fore666;
+    box-sizing: border-box;
+    .logo {
+        height: 40px;
+    }
+    ul {
+        float: right;
+        padding-top: 10px;
+        .fore-white;
+        .font12;
+        li {
+            float: left;
+            padding-right: 20px;
+            cursor: pointer;
+        }
+        .active {
+            color: #ff6666;
+        }
+    }
+}
+
+.con-config {
+    padding: 10px 5px;
+    min-width: 500px;
+    overflow-x: hidden;
+    .itemss {
+        .font12;
+        margin-left: 40px;
+        padding: 10px 0;
+        width: 280px;
+        float: left;
+        .font0;
+        .span {
+            vertical-align: top;
+            border-radius: 2px;
+            height: 20px;
+            width: 80px;
+            text-align: center;
+            line-height: 20px;
+            padding: 8px 0px;
+            display: inline-block;
+            background-color: @pluginDownbtn;
+            color: @foreWhite;
+            .font12;
+            margin-right: 5px;
+        }
+        .input {
+            cursor:pointer;
+            vertical-align: top;
+            height: 28px;
+            padding: 2px;
+            width: 150px;
+            outline: none;
+        }
+    }
+    .check{
+        .font12;
+        margin-left: 40px;
+        padding: 10px 0;
+        width: 280px;
+        float: left;
+        .font0;
+        .span {
+            vertical-align: top;
+            border-radius: 2px;
+            height: 20px;
+            width: 80px;
+            text-align: center;
+            line-height: 20px;
+            padding: 8px 0px;
+            display: inline-block;
+            background-color: @pluginDownbtn;
+            color: @foreWhite;
+            .font12;
+            margin-right: 5px;
+        }
+        .input {
+            cursor:pointer;
+            vertical-align:bottom;
+            height: 30px;
+            padding: 2px;
+            width: 30px;
+            outline: none;
+        }
+    }
+}
+
+.con-eusure {
+    width: 200px;
+    margin: 20px auto;
+    overflow-x: hidden;
+    .font12;
+    >div{
+        cursor:pointer;
+        background-color: @pluginDownbtn;
+        color:@foreWhite;
+        height: 20px;
+        padding: 5px 2px;
+        border-radius: 3px;
+        line-height:20px;
+    }
+    // .preload {
+    //     text-align: center;
+    //     float: left;
+    //     width: 60px;
+    // }
+    .config-finish {
+        text-align: center;
+        // float: right;
+        width: 100px;
+        margin:0 auto;
+    }
+}
+input[type="color"]{
+    border:1px solid #ccc;
+}
+.el-loading{
+    background-color: #fafafa;
+    .animation-loading{
+    width: 100%;
+    position: relative;
+    height: 300px;
+}
+.nd-plugin-loading-2 {
+    position: fixed;
+    left:0;
+    bottom:0;
+    right:0;
+    top:0;
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    justify-content: center;
+    width:100vw!important;
+    height: 100vh!important;
+}
+
+.nd-plugin-loading-2 .spinner {
+    margin: 100px auto;
+    height: 100px;
+    width: 80px;
+    text-align: center;
+    font-size: 10px
+}
+
+.nd-plugin-loading-2 .spinner>div {
+    background-color: #FDB702;
+    height: 100%;
+    width: 12px;
+    display: inline-block;
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out
+}
+
+.nd-plugin-loading-2 .spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s
+}
+
+.nd-plugin-loading-2 .spinner .rect3 {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s
+}
+
+.nd-plugin-loading-2 .spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s
+}
+
+.nd-plugin-loading-2 .spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s
+}
+
+@-webkit-keyframes stretchdelay {
+    0%,
+    40%,
+    100% {
+        -webkit-transform: scaleY(.4)
+    }
+    20% {
+        -webkit-transform: scaleY(1)
+    }
+}
+
+@keyframes stretchdelay {
+    0%,
+    40%,
+    100% {
+        transform: scaleY(.4);
+        -webkit-transform: scaleY(.4)
+    }
+    20% {
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1)
+    }
+}
+}
