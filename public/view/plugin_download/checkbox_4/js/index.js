@@ -70,7 +70,7 @@
             }
         },
         methods:{
-              ensure: function() {
+              ensure: function(e, data, view) {
                 var me = this;
                 var data=me.data.check_data;
                 var obj = {

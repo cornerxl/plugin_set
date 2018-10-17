@@ -171,7 +171,7 @@
                 var me = this;
                 me.data.show = false;
             },
-            ensure: function() {
+            ensure: function(e, data, view) {
                 var me = this;
                 var obj = {
                     plugin_id: 1002,

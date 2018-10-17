@@ -111,7 +111,7 @@
             me.data.width_d = window.innerWidth * 0.45;
         },
         methods: {
-            ensure: function() {
+            ensure: function(e, data, view) {
                 var me = this;
                 var data=me.data;
                 var obj = {

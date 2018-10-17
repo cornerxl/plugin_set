@@ -102,7 +102,7 @@
             }
         },
         methods: {
-            ensure: function() {
+            ensure: function(e, data, view) {
                 var me = this;
                 var data=me.data.checkbox_data;
                 var obj = {

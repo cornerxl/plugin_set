@@ -107,7 +107,7 @@
             }
         },
         methods: {
-            ensure: function() {
+            ensure: function(e, data, view) {
                 var me = this;
                 var data = me.data.collapse_data;
                 if (data.time <= 0) {

@@ -284,7 +284,7 @@
             me.data.one = 1;
         },
         methods: {
-            ensure: function() {
+            ensure: function(e, data, view) {
                 var me = this;
                 var obj = {
                     plugin_id: 1102,

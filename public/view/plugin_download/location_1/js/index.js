@@ -255,7 +255,7 @@
             me.data.width_d=320;
         },
         methods: {
-            ensure: function() {
+            ensure: function(e, data, view) {
                 var me = this;
                 var data=me.data.location_data;
                 if (data.small_div.animation_time <= 1) {

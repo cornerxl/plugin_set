@@ -170,7 +170,7 @@
             }
         },
         methods: {
-            ensure: function() {
+            ensure: function(e, data, view) {
                 var me = this;
                 var data = me.data.button_data;
                 var obj = {

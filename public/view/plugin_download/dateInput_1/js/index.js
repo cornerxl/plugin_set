@@ -271,7 +271,7 @@
             }
         },
         methods: {
-            ensure: function () {
+            ensure: function (e, data, view) {
                 var me = this;
                 var me_data = me.data.xDate.xDate_color;
                 var obj = {

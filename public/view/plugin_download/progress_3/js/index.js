@@ -51,7 +51,7 @@
                     data.per -= data.per < 1 ? 0 : 1;
                     data.r1 = data.per / 10 * Math.PI * 2 * data.r;
                 },
-                ensure: function() {
+                ensure: function(e, data, view) {
                     var me = this;
                     var data=me.data.progress_data;
                     var obj = {

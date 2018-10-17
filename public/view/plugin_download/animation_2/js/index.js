@@ -68,7 +68,7 @@
             var me = this;
         },
         methods: {
-            ensure: function() {
+            ensure: function(e, data, view) {
                 var me = this;
                 var data = me.data.buffering_data;
                 if (data.animation_time < 0) {

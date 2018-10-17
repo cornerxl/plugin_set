@@ -122,7 +122,7 @@
 			updatePage:function(){
 				var me=this;
 			},
-			ensure:function(){
+			ensure:function(e, data, view){
 				var me=this;
 				 var obj = {
                      js: JSON.stringify({

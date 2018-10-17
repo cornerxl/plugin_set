@@ -187,7 +187,7 @@
 
         },
         methods: {
-            ensure: function() {
+            ensure: function(e, data, view) {
                 var me = this;
                 var obj = {
                     plugin_id: 501,
