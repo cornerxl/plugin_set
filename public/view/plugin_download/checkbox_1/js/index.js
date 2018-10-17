@@ -75,38 +75,6 @@
                 var obj = {
                     plugin_id: 1201,
                     total: 0,
-                    // class0: JSON.stringify({
-                    //     names: ".nd-plugin-check-1 .check-content .check",
-                    //     background: {
-                    //         names: "background-color",
-                    //         values: data.check_color.replace("#", "")
-                    //     },
-                    //     width:{
-                    //         names:'width',
-                    //         values:me.data.check_data.size+'px'
-                    //     },
-                    //     height:{
-                    //         names:'height',
-                    //         values:me.data.check_data.size+'px'
-                    //     },
-                    //     total: 3
-                    // }),
-                    // class1: JSON.stringify({
-                    //     names: ".nd-plugin-check-1 .check-content .empty",
-                    //     background: {
-                    //         names: "background-color",
-                    //         values: data.empty_color.replace("#", "")
-                    //     },
-                    //     total: 1
-                    // }),
-                    // class2: JSON.stringify({
-                    //     names: ".nd-plugin-check-1 .check-content .no-check",
-                    //     background: {
-                    //         names: "background-color",
-                    //         values: data.no_check_color.replace("#", "")
-                    //     },
-                    //     total: 1
-                    // }),
                     js:JSON.stringify({
                         is_circle:me.data.check_data.is_circle,
                         check_color: me.data.check_data.check_color.replace('#', ''),
@@ -116,6 +84,11 @@
                         size: me.data.check_data.size
                     }),
                     flag:1,
+                }
+                if(view.innerHTML.indexOf('Less') > -1) {
+                    obj.isLess = true;
+                }else {
+                    obj.isLess = false;
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

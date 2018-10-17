@@ -185,30 +185,24 @@
             var me = this;
             var tem = me.data;
             if (window.data) {
-                Object.keys(window.data).forEach(i => {
-                    tem[i] = window.data[i];
-                });
-            }
-        },
-        methods: {
-            ensure: function() {
-                var me = this;
-                var obj = {
-                    plugin_id: 501,
-                    js: JSON.stringify({
-                        process_bg: me.data.process_bg.replace("#", ""),
-                        process_box_bg: me.data.process_box_bg.replace("#", ""),
-                        percent_color: me.data.percent_color.replace("#", ""),
-                        drag_btn_color: me.data.drag_btn_color.replace("#", ""),
-                        drag_btn_width: me.data.drag_btn_width
-                    }),
-                    total: 0,
-                    flag: 1
-                };
-                me.module.send('m_plugin_download', {
-                    upload: true,
-                    obj: obj
-                });
+                if(window.data.process_bg_color) {
+                    tem.process_bg = window.data.process_bg_color;
+                }
+                if(window.data.process_box_bg_color) {
+                    tem.process_box_bg = window.data.process_box_bg_color;
+                }
+                if(window.data.percent_color) {
+                    tem.percent_color = window.data.percent_color;
+                }
+                if(window.data.drag_btn_color) {
+                    tem.drag_btn_color = window.data.drag_btn_color;
+                }
+                if(window.data.drag_btn_width) {
+                    tem.drag_btn_width = window.data.drag_btn_width;
+                }
+                // Object.keys(window.data).forEach(i => {
+                //     tem[i] = window.data[i];
+                // });
             }
         }
     });

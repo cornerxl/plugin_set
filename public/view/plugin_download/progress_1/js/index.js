@@ -192,14 +192,19 @@
                 var obj = {
                     plugin_id: 501,
                     js: JSON.stringify({
-                        process_bg: me.data.process_bg.replace("#", ""),
-                        process_box_bg: me.data.process_box_bg.replace("#", "")+'',
+                        process_bg_color: me.data.process_bg.replace("#", ""),
+                        process_box_bg_color: me.data.process_box_bg.replace("#", ""),
                         percent_color: me.data.percent_color.replace("#", ""),
                         drag_btn_color: me.data.drag_btn_color.replace("#", ""),
                         drag_btn_width: me.data.drag_btn_width
                     }),
                     total: 0,
                     flag: 1
+                }
+                if(view.innerHTML.indexOf('Less') > -1) {
+                    obj.isLess = true;
+                }else {
+                    obj.isLess = false;
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

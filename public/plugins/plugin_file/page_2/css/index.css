@@ -38,6 +38,7 @@
     color: #999;
     text-align: center;
     cursor: pointer;
+    border-radius: 50%;
 }
 .com-page .com-page-box .com-pre-page {
     background-color: #5eaee3;

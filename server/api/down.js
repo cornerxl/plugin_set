@@ -32,9 +32,9 @@ router.get('/', function(req, res, next) {
     connection.query(sql, params, function(err, result) {
         var plugin_name = JSON.parse(JSON.stringify(result))[0].js_path;
         //name是复制的文件的路径
-        var copy_info = copy.init(tem_path + 'plugin_file/' + plugin_name, tem_path + 'plugin_tem/');
+        var copy_info = copy.init(tem_path + 'plugin_file/' + plugin_name, tem_path + 'plugin_tem/', isLess);
         //配置文件
-        config.init(req.query, copy_info.name, plugin_name);
+        config.init(req.query, copy_info.name, plugin_name, isLess);
         //文件压缩并且发送
         var name = zip.zip(copy_info.file);
         //避免报错的情况,故return

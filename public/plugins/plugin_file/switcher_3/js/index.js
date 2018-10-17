@@ -1,12 +1,10 @@
 /**
  * 3D switcher
  */
-
 (function() {
+    var Switcher = function() {};
 
-    var ThreeDimensionSwithcerA = function() {};
-
-    ThreeDimensionSwithcerA.prototype.init = function(view) {
+    Switcher.prototype.init = function(view) {
         var me = this;
         var dataValue = DD.attr(view, 'dataValue');
         view.$dataValue = dataValue;
@@ -16,7 +14,7 @@
         DD.Compiler.compile(view, view.$module);
         view.$forceRender = true;
     };
-    ThreeDimensionSwithcerA.prototype.render = function(view) {
+    Switcher.prototype.render = function(view) {
         var me = this;
         var data = view.$getData().data;
         if (!data) {
@@ -84,7 +82,7 @@
         }
     }
 
-    DD.Plugin.create('ThreeDimensionSwithcerA', ThreeDimensionSwithcerA);
+    DD.Plugin.create('switcher', Switcher);
     DD.createModule({
         el:'.plugin-switcher-3',
         name: "m_plugin_download_Switch_3",

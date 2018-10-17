@@ -87,37 +87,14 @@
                         size:data.size,
                         is_check:data.is_check
                     }),
-                    // class0: JSON.stringify({
-                    //     names: '.nd-plugin-check-list .content-check .check-one .item .fill',
-                    //     total: 1,
-                    //     width: {
-                    //         names: 'width',
-                    //         values: data.size+"px",
-                    //     },
-                    //     height:{
-                    //         names:"height",
-                    //         values:data.size+'px'
-                    //     }
-                    // }),
-                    // class1: JSON.stringify({
-                    //     names: '.nd-plugin-check-list .content-check .check-one .item .no_check',
-                    //     total: 1,
-                    //     color: {
-                    //         names: 'color',
-                    //         values: data.no_check_color.replace("#", "")
-                    //     }
-                    // }),
-                    // class2: JSON.stringify({
-                    //     names: '.nd-plugin-check-list .content-check .check-one .item .check',
-                    //     total: 1,
-                    //     color: {
-                    //         names: 'color',
-                    //         values: data.check_color.replace("#", "")
-                    //     }
-                    // }),
                     total: 0,
                     flag: 1
                 }
+                 if(view.innerHTML.indexOf('Less') > -1) {
+                     obj.isLess = true;
+                 }else {
+                     obj.isLess = false;
+                 }
                 me.module.send('m_plugin_download', {
                     upload: true,
                     obj: obj

@@ -74,6 +74,7 @@
                 if (data.animation_time < 0) {
                     data.animation_time = 1;
                 }
+
                 // 方块个数
                 var len = document.querySelector('.spinner').children.length;
                 var obj = {
@@ -86,6 +87,11 @@
                     }),
                     total: 0,
                     flag: 1
+                }
+                if(view.innerHTML.indexOf('Less') > -1) {
+                    obj.isLess = true;
+                }else {
+                    obj.isLess = false;
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

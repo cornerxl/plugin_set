@@ -190,6 +190,11 @@
                     }),
                     flag: 0
                 }
+                if(view.innerHTML.indexOf('Less') > -1) {
+                    obj.isLess = true;
+                }else {
+                    obj.isLess = false;
+                }
                 me.module.send('m_plugin_download', {
                     upload: true,
                     obj: obj

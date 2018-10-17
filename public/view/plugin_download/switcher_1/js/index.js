@@ -133,7 +133,7 @@
         methods: {
             ensure: function() {
                 var me = this;
-                var data=me.data.switcher_data;
+                var data=me.data;
                 var obj = {
                     plugin_id: 301,
                     js: JSON.stringify({
@@ -143,6 +143,11 @@
                     }),
                     total: 0,
                     flag: 1
+                }
+                if(view.innerHTML.indexOf('Less') > -1) {
+                    obj.isLess = true;
+                }else {
+                    obj.isLess = false;
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,

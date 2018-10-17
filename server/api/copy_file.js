@@ -7,22 +7,34 @@ var copy = {
     /**
      * @param from 源文件目录
      * @param to   目标文件目录
+     * @param isLess Less下载还是Css下载
      */
-    copyFile: function(from, to) {
+    copyFile: function(from, to, isLess) {
         var me = this;
         //创建文件夹
         me.fs.mkdirSync(to);
         //tem是读取文件夹下面的文件组成的一个数组
         var tem = me.fs.readdirSync(from);
         tem.forEach(function(item) {
-            console.log(item);
             //如果是图片就特殊处理base64编码
-            if (item.indexOf("js") === -1 || item.indexOf('css') === -1 || item.indexOf('html') === -1) {
+            if (item.indexOf("js") === -1 && item.indexOf('css') === -1 && item.indexOf('html') === -1 && item.indexOf('less') === -1) {
                 var str = me.fs.readFileSync(from + '/' + item, 'base64');
                 me.fs.writeFileSync(to + '/' + item, str, 'base64');
             } else {
-                var str = me.fs.readFileSync(from + '/' + item, 'utf-8');
-                me.fs.writeFileSync(to + '/' + item, str);
+                if (isLess == 'true') {   //下载Less
+                    if (item.indexOf('css') === -1) {
+                        var str = me.fs.readFileSync(from + '/' + item, 'utf-8');
+                        me.fs.writeFileSync(to + '/' + item, str);
+                    }
+                } else {   // 下载Css
+                    if(item.indexOf('less') === -1) {
+                        var str = me.fs.readFileSync(from + '/' + item, 'utf-8');
+                        me.fs.writeFileSync(to + '/' + item, str);
+                    }
+                    // else {
+                    //     compLess.compileLess(from + '/' + item, to + '/' + item);
+                    // }
+                }
             }
         });
     },
@@ -30,9 +42,10 @@ var copy = {
      * form 原路经,to 目的路径
      * @param from
      * @param to
+     * @param isLess 下载Less还是Css
      * @returns {{name: *, file: (string|*)}}
      */
-    init: function(from, to) {
+    init: function(from, to, isLess) {
         var me = this;
         //随机创建一个文件夹默认60个 如有需求可以改
         me.file_name = 'plugin' + new Date().getSeconds();
@@ -50,7 +63,7 @@ var copy = {
         tem.forEach(function(i) {
             //如果发现是文件夹调用copyfile函数
             if (i.indexOf(".") === -1) {
-                me.copyFile(from + '/' + i, des_path + '/' + i);
+                me.copyFile(from + '/' + i, des_path + '/' + i, isLess);
             } else {
                 var str = me.fs.readFileSync(from + '/' + i, 'utf-8');
                 me.fs.writeFileSync(des_path + '/' + i, str);

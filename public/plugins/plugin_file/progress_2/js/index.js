@@ -122,7 +122,7 @@
                 Object.keys(window.data).forEach(i=>{
                     me.data[i]=window.data[i];
                 })
-            };
+            }
         }
     })
 }())

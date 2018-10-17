@@ -8,6 +8,10 @@
  * all_page:总共多少页
  * @return {[type]} [description]
  */
+window.data={
+    color_1:'#80ff00',
+    color_2:'#800000',
+};
 ;(function() {
     var Paging = function() {};
 
@@ -86,10 +90,11 @@
             setTimeout(function() {
                 var box = [];
                 box = view.querySelectorAll(".com-page-item");
+                console.log(data)
                 box.forEach(function(i) {
                     if(parseInt(i.innerText) === data.page.pre_page) {
                         DD.css(i, "background-color", data.color_2);
-                        // DD.css(i, "color", data.color_1);
+                        DD.css(i, "color", '#ffffff');
                     } else {
                         DD.css(i, "background-color", '#ffffff');
                         DD.css(i, "color", data.color_1);
@@ -275,7 +280,7 @@
             },
             one: 1
         },
-        onBeforeFirstRender: function() {
+        onFirstRender: function() {
             var me = this;
             if(window.data){
                 me.data.color_1 = window.data.color_1;

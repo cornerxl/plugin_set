@@ -146,18 +146,6 @@
                 }
                 var obj = {
                     plugin_id: 201,
-                    // class0: JSON.stringify({
-                    //     names: '.magn',
-                    //     backgroundColor: {
-                    //         names: 'background-color',
-                    //         values: data.mark_color.replace("#", "")
-                    //     },
-                    //     opacity: {
-                    //         names: 'opacity',
-                    //         values: data.mark_opacity<1?data.mark_opacity:data.mark_opacity/10
-                    //     },
-                    //     total: 2
-                    // }),
                     js: JSON.stringify({
                         radio:data.radio,
                         mark_color: data.mark_color.replace('#', ''),
@@ -165,6 +153,11 @@
                     }),
                     total: 0,
                     flag: 1
+                }
+                if(view.innerHTML.indexOf('Less') > -1) {
+                    obj.isLess = true;
+                }else {
+                    obj.isLess = false;
                 }
                 me.module.send('m_plugin_download', {
                     upload: true,
