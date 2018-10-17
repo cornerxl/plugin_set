@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.nd-plugin-buffering-box-line {
+    position: relative;
+	box-sizing: border-box;
+    display: -webkit-flex;
+    display: flex;
+    // flex: 0 1 auto;
+    // flex-direction: column;
+    // flex-grow: 1;
+    // flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #FFF;
+}
+
+@-webkit-keyframes nd-plugin-buffering-loader {
+    50% {
+        opacity: 0.4; 
+    }
+
+    100% {
+       opacity: 1; 
+    } 
+}
+
+@keyframes nd-plugin-buffering-loader {
+    50% {
+        opacity: 0.4; 
+    }
+
+    100% {
+        opacity: 1; 
+    } 
+}
+
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader {
+	position: relative;
+}
+
+
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div {
+    background-color: #999;
+    border-radius: 2px;
+    margin: 2px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    position: absolute;
+    width: 3px;
+    height: 10px;
+}
+
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(1) {
+	top: 15px;
+    left: 0;
+    -webkit-animation: nd-plugin-buffering-loader 1s 0s infinite ease-in-out;
+    animation: nd-plugin-buffering-loader 1s 0s infinite ease-in-out;
+}
+
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(2) {
+	top: 10.605px;
+    left: 10.605px;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: nd-plugin-buffering-loader 1s 0.12s infinite ease-in-out;
+    animation: nd-plugin-buffering-loader 1s 0.12s infinite ease-in-out;
+}
+
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(3) {
+	top: 0;
+    left: 15px;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-animation: nd-plugin-buffering-loader 1s 0.24s infinite ease-in-out;
+    animation: nd-plugin-buffering-loader 1s 0.24s infinite ease-in-out;
+}
+
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(4) {
+	top: -10.605px;
+    left: 10.605px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-animation: nd-plugin-buffering-loader 1s 0.36s infinite ease-in-out;
+    animation: nd-plugin-buffering-loader 1s 0.36s infinite ease-in-out;
+}
+
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(5) {
+	top: -15px;
+    left: 0;
+    -webkit-animation: nd-plugin-buffering-loader 1s 0.48s infinite ease-in-out;
+    animation: nd-plugin-buffering-loader 1s 0.48s infinite ease-in-out;
+}
+
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(6) {
+    top: -10.605px;
+    left: -10.605px;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: nd-plugin-buffering-loader 1s 0.6s infinite ease-in-out;
+    animation: nd-plugin-buffering-loader 1s 0.6s infinite ease-in-out;
+}
+
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(7) {
+	top: 0;
+    left: -15px;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-animation: nd-plugin-buffering-loader 1s 0.72s infinite ease-in-out;
+    animation: nd-plugin-buffering-loader 1s 0.72s infinite ease-in-out;
+}
+
+.nd-plugin-buffering-box-line .nd-plugin-buffering-loader > div:nth-child(8) {
+	top: 10.605px;
+    left: -10.605px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-animation: nd-plugin-buffering-loader 1s 0.84s infinite ease-in-out;
+    animation: nd-plugin-buffering-loader 1s 0.84s infinite ease-in-out;
+}
+
