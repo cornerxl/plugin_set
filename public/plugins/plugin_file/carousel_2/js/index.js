@@ -3,14 +3,14 @@
 	carous.prototype={
 		init:function(view){
 			var tem=`<figure class='carous' x-model='img_ct'>
-		<img src="{{url}}" alt="图片" x-repeat='imgs' class='img-trans'>
-	</figure>
-	<div class="spancont">
-	<div class="span" x-model='img_ct'>
-			<span class='inline-span' x-repeat='imgs'></span>
-		</div>
-	</div>`;
-	view.innerHTML=tem;
+						<img src="{{url}}" alt="图片" x-repeat='imgs' class='img-trans'>
+					</figure>
+					<div class="spancont">
+					<div class="span" x-model='img_ct'>
+							<span class='inline-span' x-repeat='imgs'></span>
+						</div>
+					</div>`;
+			view.innerHTML=tem;
 		},
 		render:function(view){
 			var me=this;

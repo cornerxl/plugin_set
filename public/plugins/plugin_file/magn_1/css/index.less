@@ -1,0 +1,42 @@
+
+.small {
+  border: 1px solid #ccc;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*z-index不加会导致事件被小方块处理*/
+  z-index: 100;
+}
+
+.magn {
+  z-index: 10;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  background-color: #ccc;
+  opacity: .5;
+  visibility: hidden;
+}
+
+.small-img {
+  height: 100%;
+  width: 100%;
+}
+
+.big {
+  visibility: hidden;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 105%;
+}
+
+.big img {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+}

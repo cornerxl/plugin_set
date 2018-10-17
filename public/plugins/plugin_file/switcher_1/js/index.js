@@ -1,11 +1,6 @@
 ﻿/**
  * switcher
  */
-window.data={
-    color_1:'#ff8040',
-    color_2:'#808000',
-    color_3:'#ff0000',
-};
 (function() {
     var Switcher = function() {
 

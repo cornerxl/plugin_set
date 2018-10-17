@@ -1,0 +1,27 @@
+.plugin-switcher-3 {
+  margin:0 auto;
+  .nd-plugin-switcher-box::before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 46%;
+    height: 46%;
+    border-radius: 50%;
+    transition: all 150ms ease-in;
+    content: '';
+    display: block;
+  }
+  .nd-plugin-switcher-box::after {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    width: 8%;
+    height: 24%;
+    box-shadow: 0 0 0 2.5px #FFF;
+    transition: all 150ms ease-in;
+    content: '';
+    display: block;
+  }
+}

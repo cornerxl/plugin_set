@@ -1,33 +1,19 @@
-.el-plugin-table-1 .plugin {
-    width: 70%;
-    min-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    height: 500px;
-    margin: 0 auto;
-    border: 1px solid #ffffff;
-    border-top: none;
-    border-bottom: none;
-    box-sizing: border-box;
-    padding: 10px 20px;
-}
 
-.el-plugin-table-1 {}
 
-.el-plugin-table-1 .plugin .my-table {
+.my-table {
     position: relative;
     overflow-y: auto;
     height: 70%;
     width: 100%;
 }
 
-.el-plugin-table-1 .plugin .addmmit {
+.addmmit {
     margin-top: 5px;
     width: 100%;
     overflow: hidden;
 }
 
-.el-plugin-table-1 .plugin .reverse {
+.reverse {
     color:#333;
     background-color: rgba(225, 225, 225, .4);
     position: absolute;
@@ -40,7 +26,7 @@
     z-index: 10;
 }
 
-.el-plugin-table-1 .plugin .reverse .cont {
+.reverse .cont {
     height: 100%;
     box-sizing: border-box;
     background-color: #fff;
@@ -49,7 +35,7 @@
     padding: 10px 0;
 }
 
-.el-plugin-table-1 .plugin .reverse .cont .head {
+.reverse .cont .head {
     font-size: 12px;
     height: 20px;
     padding: 0px 15px 5px 15px;
@@ -57,12 +43,12 @@
     border-bottom: 1px solid #ddd;
 }
 
-.el-plugin-table-1 .plugin .reverse .cont .item {
+.reverse .cont .item {
     font-size: 14px;
     padding: 0 30px;
 }
 
-.el-plugin-table-1 .plugin .reverse .cont .item .ipt {
+.reverse .cont .item .ipt {
     margin: 4px 0;
     outline: none;
     height: 20px;
@@ -72,7 +58,7 @@
     width: 150px;
 }
 
-.el-plugin-table-1 .plugin .reverse .cont .head .dele {
+.reverse .cont .head .dele {
     cursor: pointer;
     position: absolute;
     width: 15px;
@@ -83,7 +69,7 @@
     background-size: cover;
 }
 
-.el-plugin-table-1 .plugin .reverse .cont .ensure {
+.reverse .cont .ensure {
     cursor: pointer;
     text-align: center;
     color: #fff;
@@ -96,37 +82,37 @@
     border-radius: 3px;
 }
 
-.el-plugin-table-1 .plugin .addmmit .page {
+.addmmit .page {
     padding: 5px;
     float: right;
 }
 
-.el-plugin-table-1 .plugin .addmmit .page .pre {
+.addmmit .page .pre {
     cursor: pointer;
     float: left;
     font-size: 12px;
     padding: 10px 5px;
 }
 
-.el-plugin-table-1 .plugin .addmmit .page .next {
+.addmmit .page .next {
     cursor: pointer;
     float: left;
     font-size: 12px;
     padding: 10px 5px;
 }
 
-.el-plugin-table-1 .plugin .addmmit .page .go {
+.addmmit .page .go {
     float: left;
     font-size: 12px;
     padding: 10px 5px;
 }
 
-.el-plugin-table-1 .plugin .addmmit .page .go .ensure {
+.addmmit .page .go .ensure {
     cursor: pointer;
     float: right;
 }
 
-.el-plugin-table-1 .plugin .addmmit .page .go .text {
+.addmmit .page .go .text {
     border-radius: 3px;
     border: 1px solid #ddd;
     height: 10px;
@@ -136,7 +122,7 @@
     outline: none;
 }
 
-.el-plugin-table-1 .plugin .common {
+.common {
     font-size: 12px;
     overflow-y: hidden;
     width: 100%;
@@ -144,46 +130,46 @@
     margin-bottom: 10px;
 }
 
-.el-plugin-table-1 .plugin .common .left {
+.common .left {
     overflow-y: hidden;
     float: left;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
-.el-plugin-table-1 .plugin .common .left .item {
+.common .left .item {
     cursor: pointer;
     float: left;
     padding: 8px 20px;
 }
-.el-plugin-table-1 .plugin .common .left .item:hover{
+.common .left .item:hover{
     background-color: #bae7ff;
 }
-.el-plugin-table-1 .plugin .common .left .border-right {
+.common .left .border-right {
     border-right: 1px solid #ddd;
 }
 
-.el-plugin-table-1 .plugin .common .right {
+.common .right {
     overflow-y: hidden;
     float: right;
 }
 
-.el-plugin-table-1 .plugin .common .right .item {
+.common .right .item {
     cursor: pointer;
     padding: 6px 8px;
     float: right;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-.el-plugin-table-1 .plugin .common .right .item:hover{
+.common .right .item:hover{
     background-color: #bae7ff;
 }
-.el-plugin-table-1 .plugin .common .right .search {
+.common .right .search {
     float: right;
     overflow-y: hidden;
 }
 
-.el-plugin-table-1 .plugin .common .right .search .input {
+.common .right .search .input {
     outline: none;
     float: right;
     padding: 6px 8px;
@@ -193,50 +179,50 @@
     margin-right: 10px;
 }
 
-.el-plugin-table-1 .plugin .my-table .table {
+.my-table .table {
     border-right: 1px solid #ddd;
     border-left: 1px solid #ddd;
     position: relative;
 }
 
-.el-plugin-table-1 .plugin .my-table .table .list {
+.my-table .table .list {
     overflow: hidden;
 }
-.el-plugin-table-1 .plugin .my-table .table .list:hover{
+.my-table .table .list:hover{
     background-color: #EEE8AA;
 }
-.el-plugin-table-1 .plugin .my-table .table .list .rows {
+.my-table .table .list .rows {
     text-align: center;
     box-sizing: border-box;
     float: left;
 }
 
-.el-plugin-table-1 .plugin .my-table .table .list .rows .input {
+.my-table .table .list .rows .input {
     height: 14px;
     vertical-align: middle;
 }
 
-.el-plugin-table-1 .plugin .my-table .table .list .rows .span {
+.my-table .table .list .rows .span {
     display: inline-block;
     height: 14px;
     vertical-align: middle;
 }
 
-.el-plugin-table-1 .plugin .my-table .border {
+.my-table .border {
     border-bottom: 1px solid #ddd;
 }
 
-.el-plugin-table-1 .plugin .my-table .border-right {
+.my-table .border-right {
     border-right: 1px solid #ddd;
 }
 
-.el-plugin-table-1 .plugin .header {
+.header {
     position: absolute;
     box-sizing: border-box;
     z-index: 9;
 }
 
-.el-plugin-table-1 .plugin .header .head-cont {
+.header .head-cont {
     display: none;
     box-shadow: 1px 1px 1px #999;
     overflow: hidden;
@@ -246,26 +232,26 @@
     margin: 0 auto;
 }
 
-.el-plugin-table-1 .plugin .my-table .head-cont {
+.my-table .head-cont {
     background-color: #f7f7f9;
     border: 1px solid #ddd;
     overflow: hidden;
     border-bottom: none;
 }
 
-.el-plugin-table-1 .plugin .my-table .head-cont .rows {
+.my-table .head-cont .rows {
     text-align: center;
     float: left;
     box-sizing: border-box;
 }
 
-.el-plugin-table-1 .plugin .my-table .head-cont .rows .input {
+.my-table .head-cont .rows .input {
     height: 14px;
     vertical-align: middle;
 }
 
 
-.el-plugin-table-1 .plugin .header .head-cont .thead {
+.header .head-cont .thead {
     text-align: center;
     box-sizing: border-box;
     background-color: #f7f7f7;
@@ -273,6 +259,6 @@
     float: left;
 }
 
-.el-plugin-table-1 .plugin .check {
+.check {
     background-color:  #EEE8AA;
 }

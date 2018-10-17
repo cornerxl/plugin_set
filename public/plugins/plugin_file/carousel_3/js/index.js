@@ -4,16 +4,16 @@
     my_plugin.prototype = {
         init: function(view) {
             var tem = ` <div class='content' x-model='ca_photo'>
-  <div class="img-photo">
-       <div  style="background-image: url('{{url}}');background-size:100% 100%" class='img' x-repeat='imgs'></div>
-  </div>
-  <div style="clear:both"></div>
-  <div class='span'>
-     <div class='span-cont'>
-        <span x-repeat='imgs' class='item-span'></span>
-     </div>
-  </div>
-    </div>`
+                          <div class="img-photo">
+                               <div  style="background-image: url('{{url}}');background-size:100% 100%" class='img' x-repeat='imgs'></div>
+                          </div>
+                          <div style="clear:both"></div>
+                          <div class='span'>
+                             <div class='span-cont'>
+                                <span x-repeat='imgs' class='item-span'></span>
+                             </div>
+                          </div>
+                        </div>`
             view.innerHTML = tem;
         },
         render: function(view) {

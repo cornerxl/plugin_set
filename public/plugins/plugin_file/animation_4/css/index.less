@@ -1,0 +1,27 @@
+.el-animation-4{
+  position: fixed;
+  left:0;
+  right: 0;
+  top:0;
+  bottom: 0;
+  .content{
+    width: 220px;
+    margin:0px auto;
+    margin-top:300px;
+    span{
+      display: inline-block;
+      height: 100px;
+      width: 25px;
+      background-color: deepskyblue;
+      border-radius: 5px;
+      transform: skewX(-25deg) scale(.1);
+      animation:animate 0.8s infinite alternate;
+    }
+  }
+}
+@keyframes animate{
+  to{
+    filter:opacity(1);
+    transform: skewX(-25deg) scale(1);
+  }
+}

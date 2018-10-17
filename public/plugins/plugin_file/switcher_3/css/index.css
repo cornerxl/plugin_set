@@ -27,9 +27,3 @@
     content: '';
     display: block;
 }
-.plugin-switcher-3 .checked{
-}
-.plugin-switcher-3 .checked::before {
-}
-.plugin-switcher-3 .checked::after {
-}

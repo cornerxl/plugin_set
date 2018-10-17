@@ -1,0 +1,61 @@
+.el-animation-5 .com-loading {
+  /*position: fixed;*/
+  /*top: 0.72rem;*/
+  /*right: 0;*/
+  /*bottom: 0;*/
+  /*left: 0;*/
+  /*width: 20rem;*/
+  /*margin: auto;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .spinner {
+    margin: 2.7rem auto 0 auto;
+    width: 4rem;
+    text-align: center;
+    div {
+      width: 0.8rem;
+      height: 0.8rem;
+      background-color: #363636;
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+      animation: bouncedelay 1.4s infinite ease-in-out;
+      Preventfirstframefromflickeringwhenanimationstarts-webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+    .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
+    .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+  }
+}
+
+
+@-webkit-keyframes bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0)
+  }
+  40% {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes bouncedelay {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0)
+  }
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1)
+  }
+}

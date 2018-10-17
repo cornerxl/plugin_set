@@ -3,13 +3,9 @@
      content: '';
      clear: both;
  }
- /*.chart,*/
- .option {
-     float: left;
- }
 
  .option {
-     /*padding: 30px;*/
+     float: left;
  }
 
  .option-group {

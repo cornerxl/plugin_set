@@ -1,15 +1,13 @@
-.el-plugin {
-    margin-top: 200px;
-}
 
-.el-plugin .plugin .content {
-    width: 20rem;
-    height: 7.78rem;
+.content {
+    margin: 0 auto;
+    width: 400px;
+    height: 200px;
     overflow: hidden;
     position: relative;
 }
 
-.el-plugin .plugin .content .img-photo {
+.content .img-photo {
     float: left;
     transition: all 1.5s;
     transform-style: preserve-3d;
@@ -17,21 +15,21 @@
     height: 100%;
 }
 
-.el-plugin .plugin .content .span {
+.content .span {
     position: absolute;
     width: 100%;
     height: 21px;
     bottom: 20px;
 }
 
-.el-plugin .plugin .content .span .span-cont {
+.content .span .span-cont {
     height: 100%;
     width: 100px;
     margin: 0 auto;
     overflow: hidden;
 }
 
-.el-plugin .plugin .content .span .span-cont span {
+.content .span .span-cont span {
     display: inline-block;
     background-color: #f8f8f8;
     height: 13px;
@@ -40,16 +38,16 @@
     border-radius: 50%;
 }
 
-.el-plugin .plugin .content .span .span-cont .is_check {
+.content .span .span-cont .is_check {
     background-color: #ff6800;
 }
 
-.el-plugin .plugin .content .img-photo .img {
+.content .img-photo .img {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
-.el-plugin .plugin .content .img-photo .index {
+.content .img-photo .index {
     z-index: 1000;
 }

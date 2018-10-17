@@ -3,65 +3,65 @@
     mytable.prototype = {
         init: function(view) {
             var tem = `<div class="common">
-            <div class="left">
-                <div class='item border-right add-btn'>新增</div>
-                <div class='item border-right reverse-btn'>修改</div>
-                <div class='item dele-btn'>删除</div>
-            </div>
-            <div class='right'>
-                <div class='item search-btn'>查询</div>
-                <div class='search'>
-                    <input type="text" class="input" />
-                </div>
-            </div>
-        </div>
-        <div class="header">
-            <div class="head-cont">
-                <div class='thead'>
-                    <input class='input' type="checkbox" x-field='check_all' yes-value='true' no-value='false' />
-                </div>
-                <div x-repeat='thead' class='thead'>{{name}}</div>
-            </div>
-        </div>
-        <div class="my-table">
-            <div class="head-cont">
-                <div class='rows'>
-                    <input class="input" type="checkbox" x-field='check_all' yes-value='true' no-value='false' />
-                </div>
-                <div x-repeat='thead' class='rows'>{{name}}</div>
-            </div>
-            <div class="table">
-                <div class="list" x-repeat='th' x-class="{'check':'check'}">
-                    <div class='rows'>
-                        <input class="input" type="checkbox" x-field='check' yes-value='true' no-value='false' />
-                    </div>
-                    <div class="rows" x-repeat='td'>{{ct}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="addmmit">
-            <div class="page">
-                <div class='pre'>上一页</div>
-                <div class='next'>下一页</div>
-                <div class='go'>
-                    <div class='ensure'>转到</div>
-                    <input class='text' type="text" />
-                </div>
-            </div>
-        </div>
-        <div class="reverse" x-show="show_reverse">
-            <div class="cont">
-                <div class="head">编辑
-                    <div class="dele"></div>
-                </div>
-                <div class="item" x-repeat=" reverse">
-                    <div>{{name}}</div>
-                    <input class="ipt" x-field="field" type="text" />
-                </div>
-                <div class="ensure">确定</div>
-            </div>
-        </div>`;
+                            <div class="left">
+                                <div class='item border-right add-btn'>新增</div>
+                                <div class='item border-right reverse-btn'>修改</div>
+                                <div class='item dele-btn'>删除</div>
+                            </div>
+                            <div class='right'>
+                                <div class='item search-btn'>查询</div>
+                                <div class='search'>
+                                    <input type="text" class="input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header">
+                            <div class="head-cont">
+                                <div class='thead'>
+                                    <input class='input' type="checkbox" x-field='check_all' yes-value='true' no-value='false' />
+                                </div>
+                                <div x-repeat='thead' class='thead'>{{name}}</div>
+                            </div>
+                        </div>
+                        <div class="my-table">
+                            <div class="head-cont">
+                                <div class='rows'>
+                                    <input class="input" type="checkbox" x-field='check_all' yes-value='true' no-value='false' />
+                                </div>
+                                <div x-repeat='thead' class='rows'>{{name}}</div>
+                            </div>
+                            <div class="table">
+                                <div class="list" x-repeat='th' x-class="{'check':'check'}">
+                                    <div class='rows'>
+                                        <input class="input" type="checkbox" x-field='check' yes-value='true' no-value='false' />
+                                    </div>
+                                    <div class="rows" x-repeat='td'>{{ct}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="addmmit">
+                            <div class="page">
+                                <div class='pre'>上一页</div>
+                                <div class='next'>下一页</div>
+                                <div class='go'>
+                                    <div class='ensure'>转到</div>
+                                    <input class='text' type="text" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reverse" x-show="show_reverse">
+                            <div class="cont">
+                                <div class="head">编辑
+                                    <div class="dele"></div>
+                                </div>
+                                <div class="item" x-repeat=" reverse">
+                                    <div>{{name}}</div>
+                                    <input class="ipt" x-field="field" type="text" />
+                                </div>
+                                <div class="ensure">确定</div>
+                            </div>
+                        </div>`;
             view.innerHTML = tem;
         },
         render: function(view) {

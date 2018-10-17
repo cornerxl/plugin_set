@@ -1,17 +1,4 @@
-.carous_ct {
-    margin-top: 10rem;
-    width: 20rem;
-    height: 7.78rem;
-    overflow: hidden;
-    position: relative;
-}
 
-.carous_ct .plugin {
-    perspective: 600px;
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
 
 .carous_ct .plugin .carous {
     display: block;

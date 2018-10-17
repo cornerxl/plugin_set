@@ -8,10 +8,6 @@
  * all_page:总共多少页
  * @return {[type]} [description]
  */
-window.data={
-    color_1:'#80ff00',
-    color_2:'#800000',
-};
 ;(function() {
     var Paging = function() {};
 

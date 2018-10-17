@@ -10,7 +10,7 @@
                                     <img class='imgs' x-repeat='imgs' src="{{url}}">
                                 </div>
                                 <div class='span'>
-                                <span x-repeat='span'  x-class="{'blight':'blight'}" class='photo-span' x-show="$index!==0" style="width:{{width}}px;height:{{height}}px"></span>
+                                    <span x-repeat='span'  x-class="{'blight':'blight'}" class='photo-span' x-show="$index!==0" style="width:{{width}}px;height:{{height}}px"></span>
                                 </div>
                                <div class="left"><div class="img-content"></div></div>
                               <div class="right"><div class="img-content"></div></div>
@@ -167,7 +167,7 @@
                     width: '',
                     check_color: '#ff6800',
                     translate: false,
-                    imgs: [{ url: "carouse_1/img/1.jpg" }, { url: "carouse_1/img/2.jpg" }, { url: "carouse_1/img/3.jpg" }, { url: "carouse_1/img/4.jpg" }, { url: "carouse_1/img/5.jpg" }, { url: "carouse_1/img/1.jpg" }],
+                    imgs: [{ url: "img/1.jpg" }, { url: "img/2.jpg" }, { url: "img/3.jpg" }, { url: "img/4.jpg" }, { url: "img/5.jpg" }, { url: "img/1.jpg" }],
                     span: [{ blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }, { blight: false, width: '', height: '' }],
                 },
                 small_div: {

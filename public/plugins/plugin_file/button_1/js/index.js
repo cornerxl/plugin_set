@@ -3,18 +3,18 @@
 	button_list.prototype={
 		init:function(view){
 			var template=`<div class="nd-plugin-list-1">
-	<div x-repeat="list_one" class="list_one">{{value}}</div>
-</div>
-<div class="nd-plugin-list-2">
-	<div x-repeat="list_two" class="list_two">
-	    <div class="list_i">{{value}}</div>{{name}}
-	</div>
-</div>
-<div class="nd-plugin-list-3">
-	<div x-repeat="list_three" class="list_three">
-	<div class="list_i">{{value}}</div>
-	</div>
-</div>`;
+								<div x-repeat="list_one" class="list_one">{{value}}</div>
+							</div>
+							<div class="nd-plugin-list-2">
+								<div x-repeat="list_two" class="list_two">
+									<div class="list_i">{{value}}</div>{{name}}
+								</div>
+							</div>
+							<div class="nd-plugin-list-3">
+								<div x-repeat="list_three" class="list_three">
+								<div class="list_i">{{value}}</div>
+								</div>
+							</div>`;
 			view.innerHTML=template;
 			view.$forceRender=true;
 		},

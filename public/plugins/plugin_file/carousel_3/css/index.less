@@ -1,0 +1,45 @@
+.content {
+  margin: 0 auto;
+  width: 400px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  .img-photo {
+    float: left;
+    transition: all 1.5s;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    .img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .index {
+      z-index: 1000;
+    }
+  }
+  .span {
+    position: absolute;
+    width: 100%;
+    height: 21px;
+    bottom: 20px;
+    .span-cont {
+      height: 100%;
+      width: 100px;
+      margin: 0 auto;
+      overflow: hidden;
+      span {
+        display: inline-block;
+        background-color: #f8f8f8;
+        height: 13px;
+        margin: 0 5px;
+        width: 13px;
+        border-radius: 50%;
+      }
+      .is_check {
+        background-color: #ff6800;
+      }
+    }
+  }
+}
