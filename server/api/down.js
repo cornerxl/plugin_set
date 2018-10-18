@@ -36,12 +36,27 @@ router.get('/', function(req, res, next) {
         //配置文件
         config.init(req.query, copy_info.name, plugin_name, isLess);
         //文件压缩并且发送
-        var name = zip.zip(copy_info.file);
-        //避免报错的情况,故return
-        return res.send({
-            result: true,
-            name: name,
-        });
+        var name = '';
+        if (isLess === 'false') {
+            setTimeout(function () {
+                name = zip.zip(copy_info.file);
+                //避免报错的情况,故return
+                return res.send({
+                    result: true,
+                    name: name,
+                });
+            }, 1000);
+
+        }else {
+            name = zip.zip(copy_info.file);
+            //避免报错的情况,故return
+            return res.send({
+                result: true,
+                name: name,
+            });
+        }
+
+
     });
     //关闭
     connection.end();

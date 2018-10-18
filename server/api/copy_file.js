@@ -27,13 +27,15 @@ var copy = {
                         me.fs.writeFileSync(to + '/' + item, str);
                     }
                 } else {   // 下载Css
-                    if(item.indexOf('less') === -1) {
-                        var str = me.fs.readFileSync(from + '/' + item, 'utf-8');
-                        me.fs.writeFileSync(to + '/' + item, str);
+
+                    if (item === 'index.less') {  //less文件编译
+                        compLess.compileLess(from + '/index.less', to + '/index.css');
+                    } else {
+                        if(item.indexOf('less') === -1) {
+                            var str = me.fs.readFileSync(from + '/' + item, 'utf-8');
+                            me.fs.writeFileSync(to + '/' + item, str);
+                        }
                     }
-                    // else {
-                    //     compLess.compileLess(from + '/' + item, to + '/' + item);
-                    // }
                 }
             }
         });

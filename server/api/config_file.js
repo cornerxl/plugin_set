@@ -33,19 +33,17 @@ var config = {
         // fs.writeFileSync(path + '/css/index.css', str + str_old, 'utf-8');
         if(isLess == 'true') {
             var str_html_old = fs.readFileSync(path + '/index.html', 'utf-8');
-            var str = '';
+            var str = str_html_old;
             if(str_html_old.indexOf('<link rel="stylesheet" href="css/index.css">') > -1) {
                 str = str_html_old.replace('<link rel="stylesheet" href="css/index.css">', '<link rel="stylesheet/less" href="css/index.less"><script type="text/javascript" src="js/less.min.js"></script>');
             }
             fs.writeFileSync(path + '/index.html', str, 'utf-8');
         } else {
             var str_html_old = fs.readFileSync(path + '/index.html', 'utf-8');
-            var str = '';
+            var str = str_html_old;
             if(str_html_old.indexOf('<link rel="stylesheet/less" href="css/index.less">') > -1) {
                 str = str_html_old.replace('<link rel="stylesheet/less" href="css/index.less">', '<link rel="stylesheet" href="css/index.css">');
                 str = str.replace('<script type="text/javascript" src="js/less.min.js"></script>', '');
-            }else {
-                str = str_html_old;
             }
             fs.writeFileSync(path + '/index.html', str, 'utf-8');
         }

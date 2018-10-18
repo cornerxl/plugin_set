@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/nodom-full.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		.el-plugin {
+			width: 200px;
+			height: 200px;
+			margin: 100px auto;
+		}
+
+		.el-plugin .plugin {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="el-plugin">
+		<div x-plugin='magn' class='plugin' dataName="photo_to_big"></div>
+	</div>
+</body>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+</html>
