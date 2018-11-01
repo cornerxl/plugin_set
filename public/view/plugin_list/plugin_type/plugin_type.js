@@ -1385,7 +1385,7 @@
                                     <pre><span>                  small_img: '*****',</span>      <span class="comment">/*图片放大镜插件小图片路径*/</span></pre>
                                     <pre><span>                  big_img: '*****',</span>      <span class="comment">/*图片放大镜插件大图片路径*/</span></pre>
                                     <pre><span>                  radio: '2',</span>      <span class="comment">/*图片放大镜放大比例*/</span></pre>
-                                    <pre><span>                  mark_color: '#666666',</span>      <span class="comment">/*图片放大镜遮罩层颜色*/</span></pre>
+                                    <pre><span>                  mark_color: '#00FF00',</span>      <span class="comment">/*图片放大镜遮罩层颜色*/</span></pre>
                                     <pre><span>                  mark_opacity: 0.2,</span>      <span class="comment">/*图片放大镜遮罩层透明度*/</span></pre>
                                     <pre><span>            }</span></pre>
                                     <pre><span>     }</pre>
@@ -1396,7 +1396,7 @@
                                 small_img: PLUGINURL + '/plugins_show/imgShow/magn_1/img/small.jpg',
                                 big_img: PLUGINURL + '/plugins_show/imgShow/magn_1/img/big.jpg',
                                 radio: 2,
-                                mark_color: '#666666',
+                                mark_color: '#00FF00',
                                 mark_opacity: '0.2'
                             }
                         }
@@ -1939,42 +1939,6 @@
                             switcher: true,
                             open_color: '#cccccc',
                             close_color: '#ff9900'
-                        }
-                    }, {
-                        name: "12004",
-                        explain: "这是本系统的按钮模板插件。\n" +
-                            "本插件可自定义配置项包括：一列颜色、二列颜色、三列颜色。",
-                        template: `<div class="nd-plugin-button-1">
-                                        <div x-plugin="plugin_12004" class="btn-list"></div>
-                                    </div>`,
-                        data: {
-                            list_one: [{
-                                value: "危险"
-                            }, {
-                                value: "警告"
-                            }, {
-                                value: "成功"
-                            }],
-                            list_two: [{
-                                name: "删除",
-                                value: "delete"
-                            }, {
-                                name: "编辑",
-                                value: "edit"
-                            }, {
-                                name: "分享",
-                                value: "share"
-                            }],
-                            list_three: [{
-                                value: "keyboard_arrow_down"
-                            }, {
-                                value: "keyboard_arrow_up"
-                            }, {
-                                value: "keyboard_arrow_left"
-                            }],
-                            color_1: "#e53935",
-                            color_2: "#e53935",
-                            color_3: "#4caf50"
                         }
                     }
                 ]

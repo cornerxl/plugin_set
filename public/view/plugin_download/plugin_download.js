@@ -254,7 +254,7 @@
             var me = this;
             me.data.route_height = window.innerHeight - 80;
             me.data.show = true;
-            setTimeout(canvas.init.bind(canvas, me.data.show), 2000);
+            // setTimeout(canvas.init.bind(canvas, me.data.show), 2000);
             me.data.first_type.forEach(i=>{
                 i.plugin.forEach(it=>{
                     it.active=false;
